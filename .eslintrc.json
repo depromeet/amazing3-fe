@@ -19,9 +19,9 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    "no-duplicate-imports": "off",
 
     "import/newline-after-import": "warn",
-    "import/no-duplicates": "warn",
 
     "@typescript-eslint/no-unused-vars": [
       "warn",
@@ -43,6 +43,13 @@
         ]
       }
     ],
-    "simple-import-sort/exports": "warn"
+    "simple-import-sort/exports": "warn",
+
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }
