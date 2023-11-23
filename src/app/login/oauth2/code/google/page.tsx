@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { AxiosResponse } from 'axios';
 
 import { api } from '@/apis';
 
@@ -12,7 +13,7 @@ export default function GoogleLogin() {
 
   useEffect(() => {
     try {
-      api.get('/my').then((response) => {
+      api.get('/my').then((response: AxiosResponse) => {
         setEmail(response.data.email);
         console.log(response.data.email);
       });
