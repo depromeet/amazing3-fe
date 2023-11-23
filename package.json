@@ -9,7 +9,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "next": "14.0.2",
@@ -17,6 +19,14 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "7.5.3",
+    "@storybook/addon-interactions": "7.5.3",
+    "@storybook/addon-links": "7.5.3",
+    "@storybook/addon-onboarding": "1.0.8",
+    "@storybook/blocks": "7.5.3",
+    "@storybook/nextjs": "7.5.3",
+    "@storybook/react": "7.5.3",
+    "@storybook/testing-library": "0.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -30,13 +40,17 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-unused-imports": "^3.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "postcss": "^8",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "storybook": "7.5.3",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "webpack": "^5.89.0"
   },
   "packageManager": "yarn@4.0.1"
 }
