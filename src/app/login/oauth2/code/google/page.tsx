@@ -5,7 +5,7 @@ import { AxiosResponse } from 'axios';
 
 import { api } from '@/apis';
 
-export default function GoogleLogin() {
+const GoogleLogin = () => {
   const [email, setEmail] = useState<string>('');
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
@@ -23,4 +23,6 @@ export default function GoogleLogin() {
   }, [token]);
 
   return <div>current user email: {email}</div>;
-}
+};
+
+export default GoogleLogin;
