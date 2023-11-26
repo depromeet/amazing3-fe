@@ -26,7 +26,6 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
-          ["@headlessui/react", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:1.7.17"],\
           ["@storybook/addon-essentials", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:7.5.3"],\
           ["@storybook/addon-interactions", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:7.5.3"],\
           ["@storybook/addon-links", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:7.5.3"],\
@@ -3214,33 +3213,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../Users/Hongsuk Ryu/AppData/Local/Yarn/Berry/cache/@floating-ui-utils-npm-0.1.6-ae508f7272-10c0.zip/node_modules/@floating-ui/utils/",\
         "packageDependencies": [\
           ["@floating-ui/utils", "npm:0.1.6"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["@headlessui/react", [\
-      ["npm:1.7.17", {\
-        "packageLocation": "../../Users/Hongsuk Ryu/AppData/Local/Yarn/Berry/cache/@headlessui-react-npm-1.7.17-c3f120aed0-10c0.zip/node_modules/@headlessui/react/",\
-        "packageDependencies": [\
-          ["@headlessui/react", "npm:1.7.17"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:1.7.17", {\
-        "packageLocation": "./.yarn/__virtual__/@headlessui-react-virtual-cd35d6ae5c/3/Users/Hongsuk Ryu/AppData/Local/Yarn/Berry/cache/@headlessui-react-npm-1.7.17-c3f120aed0-10c0.zip/node_modules/@headlessui/react/",\
-        "packageDependencies": [\
-          ["@headlessui/react", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:1.7.17"],\
-          ["@types/react", "npm:18.2.37"],\
-          ["@types/react-dom", "npm:18.2.15"],\
-          ["client-only", "npm:0.0.1"],\
-          ["react", "npm:18.2.0"],\
-          ["react-dom", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:18.2.0"]\
-        ],\
-        "packagePeers": [\
-          "@types/react-dom",\
-          "@types/react",\
-          "react-dom",\
-          "react"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7394,7 +7366,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["amazing3-fe", "workspace:."],\
-          ["@headlessui/react", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:1.7.17"],\
           ["@storybook/addon-essentials", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:7.5.3"],\
           ["@storybook/addon-interactions", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:7.5.3"],\
           ["@storybook/addon-links", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:7.5.3"],\
