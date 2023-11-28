@@ -1,10 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "unused-imports",
-    "simple-import-sort"
-  ],
+  "plugins": ["@typescript-eslint", "unused-imports", "simple-import-sort"],
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
@@ -14,9 +10,7 @@
   ],
   "rules": {
     "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-imports-ts": [
-      "error"
-    ],
+    "unused-imports/no-unused-imports-ts": ["error"],
     "unused-imports/no-unused-vars": [
       "warn",
       {
@@ -28,6 +22,7 @@
     ],
     "no-duplicate-imports": "off",
     "import/newline-after-import": "warn",
+    "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {
@@ -40,23 +35,10 @@
       "warn",
       {
         "groups": [
-          [
-            "^react",
-            "^next",
-            "^@?\\w"
-          ],
-          [
-            "@/(.*)"
-          ],
-          [
-            "^\\.\\.(?!/?$)",
-            "^\\.\\./?$"
-          ],
-          [
-            "^\\./(?=.*/)(?!/?$)",
-            "^\\.(?!/?$)",
-            "^\\./?$"
-          ]
+          ["^react", "^next", "^@?\\w"],
+          ["@/(.*)"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
         ]
       }
     ],
