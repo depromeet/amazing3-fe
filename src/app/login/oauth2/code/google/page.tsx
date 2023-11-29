@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { AxiosResponse } from 'axios';
+import type { AxiosResponse } from 'axios';
 
 import { api } from '@/apis';
 
