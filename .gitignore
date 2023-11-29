@@ -41,6 +41,10 @@ next-env.d.ts
 !.yarn/sdks
 !.yarn/versions
 
+# ignore too large file in .yarn/cache
+.yarn/cache/next-npm-*
+.yarn/cache/@next-swc-win32-x64-msvc-*
+
 # Storybook build outputs
 .out
 .storybook-out
