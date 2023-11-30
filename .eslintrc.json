@@ -9,6 +9,7 @@
     "plugin:storybook/recommended"
   ],
   "rules": {
+    "react/jsx-curly-brace-presence": ["error", { "props": "never", "children": "never" }],
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-imports-ts": ["error"],
     "unused-imports/no-unused-vars": [
