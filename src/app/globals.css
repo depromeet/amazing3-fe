@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* layout */
+  .layout {
+    @apply max-w-[520px] min-h-[100dvh] w-full mx-auto;
+  }
+}
