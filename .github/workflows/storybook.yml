@@ -23,6 +23,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Publish to Chromatic
+        id: publish_chromatic
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN  }}
@@ -34,4 +35,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          message: '🚀 storybook: ${{ steps.chromatic.outputs.storybookUrl }}'
+          message: '🚀 **storybook**: ${{ steps.publish_chromatic.outputs.storybookUrl }}'
