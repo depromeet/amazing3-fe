@@ -44,6 +44,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:6.10.0"],\
           ["autoprefixer", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:10.4.16"],\
           ["axios", "npm:1.6.2"],\
+          ["chromatic", "npm:10.0.0"],\
           ["eslint", "npm:8.53.0"],\
           ["eslint-config-next", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:14.0.2"],\
           ["eslint-config-prettier", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:9.0.0"],\
@@ -7491,6 +7492,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:6.10.0"],\
           ["autoprefixer", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:10.4.16"],\
           ["axios", "npm:1.6.2"],\
+          ["chromatic", "npm:10.0.0"],\
           ["eslint", "npm:8.53.0"],\
           ["eslint-config-next", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:14.0.2"],\
           ["eslint-config-prettier", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:9.0.0"],\
@@ -8651,6 +8653,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/chownr-npm-2.0.0-638f1c9c61-10c0.zip/node_modules/chownr/",\
         "packageDependencies": [\
           ["chownr", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["chromatic", [\
+      ["npm:10.0.0", {\
+        "packageLocation": "./.yarn/cache/chromatic-npm-10.0.0-fa2b9e86ca-10c0.zip/node_modules/chromatic/",\
+        "packageDependencies": [\
+          ["chromatic", "npm:10.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
