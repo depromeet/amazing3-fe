@@ -3,7 +3,10 @@
 import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 import type { QueryClientConfig } from '@tanstack/react-query';
-import { QueryClient, QueryClientProvider as BaseQueryClientProvider } from '@tanstack/react-query';
+import {
+  QueryClient,
+  QueryClientProvider as BaseQueryClientProvider,
+} from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClientOption: QueryClientConfig = {
