@@ -1,0 +1,37 @@
+# Workflow name
+name: 'Chromatic Deployment'
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: actions/checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set node linker to nodeModules
+        run: yarn config set nodeLinker "node-modules"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN  }}
+          buildScriptName: sb:build
+          onlyChanged: true
+
+      - name: comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: '🚀 storybook: ${{ steps.chromatic.outputs.storybookUrl }}'
