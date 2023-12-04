@@ -1,9 +1,14 @@
 import type { PropsWithChildren } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { DevTool } from '@hookform/devtools';
+
+import { useIsMounted } from '@/hooks/useIsMounted';
 
 import type { TargetFormValues } from '../types';
 
 const TargetFormProvider = ({ children }: PropsWithChildren) => {
+  const isMounted = useIsMounted();
+
   const methods = useForm<TargetFormValues>();
 
   const submit = (data: TargetFormValues) => {
@@ -14,6 +19,8 @@ const TargetFormProvider = ({ children }: PropsWithChildren) => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(submit)}>{children}</form>
+
+      {isMounted && <DevTool control={methods.control} />}
     </FormProvider>
   );
 };
