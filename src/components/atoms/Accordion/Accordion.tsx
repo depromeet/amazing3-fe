@@ -10,7 +10,10 @@ export interface AccordionProps {
   renderTriggerIcon?: (state: string) => React.ReactNode;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ items = [], renderTriggerIcon }) => (
+const Accordion: React.FC<AccordionProps> = ({
+  items = [],
+  renderTriggerIcon,
+}) => (
   <HeadlessAccordion.Root
     className="bg-mauve6 w-[300px] rounded-md shadow-[0_2px_10px] shadow-black/5"
     type="single"
@@ -19,23 +22,28 @@ const Accordion: React.FC<AccordionProps> = ({ items = [], renderTriggerIcon }) 
   >
     {items.map((item) => (
       <AccordionItem key={item.value} value={item.value}>
-        <AccordionTrigger renderIcon={renderTriggerIcon}>{item.triggerContent}</AccordionTrigger>
+        <AccordionTrigger renderIcon={renderTriggerIcon}>
+          {item.triggerContent}
+        </AccordionTrigger>
         <AccordionContent>{item.content}</AccordionContent>
       </AccordionItem>
     ))}
   </HeadlessAccordion.Root>
 );
 
-const AccordionItem: React.FC<HeadlessAccordion.AccordionItemProps> = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <HeadlessAccordion.Item {...props} ref={forwardedRef as React.RefObject<HTMLDivElement>}>
+const AccordionItem: React.FC<HeadlessAccordion.AccordionItemProps> =
+  React.forwardRef(({ children, ...props }, forwardedRef) => (
+    <HeadlessAccordion.Item
+      {...props}
+      ref={forwardedRef as React.RefObject<HTMLDivElement>}
+    >
       {children}
     </HeadlessAccordion.Item>
-  ),
-);
+  ));
 AccordionItem.displayName = 'AccordionItem';
 
-interface AccordionTriggerProps extends HeadlessAccordion.AccordionTriggerProps {
+interface AccordionTriggerProps
+  extends HeadlessAccordion.AccordionTriggerProps {
   renderIcon?: (state: string) => React.ReactNode;
 }
 
@@ -55,13 +63,15 @@ const AccordionTrigger: React.FC<AccordionTriggerProps> = React.forwardRef(
 );
 AccordionTrigger.displayName = 'AccordionTrigger';
 
-const AccordionContent: React.FC<HeadlessAccordion.AccordionContentProps> = React.forwardRef(
-  ({ children, ...props }, forwardedRef) => (
-    <HeadlessAccordion.Content {...props} ref={forwardedRef as React.RefObject<HTMLDivElement>}>
+const AccordionContent: React.FC<HeadlessAccordion.AccordionContentProps> =
+  React.forwardRef(({ children, ...props }, forwardedRef) => (
+    <HeadlessAccordion.Content
+      {...props}
+      ref={forwardedRef as React.RefObject<HTMLDivElement>}
+    >
       <div className="py-[15px] px-5">{children}</div>
     </HeadlessAccordion.Content>
-  ),
-);
+  ));
 AccordionContent.displayName = 'AccordionContent';
 
 export default Accordion;

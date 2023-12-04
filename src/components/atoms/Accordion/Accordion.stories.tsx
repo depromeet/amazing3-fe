@@ -2,11 +2,11 @@ import React from 'react';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
 import type { Meta, StoryFn } from '@storybook/react';
 
-import type { AccordionProps } from './';
-import Accordion from './';
+import type { AccordionProps } from './Accordion';
+import Accordion from './Accordion';
 
 export default {
-  title: 'Accordion',
+  title: 'components/atoms/accordion',
   component: Accordion,
 } as Meta;
 
@@ -23,7 +23,8 @@ Default.args = {
     {
       value: 'item-2',
       triggerContent: 'Is it unstyled?',
-      content: "Yes. It's unstyled by default, giving you freedom over the look and feel.",
+      content:
+        "Yes. It's unstyled by default, giving you freedom over the look and feel.",
     },
     {
       value: 'item-3',
