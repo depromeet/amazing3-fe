@@ -37,14 +37,8 @@ class HttpClient {
   }
 
   private setInterceptor() {
-    this.client.interceptors.request.use(
-      this.onRequestFulfilled,
-      this.onRequestRejected,
-    );
-    this.client.interceptors.response.use(
-      this.onResponseFulfilled,
-      this.onResponseRejected,
-    );
+    this.client.interceptors.request.use(this.onRequestFulfilled, this.onRequestRejected);
+    this.client.interceptors.response.use(this.onResponseFulfilled, this.onResponseRejected);
   }
 
   private onRequestFulfilled(config: InternalAxiosRequestConfig) {
