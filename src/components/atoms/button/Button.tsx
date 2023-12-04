@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 /**
@@ -9,16 +9,11 @@ const buttonVariants = cva(
   {
     variants: {
       intent: {
-        primary:
-          'bg-blue-700 hover:bg-blue-800 focus:bg-blue-800 disabled:bg-gray-40',
-        secondary:
-          'bg-black hover:bg-gray-800 focus:bg-gray-800 disabled:bg-gray-40',
-        label:
-          'font-semibold text-black underline-offset-4 disabled:text-gray-40',
-        success:
-          'bg-green-700 hover:bg-green-800 focus:bg-green-800 disabled:bg-gray-40',
-        danger:
-          'bg-red-700 hover:bg-red-800 focus:bg-red-800 disabled:bg-gray-40',
+        primary: 'bg-blue-700 hover:bg-blue-800 focus:bg-blue-800 disabled:bg-gray-40',
+        secondary: 'bg-black hover:bg-gray-800 focus:bg-gray-800 disabled:bg-gray-40',
+        label: 'font-semibold text-black underline-offset-4 disabled:text-gray-40',
+        success: 'bg-green-700 hover:bg-green-800 focus:bg-green-800 disabled:bg-gray-40',
+        danger: 'bg-red-700 hover:bg-red-800 focus:bg-red-800 disabled:bg-gray-40',
       },
       size: {
         xl: 'w-full rounded-lg px-[2.5rem] py-3',
@@ -35,21 +30,11 @@ const buttonVariants = cva(
   },
 );
 
-interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {}
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, intent, size, ...props }, ref) => {
-    return (
-      <button
-        className={buttonVariants({ intent, size, className })}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, intent, size, ...props }, ref) => {
+  return <button className={buttonVariants({ intent, size, className })} ref={ref} {...props} />;
+});
 Button.displayName = 'Button';
 
 export default Button;

@@ -9,17 +9,11 @@ const inputVariants = cva(
   ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50',
 );
 
-interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputVariants> {}
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, ...props }: InputProps, ref) => {
-    return (
-      <input className={inputVariants({ className })} ref={ref} {...props} />
-    );
-  },
-);
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }: InputProps, ref) => {
+  return <input className={inputVariants({ className })} ref={ref} {...props} />;
+});
 Input.displayName = 'Input';
 
 export default Input;
