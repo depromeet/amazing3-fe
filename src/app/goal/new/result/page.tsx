@@ -6,7 +6,7 @@ import type { GoalFormValues } from '@/features/goal/types';
 
 const ResultPage = () => {
   const { getValues } = useFormContext<GoalFormValues>();
-  const { title, date, tags, emoji, subtasks } = getValues();
+  const { title, date, tags, emoji, subgoals } = getValues();
 
   return (
     <>
@@ -14,7 +14,7 @@ const ResultPage = () => {
       <p>{date}</p>
       <p>{tags}</p>
       <p>{emoji}</p>
-      <p>{subtasks}</p>
+      <p>{subgoals}</p>
       <button>저장하기</button>
     </>
   );

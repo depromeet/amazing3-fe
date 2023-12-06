@@ -15,7 +15,7 @@ const CreateSubtaskPage = () => {
 
   return (
     <>
-      <input {...register('subtasks')} type="text" placeholder="목표를 이루기 위한 세부 항목" />
+      <input {...register('subgoals')} type="text" placeholder="목표를 이루기 위한 세부 항목" />
       <button onClick={handleClickNextButton}>다음</button>
     </>
   );
