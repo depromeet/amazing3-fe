@@ -28,11 +28,9 @@ const typographyVariants = cva('', {
 
 interface TypographyProps extends HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof typographyVariants> {}
 
-const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
+export const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
   ({ className, type, textColor, ...props }, ref) => {
     return <p className={typographyVariants({ type, textColor, className })} ref={ref} {...props} />;
   },
 );
 Typography.displayName = 'Typography';
-
-export default Typography;

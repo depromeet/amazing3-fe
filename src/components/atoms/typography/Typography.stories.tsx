@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Paragraph from './Typography';
+import { Typography } from './Typography';
 
 /*
 control: {
@@ -8,9 +8,9 @@ control: {
         options: ['primary', 'secondary', 'success', 'danger', 'warning'],
       },
 */
-const meta: Meta<typeof Paragraph> = {
+const meta: Meta<typeof Typography> = {
   title: 'components/atoms/paragraph',
-  component: Paragraph,
+  component: Typography,
   argTypes: {
     type: {
       control: {
@@ -29,9 +29,9 @@ const meta: Meta<typeof Paragraph> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Paragraph>;
+type Story = StoryObj<typeof Typography>;
 
-export const Heading2Paragraph: Story = {
+export const Heading2Typography: Story = {
   args: {
     type: 'heading2',
     textColor: 'black',
@@ -45,7 +45,7 @@ export const Heading2Paragraph: Story = {
   },
 };
 
-export const Heading3Paragraph: Story = {
+export const Heading3Typography: Story = {
   args: {
     type: 'heading3',
     textColor: 'gray7',
@@ -53,7 +53,7 @@ export const Heading3Paragraph: Story = {
   },
 };
 
-export const Body4Paragraph: Story = {
+export const Body4Typography: Story = {
   args: {
     type: 'body4',
     textColor: 'gray5',
@@ -61,7 +61,7 @@ export const Body4Paragraph: Story = {
   },
 };
 
-export const Body5Paragraph: Story = {
+export const Body5Typography: Story = {
   args: {
     type: 'body5',
     textColor: 'gray4',
@@ -69,7 +69,7 @@ export const Body5Paragraph: Story = {
   },
 };
 
-export const SubLabel2Paragraph: Story = {
+export const SubLabel2Typography: Story = {
   args: {
     type: 'subLabel2',
     textColor: 'gray4',
