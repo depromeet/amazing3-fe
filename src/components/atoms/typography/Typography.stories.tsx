@@ -2,14 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Typography } from './Typography';
 
-/*
-control: {
-        type: 'select',
-        options: ['primary', 'secondary', 'success', 'danger', 'warning'],
-      },
-*/
 const meta: Meta<typeof Typography> = {
-  title: 'components/atoms/paragraph',
+  title: 'components/atoms/typography',
   component: Typography,
   argTypes: {
     type: {
