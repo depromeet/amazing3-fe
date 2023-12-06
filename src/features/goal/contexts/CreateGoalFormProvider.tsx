@@ -4,14 +4,14 @@ import { DevTool } from '@hookform/devtools';
 
 import { useIsMounted } from '@/hooks/useIsMounted';
 
-import type { TargetFormValues } from '../types';
+import type { GoalFormValues } from '../types';
 
 const CreateGoalFormProvider = ({ children }: PropsWithChildren) => {
   const isMounted = useIsMounted();
 
-  const methods = useForm<TargetFormValues>();
+  const methods = useForm<GoalFormValues>();
 
-  const submit = (data: TargetFormValues) => {
+  const submit = (data: GoalFormValues) => {
     // TODO: submit 동작 추가
     console.log(data);
   };
