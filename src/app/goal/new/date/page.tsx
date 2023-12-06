@@ -8,7 +8,7 @@ const CreateDatePage = () => {
   const { register } = useFormContext();
 
   const handleClickNextButton = () => {
-    router.push('/create/tag');
+    router.push('/goal/new/tag');
   };
 
   return (

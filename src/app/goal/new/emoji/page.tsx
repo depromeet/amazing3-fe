@@ -10,7 +10,7 @@ const CreateEmojiPage = () => {
   const { register } = useFormContext<TargetFormValues>();
 
   const handleClickNextButton = () => {
-    router.push('/create/subtask');
+    router.push('/goal/new/subgoal');
   };
 
   return (

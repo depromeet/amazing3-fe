@@ -17,7 +17,7 @@ const CreateTagPage = () => {
   const { register } = useFormContext<TargetFormValues>();
 
   const handleClickNextButton = () => {
-    router.push('/create/emoji');
+    router.push('/goal/new/emoji');
   };
 
   return (

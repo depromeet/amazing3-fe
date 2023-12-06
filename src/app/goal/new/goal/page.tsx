@@ -10,7 +10,7 @@ const CreateTargetPage = () => {
   const { register } = useFormContext<TargetFormValues>();
 
   const handleClickNextButton = () => {
-    router.push('/create/date');
+    router.push('/goal/new/date');
   };
 
   return (

@@ -3,14 +3,14 @@
 import { useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
-import type { TargetFormValues } from '@/features/target/types/form';
+import type { TargetFormValues } from '@/features/goal/types';
 
 const CreateMorePage = () => {
   const router = useRouter();
   const { register } = useFormContext<TargetFormValues>();
 
   const handleClickNextButton = () => {
-    router.push('/create/result');
+    router.push('/goal/new/result');
   };
 
   return (

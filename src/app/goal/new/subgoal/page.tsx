@@ -10,7 +10,7 @@ const CreateSubtaskPage = () => {
   const { register } = useFormContext<TargetFormValues>();
 
   const handleClickNextButton = () => {
-    router.push('/create/more');
+    router.push('/goal/new/more');
   };
 
   return (
