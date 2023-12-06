@@ -4,8 +4,12 @@ name: 'Chromatic Deployment'
 on:
   pull_request:
     branches: [main]
+    paths:
+      - '**.stories.tsx'
   push:
     branches: [main]
+    paths:
+      - '**.stories.tsx'
 
 jobs:
   chromatic-deployment:
