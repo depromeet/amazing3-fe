@@ -2,10 +2,10 @@
 
 import type { PropsWithChildren } from 'react';
 
-import TargetFormProvider from '@/features/target/contexts/TargetFormProvider';
+import CreateGoalFormProvider from '@/features/goal/contexts/CreateGoalFormProvider';
 
 const Layout = ({ children }: PropsWithChildren) => {
-  return <TargetFormProvider>{children}</TargetFormProvider>;
+  return <CreateGoalFormProvider>{children}</CreateGoalFormProvider>;
 };
 
 export default Layout;

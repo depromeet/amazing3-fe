@@ -6,7 +6,7 @@ import { useIsMounted } from '@/hooks/useIsMounted';
 
 import type { TargetFormValues } from '../types';
 
-const TargetFormProvider = ({ children }: PropsWithChildren) => {
+const CreateGoalFormProvider = ({ children }: PropsWithChildren) => {
   const isMounted = useIsMounted();
 
   const methods = useForm<TargetFormValues>();
@@ -25,4 +25,4 @@ const TargetFormProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default TargetFormProvider;
+export default CreateGoalFormProvider;
