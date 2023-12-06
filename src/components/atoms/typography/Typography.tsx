@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 
-const paragraphVariants = cva('', {
+const typographyVariants = cva('', {
   variants: {
     type: {
       heading2: 'font-semibold text-2xl leading-9',
@@ -26,11 +26,13 @@ const paragraphVariants = cva('', {
   },
 });
 
-interface ParagraphProps extends HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof paragraphVariants> {}
+interface TypographyProps extends HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof typographyVariants> {}
 
-const Paragraph = forwardRef<HTMLParagraphElement, ParagraphProps>(({ className, type, textColor, ...props }, ref) => {
-  return <p className={paragraphVariants({ type, textColor, className })} ref={ref} {...props} />;
-});
-Paragraph.displayName = 'Paragraph';
+const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
+  ({ className, type, textColor, ...props }, ref) => {
+    return <p className={typographyVariants({ type, textColor, className })} ref={ref} {...props} />;
+  },
+);
+Typography.displayName = 'Typography';
 
-export default Paragraph;
+export default Typography;

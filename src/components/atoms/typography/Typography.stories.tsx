@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Paragraph from './Paragraph';
+import Paragraph from './Typography';
 
 /*
 control: {
