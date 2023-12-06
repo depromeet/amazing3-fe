@@ -3,9 +3,11 @@
 import { useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
+import type { GoalFormValues } from '@/features/goal/types';
+
 const CreateDatePage = () => {
   const router = useRouter();
-  const { register } = useFormContext();
+  const { register } = useFormContext<GoalFormValues>();
 
   const handleClickNextButton = () => {
     router.push('/goal/new/tag');

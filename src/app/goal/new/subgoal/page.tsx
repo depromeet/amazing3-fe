@@ -3,11 +3,11 @@
 import { useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
-import type { TargetFormValues } from '@/features/target/types/form';
+import type { GoalFormValues } from '@/features/goal/types';
 
 const CreateSubtaskPage = () => {
   const router = useRouter();
-  const { register } = useFormContext<TargetFormValues>();
+  const { register } = useFormContext<GoalFormValues>();
 
   const handleClickNextButton = () => {
     router.push('/goal/new/more');

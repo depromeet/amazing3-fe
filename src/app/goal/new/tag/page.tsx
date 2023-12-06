@@ -3,7 +3,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
-import type { TargetFormValues } from '@/features/target/types/form';
+import type { GoalFormValues } from '@/features/goal/types';
 
 const MOCK_TAGS = [
   { id: 1, value: '학업' },
@@ -14,7 +14,7 @@ const MOCK_TAGS = [
 
 const CreateTagPage = () => {
   const router = useRouter();
-  const { register } = useFormContext<TargetFormValues>();
+  const { register } = useFormContext<GoalFormValues>();
 
   const handleClickNextButton = () => {
     router.push('/goal/new/emoji');

@@ -2,10 +2,10 @@
 
 import { useFormContext } from 'react-hook-form';
 
-import type { TargetFormValues } from '@/features/target/types/form';
+import type { GoalFormValues } from '@/features/goal/types';
 
 const ResultPage = () => {
-  const { getValues } = useFormContext<TargetFormValues>();
+  const { getValues } = useFormContext<GoalFormValues>();
   const { title, date, tags, emoji, subtasks } = getValues();
 
   return (
