@@ -3,7 +3,7 @@
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
-import { Input, Typography } from '../../index';
+import { Input, Typography } from '@/components';
 
 interface NicknameInputProps {
   maxLength: number;
