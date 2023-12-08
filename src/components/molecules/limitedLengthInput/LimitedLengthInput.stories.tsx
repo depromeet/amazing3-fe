@@ -13,5 +13,4 @@ type Story = StoryObj<typeof LimitedLengthInput>;
 
 export const LimitedLengthInputTest: Story = {
   args: { maxLength: 10 },
-  render: (args) => <LimitedLengthInput maxLength={args.maxLength} />,
 };
