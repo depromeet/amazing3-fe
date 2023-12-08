@@ -1,24 +1,7 @@
-'use client';
-
-import { useFormContext } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-
-import type { GoalFormValues } from '@/features/goal/types';
+import { EmojiForm } from '@/features/goal/components';
 
 const CreateEmojiPage = () => {
-  const router = useRouter();
-  const { register } = useFormContext<GoalFormValues>();
-
-  const handleClickNextButton = () => {
-    router.push('/goal/new/subgoal');
-  };
-
-  return (
-    <>
-      <input {...register('emoji')} type="text" placeholder="이모지" />
-      <button onClick={handleClickNextButton}>다음</button>
-    </>
-  );
+  return <EmojiForm />;
 };
 
 export default CreateEmojiPage;
