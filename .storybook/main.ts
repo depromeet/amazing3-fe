@@ -26,6 +26,7 @@ const config: StorybookConfig = {
   },
   webpackFinal: async (config) => {
     if (!config.resolve) return config;
+
     config.resolve.alias = {
       ...config.resolve.alias,
       // path alias 추가
