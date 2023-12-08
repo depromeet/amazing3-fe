@@ -14,6 +14,9 @@ export const LimitedLengthInput = ({ maxLength, placeholder }: LimitedLengthInpu
   const [inputString, setInputString] = useState<string>('');
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value.length > maxLength) {
+      event.target.value = event.target.value.slice(0, maxLength);
+    }
     setInputString(event.target.value);
   };
 
