@@ -1,1 +1,1 @@
-export * from './nicknameInput';
+export * from './limitedLengthInput';

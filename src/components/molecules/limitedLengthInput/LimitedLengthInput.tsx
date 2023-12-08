@@ -5,15 +5,15 @@ import { useState } from 'react';
 
 import { Input, Typography } from '@/components';
 
-interface NicknameInputProps {
+interface LimitedLengthInputProps {
   maxLength: number;
 }
 
-export const NicknameInput = ({ maxLength }: NicknameInputProps) => {
-  const [nickname, setNickname] = useState<string>('');
+export const LimitedLengthInput = ({ maxLength }: LimitedLengthInputProps) => {
+  const [inputString, setInputString] = useState<string>('');
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setNickname(event.target.value);
+    setInputString(event.target.value);
   };
 
   return (
@@ -23,7 +23,7 @@ export const NicknameInput = ({ maxLength }: NicknameInputProps) => {
         className="pr-2 text-end"
         type="body5"
         textColor="gray4"
-      >{`${nickname.length}/${maxLength}`}</Typography>
+      >{`${inputString.length}/${maxLength}`}</Typography>
     </div>
   );
 };
