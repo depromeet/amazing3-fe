@@ -7,9 +7,10 @@ import { Input, Typography } from '@/components';
 
 interface LimitedLengthInputProps {
   maxLength: number;
+  placeholder: string;
 }
 
-export const LimitedLengthInput = ({ maxLength }: LimitedLengthInputProps) => {
+export const LimitedLengthInput = ({ maxLength, placeholder }: LimitedLengthInputProps) => {
   const [inputString, setInputString] = useState<string>('');
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -18,7 +19,7 @@ export const LimitedLengthInput = ({ maxLength }: LimitedLengthInputProps) => {
 
   return (
     <div className="flex flex-col gap-1">
-      <Input type="text" placeholder="닉네임" maxLength={maxLength} onChange={handleChangeInput} />
+      <Input type="text" placeholder={placeholder} maxLength={maxLength} onChange={handleChangeInput} />
       <Typography
         className="pr-2 text-end"
         type="body5"

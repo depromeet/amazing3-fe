@@ -12,5 +12,5 @@ export default meta;
 type Story = StoryObj<typeof LimitedLengthInput>;
 
 export const LimitedLengthInputTest: Story = {
-  args: { maxLength: 10 },
+  args: { maxLength: 10, placeholder: 'placeholder' },
 };

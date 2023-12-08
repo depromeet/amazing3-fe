@@ -20,7 +20,7 @@ const NicknameInputPage = () => {
       <Typography type="subLabel2" textColor="gray4">
         beta에서는 닉네임을 수정할 수 없어요. <br /> 신중하게 입력해 주세요.
       </Typography>
-      <LimitedLengthInput maxLength={maxInputLength} />
+      <LimitedLengthInput maxLength={maxInputLength} placeholder="닉네임" />
       <Button type="button">다음</Button>
     </div>
   );
