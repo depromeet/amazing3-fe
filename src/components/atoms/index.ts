@@ -1,3 +1,3 @@
-export * from './button';
-export * from './input';
-export * from './typography';
+export { Button } from './button';
+export { Input } from './input';
+export { Typography } from './typography';

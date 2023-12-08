@@ -1,1 +1,1 @@
-export * from './limitedLengthInput';
+export { LimitedLengthInput } from './limitedLengthInput';
