@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 
-const typographyVariants = cva('', {
+const typographyVariants = cva('whitespace-pre-line', {
   variants: {
     type: {
       heading2: 'font-semibold text-2xl leading-9',
