@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Button, Input } from '@/components/atoms';
 import type { GoalFormValues } from '@/features/goal/types';
 
-import GoalSuggestionBottomSheet from './GoalSuggestionBottomSheet';
+import GoalGuideBottomSheet from './GoalGuideBottomSheet';
 
 export const GoalForm = () => {
   const router = useRouter();
@@ -19,7 +19,7 @@ export const GoalForm = () => {
   return (
     <div className="block">
       <Input {...register('title')} type="text" placeholder="한줄 목표" />
-      <GoalSuggestionBottomSheet />
+      <GoalGuideBottomSheet />
       <Button onClick={handleClickNextButton} intent="primary" size="xl">
         다음
       </Button>

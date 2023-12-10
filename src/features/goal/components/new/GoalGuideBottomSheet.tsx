@@ -6,7 +6,7 @@ import { Button } from '@/components/atoms/button';
 /**
  * TODO: BottomSheet의 Body에 react-hook-form의 Controller를 사용한 card list를 구현
  */
-const GoalSuggestionBottomSheet = () => {
+const GoalGuideBottomSheet = () => {
   const [open, setOpen] = useState(false);
 
   const onDismiss = () => {
@@ -45,4 +45,4 @@ const Header = () => <p className="text-xl font-bold flex items-center justify-b
 
 const Footer = ({ onDone }: { onDone: () => void }) => <Button onClick={onDone}>적용</Button>;
 
-export default GoalSuggestionBottomSheet;
+export default GoalGuideBottomSheet;
