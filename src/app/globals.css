@@ -9,6 +9,6 @@
     --layout-min-h: 100vh;
   }
   .layout {
-    @apply max-w-[var(--layout-max-w)] min-h-[var(--layout-min-h)] w-full mx-auto bg-sky-500/50;
+    @apply max-w-[var(--layout-max-w)] min-h-[var(--layout-min-h)] w-full mx-auto;
   }
 }

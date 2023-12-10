@@ -3,6 +3,7 @@
 import { useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
+import { Button, Input } from '@/components/atoms';
 import type { GoalFormValues } from '@/features/goal/types';
 
 import GoalSuggestionBottomSheet from './GoalSuggestionBottomSheet';
@@ -16,10 +17,12 @@ export const GoalForm = () => {
   };
 
   return (
-    <>
-      <input {...register('title')} type="text" placeholder="한줄 목표" />
-      <button onClick={handleClickNextButton}>다음</button>
+    <div className="block">
+      <Input {...register('title')} type="text" placeholder="한줄 목표" />
       <GoalSuggestionBottomSheet />
-    </>
+      <Button onClick={handleClickNextButton} intent="primary" size="xl">
+        다음
+      </Button>
+    </div>
   );
 };

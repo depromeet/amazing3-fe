@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { BottomSheet } from '@/components/atoms/bottomSheet';
 import { Button } from '@/components/atoms/button';
 
+/**
+ * TODO: BottomSheet의 Body에 react-hook-form의 Controller를 사용한 card list를 구현
+ */
 const GoalSuggestionBottomSheet = () => {
   const [open, setOpen] = useState(false);
 
@@ -11,8 +14,10 @@ const GoalSuggestionBottomSheet = () => {
   };
 
   return (
-    <>
-      <Button onClick={() => setOpen(true)}>목표 추천</Button>
+    <div className="flex items-center justify-center">
+      <Button onClick={() => setOpen(true)} intent="primary" size="sm">
+        목표 추천
+      </Button>
       <BottomSheet
         open={open}
         onDismiss={onDismiss}
@@ -29,7 +34,7 @@ const GoalSuggestionBottomSheet = () => {
           </>
         }
       />
-    </>
+    </div>
   );
 };
 
