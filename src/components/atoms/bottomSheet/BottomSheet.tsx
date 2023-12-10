@@ -26,10 +26,7 @@ export const BottomSheet = forwardRef(
         ref={ref}
         open={open}
         onDismiss={onDismiss}
-        snapPoints={({ height, minHeight, maxHeight }) => [
-          maxHeight - maxHeight / 5,
-          Math.min(Math.max(height, minHeight), maxHeight * 0.525),
-        ]}
+        snapPoints={({ maxHeight }) => maxHeight - maxHeight / 5}
         expandOnContentDrag
         header={HeaderComponent}
         footer={FooterComponent}

@@ -33,6 +33,9 @@ const GoalSuggestionBottomSheet = () => {
   );
 };
 
+/**
+ * TODO: Typography 컴포넌트 반영 후 Header, footer 수정
+ */
 const Header = () => <p className="text-xl font-bold flex items-center justify-between mb-2">문답 가이드</p>;
 
 const Footer = ({ onDone }: { onDone: () => void }) => <Button onClick={onDone}>적용</Button>;
