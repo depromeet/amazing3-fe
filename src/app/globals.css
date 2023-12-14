@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: Pretendard;
-  font-weight: 200;
+  font-weight: 100;
   src:
     local('Pretendard Thin'),
     url('../assets/fonts/Pretendard/Pretendard-Thin.woff') format('woff'),
