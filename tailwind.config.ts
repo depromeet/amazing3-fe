@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     fontFamily: {
       pretendard: ['Pretendard'],
+      insungit: ['InsungIt'],
     },
     extend: {
       colors: {
