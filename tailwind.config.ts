@@ -69,7 +69,7 @@ const config: Config = {
         sm: '4px',
         md: '8px',
         lg: '12px',
-        '7xl': '120px',
+        xl: '120px',
       },
     },
   },
