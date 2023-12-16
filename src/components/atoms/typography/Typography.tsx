@@ -6,31 +6,25 @@ import { cva } from 'class-variance-authority';
 const typographyVariants = cva('whitespace-pre-line', {
   variants: {
     type: {
-      heading2: 'font-semibold text-2xl leading-9',
-      heading3: 'font-semibold text-4xl leading-12',
-      body4: 'font-medium text-sm leading-5',
-      body5: 'font-medium text-xs leading-5',
-      subLabel2: 'font-semibold text-sm leading-5',
-    },
-    textColor: {
-      white: 'text-[#FFFFFF]',
-      gray4: 'text-[#8B939C]',
-      gray5: 'text-[#4E5968]',
-      gray7: 'text-[#191F28]',
-      black: 'text-[#000000]',
+      heading1: 'font-bold text-[24px] leading-[34.8px]',
+      title1: 'font-semibold text-[20px] leading-[31px]',
+      title3: 'font-semibold text-[16px] leading-[24.8px]',
+      title4: 'font-semibold text-[14px] leading-[21.7px]',
+      body1: 'font-medium text-[18px] leading-[27.9px]',
+      body3: 'font-medium text-[16px] leading-[25.6px]',
+      subLabel1: 'font-semibold text-[16px] leading-[25.6px]',
+      subLabel2: 'font-semibold text-[14px] leading-[22.4px]',
+      caption1: 'font-medium text-[12px] leading-[18.6px]',
     },
   },
   defaultVariants: {
-    type: 'heading3',
-    textColor: 'gray7',
+    type: 'body3',
   },
 });
 
 interface TypographyProps extends HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof typographyVariants> {}
 
-export const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
-  ({ className, type, textColor, ...props }, ref) => {
-    return <p className={typographyVariants({ type, textColor, className })} ref={ref} {...props} />;
-  },
-);
+export const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(({ className, type, ...props }, ref) => {
+  return <p className={typographyVariants({ type, className })} ref={ref} {...props} />;
+});
 Typography.displayName = 'Typography';
