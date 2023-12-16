@@ -8,7 +8,7 @@ interface GoalGuideBottomSheetProps {
 
 const GoalGuideBottomSheet = ({ open, onClose }: GoalGuideBottomSheetProps) => {
   const handleApply = () => {
-    // TODO: 선택된 목표 추천 가이드를 form('title')에 업데이트
+    // TODO: 선택된 목표 추천 가이드를 form('title')에 업데이트.
     onClose();
   };
 
