@@ -32,7 +32,7 @@ export const BasicBottomSheet: Story = {
         적용
       </Button>
     ),
-    BodyComponent: (
+    children: (
       <ul>
         {contents.map((content, index) => (
           <li key={index}>{content}</li>
