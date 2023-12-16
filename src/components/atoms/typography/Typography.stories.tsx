@@ -32,42 +32,59 @@ export const Heading1: Story = {
   },
 };
 
+export const Heading2: Story = {
+  args: {
+    ...Heading1.args,
+    type: 'heading2',
+  },
+};
+
+export const Heading3: Story = {
+  args: {
+    ...Heading1.args,
+    type: 'heading3',
+  },
+};
+
+export const Heading4: Story = {
+  args: {
+    ...Heading1.args,
+    type: 'heading4',
+  },
+};
+
 export const Title1: Story = {
   args: {
+    ...Heading1.args,
     type: 'title1',
-    children: (
-      <>
-        Hello world!
-        <br />
-        We are amzaing3
-      </>
-    ),
+  },
+};
+
+export const Title2: Story = {
+  args: {
+    ...Heading1.args,
+    type: 'title2',
   },
 };
 
 export const Title3: Story = {
   args: {
+    ...Heading1.args,
     type: 'title3',
-    children: (
-      <>
-        Hello world!
-        <br />
-        We are amzaing3
-      </>
-    ),
   },
 };
 
 export const Title4: Story = {
   args: {
+    ...Heading1.args,
     type: 'title4',
-    children: (
-      <>
-        Hello world!
-        <br />
-        We are amzaing3
-      </>
-    ),
+  },
+};
+
+export const Title5: Story = {
+  args: {
+    ...Heading1.args,
+    type: 'title5',
   },
 };
 
@@ -78,30 +95,44 @@ export const Body1: Story = {
   },
 };
 
+export const Body2: Story = {
+  args: {
+    ...Body1.args,
+    type: 'body2',
+  },
+};
+
 export const Body3: Story = {
   args: {
+    ...Body1.args,
     type: 'body3',
-    children: 'We are amzaing3',
   },
 };
 
 export const SubLabel1: Story = {
   args: {
+    ...Body1.args,
     type: 'subLabel1',
-    children: 'We are amzaing3',
   },
 };
 
 export const SubLabel2: Story = {
   args: {
+    ...Body1.args,
     type: 'subLabel2',
-    children: 'We are amzaing3',
   },
 };
 
 export const Caption1: Story = {
   args: {
+    ...Body1.args,
     type: 'caption1',
-    children: 'We are amzaing3',
+  },
+};
+
+export const Caption2: Story = {
+  args: {
+    ...Body1.args,
+    type: 'caption2',
   },
 };
