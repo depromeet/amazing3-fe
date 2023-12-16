@@ -9,11 +9,10 @@ import './style.css';
 export interface BottomSheetProps extends BaseBottomSheetProps {
   HeaderComponent?: React.ReactNode;
   FooterComponent?: React.ReactNode;
-  BodyComponent: React.ReactNode;
 }
 
 export const BottomSheet = forwardRef<RefHandles, BottomSheetProps>(
-  ({ open, onDismiss, HeaderComponent, FooterComponent, BodyComponent, ...props }: BottomSheetProps, ref) => {
+  ({ open, onDismiss, HeaderComponent, FooterComponent, children, ...props }: BottomSheetProps, ref) => {
     return (
       <BaseBottomSheet
         {...props}
@@ -25,7 +24,7 @@ export const BottomSheet = forwardRef<RefHandles, BottomSheetProps>(
         header={HeaderComponent}
         footer={FooterComponent}
       >
-        {BodyComponent}
+        {children}
       </BaseBottomSheet>
     );
   },
