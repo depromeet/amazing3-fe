@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 
-import { borderRadius, colors, spacing } from './styles/theme';
+import { backgroundImage, borderRadius, colors, spacing } from './styles/theme';
 
 const config: Config = {
   content: [
@@ -17,6 +17,7 @@ const config: Config = {
       colors,
       spacing,
       borderRadius,
+      backgroundImage,
     },
   },
   plugins: [],
