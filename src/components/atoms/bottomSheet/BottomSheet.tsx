@@ -9,7 +9,7 @@ import { BottomSheet as BaseBottomSheet } from 'react-spring-bottom-sheet';
 
 export type BottomSheetProps = {
   open: boolean;
-  onDismiss: () => void;
+  onDismiss: VoidFunction;
   HeaderComponent?: React.ReactNode;
   FooterComponent?: React.ReactNode;
   BodyComponent: React.ReactNode;

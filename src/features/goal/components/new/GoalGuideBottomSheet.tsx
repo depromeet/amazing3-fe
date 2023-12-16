@@ -3,7 +3,7 @@ import { Button } from '@/components/atoms/button';
 
 interface GoalGuideBottomSheetProps {
   open: boolean;
-  onClose: () => void;
+  onClose: VoidFunction;
 }
 
 const GoalGuideBottomSheet = ({ open, onClose }: GoalGuideBottomSheetProps) => {
@@ -39,6 +39,6 @@ const GoalGuideBottomSheet = ({ open, onClose }: GoalGuideBottomSheetProps) => {
  */
 const Header = () => <p className="text-xl font-bold flex items-center justify-between mb-2">문답 가이드</p>;
 
-const Footer = ({ onDone }: { onDone: () => void }) => <Button onClick={onDone}>적용</Button>;
+const Footer = ({ onDone }: { onDone: VoidFunction }) => <Button onClick={onDone}>적용</Button>;
 
 export default GoalGuideBottomSheet;
