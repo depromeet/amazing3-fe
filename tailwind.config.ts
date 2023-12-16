@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss';
 
+import { backgroundImage, borderRadius, colors, spacing } from './styles/theme';
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,7 +9,16 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      pretendard: ['Pretendard'],
+      insungit: ['InsungIt'],
+    },
+    extend: {
+      colors,
+      spacing,
+      borderRadius,
+      backgroundImage,
+    },
   },
   plugins: [],
 };
