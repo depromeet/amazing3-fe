@@ -23,11 +23,7 @@ export const LimitedLengthInput = ({ maxLength, placeholder }: LimitedLengthInpu
   return (
     <div className="flex flex-col gap-1">
       <Input type="text" placeholder={placeholder} maxLength={maxLength} onChange={handleChangeInput} />
-      <Typography
-        className="pr-2 text-end"
-        type="body5"
-        textColor="gray4"
-      >{`${inputString.length}/${maxLength}`}</Typography>
+      <Typography className="pr-2 text-end" type="body3">{`${inputString.length}/${maxLength}`}</Typography>
     </div>
   );
 };

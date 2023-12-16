@@ -6,31 +6,32 @@ import { cva } from 'class-variance-authority';
 const typographyVariants = cva('whitespace-pre-line', {
   variants: {
     type: {
-      heading2: 'font-semibold text-2xl leading-9',
-      heading3: 'font-semibold text-4xl leading-12',
-      body4: 'font-medium text-sm leading-5',
-      body5: 'font-medium text-xs leading-5',
-      subLabel2: 'font-semibold text-sm leading-5',
-    },
-    textColor: {
-      white: 'text-[#FFFFFF]',
-      gray4: 'text-[#8B939C]',
-      gray5: 'text-[#4E5968]',
-      gray7: 'text-[#191F28]',
-      black: 'text-[#000000]',
+      heading1: 'font-bold text-[24px] leading-[145%]',
+      heading2: 'font-bold text-[20px] leading-[145%]',
+      heading3: 'font-bold text-[18px] leading-[155%]',
+      heading4: 'font-bold text-[16px] leading-[155%]',
+      title1: 'font-semibold text-[20px] leading-[155%]',
+      title2: 'font-semibold text-[18px] leading-[155%]',
+      title3: 'font-semibold text-[16px] leading-[155%]',
+      title4: 'font-semibold text-[14px] leading-[155%]',
+      title5: 'font-semibold text-[12px] leading-[155%]',
+      body1: 'font-medium text-[18px] leading-[155%]',
+      body2: 'font-medium text-[16px] leading-[155%]',
+      body3: 'font-medium text-[14px] leading-[155%]',
+      subLabel1: 'font-semibold text-[16px] leading-[155%]',
+      subLabel2: 'font-semibold text-[14px] leading-[155%]',
+      caption1: 'font-medium text-[12px] leading-[155%]',
+      caption2: 'font-medium text-[8px] leading-[155%]',
     },
   },
   defaultVariants: {
-    type: 'heading3',
-    textColor: 'gray7',
+    type: 'body3',
   },
 });
 
 interface TypographyProps extends HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof typographyVariants> {}
 
-export const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
-  ({ className, type, textColor, ...props }, ref) => {
-    return <p className={typographyVariants({ type, textColor, className })} ref={ref} {...props} />;
-  },
-);
+export const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(({ className, type, ...props }, ref) => {
+  return <p className={typographyVariants({ type, className })} ref={ref} {...props} />;
+});
 Typography.displayName = 'Typography';
