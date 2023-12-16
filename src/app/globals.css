@@ -4,7 +4,11 @@
 
 @layer base {
   /* layout */
+  :root {
+    --layout-max-w: 520px;
+    --layout-min-h: 100vh;
+  }
   .layout {
-    @apply max-w-[520px] min-h-[100dvh] w-full mx-auto;
+    @apply max-w-[var(--layout-max-w)] min-h-[var(--layout-min-h)] w-full mx-auto;
   }
 }
