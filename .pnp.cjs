@@ -39,6 +39,7 @@ const RAW_RUNTIME_STATE =
           ["@tanstack/eslint-plugin-query", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:5.8.4"],\
           ["@tanstack/react-query", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:5.8.4"],\
           ["@tanstack/react-query-devtools", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:5.8.8"],\
+          ["@toss/use-overlay", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:1.3.8"],\
           ["@types/node", "npm:20.9.0"],\
           ["@types/react", "npm:18.2.37"],\
           ["@types/react-dom", "npm:18.2.15"],\
@@ -6716,6 +6717,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@toss/use-overlay", [\
+      ["npm:1.3.8", {\
+        "packageLocation": "./.yarn/cache/@toss-use-overlay-npm-1.3.8-6dcfe01485-10c0.zip/node_modules/@toss/use-overlay/",\
+        "packageDependencies": [\
+          ["@toss/use-overlay", "npm:1.3.8"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:1.3.8", {\
+        "packageLocation": "./.yarn/__virtual__/@toss-use-overlay-virtual-ce48667856/0/cache/@toss-use-overlay-npm-1.3.8-6dcfe01485-10c0.zip/node_modules/@toss/use-overlay/",\
+        "packageDependencies": [\
+          ["@toss/use-overlay", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:1.3.8"],\
+          ["@types/react", "npm:18.2.37"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/aria-query", [\
       ["npm:5.0.4", {\
         "packageLocation": "./.yarn/cache/@types-aria-query-npm-5.0.4-51d2b61619-10c0.zip/node_modules/@types/aria-query/",\
@@ -8076,6 +8099,7 @@ const RAW_RUNTIME_STATE =
           ["@tanstack/eslint-plugin-query", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:5.8.4"],\
           ["@tanstack/react-query", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:5.8.4"],\
           ["@tanstack/react-query-devtools", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:5.8.8"],\
+          ["@toss/use-overlay", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:1.3.8"],\
           ["@types/node", "npm:20.9.0"],\
           ["@types/react", "npm:18.2.37"],\
           ["@types/react-dom", "npm:18.2.15"],\

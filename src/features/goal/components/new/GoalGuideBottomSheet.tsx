@@ -1,28 +1,24 @@
-import { useState } from 'react';
-
 import { BottomSheet } from '@/components/atoms/bottomSheet';
 import { Button } from '@/components/atoms/button';
 
-/**
- * TODO: BottomSheet의 Body에 react-hook-form의 Controller를 사용한 card list를 구현
- */
-const GoalGuideBottomSheet = () => {
-  const [open, setOpen] = useState(false);
+interface GoalGuideBottomSheetProps {
+  open: boolean;
+  onClose: () => void;
+}
 
-  const onDismiss = () => {
-    setOpen(false);
+const GoalGuideBottomSheet = ({ open, onClose }: GoalGuideBottomSheetProps) => {
+  const handleApply = () => {
+    // TODO: 선택된 목표 추천 가이드를 form('title')에 업데이트
+    onClose();
   };
 
   return (
     <div className="flex items-center justify-center">
-      <Button onClick={() => setOpen(true)} intent="primary" size="sm">
-        목표 추천
-      </Button>
       <BottomSheet
         open={open}
-        onDismiss={onDismiss}
+        onDismiss={onClose}
         HeaderComponent={<Header />}
-        FooterComponent={<Footer onDone={onDismiss} />}
+        FooterComponent={<Footer onDone={handleApply} />}
         BodyComponent={
           <>
             <p className="text-xl font-bold flex items-center justify-between mt-2mb-2">TODO</p>
