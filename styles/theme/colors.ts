@@ -30,4 +30,5 @@ export const colors = {
     20: '#BAE0FF',
     10: '#E6F4FF',
   },
+  current: 'currentColor',
 };
