@@ -18,6 +18,7 @@ type Story = StoryObj<typeof SelectableCardList>;
 
 const items = [
   {
+    title: '어떤 일을 하는 사람이 되기',
     content: (
       <>
         <Span>어떤 일</Span>을 하는 사람이 되기
@@ -25,6 +26,7 @@ const items = [
     ),
   },
   {
+    title: '누구와 어떤 일을 하는 사람이 되기',
     content: (
       <>
         <Span>누구</Span>와&nbsp;
