@@ -11,7 +11,7 @@ import GoalGuideBottomSheet from './GoalGuideBottomSheet';
 
 export const GoalForm = () => {
   const router = useRouter();
-  const { register } = useFormContext<GoalFormValues>();
+  const { register, setValue } = useFormContext<GoalFormValues>();
   const overlay = useOverlay();
 
   const handleClickNextButton = () => {
@@ -24,7 +24,7 @@ export const GoalForm = () => {
       <Button
         onClick={() => {
           overlay.open(({ isOpen, close }) => {
-            return <GoalGuideBottomSheet open={isOpen} onClose={close} />;
+            return <GoalGuideBottomSheet open={isOpen} onClose={close} setValue={setValue} />;
           });
         }}
         intent="primary"

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import type { UseFormSetValue } from 'react-hook-form';
 import * as Tabs from '@radix-ui/react-tabs';
 
 import {
@@ -12,16 +13,17 @@ import {
 import { SelectableCardList } from '@/components';
 import { BottomSheet, Button, Typography } from '@/components/atoms';
 import type { TabsProps } from '@/components/molecules/tabs';
+import type { GoalFormValues } from '@/features/goal/types';
 
 interface GoalGuideBottomSheetProps {
   open: boolean;
   onClose: VoidFunction;
+  setValue: UseFormSetValue<GoalFormValues>;
 }
 
-const GoalGuideBottomSheet = ({ open, onClose }: GoalGuideBottomSheetProps) => {
+const GoalGuideBottomSheet = ({ open, onClose, setValue }: GoalGuideBottomSheetProps) => {
   const [title, setTitle] = useState('');
-  const [selectedCardContent, setSelectedCardContent] = useState<string | React.ReactNode>('');
-  const [goalGuide, setGoalGuide] = useState<TabsProps>(); // GoalGuide is a state variable that stores the goal guide data
+  const [goalGuide, setGoalGuide] = useState<TabsProps>();
 
   useEffect(() => {
     setGoalGuide({
@@ -36,12 +38,12 @@ const GoalGuideBottomSheet = ({ open, onClose }: GoalGuideBottomSheetProps) => {
     });
   }, []);
 
-  const handleCardClick = (itemContent: string | React.ReactNode) => {
-    console.log(itemContent);
-    setSelectedCardContent(itemContent); // Store the selected card's content in state
+  const handleCardClick = (itemTitle: string) => {
+    setTitle(itemTitle || '');
   };
 
   const handleApply = () => {
+    setValue('title', title);
     onClose();
   };
 
@@ -66,7 +68,7 @@ const Header = ({ items }: TabsProps) => (
       {items.map((item, index) => (
         <Tabs.Trigger
           key={index}
-          className="px-5xs h-[45px] flex-grow items-center justify-center text-gray-40 hover:text-purple-80 data-[state=active]:text-purple-80 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative"
+          className="space-x-4xs h-[45px] flex-grow items-center justify-center text-gray-40 hover:text-purple-80 data-[state=active]:text-purple-80 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative"
           value={`tab${index + 1}`}
         >
           <Typography type="subLabel1">{item.label}</Typography>
