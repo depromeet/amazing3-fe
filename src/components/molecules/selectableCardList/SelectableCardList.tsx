@@ -1,9 +1,9 @@
+import { CheckIcon } from '@/assets/icons';
 import { Typography } from '@/components';
 
 interface SelectableCardListProps {
   items: {
     content: string | React.ReactNode;
-    icon?: React.ReactNode;
   }[];
   onClick: () => void;
 }
@@ -17,7 +17,8 @@ export const SelectableCardList = ({ items, onClick }: SelectableCardListProps) 
             <Typography type="title3" className="text-gray-50">
               {item.content}
             </Typography>
-            {item.icon}
+            {/* <CheckIcon className="fill-gray-40 group-focus:fill-purple-40 group-hover:fill-purple-40" /> */}
+            <CheckIcon className="fill-gray-40 group-focus:fill-purple-40 group-hover:fill-purple-40" />
           </div>
         </button>
       ))}
