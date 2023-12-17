@@ -1,7 +1,7 @@
 import React from 'react';
 import * as BaseTabs from '@radix-ui/react-tabs';
 
-import { Typography } from '..';
+import { Typography } from '@/components/atoms';
 
 export interface TabsProps {
   items: {
