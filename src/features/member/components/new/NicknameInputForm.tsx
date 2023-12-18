@@ -14,7 +14,7 @@ export const NicknameInputForm = () => {
   const router = useRouter();
 
   const handleClickNextButton = () => {
-    router.push('/member/new/age');
+    router.push('/member/new/birthday');
   };
 
   return (
