@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 
-import GoogleIcon from '@/assets/images/google-icon.svg';
+import GoogleIcon from '@/assets/icons/google-icon.svg';
 import { Button } from '@/components/atoms/button';
 
 export const GoogleLoginButton = () => {
