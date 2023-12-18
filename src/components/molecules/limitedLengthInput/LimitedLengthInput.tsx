@@ -38,7 +38,7 @@ export const LimitedLengthInput = ({ maxLength, placeholder, setIsEmpty, formReg
         maxLength={maxLength}
         onChange={handleChangeInput}
       />
-      <Typography className="pr-2 text-end" type="body3">{`${inputString.length}/${maxLength}`}</Typography>
+      <Typography className="pr-7xs text-end" type="body3">{`${inputString.length}/${maxLength}`}</Typography>
     </div>
   );
 };
