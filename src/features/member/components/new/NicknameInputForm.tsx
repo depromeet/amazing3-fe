@@ -16,7 +16,6 @@ export const NicknameInputForm = () => {
   const placeholder = '닉네임';
 
   const [inputValue, setInputValue] = useState<string>('');
-  // const [isEmpty, setIsEmpty] = useState<boolean>(false);
   const isMounted = useIsMounted();
   const { register, setValue } = useFormContext<NewMemberFormValues>();
 
@@ -24,6 +23,7 @@ export const NicknameInputForm = () => {
   const handleClickNextButton = () => {
     setValue('nickname', inputValue);
   };
+
   /**
    * TODO: 디자인에 아이콘 추가
    */
@@ -32,12 +32,9 @@ export const NicknameInputForm = () => {
     <ContentWrapper title={title} description={description} sectionStyles="h-full flex flex-col">
       <div className="mt-xs flex flex-col grow w-full">
         <div className="h-full flex flex-col justify-between">
-          <LimitedLengthInput
-            {...register('nickname')}
-            maxLength={maxInputLength}
-            placeholder={placeholder}
-            onChange={setInputValue}
-          />
+          <div {...register('nickname')}>
+            <LimitedLengthInput maxLength={maxInputLength} placeholder={placeholder} onChange={setInputValue} />
+          </div>
           <Link href="/member/new/birthday">
             <Button type="button" disabled={!isMounted || isEmpty()} onClick={handleClickNextButton}>
               다음
