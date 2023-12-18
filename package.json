@@ -24,7 +24,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
-    "react-spring-bottom-sheet": "3.5.0-alpha.0"
+    "react-spring-bottom-sheet": "3.5.0-alpha.0",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@hookform/devtools": "^4.3.1",

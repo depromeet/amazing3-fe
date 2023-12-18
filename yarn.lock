@@ -5925,6 +5925,7 @@ __metadata:
     react-hook-form: "npm:^7.48.2"
     react-spring-bottom-sheet: "npm:3.5.0-alpha.0"
     storybook: "npm:7.5.3"
+    swiper: "npm:^11.0.5"
     tailwindcss: "npm:^3.3.0"
     typescript: "npm:^5"
     webpack: "npm:^5.89.0"
@@ -14370,6 +14371,13 @@ __metadata:
     "@swc/core": ^1.2.147
     webpack: ">=2"
   checksum: cb3f9b116fbd292b881e804a4fe66cd6d543a7de2572f5a68e067e4780ee2d59a8da87a90736ba6e8e286e4368c98214ae3486b1b872080292814e5d3062f09c
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^11.0.5":
+  version: 11.0.5
+  resolution: "swiper@npm:11.0.5"
+  checksum: 443d147cdca55708dcf0fd174edfd68f6b55166578a9aedc7c636687c071f520e0bb626dd4ea9fb83feb21d61e4e6e4beda8d1f4b7e664077ebda9e22398d815
   languageName: node
   linkType: hard
 
