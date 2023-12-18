@@ -21,6 +21,7 @@ const buttonVariants = cva(
         md: 'w-[12.5rem] rounded-md px-[2.5rem] py-3',
         sm: 'w-[10.25rem] rounded-md px-[2.5rem] py-3',
         xs: 'w-[5px] rounded-lg px-[2.5rem] py-3',
+        none: 'rounded-lg px-[2.5rem] py-3',
       },
     },
     defaultVariants: {
