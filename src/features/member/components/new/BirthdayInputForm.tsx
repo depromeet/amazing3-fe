@@ -1,15 +1,22 @@
 'use client';
 
 import { type ChangeEvent, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useFormContext } from 'react-hook-form';
 
 import { Button, ContentWrapper, Input } from '@/components';
+
+import type { NewMemberFormValues } from '../../types';
 
 export const BirthdayInputForm = () => {
   const title = '반가워요, 닉네임님!\n생년월일을 입력해 주세요.';
   const description = 'beta에서는 생년월일을 수정할 수 없어요.';
-  const router = useRouter();
+
   const [birthday, setBirthday] = useState<string>('');
+  const { register, getValues } = useFormContext<NewMemberFormValues>();
+
+  /**
+   * TODO: 생년월일 검증 로직 추가
+   */
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     console.log(event.target.value);
@@ -17,16 +24,17 @@ export const BirthdayInputForm = () => {
   };
 
   const handleClickCompleteButton = () => {
-    router.push('/member/new/birthday');
-  };
+    const { nickname, birthday } = getValues();
+    console.log(nickname, birthday);
 
-  /**
-   * TODO: 생년월일 검증 로직 추가
-   */
+    /**
+     * TODO: API 연결 및 라우팅 추가
+     */
+  };
 
   return (
     <ContentWrapper title={title} description={description}>
-      <Input type="date" onChange={handleChangeInput} />
+      <Input {...register('birthday')} type="date" onChange={handleChangeInput} />
       <Button type="button" disabled={birthday.length === 0} onClick={handleClickCompleteButton}>
         완료
       </Button>

@@ -1,10 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
 import { Button, ContentWrapper, LimitedLengthInput } from '@/components';
 import { useIsMounted } from '@/hooks/useIsMounted';
+
+import type { NewMemberFormValues } from '../../types';
 
 export const NicknameInputForm = () => {
   const title = '닉네임을 입력해 주세요.';
@@ -15,6 +18,7 @@ export const NicknameInputForm = () => {
   const [isEmpty, setIsEmpty] = useState<boolean>(false);
   const router = useRouter();
   const isMounted = useIsMounted();
+  const { register } = useFormContext<NewMemberFormValues>();
 
   const handleClickNextButton = () => {
     router.push('/member/new/birthday');
@@ -22,7 +26,12 @@ export const NicknameInputForm = () => {
 
   return (
     <ContentWrapper title={title} description={description}>
-      <LimitedLengthInput maxLength={maxInputLength} placeholder={placeholder} setIsEmpty={setIsEmpty} />
+      <LimitedLengthInput
+        maxLength={maxInputLength}
+        placeholder={placeholder}
+        setIsEmpty={setIsEmpty}
+        formRegister={register}
+      />
       <Button type="button" disabled={isMounted ? isEmpty : true} onClick={handleClickNextButton}>
         다음
       </Button>
