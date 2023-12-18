@@ -5,11 +5,17 @@ import { Typography } from '@/components';
 interface ContentWrapperProps {
   title: string | ReactNode;
   description?: string;
+  sectionStyles?: string;
 }
 
-export const ContentWrapper = ({ title, description, children }: PropsWithChildren<ContentWrapperProps>) => {
+export const ContentWrapper = ({
+  title,
+  description,
+  sectionStyles,
+  children,
+}: PropsWithChildren<ContentWrapperProps>) => {
   return (
-    <section className="h-full">
+    <section className={sectionStyles ? sectionStyles : ''}>
       <Typography type="heading1" className="text-blue-50">
         {title}
       </Typography>
