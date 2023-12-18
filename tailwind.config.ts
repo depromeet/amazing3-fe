@@ -19,6 +19,9 @@ const config: Config = {
       spacing,
       borderRadius,
       backgroundImage,
+      boxShadow: {
+        input: '0px 0px 7.9px 0px  rgba(0, 88, 255, 0.10)',
+      },
     },
   },
   plugins: [],
