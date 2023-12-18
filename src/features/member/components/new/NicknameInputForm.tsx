@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { Button, ContentWrapper, LimitedLengthInput } from '@/components';
 
@@ -10,11 +11,16 @@ export const NicknameInputForm = () => {
   const maxInputLength = 10;
   const placeholder = '닉네임';
   const [isEmpty, setIsEmpty] = useState(false);
+  const router = useRouter();
+
+  const handleClickNextButton = () => {
+    router.push('/member/new/age');
+  };
 
   return (
     <ContentWrapper title={title} description={description}>
       <LimitedLengthInput maxLength={maxInputLength} placeholder={placeholder} setIsEmpty={setIsEmpty} />
-      <Button type="button" disabled={isEmpty}>
+      <Button type="button" disabled={isEmpty} onClick={handleClickNextButton}>
         다음
       </Button>
     </ContentWrapper>
