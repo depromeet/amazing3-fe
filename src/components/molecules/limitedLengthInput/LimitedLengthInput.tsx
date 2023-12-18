@@ -1,16 +1,17 @@
 'use client';
 
-import type { ChangeEvent } from 'react';
-import { useState } from 'react';
+import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Input, Typography } from '@/components';
 
 interface LimitedLengthInputProps {
   maxLength: number;
   placeholder: string;
+  setIsEmpty?: Dispatch<SetStateAction<boolean>>;
 }
 
-export const LimitedLengthInput = ({ maxLength, placeholder }: LimitedLengthInputProps) => {
+export const LimitedLengthInput = ({ maxLength, placeholder, setIsEmpty }: LimitedLengthInputProps) => {
   const [inputString, setInputString] = useState<string>('');
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +20,10 @@ export const LimitedLengthInput = ({ maxLength, placeholder }: LimitedLengthInpu
     }
     setInputString(event.target.value);
   };
+
+  useEffect(() => {
+    setIsEmpty && setIsEmpty(inputString.length === 0);
+  }, [inputString, setIsEmpty]);
 
   return (
     <div className="flex flex-col gap-1">
