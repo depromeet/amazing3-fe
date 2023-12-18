@@ -24,17 +24,25 @@ export const NicknameInputForm = () => {
     router.push('/member/new/birthday');
   };
 
+  /**
+   * TODO: 디자인에 아이콘 추가
+   */
+
   return (
     <ContentWrapper title={title} description={description}>
-      <LimitedLengthInput
-        maxLength={maxInputLength}
-        placeholder={placeholder}
-        setIsEmpty={setIsEmpty}
-        formRegister={register}
-      />
-      <Button type="button" disabled={isMounted ? isEmpty : true} onClick={handleClickNextButton}>
-        다음
-      </Button>
+      <div className="mt-xs h-3/4 w-full">
+        <div className="h-full flex flex-col justify-between">
+          <LimitedLengthInput
+            maxLength={maxInputLength}
+            placeholder={placeholder}
+            setIsEmpty={setIsEmpty}
+            formRegister={register}
+          />
+          <Button type="button" disabled={isMounted ? isEmpty : true} onClick={handleClickNextButton}>
+            다음
+          </Button>
+        </div>
+      </div>
     </ContentWrapper>
   );
 };

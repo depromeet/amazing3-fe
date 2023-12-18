@@ -18,7 +18,12 @@ const CreateGoalFormProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(submit)}>{children}</form>
+      <form
+        className="w-full h-screen flex flex-col items-center justify-center"
+        onSubmit={methods.handleSubmit(submit)}
+      >
+        {children}
+      </form>
 
       {isMounted && <DevTool control={methods.control} />}
     </FormProvider>
