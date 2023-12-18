@@ -19,7 +19,7 @@ export default function Home() {
           서비스 이용약관
         </Link>
         과 <br />{' '}
-        <Link className=" underline" href="/">
+        <Link className="underline" href="/">
           개인정보 수집 및 이용
         </Link>
         에 동의하게 됩니다.
