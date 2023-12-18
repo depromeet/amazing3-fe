@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 import { Button, ContentWrapper, LimitedLengthInput } from '@/components';
 import { useIsMounted } from '@/hooks/useIsMounted';
@@ -16,13 +16,13 @@ export const NicknameInputForm = () => {
   const placeholder = '닉네임';
 
   const [isEmpty, setIsEmpty] = useState<boolean>(false);
-  const router = useRouter();
+  // const router = useRouter();
   const isMounted = useIsMounted();
   const { register } = useFormContext<NewMemberFormValues>();
 
-  const handleClickNextButton = () => {
-    router.push('/member/new/birthday');
-  };
+  // const handleClickNextButton = () => {
+  //   router.push('/member/new/birthday');
+  // };
 
   /**
    * TODO: 디자인에 아이콘 추가
@@ -38,9 +38,11 @@ export const NicknameInputForm = () => {
             setIsEmpty={setIsEmpty}
             formRegister={register}
           />
-          <Button type="button" disabled={isMounted ? isEmpty : true} onClick={handleClickNextButton}>
-            다음
-          </Button>
+          <Link href="/member/new/birthday">
+            <Button type="button" disabled={!isMounted || isEmpty}>
+              다음
+            </Button>
+          </Link>
         </div>
       </div>
     </ContentWrapper>

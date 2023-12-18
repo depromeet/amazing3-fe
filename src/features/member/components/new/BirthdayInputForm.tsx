@@ -25,7 +25,6 @@ export const BirthdayInputForm = () => {
 
   const handleClickCompleteButton = () => {
     const { nickname, birthday } = getValues();
-    console.log(nickname, birthday);
 
     /**
      * TODO: API 연결 및 라우팅 추가
@@ -41,7 +40,7 @@ export const BirthdayInputForm = () => {
       <div className="mt-xs flex flex-col grow w-full">
         <div className="h-full flex flex-col justify-between">
           <Input {...register('birthday')} type="date" onChange={handleChangeInput} />
-          <Button type="button" disabled={birthday.length === 0} onClick={handleClickCompleteButton}>
+          <Button type="submit" disabled={birthday.length === 0} onClick={handleClickCompleteButton}>
             완료
           </Button>
         </div>

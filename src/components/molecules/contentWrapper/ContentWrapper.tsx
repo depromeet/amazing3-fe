@@ -11,11 +11,11 @@ interface ContentWrapperProps {
 export const ContentWrapper = ({
   title,
   description,
-  sectionStyles,
+  sectionStyles = '',
   children,
 }: PropsWithChildren<ContentWrapperProps>) => {
   return (
-    <section className={sectionStyles ? sectionStyles : ''}>
+    <section className={sectionStyles}>
       <Typography type="heading1" className="text-blue-50">
         {title}
       </Typography>
