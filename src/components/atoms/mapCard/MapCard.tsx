@@ -6,11 +6,14 @@ import type { MapCardGoalProps } from '@/features/home/types';
 
 import { Typography } from '../typography';
 
-export interface MapCardProps extends MapCardGoalProps {
+export interface MapCardProps {
+  goal: MapCardGoalProps;
   position: [xPos: string, yPos: string];
 }
 
-export const MapCard = ({ id, stickerImage, deadline, tag, position }: MapCardProps) => {
+export const MapCard = ({ goal, position }: MapCardProps) => {
+  const { id, stickerImage, deadline, tag } = goal;
+
   return (
     <Link
       href={`/goal/${id}`}
