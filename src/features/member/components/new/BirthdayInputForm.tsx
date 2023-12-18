@@ -32,12 +32,20 @@ export const BirthdayInputForm = () => {
      */
   };
 
+  /**
+   * TODO: 디자인에 아이콘 추가
+   */
+
   return (
     <ContentWrapper title={title} description={description}>
-      <Input {...register('birthday')} type="date" onChange={handleChangeInput} />
-      <Button type="button" disabled={birthday.length === 0} onClick={handleClickCompleteButton}>
-        완료
-      </Button>
+      <div className="mt-xs h-3/4 w-full">
+        <div className="h-full flex flex-col justify-between">
+          <Input {...register('birthday')} type="date" onChange={handleChangeInput} />
+          <Button type="button" disabled={birthday.length === 0} onClick={handleClickCompleteButton}>
+            완료
+          </Button>
+        </div>
+      </div>
     </ContentWrapper>
   );
 };
