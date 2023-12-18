@@ -11,7 +11,7 @@ import GoalGuideBottomSheet from './GoalGuideBottomSheet';
 
 export const GoalForm = () => {
   const router = useRouter();
-  const { register, setValue } = useFormContext<GoalFormValues>();
+  const { register, watch, setValue } = useFormContext<GoalFormValues>();
   const overlay = useOverlay();
 
   const handleClickNextButton = () => {
@@ -32,7 +32,7 @@ export const GoalForm = () => {
       >
         목표 추천
       </Button>
-      <Button onClick={handleClickNextButton} intent="primary" size="xl">
+      <Button onClick={handleClickNextButton} disabled={!watch('title')} intent="primary" size="xl">
         다음
       </Button>
     </div>

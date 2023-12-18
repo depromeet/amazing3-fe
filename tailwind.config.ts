@@ -20,6 +20,9 @@ const config: Config = {
       borderRadius,
       backgroundImage,
       boxShadow,
+      fontFamily: {
+        sans: ['Pretendard', 'Arial', 'sans-serif'],
+      },
     },
   },
   plugins: [],

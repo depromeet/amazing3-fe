@@ -26,7 +26,7 @@ export const Tabs = ({ items }: TabsProps) => {
       </BaseTabs.List>
 
       {items.map((item, index) => (
-        <BaseTabs.Content key={index} className="p-2xs" value={`tab${index + 1}`}>
+        <BaseTabs.Content key={`tab${index + 1}`} className="p-2xs" value={`tab${index + 1}`}>
           {item.content}
         </BaseTabs.Content>
       ))}

@@ -3,7 +3,9 @@ import { Typography } from '@/components';
 
 interface SelectableCardListProps {
   items: {
+    /** title에는 카드 선택 시 상위 컴포넌트에 callback으로 전달할 값을 넣어주세요. */
     title: string;
+    /** content에는 카드에 출력할 component를 넣어주세요. */
     content: string | React.ReactNode;
   }[];
   onClick: (itemTitle: string) => void;
