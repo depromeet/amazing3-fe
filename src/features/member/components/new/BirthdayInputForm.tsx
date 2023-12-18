@@ -37,8 +37,8 @@ export const BirthdayInputForm = () => {
    */
 
   return (
-    <ContentWrapper title={title} description={description}>
-      <div className="mt-xs h-3/4 w-full">
+    <ContentWrapper title={title} description={description} sectionStyles="h-full flex flex-col">
+      <div className="mt-xs flex flex-col grow w-full">
         <div className="h-full flex flex-col justify-between">
           <Input {...register('birthday')} type="date" onChange={handleChangeInput} />
           <Button type="button" disabled={birthday.length === 0} onClick={handleClickCompleteButton}>

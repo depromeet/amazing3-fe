@@ -29,8 +29,8 @@ export const NicknameInputForm = () => {
    */
 
   return (
-    <ContentWrapper title={title} description={description}>
-      <div className="mt-xs h-3/4 w-full">
+    <ContentWrapper title={title} description={description} sectionStyles="h-full flex flex-col">
+      <div className="mt-xs flex flex-col grow w-full">
         <div className="h-full flex flex-col justify-between">
           <LimitedLengthInput
             maxLength={maxInputLength}
