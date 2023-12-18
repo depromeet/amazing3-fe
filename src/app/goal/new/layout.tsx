@@ -12,7 +12,7 @@ import CreateGoalFormProvider from '@/features/goal/contexts/CreateGoalFormProvi
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <CreateGoalFormProvider>
-      <div className="w-full h-screen bg-gradient1 relative">
+      <div className="w-full h-[calc(100vh-24px)] bg-gradient1 relative">
         <div className="absolute top-[-7%] w-full">
           <SpeechBubble />
         </div>
