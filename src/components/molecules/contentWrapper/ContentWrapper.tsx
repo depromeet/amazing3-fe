@@ -9,7 +9,7 @@ interface ContentWrapperProps {
 
 export const ContentWrapper = ({ title, description, children }: PropsWithChildren<ContentWrapperProps>) => {
   return (
-    <section>
+    <section className="h-full">
       <Typography type="heading1" className="text-blue-50">
         {title}
       </Typography>
@@ -18,7 +18,7 @@ export const ContentWrapper = ({ title, description, children }: PropsWithChildr
           {description}
         </Typography>
       )}
-      <div>{children}</div>
+      {children}
     </section>
   );
 };
