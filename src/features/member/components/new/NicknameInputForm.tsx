@@ -15,15 +15,15 @@ export const NicknameInputForm = () => {
   const maxInputLength = 10;
   const placeholder = '닉네임';
 
-  const [isEmpty, setIsEmpty] = useState<boolean>(false);
-  // const router = useRouter();
+  const [inputValue, setInputValue] = useState<string>('');
+  // const [isEmpty, setIsEmpty] = useState<boolean>(false);
   const isMounted = useIsMounted();
-  const { register } = useFormContext<NewMemberFormValues>();
+  const { register, setValue } = useFormContext<NewMemberFormValues>();
 
-  // const handleClickNextButton = () => {
-  //   router.push('/member/new/birthday');
-  // };
-
+  const isEmpty = () => inputValue.length === 0;
+  const handleClickNextButton = () => {
+    setValue('nickname', inputValue);
+  };
   /**
    * TODO: 디자인에 아이콘 추가
    */
@@ -33,13 +33,13 @@ export const NicknameInputForm = () => {
       <div className="mt-xs flex flex-col grow w-full">
         <div className="h-full flex flex-col justify-between">
           <LimitedLengthInput
+            {...register('nickname')}
             maxLength={maxInputLength}
             placeholder={placeholder}
-            setIsEmpty={setIsEmpty}
-            formRegister={register}
+            onChange={setInputValue}
           />
           <Link href="/member/new/birthday">
-            <Button type="button" disabled={!isMounted || isEmpty}>
+            <Button type="button" disabled={!isMounted || isEmpty()} onClick={handleClickNextButton}>
               다음
             </Button>
           </Link>
