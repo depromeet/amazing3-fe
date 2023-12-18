@@ -13,20 +13,19 @@ const Layout = ({ children }: PropsWithChildren) => {
   return (
     <CreateGoalFormProvider>
       <div className="w-full h-[calc(100vh-24px)] bg-gradient1 relative">
-        <div className="absolute top-0 w-full">
+        <div className="absolute top-[-7%] w-full">
           <SpeechBubble />
         </div>
-        <div className="absolute top-[26%] left-1/4 w-full">
+        <div className="absolute top-1/4 left-1/4 w-full">
           <Stars />
         </div>
-        <div className="absolute top-[28%] left-1/3 w-full z-1">
-          <Image className="w-[31%]" src={BandiBoodi} alt="BandiBoodi Character" priority />
+        <div className="absolute top-[28%] left-1/3 w-full z-10">
+          <Image className="w-1/3" src={BandiBoodi} alt="BandiBoodi Character" priority />
         </div>
-        <div className="absolute top-[38%] w-full">
+        <div className="absolute top-[40%] w-full">
           <Wave />
         </div>
         {children}
-        <button className=" mt-[100%] z-10">asd</button>
       </div>
     </CreateGoalFormProvider>
   );
