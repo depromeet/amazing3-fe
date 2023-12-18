@@ -19,6 +19,6 @@ export const Basic: Story = {
       deadline: '2024.01',
       tag: '학업',
     },
-    position: ['top-[20px]', 'left-[20px]'],
+    position: { x: 'top-[20px]', y: 'left-[20px]' },
   },
 };

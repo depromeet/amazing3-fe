@@ -8,7 +8,7 @@ import { Typography } from '../typography';
 
 export interface MapCardProps {
   goal: MapCardGoalProps;
-  position: [xPos: string, yPos: string];
+  position: { x: string; y: string };
 }
 
 export const MapCard = ({ goal, position }: MapCardProps) => {
@@ -17,7 +17,7 @@ export const MapCard = ({ goal, position }: MapCardProps) => {
   return (
     <Link
       href={`/goal/${id}`}
-      className={`absolute w-[130px] h-[130px] rounded-lg bg-white pt-[5px] pb-[6px] px-[16px] shadow-thumb cursor-pointer ${position[0]} ${position[1]}`}
+      className={`absolute w-[130px] h-[130px] rounded-lg bg-white pt-[5px] pb-[6px] px-[16px] shadow-thumb cursor-pointer ${position.x} ${position.y}`}
     >
       <Image src={stickerImage} width={100} height={100} alt="sticker" />
       <div className="flex gap-[4px] justify-center items-center">
