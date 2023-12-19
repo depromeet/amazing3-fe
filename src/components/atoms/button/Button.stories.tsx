@@ -15,9 +15,13 @@ const meta: Meta<typeof Button> = {
       control: 'inline-radio',
       options: ['none', 'sm', 'md', 'lg', 'xl'],
     },
-    size: {
+    width: {
       control: 'inline-radio',
-      options: ['lg'],
+      options: ['full'],
+    },
+    height: {
+      control: 'inline-radio',
+      options: ['h60', 'h40'],
     },
     disabled: {
       control: 'boolean',
@@ -57,10 +61,10 @@ export const Issue: Story = {
   },
 };
 
-export const CustomSize: Story = {
+export const Height44: Story = {
   args: {
     ...Basic.args,
-    className: 'w-[400px] h-[100px]',
+    height: 'h44',
   },
 };
 

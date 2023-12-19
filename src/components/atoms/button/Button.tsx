@@ -21,14 +21,19 @@ const buttonVariants = cva(
         lg: 'rounded-lg',
         xl: 'rounded-xl',
       },
-      size: {
-        lg: 'w-[342px] h-[60px]',
+      width: {
+        full: 'w-full',
+      },
+      height: {
+        h60: 'h-[60px]',
+        h44: 'h-[44px]',
       },
     },
     defaultVariants: {
       variant: 'heavy',
       rounded: 'lg',
-      size: 'lg',
+      width: 'full',
+      height: 'h60',
     },
   },
 );
@@ -36,8 +41,8 @@ const buttonVariants = cva(
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, rounded, size, ...props }, ref) => {
-    return <button className={buttonVariants({ variant, rounded, size, className })} ref={ref} {...props} />;
+  ({ className, variant, rounded, width, height, ...props }, ref) => {
+    return <button className={buttonVariants({ variant, rounded, width, height, className })} ref={ref} {...props} />;
   },
 );
 Button.displayName = 'Button';
