@@ -41,7 +41,7 @@ export const TagForm = () => {
         </>
       }
       footer={
-        <Link href="/goal/new/emoji">
+        <Link href="/goal/new/sticker">
           <Button onClick={handleClickNextButton}>다음</Button>
         </Link>
       }

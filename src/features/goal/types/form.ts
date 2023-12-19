@@ -4,6 +4,5 @@ export interface GoalFormValues {
   content: string;
   date: string;
   tags: [];
-  emoji: string;
-  subgoals?: [];
+  sticker: string;
 }
