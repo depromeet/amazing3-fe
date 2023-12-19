@@ -10,7 +10,6 @@ import FormLayout from './FormLayout';
 import { TextInput } from './TextInput';
 
 export const MoreForm = () => {
-  const comment = '마지막으로 더 작성하고 싶은 것이\n있다면 적어줘';
   const { register, control } = useFormContext<GoalFormValues>();
   const { field } = useController({ name: 'content', control });
   const { onChange } = field;
@@ -20,7 +19,8 @@ export const MoreForm = () => {
       header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
       comment={
         <Typography type="title3" className="text-gray-50 font-insungit text-center">
-          {comment}
+          마지막으로 더 작성하고 싶은 것이 <br />
+          있다면 적어줘
         </Typography>
       }
       body={

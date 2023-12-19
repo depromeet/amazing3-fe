@@ -3,14 +3,13 @@
 import { useController, useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 
-import { Button, Typography } from '@/components';
+import { Button, Span, Typography } from '@/components';
 import type { GoalFormValues } from '@/features/goal/types';
 
 import { DateInput } from './DateInput';
 import FormLayout from './FormLayout';
 
 export const DateForm = () => {
-  const comment = '목표\n언제까지 이루고 싶어?';
   const maxLength = 7;
   const { register, control } = useFormContext<GoalFormValues>();
   const { field } = useController({ name: 'date', control });
@@ -21,7 +20,7 @@ export const DateForm = () => {
       header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
       comment={
         <Typography type="title3" className="text-gray-50 font-insungit text-center">
-          {comment}
+          목표 <br /> <Span type="blue50">언제</Span>까지 이루고 싶어?
         </Typography>
       }
       body={
