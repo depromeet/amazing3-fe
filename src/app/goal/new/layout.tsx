@@ -16,13 +16,13 @@ const Layout = ({ children }: PropsWithChildren) => {
         <SpeechBubble className="absolute top-[-4%] w-full" />
         <Stars className="absolute top-[28%] left-1/4 w-1/2" />
         <Image
-          className="absolute top-[28%] left-1/3 w-1/3 z-10"
+          className="absolute top-[28%] left-1/3 w-1/3 z-[1]"
           src={BandiBoodi}
           alt="BandiBoodi Character"
           priority
         />
         <Wave className="absolute top-[40%] w-full" />
-        <div className="absolute top-0 left-0 w-full h-[calc(100vh-24px)] z-20">{children}</div>
+        <div className="absolute top-0 left-0 w-full h-[calc(100vh-24px)]">{children}</div>
       </div>
     </CreateGoalFormProvider>
   );
