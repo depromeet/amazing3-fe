@@ -7,6 +7,7 @@ const spanVariants = cva('whitespace-pre-line', {
   variants: {
     type: {
       form: 'text-gray-30 group-focus:text-purple-40 group-hover:text-purple-40',
+      blue55: 'text-blue-55',
     },
   },
   defaultVariants: {
