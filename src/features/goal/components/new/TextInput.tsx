@@ -1,5 +1,5 @@
 import type { ChangeEvent, ChangeEventHandler } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Input, Typography } from '@/components';
 import { Textarea } from '@/components/atoms/textarea';
@@ -8,6 +8,7 @@ type lineType = 'single' | 'multi';
 
 interface TextInputProps {
   labelName?: string;
+  value?: string;
   type?: lineType;
   height?: number;
   maxLength: number;
@@ -17,13 +18,14 @@ interface TextInputProps {
 
 export const TextInput = ({
   labelName = '',
+  value = '',
   type = 'single',
   height = 140,
   maxLength,
   placeholder,
   onChange,
 }: TextInputProps) => {
-  const [text, setText] = useState<string>('');
+  const [text, setText] = useState<string>(value);
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (event.target.value.length > maxLength) {
       event.target.value = event.target.value.slice(0, maxLength);
@@ -31,6 +33,10 @@ export const TextInput = ({
     setText(event.target.value);
     onChange && onChange(event.target.value);
   };
+
+  useEffect(() => {
+    setText(value);
+  }, [value]);
 
   return (
     <div className="flex flex-col gap-5xs">
@@ -46,7 +52,7 @@ export const TextInput = ({
         </div>
       </div>
       {type === 'single' ? (
-        <Input type="text" placeholder={placeholder} onChange={handleChangeInput} />
+        <Input type="text" value={value} placeholder={placeholder} onChange={handleChangeInput} />
       ) : (
         <Textarea
           style={{ height: `${height}px` }}
