@@ -3,7 +3,7 @@
 import { useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 
-import { Button, Typography } from '@/components';
+import { Button, Span, Typography } from '@/components';
 import type { GoalFormValues } from '@/features/goal/types';
 
 import FormLayout from './FormLayout';
@@ -16,7 +16,6 @@ const MOCK_TAGS = [
 ];
 
 export const TagForm = () => {
-  const comment = '목표와 관련된 태그 한 가지를\n선택해줄래?';
   const { register } = useFormContext<GoalFormValues>();
 
   const handleClickNextButton = () => {};
@@ -26,7 +25,9 @@ export const TagForm = () => {
       header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
       comment={
         <Typography type="title3" className="text-gray-50 font-insungit text-center">
-          {comment}
+          목표와 관련된 <Span type="blue50">태그</Span> 한 가지를
+          <br />
+          선택해줄래?
         </Typography>
       }
       body={

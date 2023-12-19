@@ -4,7 +4,7 @@ import { useController, useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 import { useOverlay } from '@toss/use-overlay';
 
-import { Button, Typography } from '@/components/atoms';
+import { Button, Span, Typography } from '@/components/atoms';
 import type { GoalFormValues } from '@/features/goal/types';
 
 import FormLayout from './FormLayout';
@@ -12,7 +12,6 @@ import GoalGuideBottomSheet from './GoalGuideBottomSheet';
 import { TextInput } from './TextInput';
 
 export const GoalForm = () => {
-  const comment = '꼭 이루고 싶은\n목표 한 가지를 말해줄래?';
   const { register, setValue, control } = useFormContext<GoalFormValues>();
   const { field } = useController({ name: 'title', control });
   const { onChange, value } = field;
@@ -23,7 +22,9 @@ export const GoalForm = () => {
       header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
       comment={
         <Typography type="title3" className="text-gray-50 font-insungit text-center">
-          {comment}
+          꼭 이루고 싶은
+          <br />
+          <Span type="blue50">목표</Span> 한 가지를 말해줄래?
         </Typography>
       }
       body={
