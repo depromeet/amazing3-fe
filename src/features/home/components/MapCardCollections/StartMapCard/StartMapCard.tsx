@@ -3,10 +3,8 @@ import Image from 'next/image';
 import bandiboodiImage from '@/assets/images/bandi-boodi.png';
 import { Typography } from '@/components';
 
-import type { MapCardLayoutProps } from '../MapCardLayout';
+import type { MapCardLayoutProps as StartMapCardProps } from '../MapCardLayout';
 import { MapCardLayout } from '../MapCardLayout';
-
-interface StartMapCardProps extends MapCardLayoutProps {}
 
 export const StartMapCard = ({ position }: StartMapCardProps) => {
   return (
