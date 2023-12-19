@@ -1,22 +1,31 @@
 'use client';
 
 import { useFormContext } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
+import { Button, Typography } from '@/components';
 import type { GoalFormValues } from '@/features/goal/types';
 
+import FormLayout from './FormLayout';
+
 export const EmojiForm = () => {
-  const router = useRouter();
+  const comment = '목표와 관련된 스티커도\n선택해줘.';
   const { register } = useFormContext<GoalFormValues>();
 
-  const handleClickNextButton = () => {
-    router.push('/goal/new/subgoal');
-  };
+  const handleClickNextButton = () => {};
 
   return (
-    <>
-      <input {...register('emoji')} type="text" placeholder="이모지" />
-      <button onClick={handleClickNextButton}>다음</button>
-    </>
+    <FormLayout
+      header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
+      comment={<Typography className="text-gray-50 font-insungit text-center">{comment}</Typography>}
+      body={<input {...register('emoji')} type="text" placeholder="이모지" />}
+      footer={
+        <Link href="/goal/new/subgoal">
+          <Button onClick={handleClickNextButton} intent="primary" size="xl">
+            다음
+          </Button>
+        </Link>
+      }
+    />
   );
 };
