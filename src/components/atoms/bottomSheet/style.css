@@ -7,3 +7,8 @@
   --rsbs-ml: auto;
   --rsbs-mr: auto;
 }
+
+[data-rsbs-header] {
+  text-align: left;
+  padding-bottom: 0;
+}

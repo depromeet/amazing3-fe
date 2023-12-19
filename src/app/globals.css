@@ -11,6 +11,9 @@
   .layout {
     @apply max-w-[var(--layout-max-w)] min-h-[var(--layout-min-h)] w-full mx-auto;
   }
+  body {
+    @apply font-sans;
+  }
 }
 
 @font-face {
