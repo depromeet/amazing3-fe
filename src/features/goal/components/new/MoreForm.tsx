@@ -18,7 +18,11 @@ export const MoreForm = () => {
   return (
     <FormLayout
       header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
-      comment={<Typography className="text-gray-50 font-insungit text-center">{comment}</Typography>}
+      comment={
+        <Typography type="title3" className="text-gray-50 font-insungit text-center">
+          {comment}
+        </Typography>
+      }
       body={
         <div {...register('content')}>
           <TextInput
