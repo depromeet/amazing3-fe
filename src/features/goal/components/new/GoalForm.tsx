@@ -28,7 +28,7 @@ export const GoalForm = () => {
         </Typography>
       }
       body={
-        <div {...register('title')}>
+        <div {...register('title')} className="pt-sm h-full flex flex-col">
           <TextInput
             labelName="한줄목표"
             value={value}
@@ -36,19 +36,25 @@ export const GoalForm = () => {
             placeholder="ex) 적금 1000만원 모으기"
             onChange={onChange}
           />
-          <div className="flex flex-col items-center gap-5xs">
+          <div className="pb-lg flex flex-col justify-end grow items-center gap-5xs">
             <Typography type="caption1" className="text-gray-40">
               목표 세우기, 너무 막연하다면?
             </Typography>
-            <Button
-              onClick={() => {
-                overlay.open(({ isOpen, close }) => {
-                  return <GoalGuideBottomSheet open={isOpen} onClose={close} setValue={setValue} />;
-                });
-              }}
-            >
-              가이드 보고 목표 세우기
-            </Button>
+            <div className="w-[180px]">
+              <Button
+                className="py-3xs px-xs text-sm"
+                variant="blue"
+                height="h44"
+                rounded="xl"
+                onClick={() => {
+                  overlay.open(({ isOpen, close }) => {
+                    return <GoalGuideBottomSheet open={isOpen} onClose={close} setValue={setValue} />;
+                  });
+                }}
+              >
+                가이드 보고 목표 세우기
+              </Button>
+            </div>
           </div>
         </div>
       }
