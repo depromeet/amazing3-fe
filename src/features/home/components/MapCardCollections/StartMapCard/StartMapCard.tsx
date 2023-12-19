@@ -15,7 +15,7 @@ export const StartMapCard = ({ position }: StartMapCardProps) => {
         START !
       </Typography>
       <div className="absolute w-[235px] h-[235px] top-[10px] left-1/2 transform -translate-x-1/2">
-        <Image src={bandiboodiImage} width="235" height="235" alt="start_bandibooti" priority />
+        <Image src={bandiboodiImage} width="235" height="235" alt="start_bandiboodi" priority />
       </div>
     </MapCardLayout>
   );
