@@ -127,6 +127,7 @@ export const LifeMap = () => {
       </ContentWrapper>
       <div className="pt-[10px] flex gap-5xs w-full px-xs">
         <ShareButton />
+        {/* 목표 추가하기 버튼 추가 */}
       </div>
     </div>
   );

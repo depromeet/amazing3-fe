@@ -4,6 +4,9 @@ interface CustomPaginationProps {
   swiper?: Swiper;
 }
 
+/**
+ * TODO: 반영되지 못하는 문제 해결하기
+ */
 export const CustomPagination = ({ swiper }: CustomPaginationProps) => {
   if (!swiper) return null;
 
