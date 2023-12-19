@@ -1,1 +1,1 @@
-export const GOAL_IN_MAP = 5;
+export const GOAL_COUNT_PER_PAGE = 5;

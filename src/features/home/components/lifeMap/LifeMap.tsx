@@ -4,7 +4,7 @@ import { SwiperSlide } from 'swiper/react';
 
 import { Avatar, ContentWrapper } from '@/components';
 
-import { GOAL_IN_MAP } from '../../constants';
+import { GOAL_COUNT_PER_PAGE } from '../../constants';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
 import { MapCardPositioner } from '../mapCardPositioner';
 import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
@@ -90,8 +90,8 @@ const goals = [
 const total = goals.length;
 
 export const LifeMap = () => {
-  const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(goals, GOAL_IN_MAP);
-  const LAST_PAGE = Math.ceil(total / GOAL_IN_MAP);
+  const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(goals, GOAL_COUNT_PER_PAGE);
+  const LAST_PAGE = Math.ceil(total / GOAL_COUNT_PER_PAGE);
 
   return (
     <div>
