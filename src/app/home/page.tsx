@@ -1,5 +1,7 @@
+import { LifeMap } from '@/features/home/components';
+
 const HomePage = () => {
-  return <></>;
+  return <LifeMap />;
 };
 
 export default HomePage;
