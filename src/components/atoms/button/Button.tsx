@@ -5,35 +5,44 @@ import { cva, type VariantProps } from 'class-variance-authority';
  * TODO: 디자인 시스템에 맞게 수정
  */
 const buttonVariants = cva(
-  'inline-flex h-10 items-center justify-center word-break:keep-all text-white disabled:pointer-events-nonedisabled:pointer-events-none disabled:opacity-50',
+  'inline-flex gap-[6px] items-center justify-center word-break:keep-all disabled:pointer-events-nonedisabled:pointer-events-none disabled:opacity-30 transition-colors duration-200 font-semibold',
   {
     variants: {
-      intent: {
-        primary: 'bg-blue-700 hover:bg-blue-800 focus:bg-blue-800 disabled:bg-gray-40',
-        secondary: 'bg-black hover:bg-gray-800 focus:bg-gray-800 disabled:bg-gray-40',
-        label: 'font-semibold text-black underline-offset-4 disabled:text-gray-40',
-        success: 'bg-green-700 hover:bg-green-800 focus:bg-green-800 disabled:bg-gray-40',
-        danger: 'bg-red-700 hover:bg-red-800 focus:bg-red-800 disabled:bg-gray-40',
+      variant: {
+        heavy: 'bg-gray-60 text-white hover:bg-gray-70',
+        blue: 'bg-blue-10 text-blue-30',
+        tertiary: 'bg-gray-20 text-gray-40',
+        issue: 'bg-red-20 text-red-50',
       },
-      size: {
-        xl: 'w-full rounded-lg px-[2.5rem] py-3',
-        lg: 'w-[16.25rem] rounded-md px-[2.5rem] py-3',
-        md: 'w-[12.5rem] rounded-md px-[2.5rem] py-3',
-        sm: 'w-[10.25rem] rounded-md px-[2.5rem] py-3',
-        xs: 'w-[5px] rounded-lg px-[2.5rem] py-3',
-        none: 'rounded-lg px-[2.5rem] py-3',
+      rounded: {
+        none: 'rounded-none',
+        sm: 'rounded-sm',
+        md: 'rounded-md',
+        lg: 'rounded-lg',
+        xl: 'rounded-xl',
+      },
+      width: {
+        full: 'w-full',
+      },
+      height: {
+        h60: 'h-[60px]',
+        h44: 'h-[44px]',
       },
     },
     defaultVariants: {
-      intent: 'primary',
-      size: 'xl',
+      variant: 'heavy',
+      rounded: 'lg',
+      width: 'full',
+      height: 'h60',
     },
   },
 );
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {}
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ className, intent, size, ...props }, ref) => {
-  return <button className={buttonVariants({ intent, size, className })} ref={ref} {...props} />;
-});
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, rounded, width, height, ...props }, ref) => {
+    return <button className={buttonVariants({ variant, rounded, width, height, className })} ref={ref} {...props} />;
+  },
+);
 Button.displayName = 'Button';

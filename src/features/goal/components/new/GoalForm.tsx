@@ -27,12 +27,10 @@ export const GoalForm = () => {
             return <GoalGuideBottomSheet open={isOpen} onClose={close} setValue={setValue} />;
           });
         }}
-        intent="primary"
-        size="sm"
       >
         목표 추천
       </Button>
-      <Button onClick={handleClickNextButton} disabled={!watch('title')} intent="primary" size="xl">
+      <Button onClick={handleClickNextButton} disabled={!watch('title')}>
         다음
       </Button>
     </div>

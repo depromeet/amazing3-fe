@@ -27,11 +27,7 @@ export const BasicBottomSheet: Story = {
   args: {
     open: true,
     HeaderComponent: <p className="text-xl font-bold flex items-center justify-between mb-2">문답 가이드</p>,
-    FooterComponent: (
-      <Button intent="primary" size="xl">
-        적용
-      </Button>
-    ),
+    FooterComponent: <Button>적용</Button>,
     children: (
       <ul>
         {contents.map((content, index) => (
