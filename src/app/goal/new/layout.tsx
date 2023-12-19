@@ -16,7 +16,7 @@ const Layout = ({ children }: PropsWithChildren) => {
         <div className="absolute top-[-4%] w-full">
           <SpeechBubble />
         </div>
-        <div className="absolute top-[28%] left-1/4 w-full">
+        <div className="absolute top-[28%] left-1/4 w-1/2">
           <Stars />
         </div>
         <div className="absolute top-[28%] left-1/3 w-1/3 z-10">
