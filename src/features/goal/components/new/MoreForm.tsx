@@ -25,7 +25,7 @@ export const MoreForm = () => {
         </Typography>
       }
       body={
-        <div {...register('content')}>
+        <div {...register('content')} className="pt-sm">
           <TextInput
             type="multi"
             labelName="메모"
@@ -37,7 +37,7 @@ export const MoreForm = () => {
       }
       footer={
         <Link href="/goal/new/result">
-          <Button>다음</Button>
+          <Button>완료</Button>
         </Link>
       }
     />
