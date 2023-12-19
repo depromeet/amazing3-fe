@@ -4,4 +4,5 @@ export { Button } from './button';
 export { Input } from './input';
 export { Span } from './span';
 export { Star } from './star';
+export { Tag } from './tag';
 export { Typography } from './typography';
