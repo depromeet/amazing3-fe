@@ -1,11 +1,10 @@
 import Image from 'next/image';
 
 import bandiboodiImage from '@/assets/images/bandi-boodi.png';
+import { Typography } from '@/components';
 
-import { Typography } from '..';
-
-import type { MapCardLayoutProps } from './MapCardLayout';
-import { MapCardLayout } from './MapCardLayout';
+import type { MapCardLayoutProps } from '../MapCardLayout';
+import { MapCardLayout } from '../MapCardLayout';
 
 interface StartMapCardProps extends MapCardLayoutProps {}
 

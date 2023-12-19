@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { MapCard } from './MapCard';
 
 const meta: Meta<typeof MapCard> = {
-  title: 'components/atoms/mapCard/mapCard',
+  title: 'features/home/mapCard/mapCard',
   component: MapCard,
 };
 

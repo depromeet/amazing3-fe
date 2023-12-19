@@ -2,11 +2,12 @@
 
 import { SwiperSlide } from 'swiper/react';
 
-import { Avatar, ContentWrapper, MapCardPositioner } from '@/components';
-import { partitionArrayWithSmallerFirstGroup } from '@/components/molecules/mapCardPositioner/MapCardPositioner.utils';
+import { Avatar, ContentWrapper } from '@/components';
 
 import { GOAL_IN_MAP } from '../../constants';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
+import { MapCardPositioner } from '../mapCardPositioner';
+import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
 import { MapSwiper } from '../mapSwiper';
 import { ShareButton } from '../shareButton';
 

@@ -1,10 +1,11 @@
 import TypeARoadSVG from '@/assets/icons/home/type-A-road.svg';
 import TypeBRoadSVG from '@/assets/icons/home/type-B-road.svg';
 import TypeEdgeRoadSVG from '@/assets/icons/home/type-edge-road.svg';
-import { EmptyMapCard, MapCard, StartMapCard } from '@/components';
-import type { MapCardProps } from '@/components/atoms/mapCard';
 import { GOAL_IN_MAP } from '@/features/home/constants';
 import type { MapCardGoalProps } from '@/features/home/types';
+
+import type { MapCardProps } from '../MapCardCollections';
+import { EmptyMapCard, MapCard, StartMapCard } from '../MapCardCollections';
 
 import { calculateNeededElementsCount, getTypeAndTotalToSVGPosition } from './MapCardPositioner.utils';
 

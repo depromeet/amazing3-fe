@@ -1,10 +1,9 @@
 import Image from 'next/image';
 
 import bandiboodiGray from '@/assets/images/bandi-boodi-gray.png';
+import { Typography } from '@/components';
 
-import { Typography } from '../typography';
-
-import { MapCardLayout, type MapCardLayoutProps } from './MapCardLayout';
+import { MapCardLayout, type MapCardLayoutProps } from '../MapCardLayout';
 
 interface EmptyMapCardProps extends MapCardLayoutProps {
   alternativeTextIndex: 0 | 1 | 2 | 3;
