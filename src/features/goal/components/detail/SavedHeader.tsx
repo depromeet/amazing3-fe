@@ -5,7 +5,6 @@ import BackIcon from '@/assets/icons/goal/back-icon.svg';
 import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 import { Typography } from '@/components';
 
-/** 아이콘 2개 좌우로 하나씩 배치 */
 export const SavedHeader = () => {
   return (
     <>

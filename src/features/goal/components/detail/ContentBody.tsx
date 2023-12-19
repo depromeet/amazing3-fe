@@ -12,7 +12,7 @@ export const ContentBody = () => {
     <div className="flex flex-col gap-4xs">
       <Typography type="heading1">{title || '적금 1만원 모으기'}</Typography>
       <Typography type="title3" className="text-gray-40">
-        <Span type="blue55">{date || '2024.08'}</Span>까지 이률 거에요 | <Span type="blue55">{tag || '자산'}</Span>
+        <Span type="blue55">{date || '2024.08'}</Span>까지 이룰 거에요 | <Span type="blue55">{tag || '자산'}</Span>
       </Typography>
       <Typography type="body3" className="text-gray-40">
         {more || '천만원을 시작으로 시드머니 굴리기 가보자고'}
