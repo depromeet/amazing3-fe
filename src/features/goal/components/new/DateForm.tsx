@@ -4,13 +4,13 @@ import { useController, useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 
 import { Button, Span, Typography } from '@/components';
+import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
 import type { GoalFormValues } from '@/features/goal/types';
 
 import { DateInput } from './DateInput';
 import FormLayout from './FormLayout';
 
 export const DateForm = () => {
-  const maxLength = 7;
   const { register, control } = useFormContext<GoalFormValues>();
   const { field } = useController({ name: 'date', control });
   const { onChange, value } = field;
@@ -25,12 +25,12 @@ export const DateForm = () => {
       }
       body={
         <div {...register('date')} className="pt-sm">
-          <DateInput maxLength={maxLength} onChange={onChange} />
+          <DateInput maxLength={MAX_DATE_LENGTH_UNTIL_MONTH} onChange={onChange} />
         </div>
       }
       footer={
         <Link href="/goal/new/tag">
-          <Button disabled={value ? value.length !== maxLength : true}>다음</Button>
+          <Button disabled={value ? value.length !== MAX_DATE_LENGTH_UNTIL_MONTH : true}>다음</Button>
         </Link>
       }
     />

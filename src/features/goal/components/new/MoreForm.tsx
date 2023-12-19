@@ -4,6 +4,7 @@ import { useController, useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 
 import { Button, Typography } from '@/components';
+import { MAX_TEXTAREA_LENGTH } from '@/constants';
 import type { GoalFormValues } from '@/features/goal/types';
 
 import FormLayout from './FormLayout';
@@ -28,7 +29,7 @@ export const MoreForm = () => {
           <TextInput
             type="multi"
             labelName="메모"
-            maxLength={300}
+            maxLength={MAX_TEXTAREA_LENGTH}
             placeholder="ex) 꼬박꼬박 저금하자 아자자!"
             onChange={onChange}
           />
