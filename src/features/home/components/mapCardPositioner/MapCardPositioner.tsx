@@ -1,13 +1,12 @@
 import TypeARoadSVG from '@/assets/icons/home/type-A-road.svg';
 import TypeBRoadSVG from '@/assets/icons/home/type-B-road.svg';
 import TypeEdgeRoadSVG from '@/assets/icons/home/type-edge-road.svg';
-import { GOAL_IN_MAP } from '@/features/home/constants';
 import type { MapCardGoalProps } from '@/features/home/types';
 
 import type { MapCardProps } from '../MapCardCollections';
 import { EmptyMapCard, MapCard, StartMapCard } from '../MapCardCollections';
 
-import { calculateNeededElementsCount, getTypeAndTotalToSVGPosition } from './MapCardPositioner.utils';
+import { getEdgePosition, getEmptyGoalCount } from './MapCardPositioner.utils';
 
 const typeToPosition = {
   A: [
@@ -34,13 +33,13 @@ export interface MapCardPositionerProps {
 }
 
 export const MapCardPositioner = ({ goals, type, isFirst = false, isLast = false }: MapCardPositionerProps) => {
-  const neededEmptyGoal = calculateNeededElementsCount(goals, GOAL_IN_MAP, isFirst);
+  const neededEmptyGoal = getEmptyGoalCount(goals, isFirst);
 
   return (
     <div className="h-[540px]">
       <div className="absolute inset-x-0">
         {/* 다음 페이지가 있는지/없는지에 따라 edge SVG 배치 */}
-        {getTypeAndTotalToSVGPosition({ type, isLast }).map((position) => (
+        {getEdgePosition({ type, isLast }).map((position) => (
           <div key={position} className={`absolute ${position}`}>
             <TypeEdgeRoadSVG />
           </div>
@@ -56,7 +55,7 @@ export const MapCardPositioner = ({ goals, type, isFirst = false, isLast = false
 
         {/* 실제 목표들 */}
         {goals.map((goal, index) => (
-          <MapCard key={goal.stickerImage} goal={goal} position={typeToPosition[type][isFirst ? index + 1 : index]} />
+          <MapCard key={goal.id} goal={goal} position={typeToPosition[type][isFirst ? index + 1 : index]} />
         ))}
 
         {/* 페이지에서 빈 부분 채우기 */}
