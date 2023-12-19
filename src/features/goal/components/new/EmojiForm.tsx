@@ -21,9 +21,7 @@ export const EmojiForm = () => {
       body={<input {...register('emoji')} type="text" placeholder="이모지" />}
       footer={
         <Link href="/goal/new/subgoal">
-          <Button onClick={handleClickNextButton} intent="primary" size="xl">
-            다음
-          </Button>
+          <Button onClick={handleClickNextButton}>다음</Button>
         </Link>
       }
     />
