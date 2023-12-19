@@ -8,7 +8,7 @@ import type { GoalFormValues } from '@/features/goal/types';
 
 import FormLayout from './FormLayout';
 
-export const EmojiForm = () => {
+export const StickerForm = () => {
   const { register } = useFormContext<GoalFormValues>();
 
   const handleClickNextButton = () => {};
@@ -23,7 +23,7 @@ export const EmojiForm = () => {
           선택해줘.
         </Typography>
       }
-      body={<input {...register('emoji')} type="text" placeholder="이모지" />}
+      body={<input {...register('sticker')} type="text" placeholder="스티커" />}
       footer={
         <Link href="/goal/new/more">
           <Button onClick={handleClickNextButton}>다음</Button>
