@@ -1,3 +1,5 @@
+'use client';
+
 import StarSVG from '@/assets/icons/home/star.svg';
 
 interface StarProps {
