@@ -2,12 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
+import { Typography } from '@/components';
 import { blueDataURL } from '@/constants';
 import type { MapCardGoalProps } from '@/features/home/types';
 
-import { Typography } from '../typography';
-
-import { MapCardLayout, type MapCardLayoutProps } from './MapCardLayout';
+import { MapCardLayout, type MapCardLayoutProps } from '../MapCardLayout';
 
 export interface MapCardProps extends MapCardLayoutProps {
   goal: MapCardGoalProps;

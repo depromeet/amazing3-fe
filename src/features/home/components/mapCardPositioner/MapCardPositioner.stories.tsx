@@ -5,7 +5,7 @@ import type { MapCardGoalProps } from '@/features/home/types';
 import { MapCardPositioner } from './MapCardPositioner';
 
 const meta: Meta<typeof MapCardPositioner> = {
-  title: 'components/molecules/mapCardPositioner',
+  title: 'features/home/mapCardPositioner',
   component: MapCardPositioner,
   argTypes: {
     type: {

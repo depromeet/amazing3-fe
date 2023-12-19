@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import type { EmptyMapCard } from './EmptyMapCard';
+import type { EmptyMapCard } from '../EmptyMapCard/EmptyMapCard';
+
 import { StartMapCard } from './StartMapCard';
 
 const meta: Meta<typeof EmptyMapCard> = {
-  title: 'components/atoms/mapCard/startMapCard',
+  title: 'features/home/mapCard/startMapCard',
   component: StartMapCard,
 };
 

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { EmptyMapCard } from './EmptyMapCard';
 
 const meta: Meta<typeof EmptyMapCard> = {
-  title: 'components/atoms/mapCard/emptyMapCard',
+  title: 'features/home/mapCard/emptyMapCard',
   component: EmptyMapCard,
   argTypes: {
     alternativeTextIndex: {
