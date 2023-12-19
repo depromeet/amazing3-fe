@@ -1,3 +1,5 @@
+'use client';
+
 import { GoalForm } from '@/features/goal/components';
 
 const CreateGoalPage = () => {

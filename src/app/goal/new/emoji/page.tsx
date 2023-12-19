@@ -1,3 +1,5 @@
+'use client';
+
 import { EmojiForm } from '@/features/goal/components';
 
 const CreateEmojiPage = () => {

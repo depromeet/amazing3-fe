@@ -1,3 +1,5 @@
+'use client';
+
 import { SubgoalForm } from '@/features/goal/components';
 
 const CreateSubgoalPage = () => {
