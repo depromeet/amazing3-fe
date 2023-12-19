@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import GoogleIcon from '@/assets/icons/google-icon.svg';
-import { Button } from '@/components/atoms/button';
+import { Button } from '@/components';
 
 export const GoogleLoginButton = () => {
   /**
@@ -13,8 +13,8 @@ export const GoogleLoginButton = () => {
 
   return (
     <Link href={oauthRequestUrl}>
-      <Button className="pl-2xs pr-2xs" size="lg">
-        <GoogleIcon width={24} />
+      <Button className="pl-2xs pr-2xs">
+        <GoogleIcon width={24} alt="google-logo" />
         Google 로그인
       </Button>
     </Link>
