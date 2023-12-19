@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+
 import Link from 'next/link';
 
 import GoogleIcon from '@/assets/icons/google-icon.svg';
@@ -14,7 +14,7 @@ export const GoogleLoginButton = () => {
   return (
     <Link href={oauthRequestUrl}>
       <Button className="pl-2xs pr-2xs" size="lg">
-        <Image src={GoogleIcon} width={24} alt="google-logo" />
+        <GoogleIcon width={24} />
         Google 로그인
       </Button>
     </Link>
