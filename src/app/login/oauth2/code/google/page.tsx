@@ -17,7 +17,7 @@ const GoogleLogin = () => {
 
   useEffect(() => {
     if (token) {
-      Cookies.set('accessToken', token, { secure: true, expires: 7 });
+      Cookies.set('accessToken', token, { secure: process.env.NODE_ENV !== 'development', expires: 7 });
 
       try {
         api.get('/my').then((response: AxiosResponse) => {
