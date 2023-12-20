@@ -15,6 +15,8 @@ export const MoreForm = () => {
   const { field } = useController({ name: 'content', control });
   const { onChange } = field;
 
+  // TODO: handleSubmit 기능 추가 필요
+
   return (
     <FormLayout
       header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
@@ -36,7 +38,7 @@ export const MoreForm = () => {
         </div>
       }
       footer={
-        <Link href="/goal/new/result">
+        <Link href="/goal/new/more">
           <Button>완료</Button>
         </Link>
       }

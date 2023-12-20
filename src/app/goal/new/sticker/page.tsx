@@ -1,3 +1,5 @@
+'use client';
+
 import { StickerForm } from '@/features/goal/components';
 
 const CreateStickerPage = () => {
