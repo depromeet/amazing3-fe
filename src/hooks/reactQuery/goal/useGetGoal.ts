@@ -6,15 +6,22 @@ type GoalRequestParams = {
   goalId: number;
 };
 
-type GoalResponse = Array<{
-  goals: Array<{
-    id: number;
-    deadline: string;
-    stickerUrl: string;
+type GoalResponse = {
+  title: string;
+  deadline: string;
+  stickerUrl: string;
+  tagInfo: {
+    tagId: number;
     tagContent: string;
-  }>;
-  goalsCount: number;
-}>;
+  };
+  tasks: [
+    {
+      taskId: number;
+      isTaskDone: true;
+      taskDescription: string;
+    },
+  ];
+};
 
 export const useGetGoal = ({ goalId }: GoalRequestParams) => {
   return useQuery<GoalResponse>({
