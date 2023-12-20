@@ -10,17 +10,17 @@ import { GoogleLoginButton } from '@/features/auth/components';
 
 const SplashPage = () => {
   return (
-    <div className="relative w-full h-[100vh] flex flex-col items-center bg-gradient1 overflow-hidden pt-[40px] ">
+    <div className="relative w-full h-[100vh] flex flex-col items-center bg-gradient1 overflow-hidden pt-[60px] 390:pt-[100px]">
       <div className="flex flex-col gap-2xs z-10">
         <Typography type="heading2" className="text-center bg-clip-text bg-gradient4 text-transparent">
           내가 직접 그리는 <br /> 나의 인생지도
         </Typography>
         <Image src={LogoImage} width={320} height={160} alt="logo" priority />
       </div>
-      <div className="absolute bottom-[-4%]">
+      <div className="absolute bottom-[5px] 390:bottom-0 390:w-[120%]">
         <Image src={SplashBandiboodi} width={520} alt="splash_bandiboodi" />
       </div>
-      <div className="absolute bottom-[10px] w-full flex flex-col gap-3xs px-xs">
+      <div className="absolute bottom-[10px] w-full flex flex-col gap-3xs px-xs pb-[25px]">
         <GoogleLoginButton />
         <Typography className="text-center text-gray-40" type="body3">
           회원가입 시{' '}
