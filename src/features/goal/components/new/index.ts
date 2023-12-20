@@ -1,6 +1,5 @@
 export { DateForm } from './DateForm';
-export { EmojiForm } from './EmojiForm';
 export { GoalForm } from './GoalForm';
 export { MoreForm } from './MoreForm';
-export { SubgoalForm } from './SubgoalForm';
+export { StickerForm } from './StickerForm';
 export { TagForm } from './TagForm';

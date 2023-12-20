@@ -1,22 +1,39 @@
 'use client';
 
-import { useFormContext } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import { useController, useFormContext } from 'react-hook-form';
+import Link from 'next/link';
 
+import { Button, Span, Typography } from '@/components';
+import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
 import type { GoalFormValues } from '@/features/goal/types';
 
-export const DateForm = () => {
-  const router = useRouter();
-  const { register } = useFormContext<GoalFormValues>();
+import { DateInput } from './DateInput';
+import FormLayout from './FormLayout';
 
-  const handleClickNextButton = () => {
-    router.push('/goal/new/tag');
-  };
+export const DateForm = () => {
+  const { register, getValues, control } = useFormContext<GoalFormValues>();
+  const { field } = useController({ name: 'date', control });
+  const { onChange, value } = field;
+  const { title } = getValues();
 
   return (
-    <>
-      <input {...register('date')} type="number" placeholder="나이" />
-      <button onClick={handleClickNextButton}>다음</button>
-    </>
+    <FormLayout
+      header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
+      comment={
+        <Typography type="title3" className="text-gray-50 font-insungit text-center">
+          {title} <br /> <Span type="blue50">언제</Span>까지 이루고 싶어?
+        </Typography>
+      }
+      body={
+        <div {...register('date')} className="pt-sm">
+          <DateInput maxLength={MAX_DATE_LENGTH_UNTIL_MONTH} onChange={onChange} />
+        </div>
+      }
+      footer={
+        <Link href="/goal/new/tag">
+          <Button disabled={value ? value.length !== MAX_DATE_LENGTH_UNTIL_MONTH : true}>다음</Button>
+        </Link>
+      }
+    />
   );
 };

@@ -17,7 +17,7 @@
 }
 
 @font-face {
-  font-family: InsungIt, Arial, sans-serif;
+  font-family: InsungIt;
   font-weight: 400;
   src: local('InsungIt Regular'), url('../assets/fonts/Insungit/insungit-Cutelively-jisu-Regular.ttf');
 }
