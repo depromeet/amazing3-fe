@@ -5,7 +5,7 @@ import type { MemberProps } from '@/features/member/types';
 
 export const useGetMemberData = () => {
   return useQuery<MemberProps>({
-    queryKey: ['memberInfo'],
+    queryKey: ['memberData'],
     queryFn: () => api.get<MemberProps>('/my'),
   });
 };
