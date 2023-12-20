@@ -22,6 +22,7 @@ const typographyVariants = cva('whitespace-pre-line', {
       subLabel2: 'font-semibold text-[14px] leading-[155%]',
       caption1: 'font-medium text-[12px] leading-[155%]',
       caption2: 'font-medium text-[8px] leading-[155%]',
+      header1: 'font-insungit font-medium text-14px leading-[145%] text-blue-50',
     },
   },
   defaultVariants: {

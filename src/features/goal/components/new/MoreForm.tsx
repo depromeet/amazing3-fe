@@ -10,13 +10,14 @@ export const MoreForm = () => {
   const { register } = useFormContext<GoalFormValues>();
 
   const handleClickNextButton = () => {
-    router.push('/goal/new/result');
+    // TODO: submit goals and save the response to the store.
+    router.push('/goal/detail/saved');
   };
 
   return (
     <>
       <textarea {...register('content')} placeholder="더 작성하고 싶은 내용" />
-      <button onClick={handleClickNextButton}>다음</button>
+      <button onClick={handleClickNextButton}>완료</button>
     </>
   );
 };

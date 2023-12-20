@@ -1,3 +1,5 @@
+'use client';
+
 import { DateForm } from '@/features/goal/components';
 
 const CreateDatePage = () => {
