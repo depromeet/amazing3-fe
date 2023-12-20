@@ -7,6 +7,7 @@ import { SwiperSlide } from 'swiper/react';
 import { Avatar, Button, ContentWrapper } from '@/components';
 
 import { GOAL_COUNT_PER_PAGE } from '../../constants';
+import { downloadImage } from '../../utils/downloadImage';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
 import { MapCardPositioner } from '../mapCardPositioner';
 import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
@@ -97,6 +98,10 @@ export const LifeMap = () => {
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(goals, GOAL_COUNT_PER_PAGE);
   const LAST_PAGE = Math.ceil(total / GOAL_COUNT_PER_PAGE);
 
+  const handleClickShareButton = () => {
+    downloadImage(downloadSectionRef);
+  };
+
   return (
     <div className="w-full">
       <span className="absolute right-[24px]">
@@ -133,7 +138,7 @@ export const LifeMap = () => {
         </div>
       </ContentWrapper>
       <div className="flex gap-5xs px-xs pt-5xs mt-[18px]">
-        <ShareButton />
+        <ShareButton onClick={handleClickShareButton} />
         <Button>
           <Link href="/goal/new/goal">목표 추가하기</Link>
         </Button>
