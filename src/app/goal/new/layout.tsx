@@ -21,7 +21,12 @@ const Layout = ({ children }: PropsWithChildren) => {
           alt="BandiBoodi Character"
           priority
         />
-        <Wave className="absolute top-[40%] w-full" />
+        <div className="absolute top-[40%] w-full h-[60%] overflow-hidden">
+          <Wave className="absolute w-full" />
+        </div>
+        {/* <div className="overflow-hidden top-[40%] relative">
+          <Wave className="absolute w-full h-full" />
+        </div> */}
         <div className="absolute top-0 left-0 w-full h-[calc(100vh-24px)]">{children}</div>
       </div>
     </CreateGoalFormProvider>

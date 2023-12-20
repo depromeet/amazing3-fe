@@ -43,7 +43,7 @@ export const GoalForm = () => {
             <Typography type="caption1" className="text-gray-40">
               목표 세우기, 너무 막연하다면?
             </Typography>
-            <div className="w-[180px]">
+            <div className="w-[200px]">
               <Button
                 className="py-3xs px-xs text-sm"
                 variant="blue"
