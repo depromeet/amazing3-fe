@@ -1,0 +1,1 @@
+export { useGetTags } from './useGetTags';
