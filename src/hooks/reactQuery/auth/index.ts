@@ -1,0 +1,1 @@
+export { useGetMemberData } from './useGetMemberData';

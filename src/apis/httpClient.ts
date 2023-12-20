@@ -8,6 +8,8 @@ import axios, {
 } from 'axios';
 import Cookies from 'js-cookie';
 
+const getResult = (response: AxiosResponse) => response.data.body;
+
 class HttpClient {
   private client: AxiosInstance;
 
@@ -18,23 +20,23 @@ class HttpClient {
   }
 
   get<T>(...args: Parameters<typeof this.client.get>) {
-    return this.client.get<T>(...args);
+    return this.client.get<T>(...args).then(getResult);
   }
 
   post<T>(...args: Parameters<typeof this.client.post>) {
-    return this.client.post<T>(...args);
+    return this.client.post<T>(...args).then(getResult);
   }
 
   put<T>(...args: Parameters<typeof this.client.put>) {
-    return this.client.put<T>(...args);
+    return this.client.put<T>(...args).then(getResult);
   }
 
   patch<T>(...args: Parameters<typeof this.client.patch>) {
-    return this.client.patch<T>(...args);
+    return this.client.patch<T>(...args).then(getResult);
   }
 
   delete<T>(...args: Parameters<typeof this.client.delete>) {
-    return this.client.delete<T>(...args);
+    return this.client.delete<T>(...args).then(getResult);
   }
 
   private setInterceptor() {
@@ -44,6 +46,7 @@ class HttpClient {
 
   private onRequestFulfilled(config: InternalAxiosRequestConfig) {
     const token = Cookies.get('accessToken');
+
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }

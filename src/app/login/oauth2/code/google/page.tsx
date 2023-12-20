@@ -2,33 +2,36 @@
 
 import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import type { AxiosResponse } from 'axios';
-import { useAtom } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
 import Cookies from 'js-cookie';
 
-import { api } from '@/apis';
+import { isLoginAtom } from '@/features/auth/atom';
 import { memberAtom } from '@/features/member/atoms';
+import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
 const GoogleLogin = () => {
-  const searchParams = useSearchParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const token = searchParams.get('token');
-  const [_, setMember] = useAtom(memberAtom);
+
+  const setMemberData = useSetAtom(memberAtom);
+  const [isLogin, setIsLogin] = useAtom(isLoginAtom);
+
+  const { data: memberData } = useGetMemberData();
 
   useEffect(() => {
     if (token) {
       Cookies.set('accessToken', token, { secure: process.env.NODE_ENV !== 'development', expires: 7 });
-
-      try {
-        api.get('/my').then((response: AxiosResponse) => {
-          setMember(response.data);
-          router.push(response.data.username ? '/home' : '/member/new/nickname');
-        });
-      } catch (error) {
-        console.error(error);
-      }
     }
-  }, [router, setMember, token]);
+    setIsLogin(true);
+  }, [token]);
+
+  useEffect(() => {
+    setMemberData({ ...memberData });
+    if (isLogin) {
+      router.push(memberData?.username ? '/home' : '/member/new/nickname');
+    }
+  }, [memberData]);
 
   return <></>;
 };
