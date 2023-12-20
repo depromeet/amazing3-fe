@@ -18,7 +18,7 @@ const SplashPage = () => {
         <Image src={LogoImage} width={320} height={160} alt="logo" priority />
       </div>
       <div className="absolute bottom-[5px] 390:bottom-0 390:w-[120%]">
-        <Image src={SplashBandiboodi} width={520} alt="splash_bandiboodi" />
+        <Image src={SplashBandiboodi} width={520} alt="splash_bandiboodi" priority />
       </div>
       <div className="absolute bottom-[10px] w-full flex flex-col gap-3xs px-xs pb-[25px]">
         <GoogleLoginButton />
