@@ -1,5 +1,6 @@
 'use client';
-import React, { useEffect } from 'react';
+
+import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { AxiosResponse } from 'axios';
 import { useAtom } from 'jotai';
@@ -15,19 +16,13 @@ const GoogleLogin = () => {
   const [_, setMember] = useAtom(memberAtom);
 
   useEffect(() => {
-    console.log('token', token);
     if (token) {
-      Cookies.set('accessToken', token, { expires: 7 });
+      Cookies.set('accessToken', token, { secure: true, expires: 7 });
 
       try {
         api.get('/my').then((response: AxiosResponse) => {
-          if (!response.data.username) {
-            setMember(response.data);
-            router.push('/member/new/nickname');
-          } else {
-            setMember(response.data);
-            router.push('/home');
-          }
+          setMember(response.data);
+          router.push(response.data.username ? '/home' : '/member/new/nickname');
         });
       } catch (error) {
         console.error(error);

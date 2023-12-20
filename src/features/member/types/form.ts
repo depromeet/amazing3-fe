@@ -3,7 +3,7 @@ export interface NewMemberFormValues {
   birthday: string;
 }
 
-export interface Member {
+export interface MemberProps {
   id: number;
   email: string;
   username: string;

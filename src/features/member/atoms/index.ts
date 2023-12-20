@@ -1,6 +1,6 @@
 import { atom } from 'jotai';
 
-import type { Member } from '../types';
+import type { MemberProps } from '../types';
 
 export const idAtom = atom<number>(0);
 export const emailAtom = atom<string>('');
@@ -16,7 +16,7 @@ export const memberAtom = atom(
     nickname: get(nicknameAtom),
     birth: get(birthAtom),
   }),
-  (_, set, update: Member) => {
+  (_, set, update: MemberProps) => {
     set(idAtom, update.id);
     set(emailAtom, update.email);
     set(usernameAtom, update.username);
