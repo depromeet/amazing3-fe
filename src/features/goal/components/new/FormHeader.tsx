@@ -12,6 +12,7 @@ interface FormHeaderProps {
 
 const FormHeader = ({ formNumber }: FormHeaderProps) => {
   const totalPages = Object.keys(NEW_GOAL_FORM_ORDERS).length;
+  const currentProgress = (formNumber / totalPages) * 100;
   const router = useRouter();
   const handleClickBackButton = () => {
     router.back();
@@ -24,9 +25,7 @@ const FormHeader = ({ formNumber }: FormHeaderProps) => {
       </button>
       <div className="w-[30%]">
         <div className="relative w-[100%] h-[6px] rounded-lg bg-white">
-          <div
-            className={`absolute top-0 left-0 w-[${(formNumber / totalPages) * 100}%] h-[6px] rounded-lg bg-blue-30`}
-          />
+          <div className={`absolute top-0 left-0 w-[${currentProgress}%] h-[6px] rounded-lg bg-blue-30 z-[1]`} />
         </div>
       </div>
       <Link href={{ pathname: '/home' }}>
