@@ -44,7 +44,6 @@ class HttpClient {
 
   private onRequestFulfilled(config: InternalAxiosRequestConfig) {
     const token = Cookies.get('accessToken');
-    console.log('token in httpClient', token);
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }
