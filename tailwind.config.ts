@@ -24,7 +24,11 @@ const config: Config = {
         sans: ['Pretendard', 'Arial', 'sans-serif'],
       },
     },
+    screens: {
+      390: { max: '390px' },
+    },
   },
+
   plugins: [],
 };
 export default config;
