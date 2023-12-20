@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
 import { SwiperSlide } from 'swiper/react';
 
@@ -91,6 +92,8 @@ const goals = [
 const total = goals.length;
 
 export const LifeMap = () => {
+  const downloadSectionRef = useRef<HTMLElement>(null);
+
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(goals, GOAL_COUNT_PER_PAGE);
   const LAST_PAGE = Math.ceil(total / GOAL_COUNT_PER_PAGE);
 
@@ -111,6 +114,7 @@ export const LifeMap = () => {
         }
         description={makeHomeDescription(goals.length)}
         sectionStyles="px-xs"
+        ref={downloadSectionRef}
       >
         <div className="h-[520px]">
           <div className="absolute inset-x-0">
