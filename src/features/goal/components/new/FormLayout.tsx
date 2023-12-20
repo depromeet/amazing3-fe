@@ -9,12 +9,10 @@ interface FormLayoutProps {
 
 const FormLayout = ({ header, comment, body, footer }: PropsWithChildren<FormLayoutProps>) => {
   return (
-    <div className="px-xs h-full flex flex-col">
+    <div className="pt-5xs px-xs h-full flex flex-col">
       <div className="h-1/2 flex flex-col">
-        <div className="h-[40%] flex flex-col justify-evenly">
-          {header}
-          {comment}
-        </div>
+        {header}
+        <div className="h-[40%] flex flex-col justify-evenly">{comment}</div>
       </div>
       <div className="h-1/2 flex flex-col">{body}</div>
       {footer}

@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { Button, Span, Typography } from '@/components';
 import type { GoalFormValues } from '@/features/goal/types';
 
+import { NEW_GOAL_FORM_ORDERS } from '../../constants';
+
+import FormHeader from './FormHeader';
 import FormLayout from './FormLayout';
 
 const MOCK_TAGS = [
@@ -22,7 +25,7 @@ export const TagForm = () => {
 
   return (
     <FormLayout
-      header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
+      header={<FormHeader formNumber={NEW_GOAL_FORM_ORDERS.tag} />}
       comment={
         <Typography type="title3" className="text-gray-50 font-insungit text-center">
           목표와 관련된 <Span type="blue50">태그</Span> 한 가지를

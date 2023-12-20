@@ -7,6 +7,9 @@ import { useOverlay } from '@toss/use-overlay';
 import { Button, Span, Typography } from '@/components/atoms';
 import type { GoalFormValues } from '@/features/goal/types';
 
+import { NEW_GOAL_FORM_ORDERS } from '../../constants';
+
+import FormHeader from './FormHeader';
 import FormLayout from './FormLayout';
 import GoalGuideBottomSheet from './GoalGuideBottomSheet';
 import { TextInput } from './TextInput';
@@ -19,7 +22,7 @@ export const GoalForm = () => {
 
   return (
     <FormLayout
-      header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
+      header={<FormHeader formNumber={NEW_GOAL_FORM_ORDERS.goal} />}
       comment={
         <Typography type="title3" className="text-gray-50 font-insungit text-center">
           꼭 이루고 싶은
