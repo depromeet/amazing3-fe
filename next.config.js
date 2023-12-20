@@ -24,6 +24,16 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: `${process.env.NEXT_PUBLIC_REMOTE_HOST}`,
+        port: '',
+        pathname: '/images/**',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
