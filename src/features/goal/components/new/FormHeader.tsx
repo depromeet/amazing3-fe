@@ -4,19 +4,21 @@ import { useRouter } from 'next/navigation';
 import BackIcon from '@/assets/icons/goal/back-icon.svg';
 import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 
-import { NEW_GOAL_FORM_ORDERS } from '../../constants';
+import { NEW_GOAL_FORM_ORDERS_LENGTH } from '../../constants';
 
 interface FormHeaderProps {
   formNumber: number;
 }
 
 const FormHeader = ({ formNumber }: FormHeaderProps) => {
-  const totalPages = Object.keys(NEW_GOAL_FORM_ORDERS).length;
+  const totalPages = NEW_GOAL_FORM_ORDERS_LENGTH;
   const currentProgress = (formNumber / totalPages) * 100;
   const router = useRouter();
   const handleClickBackButton = () => {
     router.back();
   };
+
+  console.log(currentProgress);
 
   return (
     <div className="flex justify-between items-center">
