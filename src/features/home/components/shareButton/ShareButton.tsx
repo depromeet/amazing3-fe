@@ -6,7 +6,7 @@ import ShareIcon from '@/assets/icons/share.svg';
  */
 export const ShareButton = () => {
   return (
-    <button className="w-[60px] h-[60px] flex justify-center items-center bg-blue-10 rounded-lg">
+    <button className="w-[60px] h-[60px] p-2xs flex justify-center items-center bg-blue-10 rounded-lg">
       <ShareIcon />
     </button>
   );

@@ -1,8 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { SwiperSlide } from 'swiper/react';
 
-import { Avatar, ContentWrapper } from '@/components';
+import { Avatar, Button, ContentWrapper } from '@/components';
 
 import { GOAL_COUNT_PER_PAGE } from '../../constants';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
@@ -94,7 +95,7 @@ export const LifeMap = () => {
   const LAST_PAGE = Math.ceil(total / GOAL_COUNT_PER_PAGE);
 
   return (
-    <div>
+    <div className="w-full">
       <span className="absolute right-[24px]">
         <Avatar size={40} />
       </span>
@@ -109,6 +110,7 @@ export const LifeMap = () => {
           </>
         }
         description={makeHomeDescription(goals.length)}
+        sectionStyles="px-xs"
       >
         <div className="h-[520px]">
           <div className="absolute inset-x-0">
@@ -126,9 +128,11 @@ export const LifeMap = () => {
           </div>
         </div>
       </ContentWrapper>
-      <div className="pt-[10px] flex gap-5xs w-full px-xs">
+      <div className="flex gap-5xs px-xs pt-5xs mt-[18px]">
         <ShareButton />
-        {/* 목표 추가하기 버튼 추가 */}
+        <Button>
+          <Link href="/goal/new/goal">목표 추가하기</Link>
+        </Button>
       </div>
     </div>
   );
