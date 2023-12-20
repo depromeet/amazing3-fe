@@ -1,0 +1,11 @@
+.custom-pagination-wrapper {
+  @apply px-[12px] py-[8px] rounded-xl bg-blue-55 opacity-[0.8] !important;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-blue-55 w-[8px] h-[8px] !important;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-blue-55 w-[8px] h-[8px] !important;
+}

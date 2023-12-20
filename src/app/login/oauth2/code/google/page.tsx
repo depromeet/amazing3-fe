@@ -1,28 +1,36 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+
+import { useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { AxiosResponse } from 'axios';
+import { useAtom } from 'jotai';
+import Cookies from 'js-cookie';
 
 import { api } from '@/apis';
+import { memberAtom } from '@/features/member/atoms';
 
 const GoogleLogin = () => {
-  const [email, setEmail] = useState<string>('');
   const searchParams = useSearchParams();
+  const router = useRouter();
   const token = searchParams.get('token');
-  // TODO: query string으로 JWT Token을 받아서 쿠키에 저장하는 로직이 필요합니다.
+  const [_, setMember] = useAtom(memberAtom);
 
   useEffect(() => {
-    try {
-      api.get('/my').then((response: AxiosResponse) => {
-        setEmail(response.data.email);
-        console.log(response.data.email);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }, [token]);
+    if (token) {
+      Cookies.set('accessToken', token, { secure: process.env.NODE_ENV !== 'development', expires: 7 });
 
-  return <div>current user email: {email}</div>;
+      try {
+        api.get('/my').then((response: AxiosResponse) => {
+          setMember(response.data);
+          router.push(response.data.username ? '/home' : '/member/new/nickname');
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, [router, setMember, token]);
+
+  return <></>;
 };
 
 export default GoogleLogin;
