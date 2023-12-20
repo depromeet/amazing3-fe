@@ -22,7 +22,6 @@ export const useAuth = () => {
 
   useEffect(() => {
     setIsLogin(Boolean(accessToken));
-    setMemberData({ ...memberData });
   }, [accessToken]);
 
   const handleLogOut = () => {
