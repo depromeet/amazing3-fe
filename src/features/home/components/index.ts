@@ -1,0 +1,1 @@
+export { LifeMap } from './lifeMap';
