@@ -3,9 +3,12 @@
 import { type ChangeEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { Button, ContentWrapper, Input } from '@/components';
+import BirthIcon from '@/assets/icons/birth-icon.svg';
+import { Button, Input } from '@/components';
 
 import type { NewMemberFormValues } from '../../types';
+
+import FormLayout from './FormLayout';
 
 export const BirthdayInputForm = () => {
   const title = '반가워요, 닉네임님!\n생년월일을 입력해 주세요.';
@@ -26,12 +29,8 @@ export const BirthdayInputForm = () => {
    * TODO: API 연결 및 라우팅 추가
    */
 
-  /**
-   * TODO: 디자인에 아이콘 추가
-   */
-
   return (
-    <ContentWrapper title={title} description={description} sectionStyles="h-full flex flex-col">
+    <FormLayout icon={<BirthIcon width={40} height={40} />} title={title} description={description}>
       <div className="mt-xs flex flex-col grow w-full">
         <div className="h-full flex flex-col justify-between">
           <Input {...register('birthday')} type="date" onChange={handleChangeInput} />
@@ -40,6 +39,6 @@ export const BirthdayInputForm = () => {
           </Button>
         </div>
       </div>
-    </ContentWrapper>
+    </FormLayout>
   );
 };

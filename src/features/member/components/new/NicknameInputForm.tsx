@@ -4,10 +4,13 @@ import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 
-import { Button, ContentWrapper, LimitedLengthInput } from '@/components';
+import SmileIcon from '@/assets/icons/smile-iocn.svg';
+import { Button, LimitedLengthInput } from '@/components';
 import { useIsMounted } from '@/hooks/useIsMounted';
 
 import type { NewMemberFormValues } from '../../types';
+
+import FormLayout from './FormLayout';
 
 export const NicknameInputForm = () => {
   const title = '닉네임을 입력해 주세요.';
@@ -24,12 +27,8 @@ export const NicknameInputForm = () => {
     setValue('nickname', inputValue);
   };
 
-  /**
-   * TODO: 디자인에 아이콘 추가
-   */
-
   return (
-    <ContentWrapper title={title} description={description} sectionStyles="h-full flex flex-col">
+    <FormLayout icon={<SmileIcon width={40} height={40} />} title={title} description={description}>
       <div className="mt-xs flex flex-col grow w-full">
         <div className="h-full flex flex-col justify-between">
           <div {...register('nickname')}>
@@ -42,6 +41,6 @@ export const NicknameInputForm = () => {
           </Link>
         </div>
       </div>
-    </ContentWrapper>
+    </FormLayout>
   );
 };
