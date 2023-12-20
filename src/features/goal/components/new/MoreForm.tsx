@@ -7,6 +7,9 @@ import { Button, Typography } from '@/components';
 import { MAX_TEXTAREA_LENGTH } from '@/constants';
 import type { GoalFormValues } from '@/features/goal/types';
 
+import { NEW_GOAL_FORM_ORDERS } from '../../constants';
+
+import FormHeader from './FormHeader';
 import FormLayout from './FormLayout';
 import { TextInput } from './TextInput';
 
@@ -19,7 +22,7 @@ export const MoreForm = () => {
 
   return (
     <FormLayout
-      header={<Typography className="text-gray-50 font-insungit text-center">header</Typography>}
+      header={<FormHeader formNumber={NEW_GOAL_FORM_ORDERS.more} />}
       comment={
         <Typography type="title3" className="text-gray-50 font-insungit text-center">
           마지막으로 더 작성하고 싶은 것이 <br />
