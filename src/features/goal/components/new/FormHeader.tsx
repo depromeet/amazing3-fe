@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -17,8 +19,6 @@ const FormHeader = ({ formNumber }: FormHeaderProps) => {
   const handleClickBackButton = () => {
     router.back();
   };
-
-  console.log(currentProgress);
 
   return (
     <div className="flex justify-between items-center">
