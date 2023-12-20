@@ -1,9 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
-import type { MemberProps } from '@/features/member/types';
-
-type MemberRequest = Pick<MemberProps, 'nickname' | 'birth'>;
+import type { NewMemberFormValues as MemberRequest } from '@/features/member/types';
 
 export const useCreateMemberData = () => {
   return useMutation({
