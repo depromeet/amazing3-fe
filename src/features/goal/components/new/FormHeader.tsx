@@ -27,7 +27,10 @@ const FormHeader = ({ formNumber }: FormHeaderProps) => {
       </button>
       <div className="w-[30%]">
         <div className="relative w-[100%] h-[6px] rounded-lg bg-white">
-          <div className={`absolute top-0 left-0 w-[${currentProgress}%] h-[6px] rounded-lg bg-blue-30 z-[1]`} />
+          <div
+            className="absolute top-0 left-0 h-[6px] rounded-lg bg-blue-30 z-[1]"
+            style={{ width: `${currentProgress}%` }}
+          />
         </div>
       </div>
       <Link href={{ pathname: '/home' }}>
