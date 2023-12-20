@@ -10,7 +10,7 @@ export const Tag = ({ isFocus = false, children, ...props }: PropsWithChildren<T
   return (
     <label
       className={`flex justify-center items-center w-fit px-3xs py-4xs shadow-thumb rounded-xl cursor-pointer ${
-        isFocus && 'bg-blue-20'
+        isFocus ? 'bg-blue-20' : 'bg-white'
       }`}
       {...props}
     >
