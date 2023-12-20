@@ -1,9 +1,6 @@
 import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-/**
- * TODO: 디자인 시스템에 맞게 수정
- */
 const buttonVariants = cva(
   'inline-flex gap-[6px] items-center justify-center word-break:keep-all disabled:pointer-events-nonedisabled:pointer-events-none disabled:opacity-30 transition-colors duration-200 font-semibold',
   {
