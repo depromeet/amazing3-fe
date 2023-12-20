@@ -57,7 +57,7 @@ export const StickerForm = () => {
       }
       footer={
         <Link href="/goal/new/more" className="z-[1]">
-          <Button>다음</Button>
+          <Button disabled={!selectedSticker}>다음</Button>
         </Link>
       }
     />
