@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
 
-export const isLoggedInAtom = atom<boolean>(false);
-export const isTokenRequired = atom<boolean>(false);
-export const isRequesting = atom<boolean>(false);
+export const isLoginAtom = atom<boolean>(false);
+export const isTokenRequiredAtom = atom<boolean>(false);
+export const isRequestingAtom = atom<boolean>(false);

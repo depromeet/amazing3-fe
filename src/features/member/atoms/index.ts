@@ -2,11 +2,13 @@ import { atom } from 'jotai';
 
 import type { MemberProps } from '../types';
 
-export const idAtom = atom<number>(0);
-export const emailAtom = atom<string>('');
-export const usernameAtom = atom<string>('');
-export const nicknameAtom = atom<string>('');
-export const birthAtom = atom<string>('');
+type OptionalMemberProps = Partial<MemberProps>;
+
+export const idAtom = atom<OptionalMemberProps['id']>(undefined);
+export const emailAtom = atom<OptionalMemberProps['email']>(undefined);
+export const usernameAtom = atom<OptionalMemberProps['username']>(undefined);
+export const nicknameAtom = atom<OptionalMemberProps['nickname']>(undefined);
+export const birthAtom = atom<OptionalMemberProps['birth']>(undefined);
 
 export const memberAtom = atom(
   (get) => ({
@@ -16,7 +18,7 @@ export const memberAtom = atom(
     nickname: get(nicknameAtom),
     birth: get(birthAtom),
   }),
-  (_, set, update: MemberProps) => {
+  (_, set, update: OptionalMemberProps) => {
     set(idAtom, update.id);
     set(emailAtom, update.email);
     set(usernameAtom, update.username);

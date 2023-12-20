@@ -8,7 +8,7 @@ import axios, {
 } from 'axios';
 import Cookies from 'js-cookie';
 
-const getResult = (response: AxiosResponse) => response.data;
+const getResult = (response: AxiosResponse) => response.data.body;
 
 class HttpClient {
   private client: AxiosInstance;
