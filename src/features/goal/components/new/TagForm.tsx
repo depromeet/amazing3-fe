@@ -3,22 +3,20 @@
 import { useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 
-import { Button, Span, Typography } from '@/components';
+import { Button, Span, Tag, Typography } from '@/components';
 import type { GoalFormValues } from '@/features/goal/types';
+import { useGetTags } from '@/hooks/reactQuery/tag';
 
 import FormLayout from './FormLayout';
 
-const MOCK_TAGS = [
-  { id: 1, value: '학업' },
-  { id: 2, value: '취업' },
-  { id: 3, value: '직장' },
-  { id: 4, value: '다이어트' },
-];
-
 export const TagForm = () => {
-  const { register } = useFormContext<GoalFormValues>();
+  const { register, watch, setValue } = useFormContext<GoalFormValues>();
+  const selectedTag = watch('tag');
+  const { data: tagsData } = useGetTags();
 
-  const handleClickNextButton = () => {};
+  const handleClickTag = (id: number) => {
+    setValue('tag', id);
+  };
 
   return (
     <FormLayout
@@ -31,18 +29,17 @@ export const TagForm = () => {
         </Typography>
       }
       body={
-        <>
-          {MOCK_TAGS.map(({ id, value }) => (
-            <label key={id}>
-              <input {...register('tags')} type="checkbox" value={value} />
-              {value}
-            </label>
+        <div {...register('tag')} className="flex flex-wrap justify-center gap-5xs overflow-auto pt-lg">
+          {tagsData?.map(({ id, content }) => (
+            <Tag key={id} isFocus={selectedTag == id} onClick={() => handleClickTag(id)}>
+              {content}
+            </Tag>
           ))}
-        </>
+        </div>
       }
       footer={
         <Link href="/goal/new/sticker">
-          <Button onClick={handleClickNextButton}>다음</Button>
+          <Button disabled={!selectedTag}>다음</Button>
         </Link>
       }
     />
