@@ -63,9 +63,9 @@ export const ErrorPageLayout = ({ statusNum }: ErrorPageLayoutProps) => {
           </div>
         </div>
         <div className="w-full pt-5xs pb-xs px-xs flex gap-5xs">
-          <Button variant="tertiary">
-            <Link href={{ pathname: '/home' }}>홈화면</Link>
-          </Button>
+          <Link href={{ pathname: '/home' }} className="w-full">
+            <Button variant="tertiary">홈화면</Button>
+          </Link>
           <Button onClick={() => router.back()}>이전페이지</Button>
         </div>
       </section>
