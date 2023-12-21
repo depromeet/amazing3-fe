@@ -31,7 +31,7 @@ export const BirthdayInputForm = () => {
       description="beta에서는 생년월일을 수정할 수 없어요."
     >
       <div className="mt-xs flex flex-col grow w-full">
-        <div className="h-full flex flex-col justify-between">
+        <div className="w-full h-full flex flex-col justify-between">
           <Input {...register('birthday')} type="date" onChange={onChange} />
           <Button type="submit" disabled={isEmpty()}>
             완료
