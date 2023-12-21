@@ -13,11 +13,11 @@ import ErrorTextImage from '@/assets/images/error/error.png';
 import { Button, Typography } from '@/components';
 
 interface ErrorPageLayoutProps {
-  statusNum: 404 | 500;
+  statusCode: 404 | 500;
 }
 
 type ErrorValuesProps = {
-  [key in ErrorPageLayoutProps['statusNum']]: { title: string | ReactNode; statusImage: StaticImport };
+  [key in ErrorPageLayoutProps['statusCode']]: { title: string | ReactNode; statusImage: StaticImport };
 };
 
 const ERROR_VALUES: ErrorValuesProps = {
@@ -39,7 +39,7 @@ const ERROR_VALUES: ErrorValuesProps = {
   },
 };
 
-export const ErrorPageLayout = ({ statusNum }: ErrorPageLayoutProps) => {
+export const ErrorPageLayout = ({ statusCode }: ErrorPageLayoutProps) => {
   const router = useRouter();
 
   return (
@@ -48,15 +48,15 @@ export const ErrorPageLayout = ({ statusNum }: ErrorPageLayoutProps) => {
         <div className="px-[45px] flex h-full flex-col items-center justify-center">
           <div className="flex flex-col gap-[3vh] items-center">
             <Image
-              src={ERROR_VALUES[statusNum].statusImage}
+              src={ERROR_VALUES[statusCode].statusImage}
               width={270}
               height={130}
-              alt={`${statusNum}_error_image`}
+              alt={`${statusCode}_error_image`}
             />
             <Image src={ErrorTextImage} width={211} height={54} alt="error" />
           </div>
           <Typography type="body1" className="text-blue-30 text-center mt-[3vh]">
-            {ERROR_VALUES[statusNum].title}
+            {ERROR_VALUES[statusCode].title}
           </Typography>
           <div className="mt-[0.1vh]">
             <Image src={BandiboodiErrorImage} width={293} height={291} alt="bandiboodi_error" />
