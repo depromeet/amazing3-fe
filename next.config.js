@@ -21,6 +21,11 @@ const nextConfig = {
       {
         source: '/api/:path*',
         destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
+        // destination: `https://www.one-bailey.o-r.kr/api/:path*`,
+      },
+      {
+        source: '/login/oauth2/code/google',
+        destination: '/login/oauth2/code/google', // No redirection
       },
     ];
   },
