@@ -2,10 +2,13 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
+import { useAtom } from 'jotai';
 import { SwiperSlide } from 'swiper/react';
 
 import StarBg from '@/app/home/startBg';
 import { Avatar, Button, ContentWrapper } from '@/components';
+import { nicknameAtom } from '@/features/member/atoms';
+import { useGetGoals } from '@/hooks/reactQuery/goal';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
 
 import { GOAL_COUNT_PER_PAGE } from '../../constants';
@@ -15,90 +18,15 @@ import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCar
 import { MapSwiper } from '../mapSwiper';
 import { ShareButton } from '../shareButton';
 
-// mock
-const nickname = '삼삼조';
-const goals = [
-  {
-    id: 1,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 2,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 3,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 4,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 5,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 6,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 7,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 8,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 9,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 10,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 11,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-  {
-    id: 12,
-    stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
-    deadline: '2024.01',
-    tag: '학업',
-  },
-];
-const total = goals.length;
-
 export const LifeMap = () => {
+  const nickname = useAtom(nicknameAtom);
+  const { data: goalsData } = useGetGoals();
+
   const downloadSectionRef = useRef<HTMLElement>(null);
   const { isDownloading, onDownloadImage } = useDownloadImage(downloadSectionRef);
 
-  const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(goals, GOAL_COUNT_PER_PAGE);
-  const LAST_PAGE = Math.ceil(total / GOAL_COUNT_PER_PAGE);
+  const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
+  const LAST_PAGE = Math.ceil((goalsData?.goalsCount || 0) / GOAL_COUNT_PER_PAGE);
 
   return (
     <div className="w-full">
@@ -115,7 +43,7 @@ export const LifeMap = () => {
             앞날을 응원해요!
           </>
         }
-        description={makeHomeDescription(goals.length)}
+        description={makeHomeDescription(goalsData?.goalsCount || 0)}
         sectionStyles="px-xs"
         ref={downloadSectionRef}
       >
