@@ -29,42 +29,49 @@ export const LifeMap = () => {
   const LAST_PAGE = Math.ceil((goalsData?.goalsCount || 0) / GOAL_COUNT_PER_PAGE);
 
   return (
-    <div className="w-full">
-      <span className="absolute right-[24px]">
-        <Avatar size={40} />
-      </span>
-      <ContentWrapper
-        title={
-          <>
-            반짝반짝 빛날
-            <br />
-            {nickname}님의
-            <br />
-            앞날을 응원해요!
-          </>
-        }
-        description={makeHomeDescription(goalsData?.goalsCount || 0)}
-        sectionStyles="px-xs"
-        ref={downloadSectionRef}
-      >
-        <StarBg />
-        <div className="h-[520px]">
-          <div className="absolute inset-x-0">
-            <MapSwiper>
-              {participatedGoalsArray.map((goals, index) => (
-                <SwiperSlide key={goals[0].id}>
-                  {!(index % 2) ? (
-                    <MapCardPositioner type="A" goals={goals} isFirst={index === 0} isLast={LAST_PAGE === index + 1} />
-                  ) : (
-                    <MapCardPositioner type="B" goals={goals} isLast={LAST_PAGE === index + 1} />
-                  )}
-                </SwiperSlide>
-              ))}
-            </MapSwiper>
+    <div className="w-full h-[100vh] flex flex-col items-center justify-between pb-xs">
+      <div className="w-[390px] relative pt-xs">
+        <span className="absolute right-[24px]">
+          <Avatar size={40} />
+        </span>
+        <ContentWrapper
+          title={
+            <>
+              반짝반짝 빛날
+              <br />
+              {nickname}님의
+              <br />
+              앞날을 응원해요!
+            </>
+          }
+          description={makeHomeDescription(goalsData?.goalsCount || 0)}
+          sectionStyles="px-xs"
+          ref={downloadSectionRef}
+        >
+          <StarBg />
+          <div className="h-[520px]">
+            <div className="absolute inset-x-0">
+              <MapSwiper>
+                {participatedGoalsArray.map((goals, index) => (
+                  <SwiperSlide key={goals[0].id}>
+                    {!(index % 2) ? (
+                      <MapCardPositioner
+                        type="A"
+                        goals={goals}
+                        isFirst={index === 0}
+                        isLast={LAST_PAGE === index + 1}
+                      />
+                    ) : (
+                      <MapCardPositioner type="B" goals={goals} isLast={LAST_PAGE === index + 1} />
+                    )}
+                  </SwiperSlide>
+                ))}
+              </MapSwiper>
+            </div>
           </div>
-        </div>
-      </ContentWrapper>
-      <div className="flex gap-5xs px-xs pt-5xs mt-[18px]">
+        </ContentWrapper>
+      </div>
+      <div className="flex gap-5xs px-xs pt-5xs mt-[18px] w-full">
         <ShareButton isLoading={isDownloading} onClick={onDownloadImage} />
         <Button>
           <Link href="/goal/new/goal">목표 추가하기</Link>
