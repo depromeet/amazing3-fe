@@ -1,9 +1,12 @@
 'use client';
 
+import { useRef } from 'react';
 import Link from 'next/link';
 import { SwiperSlide } from 'swiper/react';
 
+import StarBg from '@/app/home/startBg';
 import { Avatar, Button, ContentWrapper } from '@/components';
+import { useDownloadImage } from '@/hooks/useDownloadImage';
 
 import { GOAL_COUNT_PER_PAGE } from '../../constants';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
@@ -91,6 +94,9 @@ const goals = [
 const total = goals.length;
 
 export const LifeMap = () => {
+  const downloadSectionRef = useRef<HTMLElement>(null);
+  const { isDownloading, onDownloadImage } = useDownloadImage(downloadSectionRef);
+
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(goals, GOAL_COUNT_PER_PAGE);
   const LAST_PAGE = Math.ceil(total / GOAL_COUNT_PER_PAGE);
 
@@ -111,7 +117,9 @@ export const LifeMap = () => {
         }
         description={makeHomeDescription(goals.length)}
         sectionStyles="px-xs"
+        ref={downloadSectionRef}
       >
+        <StarBg />
         <div className="h-[520px]">
           <div className="absolute inset-x-0">
             <MapSwiper>
@@ -129,7 +137,7 @@ export const LifeMap = () => {
         </div>
       </ContentWrapper>
       <div className="flex gap-5xs px-xs pt-5xs mt-[18px]">
-        <ShareButton />
+        <ShareButton isLoading={isDownloading} onClick={onDownloadImage} />
         <Button>
           <Link href="/goal/new/goal">목표 추가하기</Link>
         </Button>
