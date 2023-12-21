@@ -9,9 +9,9 @@ import type { NewMemberFormValues } from '../../types';
 
 import FormLayout from './FormLayout';
 
-export const BirthdayInputForm = () => {
+export const BirthInputForm = () => {
   const { register, getValues, control } = useFormContext<NewMemberFormValues>();
-  const { field } = useController({ name: 'birthday', control });
+  const { field } = useController({ name: 'birth', control });
   const { onChange, value } = field;
   const { nickname } = getValues();
 
@@ -32,7 +32,7 @@ export const BirthdayInputForm = () => {
     >
       <div className="mt-xs flex flex-col grow w-full">
         <div className="w-full h-full flex flex-col justify-between">
-          <Input {...register('birthday')} type="date" onChange={onChange} />
+          <Input {...register('birth')} type="date" onChange={onChange} />
           <Button type="submit" disabled={isEmpty()}>
             완료
           </Button>
