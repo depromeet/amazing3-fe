@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 
@@ -13,11 +14,12 @@ import FormHeader from './FormHeader';
 import FormLayout from './FormLayout';
 
 export const TagForm = () => {
-  const { register, watch, setValue } = useFormContext<GoalFormValues>();
-  const selectedTag = watch('tag');
+  const { register, setValue } = useFormContext<GoalFormValues>();
+  const [selectedTag, setSelectedTag] = useState<number | null>(null);
   const { data: tagsData } = useGetTags();
 
   const handleClickTag = (id: number) => {
+    setSelectedTag(id);
     setValue('tag', id);
   };
 
