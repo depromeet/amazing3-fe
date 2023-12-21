@@ -29,8 +29,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: `${process.env.NEXT_PUBLIC_REMOTE_HOST}`,
-        port: '',
         pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '/depromeet/amazing3-fe/assets/**',
       },
     ],
   },

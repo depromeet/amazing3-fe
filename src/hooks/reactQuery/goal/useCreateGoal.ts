@@ -5,7 +5,7 @@ import { api } from '@/apis';
 type GoalRequest = {
   title: string;
   yearOfDeadline: string;
-  monthOfDeadLine: string;
+  monthOfDeadline: string;
   stickerId: number;
   tagId: number;
   description: string;

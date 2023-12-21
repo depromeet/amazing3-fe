@@ -12,8 +12,7 @@ const CreateGoalFormProvider = ({ children }: PropsWithChildren) => {
   const methods = useForm<GoalFormValues>();
 
   const submit = (data: GoalFormValues) => {
-    // TODO: submit 동작 추가
-    console.log(data);
+    // TODO: 불필요한 submit이 호출되는 문제 해결 필요
   };
 
   return (
