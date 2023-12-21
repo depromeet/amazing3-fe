@@ -1,0 +1,1 @@
+export { ErrorPageLayout } from './errorPageLayout';
