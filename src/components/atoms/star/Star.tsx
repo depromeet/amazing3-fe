@@ -15,7 +15,7 @@ const palette = {
 
 export const Star = ({ position, size, color = 'white' }: StarProps) => {
   return (
-    <span className={`absolute inset-y-0 ${position.x} ${position.y}`}>
+    <span className={`absolute w-fit h-fit inset-y-0 ${position.x} ${position.y}`}>
       <StarSVG width={size} height={size} fill={palette[color]} />
     </span>
   );
