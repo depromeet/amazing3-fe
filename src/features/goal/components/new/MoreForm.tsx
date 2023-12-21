@@ -43,8 +43,7 @@ export const MoreForm = () => {
     if (date.length !== 7) {
       return;
     }
-    const yearOfDeadline = date.slice(0, 4);
-    const monthOfDeadline = date.slice(5, 7);
+    const [yearOfDeadline, monthOfDeadline] = date.split('.');
 
     mutate({
       title,
