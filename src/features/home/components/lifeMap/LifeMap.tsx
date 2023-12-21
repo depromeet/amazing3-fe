@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import Link from 'next/link';
 import { SwiperSlide } from 'swiper/react';
 
+import StarBg from '@/app/home/startBg';
 import { Avatar, Button, ContentWrapper } from '@/components';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
 
@@ -118,6 +119,7 @@ export const LifeMap = () => {
         sectionStyles="px-xs"
         ref={downloadSectionRef}
       >
+        <StarBg />
         <div className="h-[520px]">
           <div className="absolute inset-x-0">
             <MapSwiper>
