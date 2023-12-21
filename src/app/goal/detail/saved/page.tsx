@@ -1,12 +1,9 @@
-'use client';
-
 import { ContentBody, SavedFooterButton, SavedHeader, Sticker } from '@/features/goal/components';
-
-import CustomLayout from '../customLayout';
+import DetailLayout from '@/features/goal/components/detail/DetailLayout';
 
 const GoalSavedPage = () => {
   return (
-    <CustomLayout
+    <DetailLayout
       header={<SavedHeader />}
       sticker={<Sticker />}
       body={<ContentBody />}

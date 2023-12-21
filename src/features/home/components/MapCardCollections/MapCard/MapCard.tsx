@@ -16,7 +16,7 @@ export const MapCard = ({ goal, position }: MapCardProps) => {
   const { id, stickerImage, deadline, tag } = goal;
 
   return (
-    <Link href={{ pathname: `/goal/${id}` }}>
+    <Link href={{ pathname: `/goal/detail/${id}` }}>
       <MapCardLayout position={position}>
         <Image
           src={stickerImage}
