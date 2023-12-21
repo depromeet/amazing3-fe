@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { SwiperSlide } from 'swiper/react';
 
 import { Avatar, Button, ContentWrapper } from '@/components';
+import { useDownloadImage } from '@/hooks/useDownloadImage';
 
 import { GOAL_COUNT_PER_PAGE } from '../../constants';
-import { downloadImage } from '../../utils/downloadImage';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
 import { MapCardPositioner } from '../mapCardPositioner';
 import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
@@ -94,13 +94,10 @@ const total = goals.length;
 
 export const LifeMap = () => {
   const downloadSectionRef = useRef<HTMLElement>(null);
+  const { isDownloading, onDownloadImage } = useDownloadImage(downloadSectionRef);
 
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(goals, GOAL_COUNT_PER_PAGE);
   const LAST_PAGE = Math.ceil(total / GOAL_COUNT_PER_PAGE);
-
-  const handleClickShareButton = () => {
-    downloadImage(downloadSectionRef);
-  };
 
   return (
     <div className="w-full">
@@ -138,7 +135,7 @@ export const LifeMap = () => {
         </div>
       </ContentWrapper>
       <div className="flex gap-5xs px-xs pt-5xs mt-[18px]">
-        <ShareButton onClick={handleClickShareButton} />
+        <ShareButton isLoading={isDownloading} onClick={onDownloadImage} />
         <Button>
           <Link href="/goal/new/goal">목표 추가하기</Link>
         </Button>
