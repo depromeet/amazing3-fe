@@ -1,11 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useSetAtom } from 'jotai';
 
 import { Button, Typography } from '@/components';
 import { MAX_TEXTAREA_LENGTH } from '@/constants';
+import { goalAtom } from '@/features/goal/components/detail/atom';
 import type { GoalFormValues } from '@/features/goal/types';
+import { useCreateGoal } from '@/hooks/reactQuery/goal';
 
 import { NEW_GOAL_FORM_ORDERS } from '../../constants';
 
@@ -14,11 +18,51 @@ import FormLayout from './FormLayout';
 import { TextInput } from './TextInput';
 
 export const MoreForm = () => {
-  const { register, control } = useFormContext<GoalFormValues>();
+  const { register, getValues, control } = useFormContext<GoalFormValues>();
+  const router = useRouter();
   const { field } = useController({ name: 'content', control });
+  const setGoalData = useSetAtom(goalAtom);
   const { onChange } = field;
+  const { mutate, isError, data } = useCreateGoal();
 
-  // TODO: handleSubmit 기능 추가 필요
+  useEffect(() => {
+    if (isError) {
+      window.alert('목표 생성에 실패했습니다.');
+    }
+    if (data) {
+      setGoalData(data);
+      router.push('/goal/detail/saved');
+    }
+  }, [isError, data, router, setGoalData]);
+
+  const handleSubmit = () => {
+    const { title, content, date, tag, sticker } = getValues();
+    if (!title || !tag || !sticker) {
+      return;
+    }
+    if (date.length !== 7) {
+      return;
+    }
+    const yearOfDeadline = date.slice(0, 4);
+    const monthOfDeadline = date.slice(5, 7);
+
+    mutate({
+      title,
+      yearOfDeadline,
+      monthOfDeadline,
+      stickerId: sticker,
+      tagId: tag,
+      description: content,
+    });
+
+    if (isError) {
+      window.alert('목표 생성에 실패했습니다.');
+    }
+    if (data) {
+      setGoalData(data);
+      router.push('/goal/detail/saved');
+    }
+  };
 
   return (
     <FormLayout
@@ -40,11 +84,7 @@ export const MoreForm = () => {
           />
         </div>
       }
-      footer={
-        <Link href="/goal/new/more">
-          <Button>완료</Button>
-        </Link>
-      }
+      footer={<Button onClick={handleSubmit}>완료</Button>}
     />
   );
 };
