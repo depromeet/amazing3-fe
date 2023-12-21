@@ -30,6 +30,7 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
           paddingTop: '24px',
           paddingBottom: '24px',
         },
+        height: 700,
       });
 
       // FIXME: 다운로드 되는 이미지 파일 이름 수정 필요
