@@ -21,11 +21,6 @@ const nextConfig = {
       {
         source: '/api/:path*',
         destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
-        // destination: `https://www.one-bailey.o-r.kr/api/:path*`,
-      },
-      {
-        source: '/login/oauth2/code/google',
-        destination: '/login/oauth2/code/google', // No redirection
       },
     ];
   },
@@ -34,8 +29,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: `${process.env.NEXT_PUBLIC_REMOTE_HOST}`,
-        port: '',
         pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '/depromeet/amazing3-fe/assets/**',
       },
     ],
   },
