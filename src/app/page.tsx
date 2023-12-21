@@ -5,19 +5,25 @@ import Link from 'next/link';
 
 import SplashBandiboodi from '@/assets/images/bandiboodi-splash.png';
 import LogoImage from '@/assets/images/logo.png';
+import PurpleBlurImage from '@/assets/images/purple-blur.png';
 import { Typography } from '@/components';
 import { GoogleLoginButton } from '@/features/auth/components';
 
 const SplashPage = () => {
   return (
-    <div className="relative w-full h-[100vh] flex flex-col items-center bg-gradient1 overflow-hidden pt-[60px] 390:pt-[100px]">
-      <div className="flex flex-col gap-2xs z-10">
-        <Typography type="heading2" className="text-center bg-clip-text bg-gradient4 text-transparent">
-          내가 직접 그리는 <br /> 나의 인생지도
-        </Typography>
-        <Image src={LogoImage} width={320} height={160} alt="logo" priority />
+    <div className="relative w-full h-[100vh] flex flex-col items-center overflow-hidden">
+      <div className="absolute top-0 right-0">
+        <Image src={PurpleBlurImage} sizes="100vw" alt="blur_image" />
       </div>
-      <div className="absolute bottom-[5px] 390:bottom-0 390:w-[120%]">
+      <div className="w-full h-[60vh] bg-gradient1 flex flex-col items-center">
+        <div className="h-[46vh] flex flex-col gap-2xs z-10 justify-center">
+          <Typography type="heading2" className="text-center bg-clip-text bg-gradient4 text-transparent">
+            내가 직접 그리는 <br /> 나의 인생지도
+          </Typography>
+          <Image src={LogoImage} width={320} height={160} alt="logo" priority />
+        </div>
+      </div>
+      <div className="absolute bottom-[5px] 390:bottom-0 w-[130%] 375:w-[110%] flex justify-center">
         <Image src={SplashBandiboodi} width={520} alt="splash_bandiboodi" priority />
       </div>
       <div className="absolute bottom-[10px] w-full flex flex-col gap-3xs px-xs pb-[25px]">

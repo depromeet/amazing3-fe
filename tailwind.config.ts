@@ -25,6 +25,7 @@ const config: Config = {
       },
     },
     screens: {
+      375: { max: '375px' },
       390: { max: '390px' },
     },
   },
