@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import SplashBandiboodi from '@/assets/images/bandiboodi-splash.png';
 import LogoImage from '@/assets/images/logo.png';
-import PurpleBlurImage from '@/assets/images/purple_blur.png';
+import PurpleBlurImage from '@/assets/images/purple-blur.png';
 import { Typography } from '@/components';
 import { GoogleLoginButton } from '@/features/auth/components';
 
