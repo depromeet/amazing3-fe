@@ -1,3 +1,5 @@
+'use client';
+
 import { ContentBody, SavedFooterButton, SavedHeader, Sticker } from '@/features/goal/components';
 import DetailLayout from '@/features/goal/components/detail/DetailLayout';
 
