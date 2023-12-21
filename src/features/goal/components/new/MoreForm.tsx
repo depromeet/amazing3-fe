@@ -53,14 +53,6 @@ export const MoreForm = () => {
       tagId: tag,
       description: content,
     });
-
-    if (isError) {
-      window.alert('목표 생성에 실패했습니다.');
-    }
-    if (data) {
-      setGoalData(data);
-      router.push('/goal/detail/saved');
-    }
   };
 
   return (
