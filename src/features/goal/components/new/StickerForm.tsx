@@ -41,13 +41,9 @@ export const StickerForm = () => {
               <div {...register('sticker')} className="grid grid-cols-3 gap-3xs">
                 {stickerData?.map(({ id, name, url }) => (
                   <button key={id} className="flex flex-col items-center" onClick={() => handleClickSticker(id)}>
-                    <Image
-                      src={url}
-                      alt={name}
-                      width={150}
-                      height={150}
-                      className={`rounded-lg ${selectedSticker === id && 'bg-blue-10'}`}
-                    />
+                    <div className={`p-5xs rounded-lg ${selectedSticker === id && 'bg-blue-10'}`}>
+                      <Image src={url} alt={name} width={150} height={150} />
+                    </div>
                   </button>
                 ))}
               </div>
