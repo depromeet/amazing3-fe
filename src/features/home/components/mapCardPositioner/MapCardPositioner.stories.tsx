@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import type { MapCardGoalProps } from '@/features/home/types';
+import type { GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
 
 import { MapCardPositioner } from './MapCardPositioner';
 
@@ -31,11 +31,11 @@ export default meta;
 
 type Story = StoryObj<typeof MapCardPositioner>;
 
-const mockGoals: MapCardGoalProps[] = Array(5).fill({
+const mockGoals: GoalProps[] = Array(5).fill({
   id: 1,
-  stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/488a9652-ca22-4a81-93bc-c49df0d5458d',
+  stickerUrl: 'https://github.com/depromeet/amazing3-fe/assets/112946860/b266a620-a349-4f70-8236-be1612028a97',
   deadline: '2024.01',
-  tag: '학업',
+  tagContent: '학업',
 });
 
 export const TypeA: Story = {
