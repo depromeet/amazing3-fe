@@ -2,12 +2,17 @@ import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
-type GoalRequestParams = {
+type GoalRequest = {
   goalId: number;
 };
 
-export const useDeleteGoal = ({ goalId }: GoalRequestParams) => {
+export const useDeleteGoal = () => {
   return useMutation({
-    mutationFn: () => api.delete(`/goal/${goalId}`),
+    mutationFn: (data: GoalRequest) =>
+      api.delete('/goal', {
+        data: {
+          goalId: data.goalId,
+        },
+      }),
   });
 };

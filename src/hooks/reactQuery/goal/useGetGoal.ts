@@ -10,6 +10,7 @@ type GoalResponse = {
   title: string;
   deadline: string;
   stickerUrl: string;
+  description: string;
   tagInfo: {
     tagId: number;
     tagContent: string;

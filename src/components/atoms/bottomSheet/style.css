@@ -12,3 +12,7 @@
   text-align: left;
   padding-bottom: 0;
 }
+
+[data-rsbs-footer] {
+  box-shadow: none;
+}
