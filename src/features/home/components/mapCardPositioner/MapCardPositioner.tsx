@@ -35,6 +35,8 @@ export interface MapCardPositionerProps {
 export const MapCardPositioner = ({ goals, type, isFirst = false, isLast = false }: MapCardPositionerProps) => {
   const neededEmptyGoal = getEmptyGoalCount(goals, isFirst);
 
+  console.log({ type, isFirst, isLast });
+
   return (
     <div className="h-[540px]">
       <div className="absolute inset-x-0">
@@ -51,7 +53,7 @@ export const MapCardPositioner = ({ goals, type, isFirst = false, isLast = false
         </div>
 
         {/* 맨 처음 페이지의 경우 START & 반디부디 보여주기 */}
-        <StartMapCard position={typeToPosition[type][0]} />
+        {type === 'A' && isFirst && <StartMapCard position={typeToPosition[type][0]} />}
 
         {/* 실제 목표들 */}
         {goals.map((goal, index) => (
@@ -63,7 +65,7 @@ export const MapCardPositioner = ({ goals, type, isFirst = false, isLast = false
           <EmptyMapCard
             key={index}
             alternativeTextIndex={(index % 4) as 0 | 1 | 2 | 3}
-            position={typeToPosition[type][goals.length + index]}
+            position={typeToPosition[type][isFirst ? goals.length + index + 1 : goals.length + index]}
           />
         ))}
       </div>
