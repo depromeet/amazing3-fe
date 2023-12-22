@@ -70,7 +70,7 @@ export const LifeMap = () => {
                         isLast={index + 1 === LAST_PAGE}
                       />
                     ) : (
-                      <MapCardPositioner type="B" goals={goals} isLast={index + 1 === LAST_PAGE} />
+                      <MapCardPositioner type="B" goals={goals} isLast={index === LAST_PAGE} />
                     )}
                   </SwiperSlide>
                 ))}

@@ -35,8 +35,6 @@ export interface MapCardPositionerProps {
 export const MapCardPositioner = ({ goals, type, isFirst = false, isLast = false }: MapCardPositionerProps) => {
   const neededEmptyGoal = getEmptyGoalCount(goals, isFirst);
 
-  console.log({ type, isFirst, isLast });
-
   return (
     <div className="h-[540px]">
       <div className="absolute inset-x-0">
