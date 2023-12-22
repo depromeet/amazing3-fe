@@ -56,7 +56,7 @@ export const getEdgePosition = ({ type, isFirst = false, isLast = false }: getTy
 export const partitionArrayWithSmallerFirstGroup = <T>(splitNum: number, array?: T[]): T[][] => {
   const result: T[][] = [];
 
-  if (!array) return [];
+  if (!(array && array.length)) return [];
 
   // 첫 번째 분할 작업에서는 splitNum에서 1을 뺀 값을 사용
   result.push(array.slice(0, splitNum - 1));
