@@ -22,9 +22,6 @@ export const DeleteGoalButtomSheet = ({ open, onClose }: DeleteGoalButtomSheetPr
   const router = useRouter();
 
   useEffect(() => {
-    if (isError) {
-      window.alert('목표 삭제에 실패했습니다.');
-    }
     if (isSuccess) {
       onClose();
       router.back();

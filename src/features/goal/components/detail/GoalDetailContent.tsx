@@ -28,11 +28,6 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
         description,
       });
     }
-
-    if (isError) {
-      window.alert('목표 조회에 실패했습니다.');
-      router.push('/home');
-    }
   }, [goal, id, isError, router, setGoalData]);
 
   return (

@@ -26,9 +26,6 @@ export const MoreForm = () => {
   const { mutate, isError, data } = useCreateGoal();
 
   useEffect(() => {
-    if (isError) {
-      window.alert('목표 생성에 실패했습니다.');
-    }
     if (data) {
       setGoalData(data);
       router.push('/goal/detail/saved');
