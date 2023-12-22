@@ -2,15 +2,17 @@ import { useQuery } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
-type GoalResponse = Array<{
-  goals: Array<{
-    id: number;
-    deadline: string;
-    stickerUrl: string;
-    tagContent: string;
-  }>;
+export type GoalProps = {
+  id: number;
+  deadline: string;
+  stickerUrl: string;
+  tagContent: string;
+};
+
+export type GoalResponse = {
+  goals: Array<GoalProps>;
   goalsCount: number;
-}>;
+};
 
 export const useGetGoals = () => {
   return useQuery<GoalResponse>({

@@ -15,9 +15,9 @@ export const Basic: Story = {
   args: {
     goal: {
       id: 1,
-      stickerImage: 'https://github.com/depromeet/amazing3-fe/assets/112946860/b266a620-a349-4f70-8236-be1612028a97',
+      stickerUrl: 'https://github.com/depromeet/amazing3-fe/assets/112946860/b266a620-a349-4f70-8236-be1612028a97',
       deadline: '2024.01',
-      tag: '학업',
+      tagContent: '학업',
     },
     position: { x: 'top-[20px]', y: 'left-[20px]' },
   },
