@@ -34,7 +34,7 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
       });
 
       // FIXME: 다운로드 되는 이미지 파일 이름 수정 필요
-      const IMAGE_FILE_NAME = 'file-name-test';
+      const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
       downloadFile(imageUrl, IMAGE_FILE_NAME);
     } catch (error) {
       // TODO: 이미지 다운로드 실패 시, 추가 에러 처리 필요

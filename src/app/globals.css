@@ -23,7 +23,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 100;
   src:
     local('Pretendard Thin'),
@@ -32,7 +32,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 200;
   src:
     local('Pretendard ExtraLight'),
@@ -41,7 +41,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 300;
   src:
     local('Pretendard Light'),
@@ -50,7 +50,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 400;
   src:
     local('Pretendard Regular'),
@@ -59,7 +59,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 500;
   src:
     local('Pretendard Medium'),
@@ -68,7 +68,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 600;
   src:
     local('Pretendard SemiBold'),
@@ -77,7 +77,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 700;
   src:
     local('Pretendard Bold'),
@@ -86,7 +86,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 800;
   src:
     local('Pretendard ExtraBold'),
@@ -95,7 +95,7 @@
 }
 
 @font-face {
-  font-family: Pretendard, Arial, sans-serif;
+  font-family: Pretendard;
   font-weight: 900;
   src:
     local('Pretendard Black'),

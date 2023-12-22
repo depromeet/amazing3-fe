@@ -13,7 +13,7 @@ export const DetailFooterButton = () => {
   };
 
   return (
-    <>
+    <div className="flex items-center justify-between">
       <button
         className="flex justify-center items-center bg-gray-20 gap-7xs rounded-[100px] px-2xs py-3xs"
         onClick={handleClickBackButton}
@@ -31,6 +31,6 @@ export const DetailFooterButton = () => {
           <ArrowIcon className="rotate-180" />
         </button>
       </Link>
-    </>
+    </div>
   );
 };
