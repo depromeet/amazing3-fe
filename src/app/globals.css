@@ -6,7 +6,7 @@
   /* layout */
   :root {
     --layout-max-w: 520px;
-    --layout-min-h: 100vh;
+    --layout-min-h: 100dvh;
   }
   .layout {
     @apply max-w-[var(--layout-max-w)] min-h-[var(--layout-min-h)] w-full mx-auto;

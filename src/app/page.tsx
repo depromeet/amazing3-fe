@@ -11,7 +11,7 @@ import { GoogleLoginButton } from '@/features/auth/components';
 
 const SplashPage = () => {
   return (
-    <div className="relative w-full h-[100vh] flex flex-col items-center overflow-hidden">
+    <div className="relative w-full h-[100dvh] flex flex-col items-center overflow-hidden">
       <div className="absolute top-0 right-0">
         <Image src={PurpleBlurImage} sizes="100vw" alt="blur_image" />
       </div>
