@@ -69,7 +69,7 @@ class HttpClient {
       Cookies.remove('accessToken');
       window.location.href = '/';
     }
-    if (500 == errorStatus) {
+    if (500 == errorStatus && process.env.NODE_ENV !== 'development') {
       window.location.href = '/error';
     }
 
