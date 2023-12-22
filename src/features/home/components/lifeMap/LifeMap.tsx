@@ -36,6 +36,11 @@ export const LifeMap = () => {
         <ContentWrapper
           title={
             <>
+              {!memberData?.nickname && (
+                <>
+                  <br />
+                </>
+              )}
               반짝반짝 빛날
               <br />
               {memberData?.nickname && (
