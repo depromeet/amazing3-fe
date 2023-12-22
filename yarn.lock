@@ -5555,6 +5555,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/speed-insights@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@vercel/speed-insights@npm:1.0.2"
+  checksum: 221d17846d845d0ec7b0f63467807449e281f763f5b6950074fa89b65e0ddef8f10cc1720996874f2b2252d732e9ede6c218355762e07131fc2bdcaa063b7068
+  languageName: node
+  linkType: hard
+
 "@webassemblyjs/ast@npm:1.11.6, @webassemblyjs/ast@npm:^1.11.5":
   version: 1.11.6
   resolution: "@webassemblyjs/ast@npm:1.11.6"
@@ -5967,6 +5974,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^6.10.0"
     "@typescript-eslint/parser": "npm:^6.10.0"
     "@vercel/analytics": "npm:^1.1.1"
+    "@vercel/speed-insights": "npm:^1.0.2"
     autoprefixer: "npm:^10.0.1"
     axios: "npm:^1.6.2"
     chromatic: "npm:^10.0.0"
