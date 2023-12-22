@@ -23,7 +23,7 @@ const SplashPage = () => {
           <Image src={LogoImage} width={320} height={160} alt="logo" priority />
         </div>
       </div>
-      <div className="absolute bottom-[5px] 390:bottom-0 w-[130%] 375:w-[110%] flex justify-center">
+      <div className="absolute bottom-[5px] 390:bottom-0 w-[100%] flex justify-center">
         <Image src={SplashBandiboodi} width={520} alt="splash_bandiboodi" priority />
       </div>
       <div className="absolute bottom-[10px] w-full flex flex-col gap-3xs px-xs pb-[25px]">
