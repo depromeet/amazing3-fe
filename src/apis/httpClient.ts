@@ -65,12 +65,11 @@ class HttpClient {
     if (!isAxiosError(error) || !error.response) return Promise.reject(error);
 
     const { status: errorStatus } = error.response;
-    if (400 <= errorStatus && errorStatus < 500) {
-      if (errorStatus === 401) {
-        Cookies.remove('accessToken');
-        window.location.href = '/';
-      }
-    } else if (500 <= errorStatus) {
+    if (errorStatus === 401) {
+      Cookies.remove('accessToken');
+      window.location.href = '/';
+    }
+    if (500 == errorStatus) {
       window.location.href = '/error';
     }
 
