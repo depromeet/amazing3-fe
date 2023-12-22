@@ -18,5 +18,7 @@ export const useGetGoals = () => {
   return useQuery<GoalResponse>({
     queryKey: ['goals'],
     queryFn: () => api.get<GoalResponse>('/goal'),
+    staleTime: 0,
+    gcTime: 0,
   });
 };
