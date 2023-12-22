@@ -65,7 +65,7 @@ export const LifeMap = () => {
                     {!(index % 2) ? (
                       <MapCardPositioner type="A" goals={goals} isFirst={index === 0} isLast={index === LAST_PAGE} />
                     ) : (
-                      <MapCardPositioner type="B" goals={goals} isLast={index + 1 === LAST_PAGE} />
+                      <MapCardPositioner type="B" goals={goals} isLast={index === LAST_PAGE} />
                     )}
                   </SwiperSlide>
                 ))}
