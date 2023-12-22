@@ -43,7 +43,7 @@ export const ErrorPageLayout = ({ statusCode }: ErrorPageLayoutProps) => {
   const router = useRouter();
 
   return (
-    <main className="w-full h-[100vh] flex flex-col justify-center bg-gradient1">
+    <main className="w-full h-[100dvh] flex flex-col justify-center bg-gradient1">
       <section className="w-full h-full flex flex-col justify-between items-center">
         <div className="px-[45px] flex h-full flex-col items-center justify-center">
           <div className="flex flex-col gap-[3vh] items-center">

@@ -28,7 +28,7 @@ export const LifeMap = () => {
   const LAST_PAGE = participatedGoalsArray.length;
 
   return (
-    <div className="w-full h-[100vh] flex flex-col items-center justify-between pb-xs">
+    <div className="w-full h-[100dvh] flex flex-col items-center justify-between pb-xs">
       <div className="w-[390px] relative pt-xs">
         <span className="absolute right-[24px]">
           <Avatar size={40} profileImage={memberData?.image} />

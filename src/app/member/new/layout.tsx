@@ -7,7 +7,7 @@ import NewMemberFormProvider from '@/features/member/contexts/NewMemberFormProvi
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <NewMemberFormProvider>
-      <div className="w-full h-[calc(100vh-24px)]">{children}</div>
+      <div className="w-full h-[calc(100dvh-24px)]">{children}</div>
     </NewMemberFormProvider>
   );
 };
