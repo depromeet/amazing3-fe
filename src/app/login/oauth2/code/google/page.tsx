@@ -29,7 +29,7 @@ const GoogleLogin = () => {
   useEffect(() => {
     setMemberData({ ...memberData });
     if (isLogin) {
-      router.push(memberData?.username ? '/home' : '/member/new/nickname');
+      router.push(memberData?.username ? '/home' : '/onboarding');
     }
   }, [memberData]);
 

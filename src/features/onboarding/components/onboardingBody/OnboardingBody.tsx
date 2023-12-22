@@ -22,7 +22,7 @@ const ONBOARDING_VALUES: OnboardingLayoutProps[] = [
         회고를 적고,
       </>
     ),
-    sticker: <Image src={WritingSticker} width={268} height={268} alt="onboarding_image_1" />,
+    sticker: <Image src={WritingSticker} width={268} height={268} alt="onboarding_image_1" priority />,
   },
   {
     title: (
@@ -32,7 +32,7 @@ const ONBOARDING_VALUES: OnboardingLayoutProps[] = [
         목표와 계획을 세워보세요.
       </>
     ),
-    sticker: <Image src={TargetSticker} width={268} height={268} alt="onboarding_image_2" />,
+    sticker: <Image src={TargetSticker} width={268} height={268} alt="onboarding_image_2" priority />,
   },
   {
     title: (
@@ -42,7 +42,7 @@ const ONBOARDING_VALUES: OnboardingLayoutProps[] = [
         완성될 거예요.
       </>
     ),
-    sticker: <Image src={MapSticker} width={268} height={268} alt="onboarding_image_3" />,
+    sticker: <Image src={MapSticker} width={268} height={268} alt="onboarding_image_3" priority />,
   },
 ];
 
@@ -59,9 +59,9 @@ export const OnboardingBody = () => {
         </OnboardingSwiper>
       </div>
       <div className="h-full flex flex-col-reverse">
-        <Button className="flex-grow-1">
-          <Link href={{ pathname: '/member/new/nickname' }}>시작하기</Link>
-        </Button>
+        <Link href={{ pathname: '/member/new/nickname' }}>
+          <Button className="flex-grow-1">시작하기</Button>
+        </Link>
       </div>
     </div>
   );
