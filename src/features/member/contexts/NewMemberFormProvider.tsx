@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren, useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { DevTool } from '@hookform/devtools';
@@ -11,7 +11,13 @@ import type { NewMemberFormValues } from '../types';
 const NewMemberFormProvider = ({ children }: PropsWithChildren) => {
   const router = useRouter();
   const isMounted = useIsMounted();
-  const { mutate } = useCreateMemberData();
+  const { mutate, isSuccess } = useCreateMemberData();
+
+  useEffect(() => {
+    if (isSuccess) {
+      router.push('/home');
+    }
+  }, [isSuccess, router]);
 
   const methods = useForm<NewMemberFormValues>();
 
@@ -20,7 +26,6 @@ const NewMemberFormProvider = ({ children }: PropsWithChildren) => {
     if (!nickname || !birth) return;
 
     mutate(formData);
-    router.push('/home');
   };
 
   return (
