@@ -73,9 +73,9 @@ export const LifeMap = () => {
       </div>
       <div className="flex gap-5xs px-xs pt-5xs mt-[18px] w-full">
         <ShareButton isLoading={isDownloading} onClick={onDownloadImage} />
-        <Button>
-          <Link href="/goal/new/goal">목표 추가하기</Link>
-        </Button>
+        <Link href="/goal/new/goal" className="w-full">
+          <Button>목표 추가하기</Button>
+        </Link>
       </div>
     </div>
   );
