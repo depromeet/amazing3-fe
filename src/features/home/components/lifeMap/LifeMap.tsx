@@ -25,7 +25,7 @@ export const LifeMap = () => {
   const { isDownloading, onDownloadImage } = useDownloadImage(downloadSectionRef);
 
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
-  const LAST_PAGE = Math.ceil((goalsData?.goalsCount || 0) / GOAL_COUNT_PER_PAGE) || 1;
+  const LAST_PAGE = participatedGoalsArray.length;
 
   return (
     <div className="w-full h-[100vh] flex flex-col items-center justify-between pb-xs">
@@ -63,9 +63,14 @@ export const LifeMap = () => {
                 {participatedGoalsArray?.map((goals, index) => (
                   <SwiperSlide key={`swiper-goal-${index}`}>
                     {!(index % 2) ? (
-                      <MapCardPositioner type="A" goals={goals} isFirst={index === 0} isLast={index === LAST_PAGE} />
+                      <MapCardPositioner
+                        type="A"
+                        goals={goals}
+                        isFirst={index === 0}
+                        isLast={index === LAST_PAGE - 1}
+                      />
                     ) : (
-                      <MapCardPositioner type="B" goals={goals} isLast={index + 1 === LAST_PAGE} />
+                      <MapCardPositioner type="B" goals={goals} isLast={index === LAST_PAGE - 1} />
                     )}
                   </SwiperSlide>
                 ))}
