@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     type: 'website',
     url: META.domain_URL,
-    images: '/og-image.png',
   },
   verification: {
     google: META.google_verification,

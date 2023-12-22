@@ -1,9 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
-import ArrowIcon from '@/assets/icons/goal/arrow-icons.svg';
-import { Typography } from '@/components';
 
 export const DetailFooterButton = () => {
   const router = useRouter();
@@ -14,7 +10,7 @@ export const DetailFooterButton = () => {
 
   return (
     <div className="flex items-center justify-between">
-      <button
+      {/* <button
         className="flex justify-center items-center bg-gray-20 gap-7xs rounded-[100px] px-2xs py-3xs"
         onClick={handleClickBackButton}
       >
@@ -30,7 +26,7 @@ export const DetailFooterButton = () => {
           </Typography>
           <ArrowIcon className="rotate-180" />
         </button>
-      </Link>
+      </Link> */}
     </div>
   );
 };
