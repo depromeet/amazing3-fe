@@ -16,14 +16,14 @@ const SplashPage = () => {
         <Image src={PurpleBlurImage} sizes="100vw" alt="blur_image" />
       </div>
       <div className="w-full h-[60vh] bg-gradient1 flex flex-col items-center">
-        <div className="h-[46vh] flex flex-col gap-2xs z-10 justify-center">
+        <div className="h-[38vh] flex flex-col gap-[1vh] z-10 justify-center">
           <Typography type="heading2" className="text-center bg-clip-text bg-gradient4 text-transparent">
             내가 직접 그리는 <br /> 나의 인생지도
           </Typography>
           <Image src={LogoImage} width={320} height={160} alt="logo" priority />
         </div>
       </div>
-      <div className="absolute bottom-[5px] 390:bottom-0 w-[130%] 375:w-[110%] flex justify-center">
+      <div className="absolute bottom-[5px] 390:bottom-0 w-[110%] flex justify-center">
         <Image src={SplashBandiboodi} width={520} alt="splash_bandiboodi" priority />
       </div>
       <div className="absolute bottom-[10px] w-full flex flex-col gap-3xs px-xs pb-[25px]">
