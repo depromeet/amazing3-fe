@@ -2,12 +2,11 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
-import { useAtom } from 'jotai';
 import { SwiperSlide } from 'swiper/react';
 
 import StarBg from '@/app/home/startBg';
 import { Avatar, Button, ContentWrapper } from '@/components';
-import { nicknameAtom } from '@/features/member/atoms';
+import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useGetGoals } from '@/hooks/reactQuery/goal';
 import { useDownloadImage } from '@/hooks/useDownloadImage';
 
@@ -19,7 +18,7 @@ import { MapSwiper } from '../mapSwiper';
 import { ShareButton } from '../shareButton';
 
 export const LifeMap = () => {
-  const nickname = useAtom(nicknameAtom);
+  const { data: memberData } = useGetMemberData();
   const { data: goalsData } = useGetGoals();
 
   const downloadSectionRef = useRef<HTMLElement>(null);
@@ -32,15 +31,19 @@ export const LifeMap = () => {
     <div className="w-full h-[100vh] flex flex-col items-center justify-between pb-xs">
       <div className="w-[390px] relative pt-xs">
         <span className="absolute right-[24px]">
-          <Avatar size={40} />
+          <Avatar size={40} profileImage={memberData?.image} />
         </span>
         <ContentWrapper
           title={
             <>
               반짝반짝 빛날
               <br />
-              {nickname}님의
-              <br />
+              {memberData?.nickname && (
+                <>
+                  {memberData.nickname} 님의
+                  <br />
+                </>
+              )}
               앞날을 응원해요!
             </>
           }
@@ -52,7 +55,7 @@ export const LifeMap = () => {
           <div className="h-[520px]">
             <div className="absolute inset-x-0">
               <MapSwiper>
-                {participatedGoalsArray.map((goals, index) => (
+                {participatedGoalsArray?.map((goals, index) => (
                   <SwiperSlide key={goals[0].id}>
                     {!(index % 2) ? (
                       <MapCardPositioner
@@ -73,9 +76,9 @@ export const LifeMap = () => {
       </div>
       <div className="flex gap-5xs px-xs pt-5xs mt-[18px] w-full">
         <ShareButton isLoading={isDownloading} onClick={onDownloadImage} />
-        <Button>
-          <Link href="/goal/new/goal">목표 추가하기</Link>
-        </Button>
+        <Link href="/goal/new/goal" className="w-full">
+          <Button>목표 추가하기</Button>
+        </Link>
       </div>
     </div>
   );

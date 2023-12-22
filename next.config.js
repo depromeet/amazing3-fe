@@ -36,6 +36,11 @@ const nextConfig = {
         hostname: 'github.com',
         pathname: '/depromeet/amazing3-fe/assets/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/a/**',
+      },
     ],
   },
 };

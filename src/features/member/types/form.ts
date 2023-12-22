@@ -9,4 +9,5 @@ export interface MemberProps {
   username: string;
   nickname: string;
   birth: string;
+  image: string;
 }

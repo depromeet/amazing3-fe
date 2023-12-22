@@ -52,6 +52,7 @@ export const ErrorPageLayout = ({ statusCode }: ErrorPageLayoutProps) => {
               width={270}
               height={130}
               alt={`${statusCode}_error_image`}
+              priority
             />
             <Image src={ErrorTextImage} width={211} height={54} alt="error" />
           </div>
