@@ -8,7 +8,7 @@ import { MapCardLayout } from '../MapCardLayout';
 
 export const StartMapCard = ({ position }: StartMapCardProps) => {
   return (
-    <MapCardLayout position={position}>
+    <MapCardLayout position={position} cursor="default">
       <Typography type="title5" className="text-blue-55 text-center pt-[10px] font-bold">
         START !
       </Typography>
