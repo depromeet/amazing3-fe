@@ -49,6 +49,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:6.10.0"],\
           ["@typescript-eslint/parser", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:6.10.0"],\
           ["@vercel/analytics", "npm:1.1.1"],\
+          ["@vercel/speed-insights", "npm:1.0.2"],\
           ["autoprefixer", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:10.4.16"],\
           ["axios", "npm:1.6.2"],\
           ["chromatic", "npm:10.0.0"],\
@@ -9515,6 +9516,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@vercel/speed-insights", [\
+      ["npm:1.0.2", {\
+        "packageLocation": "./.yarn/unplugged/@vercel-speed-insights-npm-1.0.2-a50c331998/node_modules/@vercel/speed-insights/",\
+        "packageDependencies": [\
+          ["@vercel/speed-insights", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@webassemblyjs/ast", [\
       ["npm:1.11.6", {\
         "packageLocation": "./.yarn/cache/@webassemblyjs-ast-npm-1.11.6-d3fd2bb49a-10c0.zip/node_modules/@webassemblyjs/ast/",\
@@ -10058,6 +10068,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/eslint-plugin", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:6.10.0"],\
           ["@typescript-eslint/parser", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:6.10.0"],\
           ["@vercel/analytics", "npm:1.1.1"],\
+          ["@vercel/speed-insights", "npm:1.0.2"],\
           ["autoprefixer", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:10.4.16"],\
           ["axios", "npm:1.6.2"],\
           ["chromatic", "npm:10.0.0"],\
