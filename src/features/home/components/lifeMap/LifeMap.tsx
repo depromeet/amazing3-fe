@@ -56,7 +56,7 @@ export const LifeMap = () => {
             <div className="absolute inset-x-0">
               <MapSwiper>
                 {participatedGoalsArray?.map((goals, index) => (
-                  <SwiperSlide key={goals[0]?.id}>
+                  <SwiperSlide key={goals[0].id}>
                     {!(index % 2) ? (
                       <MapCardPositioner
                         type="A"
