@@ -9,9 +9,9 @@ import type { NewMemberFormValues } from '../../types';
 
 import FormLayout from './FormLayout';
 
-export const BirthdayInputForm = () => {
+export const BirthInputForm = () => {
   const { register, getValues, control } = useFormContext<NewMemberFormValues>();
-  const { field } = useController({ name: 'birthday', control });
+  const { field } = useController({ name: 'birth', control });
   const { onChange, value } = field;
   const { nickname } = getValues();
 
@@ -31,8 +31,8 @@ export const BirthdayInputForm = () => {
       description="beta에서는 생년월일을 수정할 수 없어요."
     >
       <div className="mt-xs flex flex-col grow w-full">
-        <div className="h-full flex flex-col justify-between">
-          <Input {...register('birthday')} type="date" onChange={onChange} />
+        <div className="w-full h-full flex flex-col justify-between">
+          <Input {...register('birth')} type="date" onChange={onChange} />
           <Button type="submit" disabled={isEmpty()}>
             완료
           </Button>

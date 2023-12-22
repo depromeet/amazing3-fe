@@ -31,7 +31,7 @@ export const NicknameInputForm = () => {
           <div {...register('nickname')}>
             <LimitedLengthInput maxLength={MAX_NICKNAME_LENGTH} placeholder="닉네임" onChange={onChange} />
           </div>
-          <Link href="/member/new/birthday">
+          <Link href="/member/new/birth">
             <Button type="button" disabled={!isMounted || isEmpty()}>
               다음
             </Button>
