@@ -63,14 +63,9 @@ export const LifeMap = () => {
                 {participatedGoalsArray?.map((goals, index) => (
                   <SwiperSlide key={`swiper-goal-${index}`}>
                     {!(index % 2) ? (
-                      <MapCardPositioner
-                        type="A"
-                        goals={goals}
-                        isFirst={index === 0}
-                        isLast={index + 1 === LAST_PAGE}
-                      />
+                      <MapCardPositioner type="A" goals={goals} isFirst={index === 0} isLast={index === LAST_PAGE} />
                     ) : (
-                      <MapCardPositioner type="B" goals={goals} isLast={index === LAST_PAGE} />
+                      <MapCardPositioner type="B" goals={goals} isLast={index + 1 === LAST_PAGE} />
                     )}
                   </SwiperSlide>
                 ))}
@@ -81,7 +76,7 @@ export const LifeMap = () => {
       </div>
       <div className="flex gap-5xs px-xs pt-5xs mt-[18px] w-full">
         <ShareButton isLoading={isDownloading} onClick={onDownloadImage} />
-        <Link href="/goal/new/goal" className="w-full">
+        <Link href={{ pathname: '/goal/new/goal' }} className="w-full">
           <Button>목표 추가하기</Button>
         </Link>
       </div>

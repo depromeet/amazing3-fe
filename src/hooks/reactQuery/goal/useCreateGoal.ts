@@ -25,6 +25,6 @@ export const useCreateGoal = () => {
 
   return useMutation({
     mutationFn: (data: GoalRequest) => api.post<GoalResponse>('/goal', data),
-    onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ['goals'] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['goals'] }),
   });
 };
