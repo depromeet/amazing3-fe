@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useSetAtom } from 'jotai';
 
 import { Button, Typography } from '@/components';
+import { Spinner } from '@/components/atoms/spinner';
 import { MAX_TEXTAREA_LENGTH } from '@/constants';
 import { goalAtom } from '@/features/goal/components/detail/atom';
 import type { GoalFormValues } from '@/features/goal/types';
@@ -23,14 +24,14 @@ export const MoreForm = () => {
   const { field } = useController({ name: 'content', control });
   const setGoalData = useSetAtom(goalAtom);
   const { onChange } = field;
-  const { mutate, isError, data } = useCreateGoal();
+  const { mutate, isPending, data } = useCreateGoal();
 
   useEffect(() => {
     if (data) {
       setGoalData(data);
       router.push('/goal/detail/saved');
     }
-  }, [isError, data, router, setGoalData]);
+  }, [isPending, data, router, setGoalData]);
 
   const handleSubmit = () => {
     const { title, content, date, tag, sticker } = getValues();
@@ -72,7 +73,11 @@ export const MoreForm = () => {
           />
         </div>
       }
-      footer={<Button onClick={handleSubmit}>완료</Button>}
+      footer={
+        <Button onClick={handleSubmit} disabled={isPending}>
+          {isPending ? <Spinner /> : '완료'}
+        </Button>
+      }
     />
   );
 };
