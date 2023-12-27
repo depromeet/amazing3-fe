@@ -1,0 +1,8 @@
+{
+  "name": "반디부디: 별이 되고 싶은 반디부디의 인생지도",
+  "short_name": "반디부디",
+  "description": "이루고 싶은 목표를 지도에 남겨보세요. 목표와 관련된 다양한 스티커를 붙여 나만의 지도를 만들고 공유할 수 있어요.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
