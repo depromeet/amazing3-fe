@@ -1,10 +1,12 @@
 import { type RefObject, useState } from 'react';
-import { toPng } from 'html-to-image';
+import { toJpeg } from 'html-to-image';
 
 import { shareImage } from '@/utils/image';
 import { isIos } from '@/utils/userAgent';
 
 import { backgroundImage } from '../../styles/theme';
+
+import { useIsMounted } from './useIsMounted';
 
 const downloadFile = (url: string, filename: string) => {
   const link = document.createElement('a');
@@ -17,16 +19,17 @@ const downloadFile = (url: string, filename: string) => {
 
 export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
   const [isDownloading, setIsDownloading] = useState(false);
+  const isMounted = useIsMounted();
 
   const onDownloadImage = async () => {
     const image = imageRef.current;
 
-    if (!image) return;
+    if (!image || !isMounted) return;
 
     try {
       setIsDownloading(true);
 
-      const imageUrl = await toPng(image, {
+      const imageUrl = await toJpeg(image, {
         includeQueryParams: true,
         style: {
           backgroundImage: backgroundImage.gradient1,
