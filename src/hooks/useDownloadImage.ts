@@ -1,5 +1,5 @@
 import { type RefObject, useState } from 'react';
-import { toSvg } from 'html-to-image';
+import { toPng } from 'html-to-image';
 
 import { shareImage } from '@/utils/image';
 import { isIos } from '@/utils/userAgent';
@@ -26,7 +26,7 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
     try {
       setIsDownloading(true);
 
-      const imageUrl = await toSvg(image, {
+      const imageUrl = await toPng(image, {
         includeQueryParams: true,
         style: {
           backgroundImage: backgroundImage.gradient1,
@@ -34,6 +34,7 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
           paddingBottom: '24px',
         },
         height: 700,
+        cacheBust: true,
       });
 
       const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
