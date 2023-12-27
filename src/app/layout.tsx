@@ -39,12 +39,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="kr">
       <head>
-        <link rel="apple-touch-icon" href="/favicon_16.png" />
-        <link rel="apple-touch-icon" href="/favicon_32.png" />
-        <link rel="apple-touch-icon" href="/favicon_64.png" />
-        <link rel="apple-touch-icon" href="/favicon_192.png" />
-        <link rel="apple-touch-icon" href="/favicon_512.png" />
-        <link rel="manifest" href="/manifest.webmanifest" crossOrigin="use-credentials" />
+        <link rel="icon" href="/icon.ico" />
+        <link rel="apple-touch-icon" href="/icon.ico" />
       </head>
       <body>
         <Providers>
