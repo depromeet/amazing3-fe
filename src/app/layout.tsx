@@ -38,6 +38,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="kr">
+      <head>
+        <link rel="apple-touch-icon" href="/favicon_16.png" />
+        <link rel="apple-touch-icon" href="/favicon_32.png" />
+        <link rel="apple-touch-icon" href="/favicon_64.png" />
+        <link rel="apple-touch-icon" href="/favicon_192.png" />
+        <link rel="apple-touch-icon" href="/favicon_512.png" />
+      </head>
       <body>
         <Providers>
           <div className="layout">{children}</div>
