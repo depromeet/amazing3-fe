@@ -44,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/favicon_64.png" />
         <link rel="apple-touch-icon" href="/favicon_192.png" />
         <link rel="apple-touch-icon" href="/favicon_512.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body>
         <Providers>
