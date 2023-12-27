@@ -41,8 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="icon" href="/icon.ico" />
         <link rel="apple-touch-icon" href="/icon.ico" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="manifest" href="/manifest.webmanifest" crossOrigin="use-credentials" />
       </head>
       <body>
         <Providers>
