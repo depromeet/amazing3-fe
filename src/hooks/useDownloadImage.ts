@@ -1,5 +1,5 @@
 import { type RefObject, useState } from 'react';
-import { toJpeg } from 'html-to-image';
+import { toSvg } from 'html-to-image';
 
 import { shareImage } from '@/utils/image';
 import { isIos } from '@/utils/userAgent';
@@ -26,7 +26,7 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
     try {
       setIsDownloading(true);
 
-      const imageUrl = await toJpeg(image, {
+      const imageUrl = await toSvg(image, {
         includeQueryParams: true,
         style: {
           backgroundImage: backgroundImage.gradient1,
