@@ -8,23 +8,20 @@ import Providers from '@/contexts/Providers';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(META.domain_URL),
-  title: {
-    default: META.title,
-    template: `%s | ${META.siteName}`,
-  },
+  metadataBase: new URL(META.url),
+  title: META.title,
   description: META.description,
   keywords: [...META.keyword],
-  icons: {
-    icon: '/icon.ico',
-  },
   openGraph: {
     title: META.title,
     description: META.description,
     siteName: META.siteName,
     locale: 'ko_KR',
     type: 'website',
-    url: META.domain_URL,
+    url: META.url,
+    images: {
+      url: META.ogImage,
+    },
   },
   verification: {
     google: META.google_verification,
@@ -32,6 +29,9 @@ export const metadata: Metadata = {
   twitter: {
     title: META.title,
     description: META.description,
+    images: {
+      url: META.ogImage,
+    },
   },
 };
 
