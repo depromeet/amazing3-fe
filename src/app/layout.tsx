@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   icons: {
     icon: META.iconImage,
     shortcut: META.iconImage,
-    apple: META.iconImage,
   },
   openGraph: {
     title: META.title,
@@ -43,6 +42,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="kr">
+      <head>
+        <link rel="apple-touch-icon" href="/icon.ico" />
+      </head>
       <body>
         <Providers>
           <div className="layout">{children}</div>
