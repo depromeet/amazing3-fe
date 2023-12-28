@@ -17,6 +17,8 @@ const downloadFile = (url: string, filename: string) => {
   link.click();
 };
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const isMounted = useIsMounted();
@@ -33,12 +35,12 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
         includeQueryParams: true,
         style: {
           backgroundImage: backgroundImage.gradient1,
-          paddingTop: '24px',
-          paddingBottom: '24px',
         },
         height: 700,
         cacheBust: true,
       });
+
+      await sleep(5000);
 
       const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
 
