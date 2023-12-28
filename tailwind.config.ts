@@ -10,10 +10,6 @@ const config: Config = {
     './src/features/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    fontFamily: {
-      pretendard: ['Pretendard'],
-      insungit: ['InsungIt'],
-    },
     extend: {
       colors,
       spacing,
@@ -21,7 +17,8 @@ const config: Config = {
       backgroundImage,
       boxShadow,
       fontFamily: {
-        sans: ['Pretendard', 'Arial', 'sans-serif'],
+        pretendard: ['var(--font-pretendard)'],
+        insungit: ['var(--font-insungIt)'],
       },
     },
     screens: {

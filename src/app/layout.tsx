@@ -5,6 +5,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { META } from '@/constants';
 import Providers from '@/contexts/Providers';
 
+import { insungIt, pretendard } from './fonts';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -45,9 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="apple-touch-icon" href="/icon.ico" />
       </head>
-      <body>
+      <body className={`${pretendard.variable} ${insungIt.variable}`}>
         <Providers>
-          <div className="layout">{children}</div>
+          <div className="layout font-pretendard">{children}</div>
           <Analytics />
           <SpeedInsights />
         </Providers>
