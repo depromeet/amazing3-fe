@@ -5988,11 +5988,11 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^10.0.0"
     eslint-plugin-storybook: "npm:^0.6.15"
     eslint-plugin-unused-imports: "npm:^3.0.0"
-    html-to-image: "npm:^1.11.11"
     husky: "npm:^8.0.3"
     jotai: "npm:^2.6.0"
     js-cookie: "npm:^3.0.5"
     lint-staged: "npm:^15.0.2"
+    modern-screenshot: "npm:^4.4.37"
     next: "npm:14.0.2"
     postcss: "npm:^8"
     prettier: "npm:^3.1.0"
@@ -9900,13 +9900,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-to-image@npm:^1.11.11":
-  version: 1.11.11
-  resolution: "html-to-image@npm:1.11.11"
-  checksum: 0b6349221ad253dfca01d165c589d44341e942faf0273aab28c8b7d86ff2922d3e8e6390f57bf5ddaf6bac9a3b590a8cdaa77d52a363354796dd0e0e05eb35d2
-  languageName: node
-  linkType: hard
-
 "html-webpack-plugin@npm:^5.5.0":
   version: 5.5.3
   resolution: "html-webpack-plugin@npm:5.5.3"
@@ -11604,6 +11597,13 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 46ea0f3ffa8bc6a5bc0c7081ffc3907777f0ed6516888d40a518c5111f8366d97d2678911ad1a6882bf592fa9de6c784fea32e1687bb94e1f4944170af48a5cf
+  languageName: node
+  linkType: hard
+
+"modern-screenshot@npm:^4.4.37":
+  version: 4.4.37
+  resolution: "modern-screenshot@npm:4.4.37"
+  checksum: f1904831b49e657ff3b6dffa4e5ac7387192e2189d3cbafb486c011a07e1765cc63026021ca793483bbed31bdd6cb553f9f700bb40e1744c1c92f1af933f44dc
   languageName: node
   linkType: hard
 

@@ -8,15 +8,13 @@ import Providers from '@/contexts/Providers';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(META.domain_URL),
-  title: {
-    default: META.title,
-    template: `%s | ${META.siteName}`,
-  },
+  metadataBase: new URL(META.url),
+  title: META.title,
   description: META.description,
   keywords: [...META.keyword],
   icons: {
-    icon: '/icon.ico',
+    icon: META.iconImage,
+    shortcut: META.iconImage,
   },
   openGraph: {
     title: META.title,
@@ -24,20 +22,29 @@ export const metadata: Metadata = {
     siteName: META.siteName,
     locale: 'ko_KR',
     type: 'website',
-    url: META.domain_URL,
+    url: META.url,
+    images: {
+      url: META.ogImage,
+    },
   },
   verification: {
-    google: META.google_verification,
+    google: META.googleVerification,
   },
   twitter: {
     title: META.title,
     description: META.description,
+    images: {
+      url: META.ogImage,
+    },
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="kr">
+      <head>
+        <link rel="apple-touch-icon" href="/icon.ico" />
+      </head>
       <body>
         <Providers>
           <div className="layout">{children}</div>

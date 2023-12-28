@@ -63,11 +63,11 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-simple-import-sort", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:10.0.0"],\
           ["eslint-plugin-storybook", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:0.6.15"],\
           ["eslint-plugin-unused-imports", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:3.0.0"],\
-          ["html-to-image", "npm:1.11.11"],\
           ["husky", "npm:8.0.3"],\
           ["jotai", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:2.6.0"],\
           ["js-cookie", "npm:3.0.5"],\
           ["lint-staged", "npm:15.0.2"],\
+          ["modern-screenshot", "npm:4.4.37"],\
           ["next", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:14.0.2"],\
           ["postcss", "npm:8.4.31"],\
           ["prettier", "npm:3.1.0"],\
@@ -10082,11 +10082,11 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-simple-import-sort", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:10.0.0"],\
           ["eslint-plugin-storybook", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:0.6.15"],\
           ["eslint-plugin-unused-imports", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:3.0.0"],\
-          ["html-to-image", "npm:1.11.11"],\
           ["husky", "npm:8.0.3"],\
           ["jotai", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:2.6.0"],\
           ["js-cookie", "npm:3.0.5"],\
           ["lint-staged", "npm:15.0.2"],\
+          ["modern-screenshot", "npm:4.4.37"],\
           ["next", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:14.0.2"],\
           ["postcss", "npm:8.4.31"],\
           ["prettier", "npm:3.1.0"],\
@@ -14706,15 +14706,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["html-to-image", [\
-      ["npm:1.11.11", {\
-        "packageLocation": "./.yarn/cache/html-to-image-npm-1.11.11-faab8eba97-10c0.zip/node_modules/html-to-image/",\
-        "packageDependencies": [\
-          ["html-to-image", "npm:1.11.11"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["html-webpack-plugin", [\
       ["npm:5.5.3", {\
         "packageLocation": "./.yarn/cache/html-webpack-plugin-npm-5.5.3-b4f14786eb-10c0.zip/node_modules/html-webpack-plugin/",\
@@ -16633,6 +16624,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/mkdirp-classic-npm-0.5.3-3b5c991910-10c0.zip/node_modules/mkdirp-classic/",\
         "packageDependencies": [\
           ["mkdirp-classic", "npm:0.5.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["modern-screenshot", [\
+      ["npm:4.4.37", {\
+        "packageLocation": "./.yarn/cache/modern-screenshot-npm-4.4.37-bffef63713-10c0.zip/node_modules/modern-screenshot/",\
+        "packageDependencies": [\
+          ["modern-screenshot", "npm:4.4.37"]\
         ],\
         "linkType": "HARD"\
       }]\
