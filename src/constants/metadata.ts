@@ -6,5 +6,6 @@ export const META = {
   keyword: ['반디부디', 'bandiboodi', '인생지도', '신년계획', '계획', '목표설정', '목표달성', '자기계발'],
   url: 'https://www.bandiboodi.com/',
   googleVerification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+  iconImage: '/icon.ico',
   ogImage: '/opengraph-image.png',
 } as const;
