@@ -1,5 +1,5 @@
 import { type RefObject, useState } from 'react';
-import { toJpeg } from 'html-to-image';
+import { domToJpeg } from 'modern-screenshot';
 
 import { shareImage } from '@/utils/image';
 import { isIos } from '@/utils/userAgent';
@@ -17,8 +17,6 @@ const downloadFile = (url: string, filename: string) => {
   link.click();
 };
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const isMounted = useIsMounted();
@@ -31,16 +29,13 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
     try {
       setIsDownloading(true);
 
-      const imageUrl = await toJpeg(image, {
-        includeQueryParams: true,
+      const imageUrl = await domToJpeg(image, {
         style: {
           backgroundImage: backgroundImage.gradient1,
         },
         height: 700,
-        cacheBust: true,
+        scale: 4,
       });
-
-      await sleep(5000);
 
       const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
 
