@@ -43,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="kr">
       <head>
+        <link rel="canonical" href="https://www.bandiboodi.com" />
         <link rel="apple-touch-icon" href="/icon.ico" />
       </head>
       <body>
