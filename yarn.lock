@@ -5988,7 +5988,6 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^10.0.0"
     eslint-plugin-storybook: "npm:^0.6.15"
     eslint-plugin-unused-imports: "npm:^3.0.0"
-    html-to-image: "npm:^1.11.11"
     husky: "npm:^8.0.3"
     jotai: "npm:^2.6.0"
     js-cookie: "npm:^3.0.5"
@@ -9898,13 +9897,6 @@ __metadata:
   version: 3.3.1
   resolution: "html-tags@npm:3.3.1"
   checksum: 680165e12baa51bad7397452d247dbcc5a5c29dac0e6754b1187eee3bf26f514bc1907a431dd2f7eb56207611ae595ee76a0acc8eaa0d931e72c791dd6463d79
-  languageName: node
-  linkType: hard
-
-"html-to-image@npm:^1.11.11":
-  version: 1.11.11
-  resolution: "html-to-image@npm:1.11.11"
-  checksum: 0b6349221ad253dfca01d165c589d44341e942faf0273aab28c8b7d86ff2922d3e8e6390f57bf5ddaf6bac9a3b590a8cdaa77d52a363354796dd0e0e05eb35d2
   languageName: node
   linkType: hard
 
