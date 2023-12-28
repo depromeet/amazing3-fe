@@ -26,6 +26,7 @@ export const MapCard = ({ goal, position }: MapCardProps) => {
           priority
           placeholder="blur"
           blurDataURL={blueDataURL.mapCard}
+          loading="eager"
         />
         <div className="flex gap-[4px] justify-center items-center">
           <Typography type="title5" className="text-blue-50">
