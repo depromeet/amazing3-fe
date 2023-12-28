@@ -1,5 +1,5 @@
 import { type RefObject, useState } from 'react';
-import { toJpeg } from 'html-to-image';
+import { domToJpeg } from 'modern-screenshot';
 
 import { backgroundImage } from '../../styles/theme';
 
@@ -23,17 +23,14 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
     try {
       setIsDownloading(true);
 
-      const imageUrl = await toJpeg(image, {
-        includeQueryParams: true,
+      const imageUrl = await domToJpeg(image, {
         style: {
           backgroundImage: backgroundImage.gradient1,
-          paddingTop: '24px',
-          paddingBottom: '24px',
         },
         height: 700,
+        scale: 4,
       });
 
-      // FIXME: 다운로드 되는 이미지 파일 이름 수정 필요
       const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
       downloadFile(imageUrl, IMAGE_FILE_NAME);
     } catch (error) {
