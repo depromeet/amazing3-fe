@@ -33,6 +33,7 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
         },
         height: 700,
         scale: 4,
+        timeout: 60000,
       });
 
       const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
