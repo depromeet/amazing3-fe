@@ -17,10 +17,16 @@ export const metadata: Metadata = {
     locale: 'ko_KR',
     type: 'website',
     url: META_ONBOARDING.url,
+    images: {
+      url: META_ONBOARDING.ogImage,
+    },
   },
   twitter: {
     title: META_ONBOARDING.title,
     description: META_ONBOARDING.description,
+    images: {
+      url: META_ONBOARDING.ogImage,
+    },
   },
 };
 

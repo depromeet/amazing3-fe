@@ -22,7 +22,9 @@ export const META = {
 
 export const META_ONBOARDING = {
   title: '반디부디: 내가 직접 그리는 나의 인생지도',
+  siteName: '반디부디',
   description:
     '내가 걸어온 길을 떠올리면서 회고를 적고, 내가 걸어갈 길의 방향을 짚어가면서 목표와 계획을 세워보세요. 한 조각씩 채우다 보면 나만의 인생지도가 완성될 거에요.',
   url: 'https://www.bandiboodi.com/onboarding',
+  ogImage: '/opengraph-image.png',
 } as const;
