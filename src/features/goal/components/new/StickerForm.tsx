@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,9 +15,13 @@ import FormHeader from './FormHeader';
 import FormLayout from './FormLayout';
 
 export const StickerForm = () => {
-  const { register, setValue } = useFormContext<GoalFormValues>();
-  const [selectedSticker, setSelectedSticker] = useState<number | null>(null);
+  const { register, getValues, setValue } = useFormContext<GoalFormValues>();
+  const [selectedSticker, setSelectedSticker] = useState<number | null>();
   const { data: stickerData } = useGetStickers();
+
+  useEffect(() => {
+    setSelectedSticker(getValues('sticker'));
+  }, [getValues]);
 
   const handleClickSticker = (id: number) => {
     setSelectedSticker(id);
