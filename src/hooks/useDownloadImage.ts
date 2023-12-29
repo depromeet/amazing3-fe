@@ -29,6 +29,7 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
       const imageUrl = await domToJpeg(image, {
         style: {
           backgroundImage: backgroundImage.gradient1,
+          paddingTop: '24px',
         },
         height: 700,
         scale: 4,
