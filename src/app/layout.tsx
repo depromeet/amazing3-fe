@@ -11,6 +11,9 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(META.url),
+  alternates: {
+    canonical: '/',
+  },
   title: META.title,
   description: META.description,
   keywords: [...META.keyword],
@@ -40,9 +43,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="kr">
-      <head>
-        <link rel="canonical" href="https://www.bandiboodi.com" />
-      </head>
       <body className={`${pretendard.variable} ${insungIt.variable}`}>
         <Providers>
           <div className="layout font-pretendard">{children}</div>
