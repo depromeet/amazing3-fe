@@ -14,10 +14,6 @@ export const metadata: Metadata = {
   title: META.title,
   description: META.description,
   keywords: [...META.keyword],
-  icons: {
-    icon: META.iconImage,
-    shortcut: META.iconImage,
-  },
   openGraph: {
     title: META.title,
     description: META.description,
@@ -46,7 +42,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="kr">
       <head>
         <link rel="canonical" href="https://www.bandiboodi.com" />
-        <link rel="apple-touch-icon" href="/icon.ico" />
       </head>
       <body className={`${pretendard.variable} ${insungIt.variable}`}>
         <Providers>
