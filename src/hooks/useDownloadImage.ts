@@ -22,32 +22,23 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
     const image = imageRef.current;
 
     if (!image) return;
+    setIsDownloading(true);
 
-    try {
-      setIsDownloading(true);
+    const imageUrl = await domToJpeg(image, {
+      style: {
+        backgroundImage: backgroundImage.gradient1,
+        paddingTop: '24px',
+      },
+      height: 700,
+      scale: 4,
+      timeout: 60000,
+    });
 
-      const imageUrl = await domToJpeg(image, {
-        style: {
-          backgroundImage: backgroundImage.gradient1,
-          paddingTop: '24px',
-        },
-        height: 700,
-        scale: 4,
-        timeout: 60000,
-      });
+    const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
+    if (isIos()) shareImage(imageUrl, IMAGE_FILE_NAME);
+    else downloadFile(imageUrl, IMAGE_FILE_NAME);
 
-      const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
-      if (isIos()) {
-        shareImage(imageUrl, IMAGE_FILE_NAME);
-      } else {
-        downloadFile(imageUrl, IMAGE_FILE_NAME);
-      }
-    } catch (error) {
-      // TODO: 이미지 다운로드 실패 시, 추가 에러 처리 필요
-      console.error(error);
-    } finally {
-      setIsDownloading(false);
-    }
+    setIsDownloading(false);
   };
 
   return {
