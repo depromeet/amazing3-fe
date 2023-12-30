@@ -15,5 +15,5 @@ export const shareLink = async ({ url, ...params }: shareLinkParams) => {
     return;
   }
 
-  await navigator.share(params);
+  await navigator.share({ url, ...params });
 };
