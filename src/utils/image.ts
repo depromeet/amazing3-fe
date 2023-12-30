@@ -12,7 +12,6 @@ export const shareImage = async (imageUrl: string, fileName: string) => {
   });
   const shareData = {
     title: fileName,
-    text: fileName,
     files: [file],
   };
 
