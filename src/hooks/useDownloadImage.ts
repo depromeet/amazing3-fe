@@ -6,6 +6,8 @@ import { isIos } from '@/utils/userAgent';
 
 import { backgroundImage } from '../../styles/theme';
 
+import { useGetGoals } from './reactQuery/goal';
+
 const downloadFile = (url: string, filename: string) => {
   const link = document.createElement('a');
 
@@ -17,6 +19,10 @@ const downloadFile = (url: string, filename: string) => {
 
 export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
   const [isDownloading, setIsDownloading] = useState(false);
+
+  const { data: goalsData } = useGetGoals();
+
+  const getPageCount = () => Math.floor((goalsData?.goalsCount || 1) / 5) + 1;
 
   const onDownloadImage = async () => {
     const image = imageRef.current;
@@ -31,8 +37,18 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
           backgroundImage: backgroundImage.gradient1,
           paddingTop: '24px',
         },
-        height: 700,
+        height: 670,
+        width: 390 * getPageCount(),
         scale: 4,
+        onCloneNode: (node) => {
+          const swiper = (node as HTMLElement).querySelector<HTMLElement>('.swiper');
+          const swiperWrapper = (node as HTMLElement).querySelector<HTMLElement>('.swiper-wrapper');
+
+          if (!swiper || !swiperWrapper) return;
+
+          swiper.style.overflow = 'visible';
+          swiperWrapper.style.transform = 'translate3d(0px, 0, 0)';
+        },
       });
 
       const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
