@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
@@ -22,9 +23,11 @@ export const BirthInputForm = () => {
    * TODO: 생년월일 검증 로직 추가
    */
 
-  if (!nickname) {
-    router.push('/member/new/nickname');
-  }
+  useEffect(() => {
+    if (!nickname) {
+      router.push('/member/new/nickname');
+    }
+  }, []);
 
   return (
     <FormLayout
