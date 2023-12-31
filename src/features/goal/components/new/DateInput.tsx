@@ -4,6 +4,7 @@ import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
 import { Input } from '@/components';
+import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
 
 interface DateInputProps {
   maxLength: number;
@@ -12,20 +13,31 @@ interface DateInputProps {
 
 export const DateInput = ({ maxLength, onChange }: DateInputProps) => {
   const [formattedValue, setFormattedValue] = useState<string>('');
-  const placeholder = maxLength === 7 ? 'YYYY.MM' : 'YYYY.MM.DD';
+  const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD';
+
+  const isValidate = (year: string, month: string, day: string) => {
+    const date = year + '-' + month + '-' + day;
+    return !isNaN(Date.parse(date));
+  };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value.replace(/\D/g, '');
     let formatted = inputValue;
-    let month;
+    let year, month, day;
 
     if (inputValue.length > 4 && inputValue.length <= 6) {
       month = inputValue.slice(4, 6);
       month = +month > 12 ? '12' : +month === 0 ? '0' : month;
       formatted = inputValue.slice(0, 4) + '.' + month;
     } else if (inputValue.length > 6) {
-      // TODO: 일자에 대한 검증 로직 필요
-      formatted = inputValue.slice(0, 4) + '.' + inputValue.slice(4, 6) + '.' + inputValue.slice(6, 8);
+      if (inputValue.length < 8) {
+        formatted = inputValue.slice(0, 4) + '.' + inputValue.slice(4, 6) + '.' + inputValue.slice(6, 8);
+      } else {
+        year = inputValue.slice(0, 4);
+        month = inputValue.slice(4, 6);
+        day = inputValue.slice(6, 8);
+        formatted = isValidate(year, month, day) ? year + '.' + month + '.' + day : year + '.' + month;
+      }
     }
     setFormattedValue(formatted);
     onChange && onChange(formatted);
