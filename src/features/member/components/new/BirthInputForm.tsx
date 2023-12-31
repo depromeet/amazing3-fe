@@ -17,7 +17,7 @@ export const BirthInputForm = () => {
   const { onChange, value } = field;
   const { nickname } = getValues();
 
-  const isEmpty = () => (value ? value.length !== 10 : true);
+  const isEmpty = () => (value ? value.length !== MAX_DATE_LENGTH_UNTIL_DAY : true);
 
   /**
    * TODO: API 연결 및 라우팅 추가
