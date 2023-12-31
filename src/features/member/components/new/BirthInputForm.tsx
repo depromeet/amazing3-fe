@@ -1,6 +1,7 @@
 'use client';
 
 import { useController, useFormContext } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 import BirthIcon from '@/assets/icons/birth-icon.svg';
 import { Button, Input } from '@/components';
@@ -10,6 +11,7 @@ import type { NewMemberFormValues } from '../../types';
 import FormLayout from './FormLayout';
 
 export const BirthInputForm = () => {
+  const router = useRouter();
   const { register, getValues, control } = useFormContext<NewMemberFormValues>();
   const { field } = useController({ name: 'birth', control });
   const { onChange, value } = field;
@@ -20,9 +22,9 @@ export const BirthInputForm = () => {
    * TODO: 생년월일 검증 로직 추가
    */
 
-  /**
-   * TODO: API 연결 및 라우팅 추가
-   */
+  if (!nickname) {
+    router.push('/member/new/nickname');
+  }
 
   return (
     <FormLayout
