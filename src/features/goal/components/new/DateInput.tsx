@@ -6,18 +6,14 @@ import { useState } from 'react';
 import { Input } from '@/components';
 import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
 
-type TextAlignType = 'center' | 'left' | 'right' | 'start' | 'end' | 'justify';
-
 interface DateInputProps {
   maxLength: number;
-  textAlign?: TextAlignType;
-  additionalText?: string;
   onChange?: (value: string) => void;
 }
 
-export const DateInput = ({ maxLength, textAlign = 'start', additionalText = '', onChange }: DateInputProps) => {
+export const DateInput = ({ maxLength, onChange }: DateInputProps) => {
   const [formattedValue, setFormattedValue] = useState<string>('');
-  const placeholder = (maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD') + additionalText;
+  const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD';
 
   const makeFormattedDate = (strArr: string[], separator: string) => {
     return strArr.join(separator);
@@ -57,7 +53,6 @@ export const DateInput = ({ maxLength, textAlign = 'start', additionalText = '',
 
   return (
     <Input
-      className={`text-${textAlign}`}
       type="text"
       placeholder={placeholder}
       value={formattedValue}
