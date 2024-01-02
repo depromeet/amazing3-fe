@@ -19,10 +19,6 @@ export const BirthInputForm = () => {
 
   const isValidInput = () => (value ? value.length !== MAX_DATE_LENGTH_UNTIL_DAY : true);
 
-  /**
-   * TODO: API 연결 및 라우팅 추가
-   */
-
   return (
     <FormLayout
       icon={<BirthIcon width={40} height={40} />}
