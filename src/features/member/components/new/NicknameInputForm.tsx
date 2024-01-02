@@ -18,7 +18,7 @@ export const NicknameInputForm = () => {
   const { field } = useController({ name: 'nickname', control });
   const { onChange, value } = field;
 
-  const isEmpty = () => (value ? value.length === 0 : true);
+  const isValidInput = () => (value ? value.length === 0 : true);
 
   return (
     <FormLayout
@@ -32,7 +32,7 @@ export const NicknameInputForm = () => {
             <LimitedLengthInput maxLength={MAX_NICKNAME_LENGTH} placeholder="닉네임" onChange={onChange} />
           </div>
           <Link href="/member/new/birth">
-            <Button type="button" disabled={!isMounted || isEmpty()}>
+            <Button type="button" disabled={!isMounted || isValidInput()}>
               다음
             </Button>
           </Link>

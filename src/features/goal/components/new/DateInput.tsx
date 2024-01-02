@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { Input } from '@/components';
 import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
 
+import { formatDate, isValidDate } from '../../utils/date';
+
 interface DateInputProps {
   maxLength: number;
   onChange?: (value: string) => void;
@@ -14,15 +16,6 @@ interface DateInputProps {
 export const DateInput = ({ maxLength, onChange }: DateInputProps) => {
   const [formattedValue, setFormattedValue] = useState<string>('');
   const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD';
-
-  const makeFormattedDate = (strArr: string[], separator: string) => {
-    return strArr.join(separator);
-  };
-
-  const isValidate = (year: string, month: string, day: string) => {
-    const date = year + '-' + month + '-' + day;
-    return !isNaN(Date.parse(date));
-  };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value.replace(/\D/g, '');
@@ -33,18 +26,18 @@ export const DateInput = ({ maxLength, onChange }: DateInputProps) => {
       year = inputValue.slice(0, 4);
       month = inputValue.slice(4, 6);
       month = +month > 12 ? '12' : +month === 0 ? '0' : month;
-      formatted = makeFormattedDate([year, month], '.');
+      formatted = formatDate([year, month], '.');
     } else if (inputValue.length > 6) {
       year = inputValue.slice(0, 4);
       month = inputValue.slice(4, 6);
       day = inputValue.slice(6, 8);
 
       if (inputValue.length < 8) {
-        formatted = makeFormattedDate([year, month, day], '.');
+        formatted = formatDate([year, month, day], '.');
       } else {
-        formatted = isValidate(year, month, day)
-          ? makeFormattedDate([year, month, day], '.')
-          : makeFormattedDate([year, month], '.');
+        formatted = isValidDate(year, month, day)
+          ? formatDate([year, month, day], '.')
+          : formatDate([year, month], '.');
       }
     }
     setFormattedValue(formatted);
