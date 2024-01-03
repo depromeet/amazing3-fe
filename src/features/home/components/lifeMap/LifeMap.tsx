@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
+import { useOverlay } from '@toss/use-overlay';
 import { SwiperSlide } from 'swiper/react';
 
 import StarBg from '@/app/home/startBg';
@@ -18,18 +19,17 @@ import { ShareBottomSheet } from '../shareBottomSheet';
 import { ShareButton } from '../shareButton';
 
 export const LifeMap = () => {
-  const [openShareBottomSheet, setOpenShareBottomSheet] = useState(false);
-
   const { data: memberData } = useGetMemberData();
   const { data: goalsData } = useGetGoals();
 
   const downloadSectionRef = useRef<HTMLElement>(null);
+  const { open } = useOverlay();
 
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
   const LAST_PAGE = participatedGoalsArray.length;
 
-  const handleOpenShareBottomSheet = (isOpen: boolean) => () => {
-    setOpenShareBottomSheet(isOpen);
+  const handleOpenShareBottomSheet = () => {
+    open(({ isOpen, close }) => <ShareBottomSheet ref={downloadSectionRef} open={isOpen} onClose={close} />);
   };
 
   return (
@@ -85,12 +85,7 @@ export const LifeMap = () => {
         </ContentWrapper>
       </div>
       <div className="flex gap-5xs px-xs pt-5xs mt-[18px] w-full">
-        <ShareButton onClick={handleOpenShareBottomSheet(true)} />
-        <ShareBottomSheet
-          ref={downloadSectionRef}
-          open={openShareBottomSheet}
-          onClose={handleOpenShareBottomSheet(false)}
-        />
+        <ShareButton onClick={handleOpenShareBottomSheet} />
         <Link href={{ pathname: '/goal/new/goal' }} className="w-full">
           <Button>목표 추가하기</Button>
         </Link>
