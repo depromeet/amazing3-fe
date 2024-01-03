@@ -69,6 +69,7 @@ const RAW_RUNTIME_STATE =
           ["jotai", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:2.6.0"],\
           ["js-cookie", "npm:3.0.5"],\
           ["lint-staged", "npm:15.0.2"],\
+          ["lottie-web", "npm:5.12.2"],\
           ["modern-screenshot", "npm:4.4.37"],\
           ["next", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:14.0.2"],\
           ["postcss", "npm:8.4.31"],\
@@ -10368,6 +10369,7 @@ const RAW_RUNTIME_STATE =
           ["jotai", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:2.6.0"],\
           ["js-cookie", "npm:3.0.5"],\
           ["lint-staged", "npm:15.0.2"],\
+          ["lottie-web", "npm:5.12.2"],\
           ["modern-screenshot", "npm:4.4.37"],\
           ["next", "virtual:74868250102727df59d0c08f1ddb6630e6cd48640d8ad9d1ed80f220eee5d95c37bdc80e67cbbd686a520d72c8276bea707c0a77572e4e760d1051e7254c23b3#npm:14.0.2"],\
           ["postcss", "npm:8.4.31"],\
@@ -16490,6 +16492,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["loose-envify", "npm:1.4.0"],\
           ["js-tokens", "npm:4.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lottie-web", [\
+      ["npm:5.12.2", {\
+        "packageLocation": "./.yarn/cache/lottie-web-npm-5.12.2-942dc9e22a-10c0.zip/node_modules/lottie-web/",\
+        "packageDependencies": [\
+          ["lottie-web", "npm:5.12.2"]\
         ],\
         "linkType": "HARD"\
       }]\
