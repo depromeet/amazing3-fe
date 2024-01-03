@@ -2,19 +2,20 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
+import { useOverlay } from '@toss/use-overlay';
 import { SwiperSlide } from 'swiper/react';
 
 import StarBg from '@/app/home/startBg';
 import { Avatar, Button, ContentWrapper } from '@/components';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useGetGoals } from '@/hooks/reactQuery/goal';
-import { useDownloadImage } from '@/hooks/useDownloadImage';
 
 import { GOAL_COUNT_PER_PAGE } from '../../constants';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
 import { MapCardPositioner } from '../mapCardPositioner';
 import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
 import { MapSwiper } from '../mapSwiper';
+import { ShareBottomSheet } from '../shareBottomSheet';
 import { ShareButton } from '../shareButton';
 
 export const LifeMap = () => {
@@ -22,10 +23,14 @@ export const LifeMap = () => {
   const { data: goalsData } = useGetGoals();
 
   const downloadSectionRef = useRef<HTMLElement>(null);
-  const { isDownloading, onDownloadImage } = useDownloadImage(downloadSectionRef);
+  const { open } = useOverlay();
 
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
   const LAST_PAGE = participatedGoalsArray.length;
+
+  const handleOpenShareBottomSheet = () => {
+    open(({ isOpen, close }) => <ShareBottomSheet ref={downloadSectionRef} open={isOpen} onClose={close} />);
+  };
 
   return (
     <div className="w-full h-[100dvh] flex flex-col items-center justify-between pb-xs">
@@ -80,7 +85,7 @@ export const LifeMap = () => {
         </ContentWrapper>
       </div>
       <div className="flex gap-5xs px-xs pt-5xs mt-[18px] w-full">
-        <ShareButton isLoading={isDownloading} onClick={onDownloadImage} />
+        <ShareButton onClick={handleOpenShareBottomSheet} />
         <Link href={{ pathname: '/goal/new/goal' }} className="w-full">
           <Button>목표 추가하기</Button>
         </Link>
