@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useOverlay } from '@toss/use-overlay';
 import { SwiperSlide } from 'swiper/react';
@@ -9,6 +9,8 @@ import StarBg from '@/app/home/startBg';
 import { Avatar, Button, ContentWrapper } from '@/components';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useGetGoals } from '@/hooks/reactQuery/goal';
+import type { GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
+import { isLargerThanToday } from '@/utils/date';
 
 import { GOAL_COUNT_PER_PAGE } from '../../constants';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
@@ -27,6 +29,30 @@ export const LifeMap = () => {
 
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
   const LAST_PAGE = participatedGoalsArray.length;
+
+  const [position, setPosition] = useState<number | null>(null);
+
+  // useEffect로 값을 찾기
+  useEffect(() => {
+    if (goalsData?.goals) {
+      handleCurrentPageChange(goalsData?.goals);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [goalsData]);
+
+  const handleCurrentPageChange = (goals: Array<GoalProps>) => {
+    let currentPosition = 0;
+
+    for (const goal of goals) {
+      const [year, month] = goal.deadline.split('.');
+      if (isLargerThanToday(year, month)) {
+        break;
+      }
+      currentPosition++;
+    }
+
+    setPosition(currentPosition);
+  };
 
   const handleOpenShareBottomSheet = () => {
     open(({ isOpen, close }) => <ShareBottomSheet ref={downloadSectionRef} open={isOpen} onClose={close} />);
@@ -64,7 +90,7 @@ export const LifeMap = () => {
           <StarBg />
           <div className="h-[520px]">
             <div className="absolute inset-x-0">
-              <MapSwiper>
+              <MapSwiper currentPosition={position}>
                 {participatedGoalsArray?.map((goals, index) => (
                   <SwiperSlide key={`swiper-goal-${index}`}>
                     {!(index % 2) ? (

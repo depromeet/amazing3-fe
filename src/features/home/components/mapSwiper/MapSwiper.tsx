@@ -4,6 +4,7 @@ import type { PropsWithChildren } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper } from 'swiper/react';
 
+import { CurrentDatePosition } from './CurrentDatePosition';
 import { CustomPagination } from './CustomPagination';
 
 import 'swiper/css';
@@ -16,10 +17,15 @@ const settings = {
   modules: [Pagination],
 };
 
-export const MapSwiper = ({ children }: PropsWithChildren) => {
+interface MapSwiperProps extends PropsWithChildren {
+  currentPosition: number | null;
+}
+
+export const MapSwiper = ({ currentPosition, children }: MapSwiperProps) => {
   return (
     <Swiper {...settings} className="h-full">
       {children}
+      {currentPosition && <CurrentDatePosition currentPosition={currentPosition} />}
       <CustomPagination />
     </Swiper>
   );
