@@ -5,7 +5,6 @@ import BandiBoodiShare from '@/assets/images/bandiboodi-share.png';
 import { BottomSheet, Typography } from '@/components/atoms';
 
 import Footer from './Footer';
-import Header from './Header';
 
 interface ShareGoalBottomSheetProps {
   open: boolean;
@@ -19,7 +18,6 @@ export const ShareBottomSheet = forwardRef<HTMLElement, ShareGoalBottomSheetProp
         open={open}
         onDismiss={onClose}
         fixedMaxHeight={480}
-        HeaderComponent={<Header onClose={onClose} />}
         FooterComponent={<Footer ref={ref} onClose={onClose} />}
       >
         <div className="flex flex-col items-center justify-center gap-3xs translate-y-[20px]">
