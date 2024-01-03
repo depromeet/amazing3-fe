@@ -3,6 +3,11 @@ export const formatDate = (splitedDate: string[], separator: string) => {
 };
 
 export const isValidDate = (year: string, month: string, day: string) => {
-  const date = year + '-' + month + '-' + day;
-  return !isNaN(Date.parse(date));
+  const yearNum = +year;
+  const monthNum = +month - 1;
+  const dayNum = +day;
+
+  const date = new Date(yearNum, monthNum, dayNum);
+
+  return date.getFullYear() === yearNum && date.getMonth() === monthNum && date.getDate() === dayNum;
 };
