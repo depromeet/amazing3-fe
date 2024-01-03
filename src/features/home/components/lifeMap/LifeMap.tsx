@@ -32,7 +32,6 @@ export const LifeMap = () => {
 
   const [position, setPosition] = useState<number | null>(null);
 
-  // useEffect로 값을 찾기
   useEffect(() => {
     if (goalsData?.goals) {
       handleCurrentPageChange(goalsData?.goals);
