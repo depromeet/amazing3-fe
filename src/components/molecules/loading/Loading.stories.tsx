@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Loading } from './Loading';
 
 const meta: Meta<typeof Loading> = {
-  title: 'components/atoms/loading',
+  title: 'components/molecules/loading',
   component: Loading,
   argTypes: {},
 };
