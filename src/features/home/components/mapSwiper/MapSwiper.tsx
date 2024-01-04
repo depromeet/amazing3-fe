@@ -1,10 +1,7 @@
-'use client';
-
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren, useEffect, useState } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper } from 'swiper/react';
 
-import { CurrentDatePosition } from './CurrentDatePosition';
 import { CustomPagination } from './CustomPagination';
 
 import 'swiper/css';
@@ -12,7 +9,6 @@ import 'swiper/css/pagination';
 import './MapSwiper.styles.css';
 
 const settings = {
-  slidesPerView: 1,
   pagination: { clickable: true },
   modules: [Pagination],
 };
@@ -22,11 +18,20 @@ interface MapSwiperProps extends PropsWithChildren {
 }
 
 export const MapSwiper = ({ currentPosition, children }: MapSwiperProps) => {
+  const [initialSlide, setInitialSlide] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (currentPosition) {
+      setInitialSlide(Math.floor(currentPosition / 5));
+    }
+  }, [currentPosition]);
+
   return (
-    <Swiper {...settings} className="h-full">
-      {children}
-      {currentPosition && <CurrentDatePosition currentPosition={currentPosition} />}
-      <CustomPagination />
-    </Swiper>
+    initialSlide && (
+      <Swiper {...settings} initialSlide={24} className="h-full">
+        {children}
+        <CustomPagination />
+      </Swiper>
+    )
   );
 };
