@@ -34,23 +34,18 @@ export const LifeMap = () => {
 
   useEffect(() => {
     if (goalsData?.goals) {
-      handleCurrentPageChange(goalsData?.goals);
+      findCurrentPosition(goalsData?.goals);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [goalsData]);
 
-  const handleCurrentPageChange = (goals: Array<GoalProps>) => {
-    let currentPosition = 0;
+  const findCurrentPosition = (goals: Array<GoalProps>) => {
+    const currentPosition = goals.findIndex(({ deadline }) => {
+      const [year, month] = deadline.split('.');
+      return isLargerThanToday(year, month);
+    });
 
-    for (const goal of goals) {
-      const [year, month] = goal.deadline.split('.');
-      if (isLargerThanToday(year, month)) {
-        break;
-      }
-      currentPosition++;
-    }
-
-    setPosition(currentPosition);
+    setPosition(currentPosition == -1 ? goals.length : currentPosition);
   };
 
   const handleOpenShareBottomSheet = () => {
