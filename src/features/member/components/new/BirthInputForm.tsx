@@ -17,7 +17,7 @@ export const BirthInputForm = () => {
   const { onChange, value } = field;
   const { nickname } = getValues();
 
-  const isValidInput = () => (value ? value.length !== MAX_DATE_LENGTH_UNTIL_DAY : true);
+  const isInvalidInput = () => (value ? value.length !== MAX_DATE_LENGTH_UNTIL_DAY : true);
 
   return (
     <FormLayout
@@ -30,7 +30,7 @@ export const BirthInputForm = () => {
           <div {...register('birth')}>
             <DateInput maxLength={MAX_DATE_LENGTH_UNTIL_DAY} onChange={onChange} />
           </div>
-          <Button type="submit" disabled={isValidInput()}>
+          <Button type="submit" disabled={isInvalidInput()}>
             완료
           </Button>
         </div>
