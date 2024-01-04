@@ -4,6 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { META } from '@/constants';
 import Providers from '@/contexts/Providers';
+import { GoogleAnalytics } from '@/features/analyzer';
 
 import { insungIt, pretendard } from './fonts';
 
@@ -49,6 +50,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Analytics />
           <SpeedInsights />
         </Providers>
+
+        <GoogleAnalytics />
       </body>
     </html>
   );
