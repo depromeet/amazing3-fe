@@ -1,6 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 import BirthIcon from '@/assets/icons/birth-icon.svg';
 import { Button } from '@/components';
@@ -12,12 +14,19 @@ import type { NewMemberFormValues } from '../../types';
 import FormLayout from './FormLayout';
 
 export const BirthInputForm = () => {
+  const router = useRouter();
   const { register, getValues, control } = useFormContext<NewMemberFormValues>();
   const { field } = useController({ name: 'birth', control });
   const { onChange, value } = field;
   const { nickname } = getValues();
 
   const isInvalidInput = () => (value ? value.length !== MAX_DATE_LENGTH_UNTIL_DAY : true);
+
+  useEffect(() => {
+    if (!nickname) {
+      router.push('/member/new/nickname');
+    }
+  }, []);
 
   return (
     <FormLayout
