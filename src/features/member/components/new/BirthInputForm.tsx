@@ -5,7 +5,9 @@ import { useController, useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
 import BirthIcon from '@/assets/icons/birth-icon.svg';
-import { Button, Input } from '@/components';
+import { Button } from '@/components';
+import { MAX_DATE_LENGTH_UNTIL_DAY } from '@/constants';
+import { DateInput } from '@/features/goal/components/new/DateInput';
 
 import type { NewMemberFormValues } from '../../types';
 
@@ -18,10 +20,7 @@ export const BirthInputForm = () => {
   const { onChange, value } = field;
   const { nickname } = getValues();
 
-  const isEmpty = () => (value ? value.length === 0 : true);
-  /**
-   * TODO: 생년월일 검증 로직 추가
-   */
+  const isInvalidInput = () => (value ? value.length !== MAX_DATE_LENGTH_UNTIL_DAY : true);
 
   useEffect(() => {
     if (!nickname) {
@@ -37,8 +36,10 @@ export const BirthInputForm = () => {
     >
       <div className="mt-xs flex flex-col grow w-full">
         <div className="w-full h-full flex flex-col justify-between">
-          <Input {...register('birth')} type="date" onChange={onChange} />
-          <Button type="submit" disabled={isEmpty()}>
+          <div {...register('birth')}>
+            <DateInput maxLength={MAX_DATE_LENGTH_UNTIL_DAY} onChange={onChange} />
+          </div>
+          <Button type="submit" disabled={isInvalidInput()}>
             완료
           </Button>
         </div>

@@ -1,3 +1,4 @@
 export const MAX_DATE_LENGTH_UNTIL_MONTH = 7;
+export const MAX_DATE_LENGTH_UNTIL_DAY = 10;
 export const MAX_TEXTAREA_LENGTH = 300;
 export const MAX_NICKNAME_LENGTH = 10;
