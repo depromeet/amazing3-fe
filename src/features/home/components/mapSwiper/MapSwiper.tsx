@@ -1,8 +1,8 @@
-'use client';
-
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren, useEffect, useState } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper } from 'swiper/react';
+
+import { GOAL_COUNT_PER_PAGE } from '@/features/home/constants';
 
 import { CustomPagination } from './CustomPagination';
 
@@ -11,16 +11,29 @@ import 'swiper/css/pagination';
 import './MapSwiper.styles.css';
 
 const settings = {
-  slidesPerView: 1,
   pagination: { clickable: true },
   modules: [Pagination],
 };
 
-export const MapSwiper = ({ children }: PropsWithChildren) => {
+interface MapSwiperProps extends PropsWithChildren {
+  currentPosition: number | null;
+}
+
+export const MapSwiper = ({ currentPosition, children }: MapSwiperProps) => {
+  const [initialSlide, setInitialSlide] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (currentPosition) {
+      setInitialSlide(Math.floor(currentPosition / GOAL_COUNT_PER_PAGE));
+    }
+  }, [currentPosition]);
+
   return (
-    <Swiper {...settings} className="h-full">
-      {children}
-      <CustomPagination />
-    </Swiper>
+    initialSlide && (
+      <Swiper {...settings} initialSlide={initialSlide} className="h-full">
+        {children}
+        <CustomPagination />
+      </Swiper>
+    )
   );
 };
