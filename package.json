@@ -25,6 +25,7 @@
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.2",
     "class-variance-authority": "^0.7.0",
+    "framer-motion": "^10.17.9",
     "jotai": "^2.6.0",
     "js-cookie": "^3.0.5",
     "lottie-web": "^5.12.2",

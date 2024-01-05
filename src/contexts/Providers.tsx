@@ -2,6 +2,7 @@
 
 import type { PropsWithChildren } from 'react';
 import { OverlayProvider } from '@toss/use-overlay';
+import { domAnimation, LazyMotion } from 'framer-motion';
 
 import { useOpenExternalBrowser } from '@/hooks/useOpenExternalBrowser';
 
@@ -11,9 +12,11 @@ const Providers = ({ children }: PropsWithChildren) => {
   useOpenExternalBrowser();
 
   return (
-    <QueryClientProvider>
-      <OverlayProvider>{children}</OverlayProvider>
-    </QueryClientProvider>
+    <LazyMotion features={domAnimation}>
+      <QueryClientProvider>
+        <OverlayProvider>{children}</OverlayProvider>
+      </QueryClientProvider>
+    </LazyMotion>
   );
 };
 
