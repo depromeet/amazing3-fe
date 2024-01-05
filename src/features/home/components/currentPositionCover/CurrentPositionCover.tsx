@@ -1,4 +1,5 @@
 import React from 'react';
+import { m } from 'framer-motion';
 
 import CurrentPositionIcon from '@/assets/icons/home/current-position-icon.svg';
 
@@ -23,8 +24,25 @@ export const CurrentPositionCover = ({ currentPosition }: CurrentPositionCoverPr
   return (
     absolutePosition[currentPosition] && (
       <div className={`absolute ${absolutePosition[currentPosition].x} ${absolutePosition[currentPosition].y}`}>
-        <CurrentPositionIcon />
+        <m.div initial={initial} animate={animate} transition={transition}>
+          <CurrentPositionIcon />
+        </m.div>
       </div>
     )
   );
+};
+
+const initial = {
+  opacity: 0,
+  scale: 0.5,
+};
+
+const animate = {
+  opacity: 1,
+  scale: 1,
+};
+
+const transition = {
+  duration: 0.3,
+  scale: { type: 'spring', damping: 10, stiffness: 100, restDelta: 0.001 },
 };
