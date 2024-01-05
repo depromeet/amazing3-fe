@@ -15,7 +15,7 @@ interface DateInputProps {
 
 export const DateInput = ({ maxLength, onChange }: DateInputProps) => {
   const [formattedValue, setFormattedValue] = useState<string>('');
-  const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD';
+  const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY-MM-DD';
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value.replace(/\D/g, '');
@@ -36,8 +36,8 @@ export const DateInput = ({ maxLength, onChange }: DateInputProps) => {
         formatted = formatDate([year, month, day], '.');
       } else {
         formatted = isValidDate(year, month, day)
-          ? formatDate([year, month, day], '.')
-          : formatDate([year, month], '.');
+          ? formatDate([year, month, day], '-')
+          : formatDate([year, month], '-');
       }
     }
     setFormattedValue(formatted);
