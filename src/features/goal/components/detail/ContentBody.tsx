@@ -1,12 +1,15 @@
 import React from 'react';
-import { useAtomValue } from 'jotai';
 
 import { Span, Typography } from '@/components/atoms';
-import { goalAtom } from '@/features/goal/components/detail/atom';
 
-export const ContentBody = () => {
-  const { title, date, tag, more } = useAtomValue(goalAtom);
+interface ContentBodyProps {
+  title: string;
+  date: string;
+  tag: string;
+  more: string;
+}
 
+export const ContentBody = ({ title, date, tag, more }: ContentBodyProps) => {
   return (
     title && (
       <div className="flex flex-col gap-4xs">

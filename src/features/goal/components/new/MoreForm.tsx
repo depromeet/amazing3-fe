@@ -29,7 +29,7 @@ export const MoreForm = () => {
   useEffect(() => {
     if (data) {
       setGoalData(data);
-      router.push('/goal/detail/saved');
+      router.push(`/goal/detail/saved?id=${data.id}`);
     }
   }, [isPending, data, router, setGoalData]);
 
