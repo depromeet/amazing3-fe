@@ -1,0 +1,1 @@
+export { CurrentPositionCover } from './CurrentPositionCover';

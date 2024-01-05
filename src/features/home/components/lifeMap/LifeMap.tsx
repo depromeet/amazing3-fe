@@ -12,8 +12,9 @@ import { useGetGoals } from '@/hooks/reactQuery/goal';
 import type { GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
 import { isLargerThanToday } from '@/utils/date';
 
-import { GOAL_COUNT_PER_PAGE } from '../../constants';
+import { GOAL_COUNT_PER_PAGE, TOTAL_CURRENT_POSITIONS } from '../../constants';
 import { makeHomeDescription } from '../../utils/makeHomeDescription';
+import { CurrentPositionCover } from '../currentPositionCover';
 import { MapCardPositioner } from '../mapCardPositioner';
 import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
 import { MapSwiper } from '../mapSwiper';
@@ -44,8 +45,16 @@ export const LifeMap = () => {
       const [year, month] = deadline.split('.');
       return isLargerThanToday(year, month);
     });
-
-    setPosition(currentPosition == -1 ? goals.length : currentPosition);
+    switch (currentPosition) {
+      case -1:
+        setPosition(goals.length);
+        break;
+      case 0: // 첫번째 페이지의 0 포지션은 1로 변경
+        setPosition(1);
+        break;
+      default:
+        setPosition(currentPosition);
+    }
   };
 
   const handleOpenShareBottomSheet = () => {
@@ -96,6 +105,9 @@ export const LifeMap = () => {
                       />
                     ) : (
                       <MapCardPositioner type="B" goals={goals} isLast={index === LAST_PAGE - 1} />
+                    )}
+                    {position && Math.floor(position / GOAL_COUNT_PER_PAGE) === index && (
+                      <CurrentPositionCover currentPosition={position % TOTAL_CURRENT_POSITIONS} />
                     )}
                   </SwiperSlide>
                 ))}
