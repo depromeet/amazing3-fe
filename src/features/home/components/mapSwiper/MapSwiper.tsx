@@ -2,6 +2,8 @@ import { type PropsWithChildren, useEffect, useState } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper } from 'swiper/react';
 
+import { GOAL_COUNT_PER_PAGE } from '@/features/home/constants';
+
 import { CustomPagination } from './CustomPagination';
 
 import 'swiper/css';
@@ -22,13 +24,13 @@ export const MapSwiper = ({ currentPosition, children }: MapSwiperProps) => {
 
   useEffect(() => {
     if (currentPosition) {
-      setInitialSlide(Math.floor(currentPosition / 5));
+      setInitialSlide(Math.floor(currentPosition / GOAL_COUNT_PER_PAGE));
     }
   }, [currentPosition]);
 
   return (
     initialSlide && (
-      <Swiper {...settings} initialSlide={24} className="h-full">
+      <Swiper {...settings} initialSlide={initialSlide} className="h-full">
         {children}
         <CustomPagination />
       </Swiper>
