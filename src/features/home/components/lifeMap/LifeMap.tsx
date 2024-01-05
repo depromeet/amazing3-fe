@@ -45,6 +45,7 @@ export const LifeMap = () => {
       const [year, month] = deadline.split('.');
       return isLargerThanToday(year, month);
     });
+
     switch (currentPosition) {
       case -1:
         setPosition(goals.length);
