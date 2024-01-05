@@ -1,16 +1,13 @@
 'use client';
 
-import { useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { SwiperSlide } from 'swiper/react';
 
 import MapSticker from '@/assets/stickers/map_sticker.png';
 import TargetSticker from '@/assets/stickers/target_sticker.png';
 import WritingSticker from '@/assets/stickers/writing_sticker.png';
 import { Button } from '@/components';
-import { Spinner } from '@/components/atoms/spinner';
-import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
 import { OnboardingLayout } from '../onboardingLayout';
 import type { OnboardingLayoutProps } from '../onboardingLayout/onboardingLayout';
@@ -50,24 +47,6 @@ const ONBOARDING_VALUES: OnboardingLayoutProps[] = [
 ];
 
 export const OnboardingBody = () => {
-  const router = useRouter();
-  const { data: memberData, refetch, isFetching } = useGetMemberData({ enabled: false });
-
-  useEffect(() => {
-    if (memberData) {
-      const nickname = memberData?.nickname;
-      if (nickname) {
-        router.push('/home');
-      } else {
-        router.push('/member/new/nickname');
-      }
-    }
-  }, [memberData, router]);
-
-  const handleClick = () => {
-    refetch();
-  };
-
   return (
     <div className="w-full h-full px-xs flex flex-col">
       <div className="h-full">
@@ -80,9 +59,9 @@ export const OnboardingBody = () => {
         </OnboardingSwiper>
       </div>
       <div className="h-full flex flex-col-reverse">
-        <Button onClick={handleClick} disabled={isFetching} className="flex-grow-1">
-          {isFetching ? <Spinner /> : '시작하기'}
-        </Button>
+        <Link href={{ pathname: '/member/new/nickname' }}>
+          <Button className="flex-grow-1">시작하기</Button>
+        </Link>
       </div>
     </div>
   );
