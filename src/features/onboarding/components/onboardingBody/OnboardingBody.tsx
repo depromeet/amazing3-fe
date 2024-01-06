@@ -6,7 +6,6 @@ import { SwiperSlide } from 'swiper/react';
 
 import MapSticker from '@/assets/stickers/map_sticker.png';
 import TargetSticker from '@/assets/stickers/target_sticker.png';
-import WritingSticker from '@/assets/stickers/writing_sticker.png';
 import { Button } from '@/components';
 
 import { OnboardingLayout } from '../onboardingLayout';
@@ -14,16 +13,6 @@ import type { OnboardingLayoutProps } from '../onboardingLayout/onboardingLayout
 import { OnboardingSwiper } from '../onboardingSwiper';
 
 const ONBOARDING_VALUES: OnboardingLayoutProps[] = [
-  {
-    title: (
-      <>
-        내가 걸어온 길을 <br />
-        떠올리면서 <br />
-        회고를 적고,
-      </>
-    ),
-    sticker: <Image src={WritingSticker} width={268} height={268} alt="onboarding_image_1" priority />,
-  },
   {
     title: (
       <>
