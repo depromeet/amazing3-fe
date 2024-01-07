@@ -27,12 +27,12 @@ export const MapCard = ({ goal, position }: MapCardProps) => {
           placeholder="blur"
           blurDataURL={blueDataURL.mapCard}
         />
-        <div className="flex gap-[4px] justify-center items-center">
+        <div className="flex max-w-[110px] gap-[4px] justify-center items-center">
           <Typography type="title5" className="text-blue-50">
             {deadline}
           </Typography>
           <VerticalBarIcon width="1" height="11" />
-          <Typography type="title5" className="text-blue-50">
+          <Typography type="title5" className="text-blue-50 text-ellipsis !whitespace-nowrap overflow-hidden">
             {tagContent}
           </Typography>
         </div>
