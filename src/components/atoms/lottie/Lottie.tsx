@@ -3,11 +3,7 @@ import { useEffect, useRef } from 'react';
 import type { AnimationConfig, AnimationItem } from 'lottie-web';
 import lottie from 'lottie-web';
 
-interface AnimationConfigProps extends Omit<AnimationConfig, 'container'> {
-  container?: AnimationConfig['container'];
-}
-
-interface LottieProps extends HTMLAttributes<HTMLDivElement>, AnimationConfigProps {
+interface LottieProps extends HTMLAttributes<HTMLDivElement>, Omit<AnimationConfig, 'container'> {
   src: string;
 }
 
