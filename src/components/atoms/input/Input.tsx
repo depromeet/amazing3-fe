@@ -21,7 +21,7 @@ const inputVariants = cva(
   'w-full placeholder-gray-30 bg-transparent disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50',
 );
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
   includeSubmitButton?: boolean;
   onSubmit?: VoidFunction;
 }
@@ -44,9 +44,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         />
         {includeSubmitButton && (
           <SubmitIcon
-            className="cursor-pointer"
-            fill={props.disabled ? colors.gray[20] : colors.gray[40]}
-            onClick={() => onSubmit()}
+            className="cursor-pointer transition-colors duration-300"
+            fill={props.disabled || !props.value ? colors.gray[20] : colors.gray[40]}
+            onClick={onSubmit}
           />
         )}
       </div>
