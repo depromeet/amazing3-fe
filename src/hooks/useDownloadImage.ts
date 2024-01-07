@@ -1,10 +1,9 @@
 import { type RefObject, useState } from 'react';
-import { domToJpeg } from 'modern-screenshot';
 
-import { shareImage } from '@/utils/image';
+import { GOAL_COUNT_PER_PAGE } from '@/features/home/constants';
+import { useGetGoals } from '@/hooks/reactQuery/goal';
+import { getImageUrl, shareImage } from '@/utils/image';
 import { isIos } from '@/utils/userAgent';
-
-import { backgroundImage } from '../../styles/theme';
 
 const downloadFile = (url: string, filename: string) => {
   const link = document.createElement('a');
@@ -18,6 +17,10 @@ const downloadFile = (url: string, filename: string) => {
 export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
   const [isDownloading, setIsDownloading] = useState(false);
 
+  const { data: goalsData } = useGetGoals();
+
+  const TOTAL_GOAL_PAGES = Math.floor((goalsData?.goalsCount || 1) / GOAL_COUNT_PER_PAGE) + 1;
+
   const onDownloadImage = async () => {
     const image = imageRef.current;
 
@@ -26,21 +29,14 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
     try {
       setIsDownloading(true);
 
-      const imageUrl = await domToJpeg(image, {
-        style: {
-          backgroundImage: backgroundImage.gradient1,
-          paddingTop: '24px',
-        },
-        height: 700,
-        scale: 4,
-      });
+      Array.from({ length: TOTAL_GOAL_PAGES }).forEach(async (_, currentPage) => {
+        const imageUrl = await getImageUrl(image, currentPage);
 
-      const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
-      if (isIos()) {
-        shareImage(imageUrl, IMAGE_FILE_NAME);
-      } else {
-        downloadFile(imageUrl, IMAGE_FILE_NAME);
-      }
+        const IMAGE_FILE_NAME = `별이되고_싶은_반디부디의_인생지도_${currentPage}`;
+
+        if (isIos()) shareImage(imageUrl, IMAGE_FILE_NAME);
+        else downloadFile(imageUrl, IMAGE_FILE_NAME);
+      });
     } catch (error) {
       // TODO: 이미지 다운로드 실패 시, 추가 에러 처리 필요
       console.error(error);
