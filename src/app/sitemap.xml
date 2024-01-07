@@ -10,11 +10,5 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.bandiboodi.com/onboarding</loc>
-    <lastmod>2023-12-28T15:01:39+00:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
   <!--  TODO: 페이지를 공유할 수 있는 기능이 추가되면 sitemap을 동적으로 생성하도록 변경  -->
 </urlset>

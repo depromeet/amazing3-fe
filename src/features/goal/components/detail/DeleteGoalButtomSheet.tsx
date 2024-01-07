@@ -3,21 +3,18 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useAtomValue } from 'jotai';
 
 import BandiMoori from '@/assets/images/bandi-moori.png';
 import { BottomSheet, Button, Typography } from '@/components/atoms';
 import { useDeleteGoal } from '@/hooks/reactQuery/goal';
 
-import { goalIdAtom } from './atom';
-
 interface DeleteGoalButtomSheetProps {
   open: boolean;
   onClose: () => void;
+  goalId: number;
 }
 
-export const DeleteGoalButtomSheet = ({ open, onClose }: DeleteGoalButtomSheetProps) => {
-  const goalId = useAtomValue(goalIdAtom);
+export const DeleteGoalButtomSheet = ({ open, onClose, goalId }: DeleteGoalButtomSheetProps) => {
   const { mutate, isSuccess, isError } = useDeleteGoal();
   const router = useRouter();
 
