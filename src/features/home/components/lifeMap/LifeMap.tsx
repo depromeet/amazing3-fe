@@ -47,14 +47,14 @@ export const LifeMap = () => {
     });
 
     switch (currentPosition) {
-      case -1:
-        setPosition(goals.length);
+      case -1: // goals이 아예 없는 경우를 제외하고 마지막 페이지로 이동
+        setPosition(goals.length === 0 ? 1 : goals.length + 1);
         break;
       case 0: // 첫번째 페이지의 0 포지션은 1로 변경
         setPosition(1);
         break;
       default:
-        setPosition(currentPosition);
+        setPosition(currentPosition + 1);
     }
   };
 

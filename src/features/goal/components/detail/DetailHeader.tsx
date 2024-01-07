@@ -1,16 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { useOverlay } from '@toss/use-overlay';
-import { useAtomValue } from 'jotai';
 
 import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 import DeleteIcon from '@/assets/icons/goal/delete-icon.svg';
 
-import { goalIdAtom } from './atom';
 import { DeleteGoalButtomSheet } from './DeleteGoalButtomSheet';
 
-export const DetailHeader = () => {
-  const goalId = useAtomValue(goalIdAtom);
+interface DetailHeaderProps {
+  goalId: number;
+}
+
+export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
   const overlay = useOverlay();
 
   return (
@@ -21,10 +22,9 @@ export const DetailHeader = () => {
 
       {goalId && (
         <button
-          disabled={!goalId}
           onClick={() => {
             overlay.open(({ isOpen, close }) => {
-              return <DeleteGoalButtomSheet open={isOpen} onClose={close} />;
+              return <DeleteGoalButtomSheet open={isOpen} onClose={close} goalId={goalId} />;
             });
           }}
         >
