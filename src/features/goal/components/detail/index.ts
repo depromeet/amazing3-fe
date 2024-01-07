@@ -1,3 +1,4 @@
+export { AddSubGoalPrompt } from './AddSubGoalPrompt';
 export { ContentBody } from './ContentBody';
 export { DetailFooterButton } from './DetailFooterButton';
 export { DetailHeader } from './DetailHeader';
