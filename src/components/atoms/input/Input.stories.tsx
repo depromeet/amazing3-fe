@@ -36,3 +36,11 @@ export const DateInput: Story = {
     type: 'date',
   },
 };
+
+export const IncludeSubmitButton: Story = {
+  args: {
+    ...TextInput.args,
+    includeSubmitButton: true,
+    onSubmit: () => alert('submit 버튼을 누르셨군요!'),
+  },
+};
