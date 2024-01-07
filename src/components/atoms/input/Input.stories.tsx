@@ -54,3 +54,17 @@ export const DateInput: Story = {
 export const IncludeSubmitButton: Story = {
   render: () => <Example includeSubmitButton onSubmit={() => alert('submit 버튼을 누르셨군요!')} />,
 };
+
+export const TextOverflow: Story = {
+  args: {
+    value: '일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사',
+    includeSubmitButton: true,
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-[300px]">
+        <Story />
+      </div>
+    ),
+  ],
+};
