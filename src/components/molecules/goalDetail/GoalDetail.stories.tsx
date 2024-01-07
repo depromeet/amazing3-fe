@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Goal } from './Goal';
+import { GoalDetail } from './GoalDetail';
 
-const meta: Meta<typeof Goal> = {
-  title: 'components/molecules/goal',
-  component: Goal,
+const meta: Meta<typeof GoalDetail> = {
+  title: 'components/molecules/goalDetail',
+  component: GoalDetail,
   decorators: [
     (Story) => (
       <div>
@@ -20,13 +20,13 @@ const meta: Meta<typeof Goal> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Goal>;
+type Story = StoryObj<typeof GoalDetail>;
 
 const BasicGoal = () => {
   const [isChecked, setChecked] = useState(false);
 
   return (
-    <Goal
+    <GoalDetail
       isDone={isChecked}
       text="월 50씩 저축하기"
       onDoneClick={() => setChecked((prev) => !prev)}
@@ -46,7 +46,7 @@ export const Done: Story = {
   },
 };
 
-export const Ellipsis: Story = {
+export const Overflow: Story = {
   args: {
     text: '월 50씩 저축은 하는데요. 이게말이죠 경우에 따라 말이죠.',
   },

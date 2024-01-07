@@ -3,14 +3,14 @@ import CheckedIcon from '@/assets/icons/goal/radio/radio-checked.svg';
 import UnCheckedIcon from '@/assets/icons/goal/radio/radio-unchecked.svg';
 import { Typography } from '@/components';
 
-interface GoalProps {
+interface GoalDetailProps {
   isDone?: boolean;
   text: string;
   onDoneClick: VoidFunction;
   onMoreOptionClick: VoidFunction;
 }
 
-export const Goal = ({ isDone = false, onDoneClick, onMoreOptionClick, text }: GoalProps) => {
+export const GoalDetail = ({ isDone = false, onDoneClick, onMoreOptionClick, text }: GoalDetailProps) => {
   const CheckIcon = isDone ? CheckedIcon : UnCheckedIcon;
 
   return (
@@ -19,7 +19,7 @@ export const Goal = ({ isDone = false, onDoneClick, onMoreOptionClick, text }: G
         <div className="w-[24px] h-[24px]">
           <CheckIcon width={24} height={24} className="cursor-pointer" onClick={onDoneClick} />
         </div>
-        <Typography type="body3" className="text-gray-70 text-ellipsis !whitespace-nowrap overflow-hidden">
+        <Typography type="body3" className="text-gray-70">
           {text}
         </Typography>
       </div>
