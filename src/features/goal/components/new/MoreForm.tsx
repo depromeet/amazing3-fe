@@ -3,12 +3,10 @@
 import { useEffect } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { useSetAtom } from 'jotai';
 
 import { Button, Typography } from '@/components';
 import { Spinner } from '@/components/atoms/spinner';
 import { MAX_TEXTAREA_LENGTH } from '@/constants';
-import { goalAtom } from '@/features/goal/components/detail/atom';
 import type { GoalFormValues } from '@/features/goal/types';
 import { useCreateGoal } from '@/hooks/reactQuery/goal';
 
@@ -22,16 +20,14 @@ export const MoreForm = () => {
   const { register, getValues, control } = useFormContext<GoalFormValues>();
   const router = useRouter();
   const { field } = useController({ name: 'content', control });
-  const setGoalData = useSetAtom(goalAtom);
   const { onChange } = field;
   const { mutate, isPending, data } = useCreateGoal();
 
   useEffect(() => {
     if (data) {
-      setGoalData(data);
       router.push(`/goal/detail/saved?id=${data.id}`);
     }
-  }, [isPending, data, router, setGoalData]);
+  }, [isPending, data, router]);
 
   const handleSubmit = () => {
     const { title, content, date, tag, sticker } = getValues();
