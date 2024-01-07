@@ -1,5 +1,3 @@
-'use client';
-
 import type { HTMLAttributes } from 'react';
 import { useEffect, useRef } from 'react';
 import type { AnimationConfig, AnimationItem } from 'lottie-web';
