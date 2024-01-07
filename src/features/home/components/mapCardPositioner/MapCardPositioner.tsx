@@ -10,7 +10,7 @@ import { getEdgePosition, getEmptyGoalCount } from './MapCardPositioner.utils';
 
 const typeToPosition = {
   A: [
-    { x: 'top-[24px]', y: 'left-[32px]' },
+    { x: 'top-[24px]', y: 'left-[42px]' },
     { x: 'top-[24px]', y: 'right-[32px]' },
     { x: 'top-[198px]', y: 'right-[80px]' },
     { x: 'top-[285px]', y: 'left-[32px]' },

@@ -40,10 +40,23 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: '반디부디',
+  url: 'https://bandibudi.com/',
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="kr">
       <body className={`${pretendard.variable} ${insungIt.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
+        />
         <Providers>
           <div className="layout font-pretendard">{children}</div>
           <Analytics />
