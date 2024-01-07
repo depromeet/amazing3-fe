@@ -1,0 +1,5 @@
+export const DOWNLOAD_IMAGE_STYLE = {
+  WIDTH: 390,
+  HEIGHT: 700,
+  PADDING: 24,
+};
