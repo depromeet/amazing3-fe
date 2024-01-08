@@ -48,7 +48,7 @@ export const Done: Story = {
 
 export const Overflow: Story = {
   args: {
-    text: '월 50씩 저축은 하는데요. 이게말이죠 경우에 따라 말이죠.',
+    text: '월 50씩 저축은 하는데요. 이게 말이죠. 경우에 따라 말이죠.',
   },
   decorators: [
     (Story) => (

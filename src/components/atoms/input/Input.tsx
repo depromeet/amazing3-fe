@@ -1,9 +1,8 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useCallback, useState } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
+import { colors } from '@/../styles/theme';
 import SubmitIcon from '@/assets/icons/submit.svg';
-
-import { colors } from '../../../../styles/theme';
 
 const inputContainerVariants = cva(
   'p-3xs flex gap-6xs items-center w-full h-[56px] rounded-md bg-white border shadow-thumb',
@@ -33,8 +32,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, includeSubmitButton = false, onSubmit = () => {}, ...props }: InputProps, ref) => {
     const [isFocused, setIsFocused] = useState(false);
 
-    const handleFocus = () => setIsFocused(true);
-    const handleBlur = () => setIsFocused(false);
+    const handleFocus = useCallback(() => setIsFocused(true), []);
+    const handleBlur = useCallback(() => setIsFocused(false), []);
 
     return (
       <div className={inputContainerVariants({ isFocused })}>
