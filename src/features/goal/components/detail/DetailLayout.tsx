@@ -19,7 +19,7 @@ export const DetailLayout = ({ header, sticker, body, footer }: LayoutProps) => 
       </div>
 
       <div className="absolute w-full top-[320px] bg-white rounded-lg pt-3xs">
-        <div className="p-4xs px-sm">{body}</div>
+        <div className="py-4xs px-xs">{body}</div>
       </div>
       <div className="p-xs absolute w-full bottom-0">{footer}</div>
     </>
