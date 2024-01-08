@@ -6,6 +6,12 @@ type GoalRequestParams = {
   goalId: number;
 };
 
+export type GoalTasksProps = {
+  taskId: number;
+  isTaskDone: true;
+  taskDescription: string;
+};
+
 type GoalResponse = {
   title: string;
   deadline: string;
@@ -15,13 +21,7 @@ type GoalResponse = {
     tagId: number;
     tagContent: string;
   };
-  tasks: [
-    {
-      taskId: number;
-      isTaskDone: true;
-      taskDescription: string;
-    },
-  ];
+  tasks: GoalTasksProps[];
 };
 
 export const useGetGoal = ({ goalId }: GoalRequestParams) => {
