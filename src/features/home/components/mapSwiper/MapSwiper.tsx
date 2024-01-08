@@ -29,7 +29,7 @@ export const MapSwiper = ({ currentPosition, children }: MapSwiperProps) => {
   }, [currentPosition]);
 
   return (
-    initialSlide != null && (
+    initialSlide !== null && (
       <Swiper {...settings} initialSlide={initialSlide} className="h-full">
         {children}
         <CustomPagination />

@@ -32,6 +32,7 @@ export const LifeMap = () => {
   const LAST_PAGE = participatedGoalsArray.length;
 
   const [position, setPosition] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState<number | null>(null);
 
   useEffect(() => {
     if (goalsData?.goals) {
@@ -46,16 +47,19 @@ export const LifeMap = () => {
       return isLargerThanToday(year, month);
     });
 
+    let position;
     switch (currentPosition) {
       case -1: // goals이 아예 없는 경우를 제외하고 마지막 페이지로 이동
-        setPosition(goals.length === 0 ? 1 : goals.length + 1);
+        position = goals.length === 0 ? 1 : goals.length + 1;
         break;
       case 0: // 첫번째 페이지의 0 포지션은 1로 변경
-        setPosition(1);
+        position = 1;
         break;
       default:
-        setPosition(currentPosition + 1);
+        position = currentPosition + 1;
     }
+    setPosition(position);
+    setCurrentPage(Math.floor(position / GOAL_COUNT_PER_PAGE));
   };
 
   const handleOpenShareBottomSheet = () => {
@@ -95,19 +99,14 @@ export const LifeMap = () => {
           <div className="h-[520px]">
             <div className="absolute inset-x-0">
               <MapSwiper currentPosition={position}>
-                {participatedGoalsArray?.map((goals, index) => (
-                  <SwiperSlide key={`swiper-goal-${index}`}>
-                    {!(index % 2) ? (
-                      <MapCardPositioner
-                        type="A"
-                        goals={goals}
-                        isFirst={index === 0}
-                        isLast={index === LAST_PAGE - 1}
-                      />
+                {participatedGoalsArray?.map((goals, page) => (
+                  <SwiperSlide key={`swiper-goal-${page}`}>
+                    {!(page % 2) ? (
+                      <MapCardPositioner type="A" goals={goals} isFirst={page === 0} isLast={page === LAST_PAGE - 1} />
                     ) : (
-                      <MapCardPositioner type="B" goals={goals} isLast={index === LAST_PAGE - 1} />
+                      <MapCardPositioner type="B" goals={goals} isLast={page === LAST_PAGE - 1} />
                     )}
-                    {position && Math.floor(position / GOAL_COUNT_PER_PAGE) === index && (
+                    {position && currentPage === page && (
                       <CurrentPositionCover currentPosition={position % TOTAL_CURRENT_POSITIONS} />
                     )}
                   </SwiperSlide>
