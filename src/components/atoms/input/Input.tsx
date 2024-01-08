@@ -1,15 +1,60 @@
-import * as React from 'react';
+import { forwardRef, useCallback, useState } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-const inputVariants = cva(
-  'p-3xs flex w-full rounded-md bg-white placeholder-gray-30 border border-gray-20 shadow-thumb\
-  focus-visible:border-blue-20 disabled:cursor-not-allowed disabled:opacity-50\
-  focus-visible:outline-none',
+import { colors } from '@/../styles/theme';
+import SubmitIcon from '@/assets/icons/submit.svg';
+
+const inputContainerVariants = cva(
+  'p-3xs flex gap-6xs items-center w-full h-[56px] rounded-md bg-white border shadow-thumb',
+  {
+    variants: {
+      isFocused: {
+        true: 'border-blue-20',
+        false: 'border-gray-20',
+      },
+      disabled: {
+        true: 'cursor-not-allowed opacity-50',
+      },
+    },
+  },
 );
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {}
+const inputVariants = cva(
+  'w-full placeholder-gray-30 bg-transparent disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50',
+);
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, ...props }: InputProps, ref) => {
-  return <input className={inputVariants({ className })} ref={ref} {...props} />;
-});
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
+  includeSubmitButton?: boolean;
+  onSubmit?: VoidFunction;
+}
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className, includeSubmitButton = false, onSubmit = () => {}, ...props }: InputProps, ref) => {
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleFocus = useCallback(() => setIsFocused(true), []);
+    const handleBlur = useCallback(() => setIsFocused(false), []);
+
+    return (
+      <div className={inputContainerVariants({ isFocused })}>
+        <input
+          className={inputVariants({ className })}
+          ref={ref}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          {...props}
+        />
+        {includeSubmitButton && (
+          <div className="w-[32px] h-[32px]">
+            <SubmitIcon
+              className="cursor-pointer transition-colors duration-300"
+              fill={props.disabled || !props.value ? colors.gray[20] : colors.gray[40]}
+              onClick={onSubmit}
+            />
+          </div>
+        )}
+      </div>
+    );
+  },
+);
 Input.displayName = 'Input';
