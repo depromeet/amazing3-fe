@@ -21,9 +21,10 @@ const MyPageBody = () => {
   const handleOpenWithdrawBottomSheet = () => {
     open(({ isOpen, close }) => <WithdrawBottomSheet open={isOpen} onClose={close} />);
   };
+
   return (
     <div className="w-full flex justify-center">
-      <div className="mt-3xs px-3xs py-5xs w-[349px] flex flex-col bg-white rounded-lg">
+      <div className="mt-3xs px-3xs py-5xs w-[349px] flex flex-col bg-white rounded-lg shadow-[0_1.001px_40px_0_rgba(197,229,255,0.3)]">
         <button className="h-12 text-left border-b" onClick={handleClickSendFeedback}>
           <div className="flex justify-between items-center">
             <div className="flex gap-5xs items-center">
