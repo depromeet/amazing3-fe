@@ -1,10 +1,17 @@
 import Image from 'next/image';
+import { useOverlay } from '@toss/use-overlay';
 
 import ForwardIcon from '@/assets/icons/forward-icon.svg';
 import FeedbackIcon from '@/assets/images/feedback.png';
 import { Typography } from '@/components';
 
+import LogoutBottomSheet from './logoutBottomSheet/LogoutBottomSheet';
+
 const MyPageBody = () => {
+  const { open } = useOverlay();
+  const handleOpenLogoutBottomSheet = () => {
+    open(({ isOpen, close }) => <LogoutBottomSheet open={isOpen} onClose={close} />);
+  };
   return (
     <div className="w-full flex justify-center">
       <div className="mt-3xs px-3xs py-5xs w-[349px] flex flex-col bg-white rounded-lg">
@@ -19,7 +26,7 @@ const MyPageBody = () => {
             <ForwardIcon />
           </div>
         </button>
-        <button className="h-12 text-left border-b">
+        <button className="h-12 text-left border-b" onClick={handleOpenLogoutBottomSheet}>
           <Typography type="title4" className="text-gray-40">
             로그아웃
           </Typography>
