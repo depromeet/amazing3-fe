@@ -6,11 +6,15 @@ import FeedbackIcon from '@/assets/images/feedback.png';
 import { Typography } from '@/components';
 
 import LogoutBottomSheet from './logoutBottomSheet/LogoutBottomSheet';
+import WithdrawBottomSheet from './withdrawBottomSheet/WithdrawBottomSheet';
 
 const MyPageBody = () => {
   const { open } = useOverlay();
   const handleOpenLogoutBottomSheet = () => {
     open(({ isOpen, close }) => <LogoutBottomSheet open={isOpen} onClose={close} />);
+  };
+  const handleOpenWithdrawBottomSheet = () => {
+    open(({ isOpen, close }) => <WithdrawBottomSheet open={isOpen} onClose={close} />);
   };
   return (
     <div className="w-full flex justify-center">
@@ -31,7 +35,7 @@ const MyPageBody = () => {
             로그아웃
           </Typography>
         </button>
-        <button className="h-12 text-left">
+        <button className="h-12 text-left" onClick={handleOpenWithdrawBottomSheet}>
           <Typography type="title4" className="text-gray-40">
             탈퇴하기
           </Typography>
