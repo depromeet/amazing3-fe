@@ -1,4 +1,4 @@
-export { AddSubGoalPrompt } from './AddSubGoalPrompt';
+export { AddSubGoalPrompt } from './AddTaskPrompt';
 export { ContentBody } from './ContentBody';
 export { DetailFooterButton } from './DetailFooterButton';
 export { DetailHeader } from './DetailHeader';
