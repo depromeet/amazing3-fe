@@ -1,11 +1,11 @@
+'use client';
+
 import type { Dispatch, SetStateAction } from 'react';
 import { useRef } from 'react';
 
 import { Input } from '@/components';
+import { useFocusInput, useInput, useOutsideClick } from '@/hooks';
 import { useCreateTask } from '@/hooks/reactQuery/goal/useCreateTask';
-import { useFocusInput } from '@/hooks/useFocusInput';
-import { useInput } from '@/hooks/useInput';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 interface AddTaskInputProps {
   goalId: number;
