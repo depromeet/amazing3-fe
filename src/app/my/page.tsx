@@ -1,4 +1,4 @@
-import MyPageLayout from '@/features/my/components/MyPageLayout';
+import { MyPageLayout } from '@/features/my/components';
 
 const MyPage = () => {
   return <MyPageLayout />;

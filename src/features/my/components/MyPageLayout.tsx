@@ -4,7 +4,7 @@ import UserProfile from './userProfile/UserProfile';
 import MyPageBody from './MyPageBody';
 import MypageHeader from './MyPageHeader';
 
-const MyPageLayout = () => {
+export const MyPageLayout = () => {
   return (
     <div className="pt-5xs px-xs h-full flex flex-col">
       <MypageHeader />
@@ -13,5 +13,3 @@ const MyPageLayout = () => {
     </div>
   );
 };
-
-export default MyPageLayout;
