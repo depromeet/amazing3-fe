@@ -1,5 +1,4 @@
-import type { Dispatch } from 'react';
-import type { SetStateAction } from 'jotai';
+import type { Dispatch, SetStateAction } from 'react';
 
 import PlusIcon from '@/assets/icons/plus.svg';
 import { Typography } from '@/components';

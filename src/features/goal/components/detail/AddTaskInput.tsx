@@ -1,6 +1,5 @@
-import type { Dispatch } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { useRef } from 'react';
-import type { SetStateAction } from 'jotai';
 
 import { Input } from '@/components';
 import { useCreateTask } from '@/hooks/reactQuery/goal/useCreateTask';
