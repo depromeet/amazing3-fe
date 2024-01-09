@@ -10,7 +10,7 @@ interface LogoutBottomSheetProps {
   onClose: VoidFunction;
 }
 
-const LogoutBottomSheet = ({ open, onClose }: LogoutBottomSheetProps) => {
+export const LogoutBottomSheet = ({ open, onClose }: LogoutBottomSheetProps) => {
   return (
     <BottomSheet open={open} onDismiss={onClose} fixedMaxHeight={460} FooterComponent={<Footer onClose={onClose} />}>
       <div className="py-md flex flex-col items-center justify-center translate-y-[20px]">
@@ -27,5 +27,3 @@ const LogoutBottomSheet = ({ open, onClose }: LogoutBottomSheetProps) => {
     </BottomSheet>
   );
 };
-
-export default LogoutBottomSheet;

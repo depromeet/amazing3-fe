@@ -1,1 +1,1 @@
-export * from './WithdrawBottomSheet';
+export { WithdrawBottomSheet } from './WithdrawBottomSheet';

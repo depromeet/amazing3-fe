@@ -1,1 +1,1 @@
-export * from './LogoutBottomSheet';
+export { LogoutBottomSheet } from './LogoutBottomSheet';

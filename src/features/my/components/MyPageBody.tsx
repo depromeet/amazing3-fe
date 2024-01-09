@@ -5,8 +5,8 @@ import ForwardIcon from '@/assets/icons/forward-icon.svg';
 import FeedbackIcon from '@/assets/images/feedback.png';
 import { Typography } from '@/components';
 
-import LogoutBottomSheet from './logoutBottomSheet/LogoutBottomSheet';
-import WithdrawBottomSheet from './withdrawBottomSheet/WithdrawBottomSheet';
+import { LogoutBottomSheet } from './logoutBottomSheet';
+import { WithdrawBottomSheet } from './withdrawBottomSheet';
 
 const MyPageBody = () => {
   const { open } = useOverlay();

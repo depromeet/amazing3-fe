@@ -10,7 +10,7 @@ interface WithdrawBottomSheetProps {
   onClose: VoidFunction;
 }
 
-const WithdrawBottomSheet = ({ open, onClose }: WithdrawBottomSheetProps) => {
+export const WithdrawBottomSheet = ({ open, onClose }: WithdrawBottomSheetProps) => {
   return (
     <BottomSheet open={open} onDismiss={onClose} fixedMaxHeight={460} FooterComponent={<Footer onClose={onClose} />}>
       <div className="py-md flex flex-col items-center justify-center translate-y-[20px]">
@@ -27,5 +27,3 @@ const WithdrawBottomSheet = ({ open, onClose }: WithdrawBottomSheetProps) => {
     </BottomSheet>
   );
 };
-
-export default WithdrawBottomSheet;

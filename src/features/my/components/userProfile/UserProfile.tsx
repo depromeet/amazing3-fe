@@ -1,6 +1,6 @@
 import { Avatar } from '@/components';
 
-import { USER_PROFILE_IMAGE_SIZE } from '../../constants/profile';
+import { USER_PROFILE_IMAGE_SIZE } from '../../constants';
 
 import ProfileCard from './ProfileCard';
 import UserInfo from './UserInfo';
