@@ -8,11 +8,11 @@ type GoalRequestParams = {
 
 export type GoalTasksProps = {
   taskId: number;
-  isTaskDone: true;
+  isTaskDone: boolean;
   taskDescription: string;
 };
 
-type GoalResponse = {
+export type GoalResponse = {
   title: string;
   deadline: string;
   stickerUrl: string;
