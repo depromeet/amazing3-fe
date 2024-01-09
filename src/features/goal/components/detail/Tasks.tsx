@@ -11,7 +11,7 @@ interface TasksProps {
   onOpenInput: Dispatch<SetStateAction<boolean>>;
 }
 
-// TODO : 목표 달성, 더보기 버튼 클릭 이벤트 등록
+// TODO : 목표 달성 요청 처리, 더보기 버튼 클릭 이벤트 등록
 export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
   return (
     <div className="flex flex-col gap-4xs">
