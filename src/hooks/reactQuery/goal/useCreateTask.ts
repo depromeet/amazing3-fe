@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
-import type { GoalResponse, GoalTasksProps } from './useGetGoal';
+import type { GoalResponse } from './useGetGoal';
 
 type TaskRequest = {
   goalId: number;
@@ -25,7 +25,7 @@ export const useCreateTask = () => {
       await queryClient.cancelQueries({ queryKey: targetQueryKey });
       const previous = queryClient.getQueryData(targetQueryKey);
 
-      const newTask: GoalTasksProps = { isTaskDone: false, taskId: -1, taskDescription: data.description };
+      const newTask = { isTaskDone: false, taskId: -1, taskDescription: data.description };
 
       queryClient.setQueryData(targetQueryKey, (old: GoalResponse): GoalResponse => {
         const updatedTasks = [...old.tasks, newTask];
@@ -35,13 +35,17 @@ export const useCreateTask = () => {
       });
       return { previous };
     },
-    onSuccess: (data: TaskResponse, variables: TaskRequest) => {
+    onSuccess: (data: TaskResponse, variables) => {
       const targetQueryKey = ['goal', variables.goalId];
 
       queryClient.setQueryData(targetQueryKey, (old: GoalResponse): GoalResponse => {
         const updatedTasks = old.tasks.map((task) => (task.taskId === -1 ? { ...task, taskId: data.id } : task));
         return { ...old, tasks: updatedTasks };
       });
+    },
+    onError: (_, variables, context) => {
+      const targetQueryKey = ['goal', variables.goalId];
+      queryClient.setQueryData(targetQueryKey, context?.previous);
     },
   });
 };
