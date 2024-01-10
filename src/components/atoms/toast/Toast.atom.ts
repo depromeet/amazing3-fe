@@ -7,8 +7,6 @@ interface ToastsProps {
   sequence: number;
 }
 
-export const toastBottomPositionAtom = atom('0px');
-
 export const toastsAtom = atom<ToastsProps>({
   toasts: [],
   sequence: 0,
