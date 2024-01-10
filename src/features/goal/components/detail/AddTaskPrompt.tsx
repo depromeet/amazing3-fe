@@ -1,11 +1,10 @@
 import Image from 'next/image';
 
+import { colors } from '@/../styles/theme';
 import PlusIcon from '@/assets/icons/plus.svg';
 import StarIcon from '@/assets/icons/star-rate.svg';
 import BandiboodiSubGoalImage from '@/assets/images/bandiboodi-sub-goal.png';
 import { Typography } from '@/components';
-
-import { colors } from '../../../../../styles/theme';
 
 interface AddSubGoalsPromptProps {
   onClick: VoidFunction;
