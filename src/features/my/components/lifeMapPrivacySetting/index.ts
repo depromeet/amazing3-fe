@@ -1,0 +1,1 @@
+export { LifeMapPrivacySetting } from './LifeMapPrivacySetting';

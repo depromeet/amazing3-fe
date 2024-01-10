@@ -10,8 +10,6 @@ const UserProfile = () => {
   const birth = '1999.08.23';
   const username = 'bandiboodi';
 
-  // TODO: API 연결로 데이터 받아오기
-
   return (
     <div className="mt-md flex flex-col gap-lg items-center justify-center">
       <div className="flex flex-col gap-5xs items-center">
