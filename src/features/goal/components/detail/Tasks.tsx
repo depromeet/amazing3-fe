@@ -14,7 +14,9 @@ export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
     <div className="flex flex-col gap-4xs">
       <div className="flex justify-between">
         <Typography type="heading4">세부 목표</Typography>
-        <PlusIcon width={20} height={20} className="cursor-pointer" onClick={onOpenInput} />
+        <button onClick={onOpenInput}>
+          <PlusIcon width={20} height={20} />
+        </button>
       </div>
       {tasks.map(({ taskId, isTaskDone, taskDescription }) => (
         <GoalDetail

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 import { Input } from '@/components';
-import { TASK_MIN_LENGTH } from '@/features/home/constants';
+import { TASK_MAX_LENGTH } from '@/features/home/constants';
 import { useFocusInput, useInput, useOutsideClick } from '@/hooks';
 import { useCreateTask } from '@/hooks/reactQuery/goal/useCreateTask';
 
@@ -32,7 +32,7 @@ export const AddTaskInput = ({ goalId, isOpen, onOpen }: AddTaskInputProps) => {
         value={newDescription}
         onChange={handleNewDescription}
         placeholder="세부 목표를 입력해 주세요."
-        minLength={TASK_MIN_LENGTH}
+        maxLength={TASK_MAX_LENGTH}
         includeSubmitButton
         onSubmit={() => {
           mutate({ goalId, description: newDescription });
