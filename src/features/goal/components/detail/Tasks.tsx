@@ -11,7 +11,7 @@ interface TasksProps {
 // TODO : 목표 달성 요청 처리, 더보기 버튼 클릭 이벤트 등록
 export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
   return (
-    <div className="flex flex-col gap-4xs">
+    <div className="flex flex-col gap-4xs pb-4xl">
       <div className="flex justify-between">
         <Typography type="heading4">세부 목표</Typography>
         <button onClick={onOpenInput}>

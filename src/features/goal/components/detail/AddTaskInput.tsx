@@ -26,7 +26,7 @@ export const AddTaskInput = ({ goalId, isOpen, onOpen }: AddTaskInputProps) => {
   };
 
   return (
-    <div ref={inputContainerRef} className="w-full absolute bottom-0 p-xs">
+    <div ref={inputContainerRef} className="w-[520px] fixed bottom-0 px-xs pb-xs bg-white">
       <Input
         ref={inputRef}
         value={newDescription}
