@@ -6,4 +6,5 @@ export { Span } from './span';
 export { Star } from './star';
 export { Tag } from './tag';
 export { Textarea } from './textarea';
+export { ToolTip } from './toolTip';
 export { Typography } from './typography';
