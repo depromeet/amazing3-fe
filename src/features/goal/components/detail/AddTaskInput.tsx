@@ -1,6 +1,3 @@
-'use client';
-
-import type { Dispatch, SetStateAction } from 'react';
 import { useRef } from 'react';
 
 import { Input } from '@/components';
@@ -11,7 +8,7 @@ import { useCreateTask } from '@/hooks/reactQuery/goal/useCreateTask';
 interface AddTaskInputProps {
   goalId: number;
   isOpen: boolean;
-  onOpen: Dispatch<SetStateAction<boolean>>;
+  onOpen: (status: boolean) => void;
 }
 
 export const AddTaskInput = ({ goalId, isOpen, onOpen }: AddTaskInputProps) => {

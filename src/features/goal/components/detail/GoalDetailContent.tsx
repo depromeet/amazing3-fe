@@ -13,6 +13,8 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
   const { data: goal } = useGetGoal({ goalId: Number(id) });
   const [isOpenTaskInput, setOpenTaskInput] = useState(false);
 
+  const handleOpenTaskInput = (status: boolean) => () => setOpenTaskInput(status);
+
   return (
     <>
       <DetailLayout
@@ -28,9 +30,9 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
                 more={goal.description}
               />
               {goal.tasks.length ? (
-                <Tasks tasks={goal.tasks} onOpenInput={setOpenTaskInput} />
+                <Tasks tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
-                !isOpenTaskInput && <AddSubGoalPrompt onClick={() => setOpenTaskInput(true)} />
+                !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
               )}
             </div>
           )
