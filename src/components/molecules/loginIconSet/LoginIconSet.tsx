@@ -18,7 +18,7 @@ const loginPath = {
 
 export const LoginIconSet = ({ google = false, naver = false, kakao = false }: LoginIconSetProps) => {
   return (
-    <div className="w-full flex justify-between items-center">
+    <div className="w-fit flex justify-between items-center">
       {kakao && (
         <Link href={{ pathname: loginPath.kakao }}>
           <KakaoIcon />
