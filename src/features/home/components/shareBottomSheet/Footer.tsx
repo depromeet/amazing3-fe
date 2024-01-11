@@ -1,26 +1,25 @@
-import type { RefObject } from 'react';
 import { forwardRef } from 'react';
+import { useOverlay } from '@toss/use-overlay';
 
 import { Button } from '@/components';
-import { Spinner } from '@/components/atoms/spinner';
-import { useDownloadImage } from '@/hooks/useDownloadImage';
 import { shareLink } from '@/utils/share';
+
+import { ImageDownloadBottomSheet } from './ImageDownloadBottomSheet';
 
 interface BottomSheetFooterProps {
   onClose: VoidFunction;
 }
 
 const Footer = forwardRef<HTMLElement, BottomSheetFooterProps>(({ onClose }: BottomSheetFooterProps, ref) => {
-  const { isDownloading, onDownloadImage } = useDownloadImage(ref as RefObject<HTMLElement>);
+  const { open } = useOverlay();
 
   const handleCopyClipboard = () => {
     shareLink({ url: location.href });
     onClose();
   };
 
-  const handleDownloadImage = async () => {
-    await onDownloadImage();
-    onClose();
+  const handleDownloadImage = () => {
+    open(({ isOpen, close }) => <ImageDownloadBottomSheet ref={ref} open={isOpen} onClose={close} />);
   };
 
   return (
@@ -29,7 +28,7 @@ const Footer = forwardRef<HTMLElement, BottomSheetFooterProps>(({ onClose }: Bot
         URL 복사
       </Button>
       <Button variant="heavy" onClick={handleDownloadImage}>
-        {isDownloading ? <Spinner /> : '이미지 저장'}
+        이미지 저장
       </Button>
     </div>
   );
