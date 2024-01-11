@@ -13,9 +13,13 @@ interface TasksProps {
 // TODO : 목표 달성 요청 처리, 더보기 버튼 클릭 이벤트 등록
 export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
   const focus = useRef<HTMLDivElement | null>(null);
+  const prevTasksRef = useRef<GoalTasksProps[] | null>(null);
 
   useEffect(() => {
-    focus.current?.scrollIntoView({ behavior: 'smooth' });
+    if (prevTasksRef.current && prevTasksRef.current !== tasks) {
+      focus.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+    prevTasksRef.current = tasks;
   }, [tasks]);
 
   return (
