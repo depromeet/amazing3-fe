@@ -16,9 +16,7 @@ export const META = {
     '응원',
   ],
   url: 'https://www.bandiboodi.com',
-  googleVerification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+  googleVerification: 'I4Mm3zYYVzuUvDDVCZ_mfBSKCidmtlzFk-KEJROoFWg',
+  naverVerification: '33a87e5c4952dac5d89df1e8037868f9c5e049b3',
   ogImage: '/opengraph-image.png',
 } as const;
-
-// author: "BANDIBOODI | 반디부디"
-//

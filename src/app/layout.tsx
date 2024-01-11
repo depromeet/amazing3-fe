@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: META.googleVerification,
+    other: {
+      'naver-site-verification': META.naverVerification,
+    },
   },
   twitter: {
     title: META.title,
