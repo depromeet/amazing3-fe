@@ -46,11 +46,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         />
         {includeSubmitButton && (
           <div className="w-[32px] h-[32px]">
-            <SubmitIcon
-              className="cursor-pointer transition-colors duration-300"
-              fill={props.disabled || !props.value ? colors.gray[20] : colors.gray[40]}
-              onClick={onSubmit}
-            />
+            <button onClick={onSubmit} disabled={!props.value} className={`${!props.value && 'cursor-not-allowed'}`}>
+              <SubmitIcon
+                className="transition-colors duration-300"
+                fill={props.disabled || !props.value ? colors.gray[20] : colors.gray[40]}
+              />
+            </button>
           </div>
         )}
       </div>
