@@ -13,7 +13,7 @@ export const Spinner = ({ color = 'text-blue-30', ...props }: SpinnerProps) => {
       viewBox="0 0 24 24"
       {...props}
     >
-      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
       <path
         className="opacity-75"
         fill="currentColor"
