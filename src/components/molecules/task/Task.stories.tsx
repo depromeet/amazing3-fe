@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { GoalDetail } from './GoalDetail';
+import { Task } from './Task';
 
-const meta: Meta<typeof GoalDetail> = {
-  title: 'components/molecules/goalDetail',
-  component: GoalDetail,
+const meta: Meta<typeof Task> = {
+  title: 'components/molecules/task',
+  component: Task,
   decorators: [
     (Story) => (
       <div>
@@ -20,13 +20,13 @@ const meta: Meta<typeof GoalDetail> = {
 
 export default meta;
 
-type Story = StoryObj<typeof GoalDetail>;
+type Story = StoryObj<typeof Task>;
 
 const BasicGoal = () => {
   const [isChecked, setChecked] = useState(false);
 
   return (
-    <GoalDetail
+    <Task
       isDone={isChecked}
       text="월 50씩 저축하기"
       onDoneClick={() => setChecked((prev) => !prev)}

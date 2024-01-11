@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import PlusIcon from '@/assets/icons/plus.svg';
 import { Typography } from '@/components';
-import { GoalDetail } from '@/components/molecules';
+import { Task } from '@/components/molecules';
 import type { GoalTasksProps } from '@/hooks/reactQuery/goal/useGetGoal';
 
 interface TasksProps {
@@ -31,7 +31,7 @@ export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
         </button>
       </div>
       {tasks.map(({ taskId, isTaskDone, taskDescription }) => (
-        <GoalDetail
+        <Task
           key={taskId}
           text={taskDescription}
           isDone={isTaskDone}

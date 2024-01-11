@@ -1,1 +1,0 @@
-export { GoalDetail } from './GoalDetail';

@@ -14,7 +14,7 @@ interface GoalDetailProps {
   onMoreOptionClick: VoidFunction;
 }
 
-export const GoalDetail = ({ isDone = false, onDoneClick, onMoreOptionClick, text }: GoalDetailProps) => {
+export const Task = ({ isDone = false, onDoneClick, onMoreOptionClick, text }: GoalDetailProps) => {
   const CheckIcon = isDone ? CheckedIcon : UnCheckedIcon;
 
   const handleDoneClick = useCallback(() => {
