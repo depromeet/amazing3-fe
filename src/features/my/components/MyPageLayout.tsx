@@ -23,7 +23,7 @@ export const MyPageLayout = () => {
             username={memberData.username}
             birth={memberData.birth}
             subscriptionPeriod={getDateDiffFromToday(memberData.createdAt)}
-            goalCount={memberData.goal.count}
+            goalCount={memberData.lifeMap.goalsCount}
           />
           <MyPageBody />
           <LifeMapPrivacySetting isPublic={memberData.lifeMap.isPublic} />
