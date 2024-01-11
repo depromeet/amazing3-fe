@@ -8,7 +8,7 @@ interface ToastsProps {
 }
 
 export interface ToastOptionProps {
-  position: string;
+  position?: string;
 }
 
 export const toastsAtom = atom<ToastsProps>({
@@ -37,5 +37,14 @@ export const toastAtom = atom(
       toasts: [...prev.toasts, newToast],
       sequence: prev.sequence + 1,
     });
+  },
+);
+
+export const toastOptionChangeAtom = atom(
+  (get) => get(toastOptionAtom),
+  (get, set, changeOption: ToastOptionProps) => {
+    const prev = get(toastOptionAtom);
+    const updatedOption = { ...prev, ...changeOption };
+    set(toastOptionAtom, updatedOption);
   },
 );
