@@ -10,6 +10,7 @@ export type GoalProps = {
 };
 
 export type GoalResponse = {
+  isPublic: boolean;
   goals: Array<GoalProps>;
   goalsCount: number;
 };
@@ -17,6 +18,6 @@ export type GoalResponse = {
 export const useGetGoals = () => {
   return useQuery<GoalResponse>({
     queryKey: ['goals'],
-    queryFn: () => api.get<GoalResponse>('/goal'),
+    queryFn: () => api.get<GoalResponse>('/life-map'),
   });
 };
