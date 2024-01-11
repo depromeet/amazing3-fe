@@ -1,24 +1,34 @@
 'use client';
 
+import { useGetMemberData } from '@/hooks/reactQuery/auth';
+
+import { getDateDiffFromToday } from '../utils';
+
 import UserProfile from './userProfile/UserProfile';
 import { LifeMapPrivacySetting } from './lifeMapPrivacySetting';
 import MyPageBody from './MyPageBody';
 import MypageHeader from './MyPageHeader';
 
 export const MyPageLayout = () => {
-  const nickname = '일이삼사오육칠팔구십';
-  const birth = '1999.08.23';
-  const username = 'bandiboodi';
-  const isPublic = true;
-
-  // TODO: API 연결로 데이터 받아오기
+  const { data: memberData } = useGetMemberData();
 
   return (
     <div className="pt-5xs px-xs h-full flex flex-col">
       <MypageHeader />
-      <UserProfile nickname={nickname} username={username} birth={birth} />
-      <MyPageBody />
-      <LifeMapPrivacySetting isPublic={isPublic} />
+      {memberData && (
+        <>
+          <UserProfile
+            image={memberData.image}
+            nickname={memberData.nickname}
+            username={memberData.username}
+            birth={memberData.birth}
+            subscriptionPeriod={getDateDiffFromToday(memberData.createdAt)}
+            goalCount={memberData.goal.count}
+          />
+          <MyPageBody />
+          <LifeMapPrivacySetting isPublic={memberData.lifeMap.isPublic} />
+        </>
+      )}
     </div>
   );
 };
