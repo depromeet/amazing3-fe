@@ -3,15 +3,17 @@ import { Typography } from '@/components';
 import { Task } from '@/components/molecules';
 import { useScrollOnTrigger } from '@/hooks';
 import type { GoalTasksProps } from '@/hooks/reactQuery/goal/useGetGoal';
+import { useUpdateIsDone } from '@/hooks/reactQuery/task';
 
 interface TasksProps {
+  goalId: number;
   tasks: GoalTasksProps[];
   onOpenInput: VoidFunction;
 }
 
-// TODO : 목표 달성 요청 처리, 더보기 버튼 클릭 이벤트 등록
-export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
+export const Tasks = ({ goalId, tasks, onOpenInput }: TasksProps) => {
   const target = useScrollOnTrigger(tasks);
+  const { mutate } = useUpdateIsDone();
 
   return (
     <div className="flex flex-col gap-4xs">
@@ -26,7 +28,7 @@ export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
           key={taskId}
           text={taskDescription}
           isDone={isTaskDone}
-          onDoneClick={() => {}}
+          onDoneClick={() => mutate({ goalId, isDone: !isTaskDone, taskId })}
           onMoreOptionClick={() => {}}
         />
       ))}
