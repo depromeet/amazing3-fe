@@ -6,8 +6,8 @@ import Link from 'next/link';
 import SplashBandiboodi from '@/assets/images/bandiboodi-splash.png';
 import LogoImage from '@/assets/images/logo.png';
 import PurpleBlurImage from '@/assets/images/purple-blur.png';
-import { Typography } from '@/components';
-import { GoogleLoginButton } from '@/features/auth/components';
+import { Typography } from '@/components/atoms';
+import { LoginIconSet } from '@/components/molecules';
 
 const SplashPage = () => {
   return (
@@ -26,8 +26,8 @@ const SplashPage = () => {
       <div className="absolute bottom-[5px] 390:bottom-0 w-[110%] flex justify-center">
         <Image src={SplashBandiboodi} width={520} alt="splash_bandiboodi" priority />
       </div>
-      <div className="absolute bottom-[10px] w-full flex flex-col gap-3xs px-xs pb-[25px]">
-        <GoogleLoginButton />
+      <div className="absolute bottom-[10px] w-full flex flex-col gap-4xs items-center">
+        <LoginIconSet google naver />
         <Typography className="text-center text-gray-40" type="body3">
           회원가입 시{' '}
           <Link className=" underline" href="/">
