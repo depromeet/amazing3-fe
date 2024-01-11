@@ -27,7 +27,7 @@ const SplashPage = () => {
         <Image src={SplashBandiboodi} width={520} alt="splash_bandiboodi" priority />
       </div>
       <div className="absolute bottom-[10px] w-full flex flex-col gap-4xs items-center">
-        <LoginIconSet google naver />
+        <LoginIconSet google naver kakao />
         <Typography className="text-center text-gray-40" type="body3">
           회원가입 시{' '}
           <Link className=" underline" href="/">
