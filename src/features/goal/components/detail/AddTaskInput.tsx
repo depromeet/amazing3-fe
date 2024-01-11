@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 
 import { Input } from '@/components';
-import { TASK_MAX_LENGTH } from '@/features/home/constants';
 import { useFocusInput, useInput, useOutsideClick } from '@/hooks';
 import { useCreateTask } from '@/hooks/reactQuery/goal/useCreateTask';
 
@@ -10,6 +9,8 @@ interface AddTaskInputProps {
   isOpen: boolean;
   onOpen: (status: boolean) => void;
 }
+
+export const TASK_MAX_LENGTH = 30;
 
 export const AddTaskInput = ({ goalId, isOpen, onOpen }: AddTaskInputProps) => {
   const { mutate } = useCreateTask();
@@ -23,6 +24,8 @@ export const AddTaskInput = ({ goalId, isOpen, onOpen }: AddTaskInputProps) => {
   const handleAfterSubmit = () => {
     reset();
     inputRef.current?.focus();
+    document.body.scrollTop += 20; // For Safari
+    document.documentElement.scrollTop += 20; // For Chrome, Firefox, IE and Opera
   };
 
   return (
