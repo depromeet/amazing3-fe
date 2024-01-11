@@ -12,8 +12,6 @@ import MypageHeader from './MyPageHeader';
 export const MyPageLayout = () => {
   const { data: memberData } = useGetMemberData();
 
-  console.log(memberData);
-
   return (
     <div className="pt-5xs px-xs h-full flex flex-col">
       <MypageHeader />
