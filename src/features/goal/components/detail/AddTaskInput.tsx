@@ -24,8 +24,6 @@ export const AddTaskInput = ({ goalId, isOpen, onOpen }: AddTaskInputProps) => {
   const handleAfterSubmit = () => {
     reset();
     inputRef.current?.focus();
-    document.body.scrollTop += 20; // For Safari
-    document.documentElement.scrollTop += 20; // For Chrome, Firefox, IE and Opera
   };
 
   return (

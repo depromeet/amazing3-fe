@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 import PlusIcon from '@/assets/icons/plus.svg';
 import { Typography } from '@/components';
 import { GoalDetail } from '@/components/molecules';
@@ -10,8 +12,14 @@ interface TasksProps {
 
 // TODO : 목표 달성 요청 처리, 더보기 버튼 클릭 이벤트 등록
 export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
+  const focus = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    focus.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [tasks]);
+
   return (
-    <div className="flex flex-col gap-4xs pb-4xl">
+    <div className="flex flex-col gap-4xs">
       <div className="flex justify-between">
         <Typography type="heading4">세부 목표</Typography>
         <button onClick={onOpenInput}>
@@ -27,6 +35,7 @@ export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
           onMoreOptionClick={() => {}}
         />
       ))}
+      <div ref={focus} className="h-[80px]" />
     </div>
   );
 };
