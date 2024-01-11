@@ -5,9 +5,10 @@ interface UserInfoProps {
   nickname: string;
   birth: string;
   username: string;
+  email: string;
 }
 
-const UserInfo = ({ nickname, birth, username }: UserInfoProps) => {
+const UserInfo = ({ nickname, birth, username, email }: UserInfoProps) => {
   return (
     <div className="flex flex-col items-center text-gray-40">
       <Typography type="title1">
@@ -18,6 +19,7 @@ const UserInfo = ({ nickname, birth, username }: UserInfoProps) => {
         <VerticalBar width="2" height="16" />
         <Typography type="title4">@{username}</Typography>
       </div>
+      <Typography type="title4">{email}</Typography>
     </div>
   );
 };
