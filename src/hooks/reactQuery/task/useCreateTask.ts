@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
-import type { GoalResponse } from './useGetGoal';
+import type { GoalResponse } from '../goal/useGetGoal';
 
 type TaskRequest = {
   goalId: number;
