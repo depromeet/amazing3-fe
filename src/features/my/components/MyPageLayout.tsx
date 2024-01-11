@@ -12,6 +12,8 @@ import MypageHeader from './MyPageHeader';
 export const MyPageLayout = () => {
   const { data: memberData } = useGetMemberData();
 
+  console.log(memberData);
+
   return (
     <div className="pt-5xs px-xs h-full flex flex-col">
       <MypageHeader />
@@ -22,6 +24,7 @@ export const MyPageLayout = () => {
             nickname={memberData.nickname}
             username={memberData.username}
             birth={memberData.birth}
+            email={memberData.email}
             subscriptionPeriod={getDateDiffFromToday(memberData.createdAt)}
             goalCount={memberData.lifeMap.goalsCount}
           />
