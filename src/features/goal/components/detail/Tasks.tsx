@@ -26,8 +26,8 @@ export const Tasks = ({ goalId, tasks, onOpenInput }: TasksProps) => {
           key={taskId}
           text={taskDescription}
           isDone={isTaskDone}
+          targetIds={{ goalId, taskId }}
           onDoneClick={() => mutate({ goalId, isDone: !isTaskDone, taskId })}
-          onMoreOptionClick={() => {}}
         />
       ))}
     </div>
