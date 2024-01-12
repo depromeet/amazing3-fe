@@ -20,7 +20,9 @@ const ShareBottomSheetFooter = forwardRef<HTMLElement, ShareBottomSheetFooterPro
     };
 
     const handleDownloadImage = () => {
-      open(({ isOpen, close }) => <ImageDownloadBottomSheet ref={ref} open={isOpen} onClose={close} />);
+      open(({ isOpen, close }) => (
+        <ImageDownloadBottomSheet ref={ref} open={isOpen} onClose={close} onCloseShareBottomSheet={onClose} />
+      ));
     };
 
     return (
