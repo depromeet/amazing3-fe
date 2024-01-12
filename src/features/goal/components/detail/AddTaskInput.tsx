@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 import { Input } from '@/components';
 import { useFocusInput, useInput, useOutsideClick } from '@/hooks';
-import { useCreateTask } from '@/hooks/reactQuery/goal/useCreateTask';
+import { useCreateTask } from '@/hooks/reactQuery/task';
 
 interface AddTaskInputProps {
   goalId: number;

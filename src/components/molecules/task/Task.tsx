@@ -14,7 +14,7 @@ interface GoalDetailProps {
   onMoreOptionClick: VoidFunction;
 }
 
-export const GoalDetail = ({ isDone = false, onDoneClick, onMoreOptionClick, text }: GoalDetailProps) => {
+export const Task = ({ isDone = false, onDoneClick, onMoreOptionClick, text }: GoalDetailProps) => {
   const CheckIcon = isDone ? CheckedIcon : UnCheckedIcon;
 
   const handleDoneClick = useCallback(() => {
@@ -26,7 +26,7 @@ export const GoalDetail = ({ isDone = false, onDoneClick, onMoreOptionClick, tex
   }, [onMoreOptionClick]);
 
   return (
-    <div className="w-full flex justify-between items-center p-3xs rounded-[8px] border-gray-20 bg-white shadow-thumb">
+    <div className="w-full flex justify-between items-start px-3xs py-4xs rounded-[8px] border-gray-20 bg-white shadow-thumb">
       <div className="flex gap-6xs max-w-[95%]">
         <div className="w-[24px] h-[24px]">
           <button onClick={handleDoneClick}>
