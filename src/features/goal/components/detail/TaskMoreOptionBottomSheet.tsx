@@ -4,6 +4,7 @@ import { useDeleteTask } from '@/hooks/reactQuery/task/useDeleteTask';
 interface TaskMoreOptionBottomSheetProps {
   open: boolean;
   onClose: VoidFunction;
+  onTaskEdit: VoidFunction;
   targetTask: {
     goalId: number;
     taskId: number;
@@ -13,21 +14,29 @@ interface TaskMoreOptionBottomSheetProps {
 
 interface FooterProps {
   onDelete: VoidFunction;
-  onUpdate: VoidFunction;
+  onEdit: VoidFunction;
 }
 
-export const TaskMoreOptionBottomSheet = ({ open, onClose, targetTask }: TaskMoreOptionBottomSheetProps) => {
+export const TaskMoreOptionBottomSheet = ({
+  open,
+  onClose,
+  onTaskEdit,
+  targetTask,
+}: TaskMoreOptionBottomSheetProps) => {
   const { mutate } = useDeleteTask();
 
   const handleDeleteTask = () => mutate({ goalId: targetTask.goalId, taskId: targetTask.taskId });
-  const handleUpdateTask = () => {};
+  const handleEditTask = () => {
+    onTaskEdit();
+    onClose();
+  };
 
   return (
     <BottomSheet
       open={open}
       onDismiss={onClose}
       fixedMaxHeight={224}
-      FooterComponent={<Footer onDelete={handleDeleteTask} onUpdate={handleUpdateTask} />}
+      FooterComponent={<Footer onDelete={handleDeleteTask} onEdit={handleEditTask} />}
     >
       <Typography type="title2" className="pt-[20px] px-xs text-gray-70">
         {targetTask.description}
@@ -36,13 +45,13 @@ export const TaskMoreOptionBottomSheet = ({ open, onClose, targetTask }: TaskMor
   );
 };
 
-const Footer = ({ onDelete, onUpdate }: FooterProps) => {
+const Footer = ({ onDelete, onEdit }: FooterProps) => {
   return (
     <div className="flex flex-col gap-5xs px-5xs">
       <Button variant="issue" onClick={onDelete}>
         삭제하기
       </Button>
-      <Button variant="tertiary" onClick={onUpdate}>
+      <Button variant="tertiary" onClick={onEdit}>
         수정하기
       </Button>
     </div>
