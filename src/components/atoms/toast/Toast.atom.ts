@@ -2,19 +2,13 @@ import { atom } from 'jotai';
 
 import type { ToastProps } from './Toast';
 
-interface ToastsProps {
-  toasts: ToastProps[];
-  sequence: number;
-}
+type ToastsProps = ToastProps[];
 
 export interface ToastOptionProps {
   position?: string;
 }
 
-export const toastsAtom = atom<ToastsProps>({
-  toasts: [],
-  sequence: 0,
-});
+export const toastsAtom = atom<ToastsProps>([]);
 
 export const toastOptionAtom = atom<ToastOptionProps>({
   position: 'bottom-[84px]',
@@ -22,21 +16,18 @@ export const toastOptionAtom = atom<ToastOptionProps>({
 
 export const removeToastAtom = atom(null, (get, set, id: number) => {
   const prev = get(toastsAtom);
-  set(toastsAtom, {
-    toasts: prev.toasts.filter((toast) => toast.id !== id),
-    sequence: prev.sequence - 1,
-  });
+  set(
+    toastsAtom,
+    prev.filter((toast) => toast.id !== id),
+  );
 });
 
 export const toastAtom = atom(
-  (get) => get(toastsAtom).toasts,
+  (get) => get(toastsAtom),
   (get, set, type: ToastProps['type']) => (title: string) => () => {
     const prev = get(toastsAtom);
-    const newToast = { type, title, id: prev.sequence };
-    set(toastsAtom, {
-      toasts: [...prev.toasts, newToast],
-      sequence: prev.sequence + 1,
-    });
+    const newToast = { type, title, id: prev.length };
+    set(toastsAtom, [...prev, newToast]);
   },
 );
 

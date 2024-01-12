@@ -5,7 +5,7 @@ import { Toast } from './Toast';
 import { toastOptionAtom, toastsAtom } from './Toast.atom';
 
 export const ToastProvider = () => {
-  const { toasts } = useAtomValue(toastsAtom);
+  const toasts = useAtomValue(toastsAtom);
   const { position } = useAtomValue(toastOptionAtom);
 
   return (
