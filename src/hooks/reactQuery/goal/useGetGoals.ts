@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAtomValue } from 'jotai';
 
 import { api } from '@/apis';
@@ -24,5 +24,13 @@ export const useGetGoals = () => {
     queryKey: ['goals'],
     queryFn: () => api.get<GoalResponse>('/life-map'),
     enabled: isLogin,
+  });
+};
+
+export const usePrefetchGoals = (): void => {
+  const queryClient = useQueryClient();
+  queryClient.prefetchQuery({
+    queryKey: ['goals'],
+    queryFn: () => api.get<GoalResponse>('/life-map'),
   });
 };

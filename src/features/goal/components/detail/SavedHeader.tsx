@@ -6,10 +6,14 @@ import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 import { Typography } from '@/components/atoms';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
-export const SavedHeader = () => {
+interface SavedHeaderProps {
+  goalId: number;
+}
+
+export const SavedHeader = ({ goalId }: SavedHeaderProps) => {
   const { data: memberData } = useGetMemberData();
 
-  const pathname = `/home/${memberData?.username}`;
+  const pathname = `/home/${memberData?.username}?id=${goalId}`;
 
   return (
     <>

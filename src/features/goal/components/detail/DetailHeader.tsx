@@ -18,7 +18,7 @@ export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
 
   return (
     <>
-      <Link href={{ pathname: `/home/${data?.username}` }}>
+      <Link href={{ pathname: `/home/${data?.username}?id=${goalId}` }}>
         <CloseIcon />
       </Link>
 

@@ -21,7 +21,7 @@ export const DeleteGoalButtomSheet = ({ open, onClose, goalId }: DeleteGoalButto
   useEffect(() => {
     if (isSuccess) {
       onClose();
-      router.back();
+      router.push('/home');
     }
   }, [isSuccess, isError, onClose, router]);
 
