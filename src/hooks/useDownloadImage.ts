@@ -17,12 +17,45 @@ const downloadFile = (url: string, filename: string) => {
   link.click();
 };
 
-export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
+interface DownloadImageOption {
+  type: 'ALL' | 'CURRENT';
+  imageRef: RefObject<HTMLElement>;
+}
+
+const defaultDownloadOption = {
+  style: {
+    backgroundImage: backgroundImage.gradient1,
+    paddingTop: '24px',
+  },
+  scale: 4,
+};
+
+export const useDownloadImage = ({ type, imageRef }: DownloadImageOption) => {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const { data: goalsData } = useGetGoals();
 
   const getPageCount = () => Math.floor((goalsData?.goalsCount || 1) / 5) + 1;
+
+  const allPageDownloadOption = {
+    height: 670,
+    width: 390 * getPageCount(),
+    onCloneNode: (node: Node) => {
+      const swiper = (node as HTMLElement).querySelector<HTMLElement>('.swiper');
+      const swiperWrapper = (node as HTMLElement).querySelector<HTMLElement>('.swiper-wrapper');
+
+      if (!swiper || !swiperWrapper) return;
+
+      swiper.style.overflow = 'visible';
+      swiperWrapper.style.transform = 'translate3d(0px, 0, 0)';
+    },
+    ...defaultDownloadOption,
+  };
+
+  const onePageDownloadOption = {
+    height: 700,
+    ...defaultDownloadOption,
+  };
 
   const onDownloadImage = async () => {
     const image = imageRef.current;
@@ -32,31 +65,12 @@ export const useDownloadImage = (imageRef: RefObject<HTMLElement>) => {
     try {
       setIsDownloading(true);
 
-      const imageUrl = await domToJpeg(image, {
-        style: {
-          backgroundImage: backgroundImage.gradient1,
-          paddingTop: '24px',
-        },
-        height: 670,
-        width: 390 * getPageCount(),
-        scale: 4,
-        onCloneNode: (node) => {
-          const swiper = (node as HTMLElement).querySelector<HTMLElement>('.swiper');
-          const swiperWrapper = (node as HTMLElement).querySelector<HTMLElement>('.swiper-wrapper');
-
-          if (!swiper || !swiperWrapper) return;
-
-          swiper.style.overflow = 'visible';
-          swiperWrapper.style.transform = 'translate3d(0px, 0, 0)';
-        },
-      });
+      const imageOption = type === 'ALL' ? allPageDownloadOption : onePageDownloadOption;
+      const imageUrl = await domToJpeg(image, imageOption);
 
       const IMAGE_FILE_NAME = '별이되고_싶은_반디부디의_인생지도';
-      if (isIos()) {
-        shareImage(imageUrl, IMAGE_FILE_NAME);
-      } else {
-        downloadFile(imageUrl, IMAGE_FILE_NAME);
-      }
+      if (isIos()) shareImage(imageUrl, IMAGE_FILE_NAME);
+      else downloadFile(imageUrl, IMAGE_FILE_NAME);
     } catch (error) {
       // TODO: 이미지 다운로드 실패 시, 추가 에러 처리 필요
       console.error(error);
