@@ -4,7 +4,7 @@ import Image from 'next/image';
 import BandiBoodiShare from '@/assets/images/bandiboodi-share.png';
 import { BottomSheet, Typography } from '@/components/atoms';
 
-import Footer from './Footer';
+import ShareBottomSheetFooter from './ShareBottomSheetFooter';
 
 interface ShareGoalBottomSheetProps {
   open: boolean;
@@ -18,7 +18,7 @@ export const ShareBottomSheet = forwardRef<HTMLElement, ShareGoalBottomSheetProp
         open={open}
         onDismiss={onClose}
         fixedMaxHeight={480}
-        FooterComponent={<Footer ref={ref} onClose={onClose} />}
+        FooterComponent={<ShareBottomSheetFooter ref={ref} onClose={onClose} />}
       >
         <div className="flex flex-col items-center justify-center gap-3xs translate-y-[20px]">
           <Typography type="title1" className="text-gray-70 text-center">
