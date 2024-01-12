@@ -29,8 +29,8 @@ const BasicGoal = () => {
     <Task
       isDone={isChecked}
       text="월 50씩 저축하기"
+      targetIds={{ goalId: 1, taskId: 1 }}
       onDoneClick={() => setChecked((prev) => !prev)}
-      onMoreOptionClick={() => alert('더보기 버튼을 누르셨군요!')}
     />
   );
 };
