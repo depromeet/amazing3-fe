@@ -37,10 +37,16 @@ export const ImageDownloadBottomSheet = forwardRef<HTMLElement, ImageDownloadBot
       onCloseShareBottomSheet();
     };
 
+    const handleCloseBottomSheet = () => {
+      if (isCurrentPageDownloading || isAllPageDownloading) return;
+
+      onClose();
+    };
+
     return (
       <BottomSheet
         open={open}
-        onDismiss={onClose}
+        onDismiss={handleCloseBottomSheet}
         fixedMaxHeight={224}
         FooterComponent={
           <div className="flex flex-col gap-5xs px-5xs">
