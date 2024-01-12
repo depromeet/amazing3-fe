@@ -1,8 +1,9 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
 import type { GoalResponse } from '../goal/useGetGoal';
+import { useOptimisticUpdate } from '../useOptimisticUpdate';
 
 type TaskRequest = {
   goalId: number;
@@ -15,25 +16,24 @@ type TaskResponse = {
 };
 
 export const useCreateTask = () => {
-  const queryClient = useQueryClient();
+  const { queryClient, optimisticUpdater } = useOptimisticUpdate();
 
   return useMutation({
     mutationFn: (data: TaskRequest) => api.post<TaskResponse>('/task', data),
     onMutate: async (data: TaskRequest) => {
       const targetQueryKey = ['goal', data.goalId];
 
-      await queryClient.cancelQueries({ queryKey: targetQueryKey });
-      const previous = queryClient.getQueryData(targetQueryKey);
-
       const newTask = { isTaskDone: false, taskId: -1, taskDescription: data.description };
 
-      queryClient.setQueryData(targetQueryKey, (old: GoalResponse): GoalResponse => {
+      const updater = (old: GoalResponse): GoalResponse => {
         const updatedTasks = [...old.tasks, newTask];
         const updatedGoalResponse = { ...old, tasks: updatedTasks };
 
         return updatedGoalResponse;
-      });
-      return { previous };
+      };
+
+      const context = await optimisticUpdater({ queryKey: targetQueryKey, updater });
+      return context;
     },
     onSuccess: (data: TaskResponse, variables) => {
       const targetQueryKey = ['goal', variables.goalId];
