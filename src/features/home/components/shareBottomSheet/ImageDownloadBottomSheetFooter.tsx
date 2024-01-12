@@ -11,25 +11,33 @@ interface ImageDownloadBottomSheetFooterProps {
 
 const ImageDownloadBottomSheetFooter = forwardRef<HTMLElement, ImageDownloadBottomSheetFooterProps>(
   ({ onClose }: ImageDownloadBottomSheetFooterProps, ref) => {
-    const { isDownloading, onDownloadImage } = useDownloadImage(ref as RefObject<HTMLElement>);
+    const { isDownloading: isCurrentPageDownloading, onDownloadImage: onDownloadCurrentPageImage } = useDownloadImage({
+      type: 'CURRENT',
+      imageRef: ref as RefObject<HTMLElement>,
+    });
+
+    const { isDownloading: isAllPageDownloading, onDownloadImage: onDownloadAllPageImage } = useDownloadImage({
+      type: 'ALL',
+      imageRef: ref as RefObject<HTMLElement>,
+    });
 
     const handleDownloadCurrentPage = async () => {
-      await onDownloadImage();
+      await onDownloadCurrentPageImage();
       onClose();
     };
 
     const handleDownloadAllPage = async () => {
-      // TODO: 전체 페이지 저장 기능 추가
+      await onDownloadAllPageImage();
       onClose();
     };
 
     return (
       <div className="flex flex-col gap-5xs px-5xs">
         <Button variant="tertiary" onClick={handleDownloadCurrentPage}>
-          {isDownloading ? <Spinner /> : '현재 페이지 저장'}
+          {isCurrentPageDownloading ? <Spinner /> : '현재 페이지 저장'}
         </Button>
         <Button variant="tertiary" onClick={handleDownloadAllPage}>
-          전체 페이지 저장
+          {isAllPageDownloading ? <Spinner /> : '전체 페이지 저장'}
         </Button>
       </div>
     );
