@@ -30,7 +30,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
                 more={goal.description}
               />
               {goal.tasks.length ? (
-                <Tasks tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
+                <Tasks goalId={id} tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
                 !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
               )}
