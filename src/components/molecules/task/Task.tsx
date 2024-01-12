@@ -1,29 +1,39 @@
 'use client';
 
 import { useCallback } from 'react';
+import { useOverlay } from '@toss/use-overlay';
 
 import EllipsisVerticalIcon from '@/assets/icons/ellipsis-vertical.svg';
 import CheckedIcon from '@/assets/icons/goal/radio/radio-checked.svg';
 import UnCheckedIcon from '@/assets/icons/goal/radio/radio-unchecked.svg';
 import { Typography } from '@/components';
+import { TaskMoreOptionBottomSheet } from '@/features/goal/components/detail/TaskMoreOptionBottomSheet';
 
-interface GoalDetailProps {
+interface TaskProps {
   isDone?: boolean;
   text: string;
+  targetIds: {
+    goalId: number;
+    taskId: number;
+  };
   onDoneClick: VoidFunction;
-  onMoreOptionClick: VoidFunction;
 }
 
-export const Task = ({ isDone = false, onDoneClick, onMoreOptionClick, text }: GoalDetailProps) => {
+export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps) => {
   const CheckIcon = isDone ? CheckedIcon : UnCheckedIcon;
+  const { open } = useOverlay();
 
   const handleDoneClick = useCallback(() => {
     onDoneClick();
   }, [onDoneClick]);
 
-  const handleMoreOptionClick = useCallback(() => {
-    onMoreOptionClick();
-  }, [onMoreOptionClick]);
+  const handleMoreOptionClick = () => {
+    const targetTask = {
+      ...targetIds,
+      description: text,
+    };
+    open(({ isOpen, close }) => <TaskMoreOptionBottomSheet open={isOpen} onClose={close} targetTask={targetTask} />);
+  };
 
   return (
     <div className="w-full flex justify-between items-start px-3xs py-4xs rounded-[8px] border-gray-20 bg-white shadow-thumb">
