@@ -1,21 +1,13 @@
 import { type RefObject, useState } from 'react';
 import { domToJpeg } from 'modern-screenshot';
 
-import { shareImage } from '@/utils/image';
+import { GOAL_COUNT_PER_PAGE } from '@/features/home/constants';
+import { downloadFile, shareImage } from '@/utils/image';
 import { isIos } from '@/utils/userAgent';
 
 import { backgroundImage } from '../../styles/theme';
 
 import { useGetGoals } from './reactQuery/goal';
-
-const downloadFile = (url: string, filename: string) => {
-  const link = document.createElement('a');
-
-  link.download = filename;
-  link.href = url;
-
-  link.click();
-};
 
 interface DownloadImageOption {
   type: 'ALL' | 'CURRENT';
@@ -35,7 +27,7 @@ export const useDownloadImage = ({ type, imageRef }: DownloadImageOption) => {
 
   const { data: goalsData } = useGetGoals();
 
-  const getPageCount = () => Math.floor((goalsData?.goalsCount || 1) / 5) + 1;
+  const getPageCount = () => Math.floor((goalsData?.goalsCount || 1) / GOAL_COUNT_PER_PAGE) + 1;
 
   const allPageDownloadOption = {
     height: 670,
