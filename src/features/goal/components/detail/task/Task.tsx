@@ -27,7 +27,7 @@ export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps
   const CheckIcon = isDone ? CheckedIcon : UnCheckedIcon;
   const { open } = useOverlay();
 
-  const [isEditing, setEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const { value: editText, handleChange: handleEditText } = useInput(text);
   const { mutate } = useUpdateDescription();
 
@@ -43,14 +43,14 @@ export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps
         open={isOpen}
         onClose={close}
         targetTask={targetTask}
-        onTaskEdit={() => setEditing(true)}
+        onTaskEdit={() => setIsEditing(true)}
       />
     ));
   };
 
   const handleUpdateDescription = () => {
     if (text !== editText) mutate({ ...targetIds, newDescription: editText });
-    setEditing(false);
+    setIsEditing(false);
   };
 
   return (

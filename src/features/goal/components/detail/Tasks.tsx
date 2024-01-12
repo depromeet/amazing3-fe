@@ -1,8 +1,9 @@
 import PlusIcon from '@/assets/icons/plus.svg';
 import { Typography } from '@/components';
-import { Task } from '@/components/molecules';
 import type { GoalTasksProps } from '@/hooks/reactQuery/goal/useGetGoal';
 import { useUpdateIsDone } from '@/hooks/reactQuery/task';
+
+import { Task } from './task';
 
 interface TasksProps {
   goalId: number;
