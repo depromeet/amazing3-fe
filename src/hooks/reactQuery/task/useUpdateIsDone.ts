@@ -16,7 +16,7 @@ export const useUpdateIsDone = () => {
 
   return useMutation({
     mutationFn: ({ taskId, isDone }: IsDoneRequest) => api.patch(`/task/${taskId}/isDone`, { isDone }),
-    onMutate: async ({ goalId, taskId, isDone }: IsDoneRequest) => {
+    onMutate: async ({ goalId, taskId, isDone }) => {
       const targetQueryKey = ['goal', goalId];
 
       const updater = (old: GoalResponse): GoalResponse => {

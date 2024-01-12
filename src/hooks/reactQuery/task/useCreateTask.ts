@@ -20,10 +20,10 @@ export const useCreateTask = () => {
 
   return useMutation({
     mutationFn: (data: TaskRequest) => api.post<TaskResponse>('/task', data),
-    onMutate: async (data: TaskRequest) => {
-      const targetQueryKey = ['goal', data.goalId];
+    onMutate: async ({ goalId, description }) => {
+      const targetQueryKey = ['goal', goalId];
 
-      const newTask = { isTaskDone: false, taskId: -1, taskDescription: data.description };
+      const newTask = { isTaskDone: false, taskId: -1, taskDescription: description };
 
       const updater = (old: GoalResponse): GoalResponse => {
         const updatedTasks = [...old.tasks, newTask];
