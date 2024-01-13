@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useOverlay } from '@toss/use-overlay';
 import { SwiperSlide } from 'swiper/react';
 
-import StarBg from '@/app/home/[[...username]]/startBg';
+import StarBg from '@/app/home/[...username]/startBg';
 import { Avatar, Button, ContentWrapper } from '@/components';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useGetGoals } from '@/hooks/reactQuery/goal';
