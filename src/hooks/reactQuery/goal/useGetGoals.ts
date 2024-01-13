@@ -19,5 +19,6 @@ export const useGetGoals = () => {
   return useQuery<GoalResponse>({
     queryKey: ['goals'],
     queryFn: () => api.get<GoalResponse>('/life-map'),
+    throwOnError: true,
   });
 };
