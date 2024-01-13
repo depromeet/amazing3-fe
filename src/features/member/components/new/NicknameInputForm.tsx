@@ -28,7 +28,7 @@ export const NicknameInputForm = () => {
     if (memberData) {
       const nickname = memberData?.nickname;
       if (nickname) {
-        router.push('/home');
+        router.push(`/home/${memberData?.username}`);
       } else {
         setIsReady(true);
       }
