@@ -14,7 +14,7 @@ export const toastOptionAtom = atom<ToastOptionProps>({
   position: 'bottom-[84px]',
 });
 
-export const removeToastAtom = atom(null, (get, set, id: number) => {
+export const removeToastAtom = atom(null, (get, set, id: string) => {
   const prev = get(toastsAtom);
   set(
     toastsAtom,
@@ -26,7 +26,7 @@ export const toastAtom = atom(
   (get) => get(toastsAtom),
   (get, set, type: ToastProps['type']) => (title: string) => () => {
     const prev = get(toastsAtom);
-    const newToast = { type, title, id: prev.length };
+    const newToast = { type, title, id: Date.now().toString() };
     set(toastsAtom, [...prev, newToast]);
   },
 );

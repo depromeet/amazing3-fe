@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
+import { useToast } from '@/hooks/useToast';
 
 import type { GoalResponse } from '../goal/useGetGoal';
 import { useOptimisticUpdate } from '../useOptimisticUpdate';
@@ -12,6 +13,7 @@ type TaskDeleteRequest = {
 
 export const useDeleteTask = () => {
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
+  const toast = useToast();
 
   return useMutation({
     mutationFn: ({ taskId }: TaskDeleteRequest) => api.delete(`/task/${taskId}`),
@@ -25,6 +27,7 @@ export const useDeleteTask = () => {
       const context = await optimisticUpdater({ queryKey: targetQueryKey, updater });
       return context;
     },
+    onSuccess: toast.success('세부 목표를 삭제했어요.'),
     onError: (_, variable, context) => {
       const targetQueryKey = ['goal', variable.goalId];
       queryClient.setQueryData(targetQueryKey, context?.previous);

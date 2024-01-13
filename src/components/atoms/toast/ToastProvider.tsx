@@ -10,7 +10,7 @@ export const ToastProvider = () => {
 
   return (
     <Portal.Root>
-      <div className={`fixed ${position} left-1/2 transform translate-x-[-50%]`}>
+      <div className={`fixed ${position} left-1/2 transform translate-x-[-50%] z-50`}>
         {toasts.map((toast) => (
           <Toast key={toast.id} {...toast} />
         ))}

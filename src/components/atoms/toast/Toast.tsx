@@ -11,7 +11,7 @@ import { Typography } from '../typography';
 import { removeToastAtom } from './Toast.atom';
 
 export interface ToastProps {
-  id: number;
+  id: string;
   title: string;
   type?: 'success' | 'warning';
 }
