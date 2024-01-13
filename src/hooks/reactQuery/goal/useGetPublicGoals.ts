@@ -13,5 +13,6 @@ export const useGetPublicGoals = ({ username }: GoalRequestParams) => {
     queryKey: ['life-map', username],
     queryFn: () => api.get<GoalResponse>(`/open/life-map/${username}`),
     enabled: !!username,
+    throwOnError: true,
   });
 };
