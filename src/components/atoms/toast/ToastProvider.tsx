@@ -9,12 +9,12 @@ export const ToastProvider = () => {
   const { position } = useAtomValue(toastOptionAtom);
 
   return (
-    <Portal.Root>
-      <div className={`fixed ${position} left-1/2 transform translate-x-[-50%] z-50`}>
+    <Portal.Portal>
+      <div className={`fixed ${position} left-1/2 transform translate-x-[-50%]`}>
         {toasts.map((toast) => (
           <Toast key={toast.id} {...toast} />
         ))}
       </div>
-    </Portal.Root>
+    </Portal.Portal>
   );
 };
