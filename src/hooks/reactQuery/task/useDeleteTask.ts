@@ -27,7 +27,9 @@ export const useDeleteTask = () => {
       const context = await optimisticUpdater({ queryKey: targetQueryKey, updater });
       return context;
     },
-    onSuccess: toast.success('세부 목표를 삭제했어요.'),
+    onSuccess: () => {
+      toast.success('세부 목표를 삭제했어요.');
+    },
     onError: (_, variable, context) => {
       const targetQueryKey = ['goal', variable.goalId];
       queryClient.setQueryData(targetQueryKey, context?.previous);

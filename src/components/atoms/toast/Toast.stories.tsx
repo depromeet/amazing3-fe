@@ -34,5 +34,9 @@ export const Basic: Story = {
 export const ClickToToast = () => {
   const toast = useToast();
 
-  return <Button onClick={toast.success('세부 목표를 삭제했어요.')}>누르면 토스트가 나와요</Button>;
+  const handleToastButton = () => {
+    toast.success('세부 목표를 삭제했어요.');
+  };
+
+  return <Button onClick={handleToastButton}>누르면 토스트가 나와요</Button>;
 };

@@ -24,7 +24,7 @@ export const removeToastAtom = atom(null, (get, set, id: string) => {
 
 export const toastAtom = atom(
   (get) => get(toastsAtom),
-  (get, set, type: ToastProps['type']) => (title: string) => () => {
+  (get, set, type: ToastProps['type']) => (title: string) => {
     const prev = get(toastsAtom);
     const newToast = { type, title, id: Date.now().toString() };
     set(toastsAtom, [...prev, newToast]);
