@@ -5,22 +5,25 @@ import { api } from '@/apis';
 import type { GoalResponse } from '../goal/useGetGoal';
 import { useOptimisticUpdate } from '../useOptimisticUpdate';
 
-type IsDoneRequest = {
+type DescriptionRequest = {
   goalId: number;
   taskId: number;
-  isDone: boolean;
+  newDescription: string;
 };
 
-export const useUpdateIsDone = () => {
+export const useUpdateDescription = () => {
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
 
   return useMutation({
-    mutationFn: ({ taskId, isDone }: IsDoneRequest) => api.patch(`/task/${taskId}/isDone`, { isDone }),
-    onMutate: async ({ goalId, taskId, isDone }) => {
+    mutationFn: ({ taskId, newDescription }: DescriptionRequest) =>
+      api.patch(`/task/${taskId}/description`, { newDescription }),
+    onMutate: async ({ goalId, taskId, newDescription }: DescriptionRequest) => {
       const targetQueryKey = ['goal', goalId];
 
       const updater = (old: GoalResponse): GoalResponse => {
-        const updatedTask = old.tasks.map((task) => (task.taskId === taskId ? { ...task, isTaskDone: isDone } : task));
+        const updatedTask = old.tasks.map((task) =>
+          task.taskId === taskId ? { ...task, taskDescription: newDescription } : task,
+        );
         return { ...old, tasks: updatedTask };
       };
       const context = await optimisticUpdater({ queryKey: targetQueryKey, updater });
