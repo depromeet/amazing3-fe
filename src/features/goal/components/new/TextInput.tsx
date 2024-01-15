@@ -52,7 +52,7 @@ export const TextInput = ({
         </div>
       </div>
       {type === 'single' ? (
-        <Input type="text" value={value} placeholder={placeholder} onChange={handleChangeInput} />
+        <Input type="text" value={text} placeholder={placeholder} onChange={handleChangeInput} />
       ) : (
         <Textarea
           style={{ height: `${height}px` }}
