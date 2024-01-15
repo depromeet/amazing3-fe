@@ -5,11 +5,10 @@ import Link from 'next/link';
 import { useOverlay } from '@toss/use-overlay';
 import { SwiperSlide } from 'swiper/react';
 
-import StarBg from '@/app/home/[...username]/startBg';
+import StarBg from '@/app/home/[username]/startBg';
 import { Avatar, Button, ContentWrapper } from '@/components';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
-import { useGetGoals } from '@/hooks/reactQuery/goal';
-import type { GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
+import { type GoalProps, useGetGoals } from '@/hooks/reactQuery/goal/useGetGoals';
 import { useGetPublicGoals } from '@/hooks/reactQuery/goal/useGetPublicGoals';
 import { isLargerThanToday } from '@/utils/date';
 
@@ -23,10 +22,14 @@ import { ShareBottomSheet } from '../shareBottomSheet';
 import { ShareButton } from '../shareButton';
 
 export const LifeMap = ({ username }: { username: string }) => {
-  const { data: memberData } = useGetMemberData();
+  const { data: currentMemberData } = useGetMemberData();
   const { data: privateGoals } = useGetGoals();
   const { data: publicGoals } = useGetPublicGoals({ username });
 
+  const isCurrentUser = username === currentMemberData?.username;
+  const memberData = isCurrentUser
+    ? { nickname: currentMemberData.nickname, image: currentMemberData.image }
+    : publicGoals?.user;
   const goalsData = publicGoals ?? privateGoals;
 
   const downloadSectionRef = useRef<HTMLElement>(null);
