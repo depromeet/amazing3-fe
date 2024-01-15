@@ -15,7 +15,7 @@ const settings = {
 
 export const OnboardingSwiper = ({ children }: PropsWithChildren) => {
   return (
-    <Swiper {...settings} className="w-full h-[80%]">
+    <Swiper {...settings} className="w-full h-[95%]">
       {children}
     </Swiper>
   );
