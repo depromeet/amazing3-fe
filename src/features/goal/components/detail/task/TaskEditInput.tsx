@@ -8,7 +8,7 @@ export const TaskEditInput = forwardRef<HTMLInputElement, InputHTMLAttributes<HT
     return (
       <input
         ref={ref}
-        className="w-full mr-[20px] placeholder-gray-30 bg-transparent  disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50 border border-t-0 border-x-0 border-b-blue-30 text-[14px] font-medium leading-[160%]"
+        className="w-full mr-[20px] placeholder-gray-30 bg-transparent disabled:cursor-not-allowed focus-visible:outline-none disabled:opacity-50 border-none text-[14px] font-medium"
         maxLength={TASK_MAX_LENGTH}
         {...props}
       />

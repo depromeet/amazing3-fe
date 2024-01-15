@@ -61,9 +61,12 @@ export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps
         </button>
       </div>
       {isEditing ? (
-        <TaskEditInput value={editText} onChange={handleEditText} onBlur={handleUpdateDescription} />
+        <div className="flex flex-col w-full gap-7xs justify-center mt-7xs">
+          <TaskEditInput value={editText} onChange={handleEditText} onBlur={handleUpdateDescription} />
+          <div className="w-[90%] h-[1px] bg-blue-30" />
+        </div>
       ) : (
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between items-center">
           <Typography type="body3" className="text-gray-70">
             {text}
           </Typography>
