@@ -9,7 +9,7 @@ export interface OnboardingLayoutProps {
 
 export const OnboardingLayout = ({ title, sticker }: OnboardingLayoutProps) => {
   return (
-    <section className="w-full h-[100%] flex flex-col gap-2xs items-center">
+    <section className="w-full h-full flex justify-center">
       <div className="w-[80%]">
         <Typography type="heading1" className="text-blue-50 mr-auto">
           {title}
