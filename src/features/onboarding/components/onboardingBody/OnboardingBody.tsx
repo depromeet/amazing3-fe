@@ -26,7 +26,7 @@ const ONBOARDING_VALUES: OnboardingLayoutProps[] = [
 export const OnboardingBody = () => {
   return (
     <div className="w-full h-full px-xs flex flex-col justify-between">
-      <div className="h-full flex items-center">
+      <div className="h-full">
         <OnboardingSwiper>
           {ONBOARDING_VALUES.map(({ title, sticker }, index) => (
             <SwiperSlide key={index}>
