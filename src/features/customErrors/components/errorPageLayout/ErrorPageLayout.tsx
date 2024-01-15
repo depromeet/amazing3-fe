@@ -27,11 +27,7 @@ type ErrorValuesProps = {
 
 const ERROR_VALUES: ErrorValuesProps = {
   '404': {
-    title: (
-      <>
-        원하시는 페이지를 찾을 수 없어요. <br /> 페이지 주소를 다시 확인해 주세요.
-      </>
-    ),
+    title: '원하시는 페이지를 찾을 수 없어요. \n 페이지 주소를 다시 확인해 주세요.',
     statusImage: {
       src: Error404Image,
       width: 270,
@@ -39,11 +35,7 @@ const ERROR_VALUES: ErrorValuesProps = {
     },
   },
   '500': {
-    title: (
-      <>
-        앗, 에러가 발생했어요. <br /> 다시 시도해 주세요.
-      </>
-    ),
+    title: '앗, 에러가 발생했어요. \n 다시 시도해 주세요.',
     statusImage: {
       src: Error500Image,
       width: 270,
@@ -51,12 +43,7 @@ const ERROR_VALUES: ErrorValuesProps = {
     },
   },
   '403': {
-    title: (
-      <>
-        공개되지 않은 인생지도에요.
-        <br /> 돌아가세요.
-      </>
-    ),
+    title: '공개되지 않은 인생지도에요. \n 돌아가세요.',
     statusImage: {
       src: LockImage,
       width: 146,
