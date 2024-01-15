@@ -1,7 +1,7 @@
 'use client';
 
 import type { ChangeEvent } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Input } from '@/components';
 import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
@@ -14,8 +14,8 @@ interface DateInputProps {
   onChange?: (value: string) => void;
 }
 
-export const DateInput = ({ intitalValue, maxLength, onChange }: DateInputProps) => {
-  const [formattedValue, setFormattedValue] = useState<string>(intitalValue ? intitalValue : '');
+export const DateInput = ({ intitalValue = '', maxLength, onChange }: DateInputProps) => {
+  const [formattedValue, setFormattedValue] = useState<string>(intitalValue);
   const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD';
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -44,6 +44,11 @@ export const DateInput = ({ intitalValue, maxLength, onChange }: DateInputProps)
     setFormattedValue(formatted);
     onChange && onChange(formatted);
   };
+
+  useEffect(() => {
+    setFormattedValue(intitalValue);
+    onChange && onChange(intitalValue);
+  }, [intitalValue, onChange]);
 
   return (
     <Input

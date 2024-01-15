@@ -36,7 +36,8 @@ export const TextInput = ({
 
   useEffect(() => {
     setText(value);
-  }, [value]);
+    onChange && onChange(value);
+  }, [value, onChange]);
 
   return (
     <div className="flex flex-col gap-5xs">
