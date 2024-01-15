@@ -25,8 +25,8 @@ const ONBOARDING_VALUES: OnboardingLayoutProps[] = [
 
 export const OnboardingBody = () => {
   return (
-    <div className="w-full h-full px-xs flex flex-col">
-      <div className="h-full">
+    <div className="w-full h-full px-xs flex flex-col justify-between">
+      <div className="h-full flex items-center">
         <OnboardingSwiper>
           {ONBOARDING_VALUES.map(({ title, sticker }, index) => (
             <SwiperSlide key={index}>
@@ -35,11 +35,9 @@ export const OnboardingBody = () => {
           ))}
         </OnboardingSwiper>
       </div>
-      <div className="h-full flex flex-col-reverse">
-        <Link href={{ pathname: '/member/new/nickname' }}>
-          <Button className="flex-grow-1">시작하기</Button>
-        </Link>
-      </div>
+      <Link href={{ pathname: '/member/new/nickname' }}>
+        <Button className="flex-grow-1">시작하기</Button>
+      </Link>
     </div>
   );
 };
