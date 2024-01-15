@@ -14,23 +14,11 @@ import { OnboardingSwiper } from '../onboardingSwiper';
 
 const ONBOARDING_VALUES: OnboardingLayoutProps[] = [
   {
-    title: (
-      <>
-        내가 걸어갈 길의 <br />
-        방향을 짚어가면서 <br />
-        목표와 계획을 세워보세요.
-      </>
-    ),
+    title: '내가 걸어갈 길의 \n 방향을 짚어가면서 \n 목표와 계획을 세워보세요.',
     sticker: <Image src={TargetSticker} width={268} height={268} alt="onboarding_image_2" priority />,
   },
   {
-    title: (
-      <>
-        한 조각씩 채우다 보면 <br />
-        나만의 인생지도가 <br />
-        완성될 거예요.
-      </>
-    ),
+    title: '한 조각씩 채우다 보면 \n 나만의 인생지도가 \n 완성될 거예요.',
     sticker: <Image src={MapSticker} width={268} height={268} alt="onboarding_image_3" priority />,
   },
 ];
