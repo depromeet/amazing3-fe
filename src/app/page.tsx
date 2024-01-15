@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 import SplashBandiboodi from '@/assets/images/bandiboodi-splash.png';
 import LogoImage from '@/assets/images/logo.png';
 import PurpleBlurImage from '@/assets/images/purple-blur.png';
 import { Typography } from '@/components/atoms';
 import { LoginIconSet } from '@/components/molecules';
+import { PRIVACY_POLICY_URL } from '@/constants/externalURL';
 
 const SplashPage = () => {
   return (
@@ -29,14 +29,10 @@ const SplashPage = () => {
       <div className="absolute bottom-[10px] w-full flex flex-col gap-4xs items-center">
         <LoginIconSet google naver kakao />
         <Typography className="text-center text-gray-40" type="body3">
-          회원가입 시{' '}
-          <Link className=" underline" href="/">
-            서비스 이용약관
-          </Link>
-          과 <br />{' '}
-          <Link className="underline" href="/">
+          회원가입 시 서비스 이용약관과 <br />
+          <a className="underline" href={PRIVACY_POLICY_URL} target="_blank" rel="noopener noreferrer">
             개인정보 수집 및 이용
-          </Link>
+          </a>
           에 동의하게 됩니다.
         </Typography>
       </div>
