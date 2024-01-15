@@ -9,12 +9,13 @@ import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
 import { formatDate, isValidDate } from '../../utils/date';
 
 interface DateInputProps {
+  intitalValue?: string;
   maxLength: number;
   onChange?: (value: string) => void;
 }
 
-export const DateInput = ({ maxLength, onChange }: DateInputProps) => {
-  const [formattedValue, setFormattedValue] = useState<string>('');
+export const DateInput = ({ intitalValue, maxLength, onChange }: DateInputProps) => {
+  const [formattedValue, setFormattedValue] = useState<string>(intitalValue ? intitalValue : '');
   const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD';
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
