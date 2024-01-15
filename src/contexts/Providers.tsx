@@ -15,10 +15,8 @@ const Providers = ({ children }: PropsWithChildren) => {
   return (
     <LazyMotion features={domAnimation}>
       <QueryClientProvider>
-        <OverlayProvider>
-          <ToastProvider />
-          {children}
-        </OverlayProvider>
+        <ToastProvider />
+        <OverlayProvider>{children}</OverlayProvider>
       </QueryClientProvider>
     </LazyMotion>
   );
