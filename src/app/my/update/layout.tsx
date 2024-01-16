@@ -4,7 +4,7 @@ import type { PropsWithChildren } from 'react';
 
 import UpdateMemberDataFormProvider from '@/features/my/contexts/UpdateMemberDataFormProvider';
 
-const EditLayout = ({ children }: PropsWithChildren) => {
+const UpdateLayout = ({ children }: PropsWithChildren) => {
   return (
     <UpdateMemberDataFormProvider>
       <div className="w-full h-[100dvh] bg-gradient1">{children}</div>
@@ -12,4 +12,4 @@ const EditLayout = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default EditLayout;
+export default UpdateLayout;

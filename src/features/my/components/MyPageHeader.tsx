@@ -11,7 +11,7 @@ const MypageHeader = () => {
         <BackIcon />
       </Link>
       <Typography type="title1">마이페이지</Typography>
-      <Link href="/my/edit">
+      <Link href="/my/update">
         <EditIcon />
       </Link>
     </div>

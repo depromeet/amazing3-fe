@@ -16,7 +16,7 @@ import { FormLayout } from './FormLayout';
 import Header from './Header';
 import ProfileImageButton from './ProfileImageButton';
 
-export const EditForm = () => {
+export const UpdateForm = () => {
   const { data: memberData } = useGetMemberData();
 
   const { register, control } = useFormContext<UpdateMemberDataFormValues>();
