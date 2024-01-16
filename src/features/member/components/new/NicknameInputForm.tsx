@@ -17,7 +17,7 @@ import FormLayout from './FormLayout';
 
 export const NicknameInputForm = () => {
   const isMounted = useIsMounted();
-  const { register, control } = useFormContext<NewMemberFormValues>();
+  const { register, control, setValue } = useFormContext<NewMemberFormValues>();
   const { field } = useController({ name: 'nickname', control });
   const { onChange, value } = field;
   const { data: memberData } = useGetMemberData();
@@ -26,14 +26,15 @@ export const NicknameInputForm = () => {
 
   useEffect(() => {
     if (memberData) {
-      const nickname = memberData?.nickname;
+      const nickname = memberData.nickname;
       if (nickname) {
         router.push(`/home/${memberData?.username}`);
       } else {
         setIsReady(true);
+        setValue('username', memberData.username);
       }
     }
-  }, [memberData, router]);
+  }, [memberData, router, setValue]);
 
   const isInvalidInput = () => (value ? value.length === 0 : true);
 

@@ -11,7 +11,7 @@ import { Typography } from '../typography';
 import { removeToastAtom } from './Toast.atom';
 
 export interface ToastProps {
-  id: number;
+  id: string;
   title: string;
   type?: 'success' | 'warning';
 }
@@ -21,8 +21,8 @@ const toastIcon = {
   warning: <WarningIcon />,
 };
 
-const TOAST_DURATION = 3000;
-const ANIMATION_DURATION = 350;
+const TOAST_DURATION = 1500;
+const ANIMATION_DURATION = 200;
 
 export const Toast = ({ id, title, type = 'success' }: ToastProps) => {
   const [opacity, setOpacity] = useState('opacity-[0.2]');
