@@ -23,9 +23,10 @@ interface LifeMapProps {
   goalsData?: GoalResponse;
   memberData?: Pick<MemberProps, 'nickname' | 'image'>;
   downloadSectionRef?: RefObject<HTMLElement>;
+  isPublic?: boolean;
 }
 
-export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef }: LifeMapProps) => {
+export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPublic = false }: LifeMapProps) => {
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
   const LAST_PAGE = participatedGoalsArray.length;
 
@@ -63,7 +64,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef }: Li
   return (
     <div className="w-[390px] relative pt-xs">
       <span className="absolute right-[24px]">
-        <Link href="/my">
+        <Link href="/my" className={isPublic ? `pointer-events-none` : ''}>
           <Avatar size={40} profileImage={memberData?.image} />
         </Link>
       </span>
@@ -97,14 +98,16 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef }: Li
             <MapSwiper currentPosition={position}>
               {participatedGoalsArray?.map((goals, page) => (
                 <SwiperSlide key={`swiper-goal-${page}`}>
-                  {!(page % 2) ? (
-                    <MapCardPositioner type="A" goals={goals} isFirst={page === 0} isLast={page === LAST_PAGE - 1} />
-                  ) : (
-                    <MapCardPositioner type="B" goals={goals} isLast={page === LAST_PAGE - 1} />
-                  )}
-                  {position && currentPage === page && (
-                    <CurrentPositionCover currentPosition={position % TOTAL_CURRENT_POSITIONS} />
-                  )}
+                  <div className={isPublic ? `pointer-events-none` : ''}>
+                    {!(page % 2) ? (
+                      <MapCardPositioner type="A" goals={goals} isFirst={page === 0} isLast={page === LAST_PAGE - 1} />
+                    ) : (
+                      <MapCardPositioner type="B" goals={goals} isLast={page === LAST_PAGE - 1} />
+                    )}
+                    {position && currentPage === page && (
+                      <CurrentPositionCover currentPosition={position % TOTAL_CURRENT_POSITIONS} />
+                    )}
+                  </div>
                 </SwiperSlide>
               ))}
             </MapSwiper>
