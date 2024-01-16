@@ -1,7 +1,7 @@
 import { UpdateForm } from '@/features/my/components/update';
 
-const page = () => {
+const UpdatePage = () => {
   return <UpdateForm />;
 };
 
-export default page;
+export default UpdatePage;
