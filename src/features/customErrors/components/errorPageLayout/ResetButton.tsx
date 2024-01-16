@@ -2,11 +2,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components';
+import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
 import type { ErrorPageLayoutProps } from './ErrorPageLayout';
 
 export const ResetButton = ({ statusCode }: ErrorPageLayoutProps) => {
   const router = useRouter();
+  const { data: memberData } = useGetMemberData();
 
   if (statusCode === 403)
     return (
@@ -17,7 +19,7 @@ export const ResetButton = ({ statusCode }: ErrorPageLayoutProps) => {
 
   return (
     <>
-      <Link href={{ pathname: '/home' }} className="w-full">
+      <Link href={{ pathname: memberData ? `/home/${memberData.username}` : '/' }} className="w-full">
         <Button variant="tertiary">홈화면</Button>
       </Link>
       <Button onClick={() => router.back()}>이전페이지</Button>

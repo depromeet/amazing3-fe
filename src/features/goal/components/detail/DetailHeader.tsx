@@ -4,6 +4,7 @@ import { useOverlay } from '@toss/use-overlay';
 
 import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 import DeleteIcon from '@/assets/icons/goal/delete-icon.svg';
+import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
 import { DeleteGoalButtomSheet } from './DeleteGoalButtomSheet';
 
@@ -13,10 +14,11 @@ interface DetailHeaderProps {
 
 export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
   const overlay = useOverlay();
+  const { data } = useGetMemberData();
 
   return (
     <>
-      <Link href={{ pathname: '/home' }}>
+      <Link href={{ pathname: `/home/${data?.username}` }}>
         <CloseIcon />
       </Link>
 
