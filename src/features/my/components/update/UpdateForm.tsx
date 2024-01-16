@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 
 import { Button, Typography } from '@/components';
-import { MAX_DATE_LENGTH_UNTIL_DAY } from '@/constants';
+import { MAX_DATE_LENGTH_UNTIL_DAY, MAX_NICKNAME_LENGTH, MAX_USERNAME_LENGTH } from '@/constants';
 import { DateInput } from '@/features/goal/components/new/DateInput';
 import { TextInput } from '@/features/goal/components/new/TextInput';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
@@ -59,7 +59,7 @@ export const UpdateForm = () => {
               <div {...register('nickname')}>
                 <TextInput
                   labelName="닉네임"
-                  maxLength={10}
+                  maxLength={MAX_NICKNAME_LENGTH}
                   placeholder="닉네임"
                   value={memberData.nickname}
                   onChange={nicknameField.onChange}
@@ -78,7 +78,7 @@ export const UpdateForm = () => {
               <div {...register('username')}>
                 <TextInput
                   labelName="아이디"
-                  maxLength={15}
+                  maxLength={MAX_USERNAME_LENGTH}
                   placeholder="아이디"
                   value={memberData.username}
                   onChange={usernameField.onChange}
