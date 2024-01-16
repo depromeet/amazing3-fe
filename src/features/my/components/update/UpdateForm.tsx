@@ -7,7 +7,6 @@ import { Button, Typography } from '@/components';
 import { MAX_DATE_LENGTH_UNTIL_DAY } from '@/constants';
 import { DateInput } from '@/features/goal/components/new/DateInput';
 import { TextInput } from '@/features/goal/components/new/TextInput';
-import { useIsMounted } from '@/hooks';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
 import type { UpdateMemberDataFormValues } from '../../types';
@@ -19,23 +18,33 @@ import ProfileImageButton from './ProfileImageButton';
 export const UpdateForm = () => {
   const { data: memberData } = useGetMemberData();
 
-  const { register, control } = useFormContext<UpdateMemberDataFormValues>();
+  const { register, setValue, control } = useFormContext<UpdateMemberDataFormValues>();
   const { field: nicknameField } = useController({ name: 'nickname', control });
   const { field: birthField } = useController({ name: 'birth', control });
   const { field: usernameField } = useController({ name: 'username', control });
 
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
-  const isMounted = useIsMounted();
 
   useEffect(() => {
-    if (!isMounted || !memberData) return;
+    if (!memberData) return;
+
+    setValue('nickname', memberData.nickname);
+    setValue('username', memberData.username);
+    setValue('birth', memberData.birth);
+  }, [memberData, setValue]);
+
+  useEffect(() => {
+    if (!memberData || !nicknameField.value || !usernameField.value || !birthField.value) return;
+
+    console.log(memberData.nickname, memberData.username, memberData.birth);
+    console.log(nicknameField.value, usernameField.value, birthField.value);
 
     setIsDisabled(
       memberData.nickname === nicknameField.value &&
         memberData.username === usernameField.value &&
         memberData.birth === birthField.value,
     );
-  }, [isMounted, memberData, nicknameField, birthField, usernameField]);
+  }, [memberData, nicknameField, birthField, usernameField]);
 
   return (
     <FormLayout

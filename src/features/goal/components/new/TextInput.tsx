@@ -1,5 +1,5 @@
 import type { ChangeEvent, ChangeEventHandler } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Input, Typography } from '@/components';
 import { Textarea } from '@/components/atoms/textarea';
@@ -33,11 +33,6 @@ export const TextInput = ({
     setText(event.target.value);
     onChange && onChange(event.target.value);
   };
-
-  useEffect(() => {
-    setText(value);
-    onChange && onChange(value);
-  }, [value, onChange]);
 
   return (
     <div className="flex flex-col gap-5xs">

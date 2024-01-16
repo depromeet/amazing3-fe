@@ -1,7 +1,7 @@
 'use client';
 
 import type { ChangeEvent } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Input } from '@/components';
 import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
@@ -44,11 +44,6 @@ export const DateInput = ({ intitalValue = '', maxLength, onChange }: DateInputP
     setFormattedValue(formatted);
     onChange && onChange(formatted);
   };
-
-  useEffect(() => {
-    setFormattedValue(intitalValue);
-    onChange && onChange(intitalValue);
-  }, [intitalValue, onChange]);
 
   return (
     <Input
