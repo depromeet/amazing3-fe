@@ -3,6 +3,7 @@
 import type { RefObject } from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { SwiperSlide } from 'swiper/react';
 
 import StarBg from '@/app/home/[username]/startBg';
@@ -26,12 +27,21 @@ interface LifeMapProps {
   isPublic?: boolean;
 }
 
+interface PositionStateProps {
+  position: number | null;
+  positionPage: number | null;
+}
+
 export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPublic = false }: LifeMapProps) => {
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
   const LAST_PAGE = participatedGoalsArray.length;
 
-  const [position, setPosition] = useState<number | null>(null);
+  const [positionState, setPositionState] = useState<PositionStateProps>({
+    position: null,
+    positionPage: null,
+  });
   const [currentPage, setCurrentPage] = useState<number | null>(null);
+  const paramGoalId = Number(useSearchParams().get('id'));
 
   useEffect(() => {
     if (goalsData?.goals) {
@@ -57,8 +67,19 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
       default:
         position = currentPosition + 1;
     }
-    setPosition(position);
-    setCurrentPage(Math.floor(position / GOAL_COUNT_PER_PAGE));
+    const positionPage = Math.floor(position / GOAL_COUNT_PER_PAGE);
+    position = position % TOTAL_CURRENT_POSITIONS;
+    setPositionState({ position, positionPage });
+
+    let page = positionPage;
+    // check if query params contains id value
+    if (paramGoalId) {
+      const index = goals.findIndex(({ id: goalId }) => goalId === paramGoalId);
+      if (index > -1) {
+        page = Math.floor((index + 1) / GOAL_COUNT_PER_PAGE);
+      }
+    }
+    setCurrentPage(page);
   };
 
   return (
@@ -95,7 +116,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
         <StarBg />
         <div className="h-[520px]">
           <div className="absolute inset-x-0">
-            <MapSwiper currentPosition={position}>
+            <MapSwiper currentPage={currentPage}>
               {participatedGoalsArray?.map((goals, page) => (
                 <SwiperSlide key={`swiper-goal-${page}`}>
                   <div className={isPublic ? `pointer-events-none` : ''}>
@@ -104,8 +125,9 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
                     ) : (
                       <MapCardPositioner type="B" goals={goals} isLast={page === LAST_PAGE - 1} />
                     )}
-                    {position && currentPage === page && (
-                      <CurrentPositionCover currentPosition={position % TOTAL_CURRENT_POSITIONS} />
+                    {/** 현재 위치에 별 위치 시키기 위해 1) 현재 날짜가 포함된 페이지를 찾아서, 2) 포지션 위치에 별을 출력함. */}
+                    {positionState.positionPage === page && positionState.position && (
+                      <CurrentPositionCover currentPosition={positionState.position} />
                     )}
                   </div>
                 </SwiperSlide>

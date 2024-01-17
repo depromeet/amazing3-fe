@@ -1,34 +1,21 @@
-'use client';
-
-import { useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import BandiMoori from '@/assets/images/bandi-moori.png';
 import { BottomSheet, Button, Typography } from '@/components/atoms';
+import { Spinner } from '@/components/atoms/spinner';
 import { useDeleteGoal } from '@/hooks/reactQuery/goal';
 
-interface DeleteGoalButtomSheetProps {
+interface DeleteGoalBottomSheetProps {
   open: boolean;
   onClose: () => void;
   goalId: number;
 }
 
-export const DeleteGoalButtomSheet = ({ open, onClose, goalId }: DeleteGoalButtomSheetProps) => {
-  const { mutate, isSuccess, isError } = useDeleteGoal();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (isSuccess) {
-      onClose();
-      router.back();
-    }
-  }, [isSuccess, isError, onClose, router]);
+export const DeleteGoalBottomSheet = ({ open, onClose, goalId }: DeleteGoalBottomSheetProps) => {
+  const { mutate, isPending } = useDeleteGoal();
 
   const handleDelete = () => {
-    if (!goalId) {
-      return;
-    }
+    if (!goalId) return;
 
     mutate({ goalId });
   };
@@ -38,7 +25,7 @@ export const DeleteGoalButtomSheet = ({ open, onClose, goalId }: DeleteGoalButto
       open={open}
       onDismiss={onClose}
       fixedMaxHeight={520}
-      FooterComponent={<Footer onCancel={onClose} onDelete={handleDelete} />}
+      FooterComponent={<Footer onCancel={onClose} onDelete={handleDelete} isPending={isPending} />}
     >
       <div className="h-[400px] flex flex-col items-center justify-center gap-3xs translate-y-[20px]">
         <Typography type="title1" className="text-gray-70">
@@ -53,13 +40,21 @@ export const DeleteGoalButtomSheet = ({ open, onClose, goalId }: DeleteGoalButto
   );
 };
 
-const Footer = ({ onCancel, onDelete }: { onCancel: VoidFunction; onDelete: VoidFunction }) => (
+const Footer = ({
+  onCancel,
+  onDelete,
+  isPending,
+}: {
+  onCancel: VoidFunction;
+  onDelete: VoidFunction;
+  isPending: boolean;
+}) => (
   <div className="flex flex-row gap-xs">
     <Button variant="tertiary" onClick={onCancel}>
       취소
     </Button>
-    <Button variant="issue" onClick={onDelete}>
-      삭제하기
+    <Button variant="issue" onClick={onDelete} disabled={isPending}>
+      {isPending ? <Spinner /> : '삭제하기'}
     </Button>
   </div>
 );

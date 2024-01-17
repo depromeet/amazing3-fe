@@ -6,7 +6,7 @@ import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 import DeleteIcon from '@/assets/icons/goal/delete-icon.svg';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
-import { DeleteGoalButtomSheet } from './DeleteGoalButtomSheet';
+import { DeleteGoalBottomSheet } from './DeleteGoalBottomSheet';
 
 interface DetailHeaderProps {
   goalId: number;
@@ -18,7 +18,7 @@ export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
 
   return (
     <>
-      <Link href={{ pathname: `/home/${data?.username}` }}>
+      <Link href={{ pathname: `/home/${data?.username}`, query: { id: goalId } }}>
         <CloseIcon />
       </Link>
 
@@ -26,7 +26,7 @@ export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
         <button
           onClick={() => {
             overlay.open(({ isOpen, close }) => {
-              return <DeleteGoalButtomSheet open={isOpen} onClose={close} goalId={goalId} />;
+              return <DeleteGoalBottomSheet open={isOpen} onClose={close} goalId={goalId} />;
             });
           }}
         >
