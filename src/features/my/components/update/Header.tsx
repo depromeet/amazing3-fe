@@ -12,7 +12,7 @@ const Header = () => {
       <Typography type="title1" className="text-gray-60">
         내 정보 수정하기
       </Typography>
-      <div />
+      <div className="w-sm" />
     </div>
   );
 };

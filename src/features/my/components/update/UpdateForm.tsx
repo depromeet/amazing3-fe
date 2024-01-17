@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 
-import { Button, Typography } from '@/components';
+import { Button } from '@/components';
 import { MAX_DATE_LENGTH_UNTIL_DAY, MAX_NICKNAME_LENGTH, MAX_USERNAME_LENGTH } from '@/constants';
 import { DateInput } from '@/features/goal/components/new/DateInput';
 import { TextInput } from '@/features/goal/components/new/TextInput';
@@ -23,7 +23,7 @@ export const UpdateForm = () => {
   const { field: birthField } = useController({ name: 'birth', control });
   const { field: usernameField } = useController({ name: 'username', control });
 
-  const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [isDisabledSubmit, setIsDisabledSubmit] = useState(true);
 
   useEffect(() => {
     if (!memberData) return;
@@ -34,16 +34,23 @@ export const UpdateForm = () => {
   }, [memberData, setValue]);
 
   useEffect(() => {
-    if (!memberData || !nicknameField.value || !usernameField.value || !birthField.value) return;
+    if (
+      !memberData ||
+      nicknameField.value === undefined ||
+      usernameField.value === undefined ||
+      birthField.value === undefined
+    )
+      return;
 
-    console.log(memberData.nickname, memberData.username, memberData.birth);
-    console.log(nicknameField.value, usernameField.value, birthField.value);
-
-    setIsDisabled(
+    const isNotModified =
       memberData.nickname === nicknameField.value &&
-        memberData.username === usernameField.value &&
-        memberData.birth === birthField.value,
-    );
+      memberData.username === usernameField.value &&
+      memberData.birth === birthField.value;
+
+    const isNotFilled =
+      nicknameField.value.length === 0 || usernameField.value.length === 0 || birthField.value.length !== 10;
+
+    setIsDisabledSubmit(isNotFilled || isNotModified);
   }, [memberData, nicknameField, birthField, usernameField]);
 
   return (
@@ -65,11 +72,9 @@ export const UpdateForm = () => {
                   onChange={nicknameField.onChange}
                 />
               </div>
-              <div {...register('birth')} className="flex flex-col gap-5xs">
-                <Typography type="title3" className="text-gray-50">
-                  생년월일
-                </Typography>
+              <div {...register('birth')}>
                 <DateInput
+                  labelName="생년월일"
                   intitalValue={memberData.birth}
                   maxLength={MAX_DATE_LENGTH_UNTIL_DAY}
                   onChange={birthField.onChange}
@@ -89,7 +94,7 @@ export const UpdateForm = () => {
         )
       }
       footer={
-        <Button type="submit" disabled={isDisabled}>
+        <Button type="submit" disabled={isDisabledSubmit}>
           저장
         </Button>
       }
