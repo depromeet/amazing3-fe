@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import BandiMoori from '@/assets/images/bandi-moori.png';
 import { BottomSheet, Button, Typography } from '@/components/atoms';
+import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useDeleteGoal } from '@/hooks/reactQuery/goal';
 
 interface DeleteGoalButtomSheetProps {
@@ -16,14 +17,15 @@ interface DeleteGoalButtomSheetProps {
 
 export const DeleteGoalButtomSheet = ({ open, onClose, goalId }: DeleteGoalButtomSheetProps) => {
   const { mutate, isSuccess, isError } = useDeleteGoal();
+  const { data: memberData } = useGetMemberData();
   const router = useRouter();
 
   useEffect(() => {
     if (isSuccess) {
       onClose();
-      router.push('/home');
+      router.push(`/home/${memberData?.username}`);
     }
-  }, [isSuccess, isError, onClose, router]);
+  }, [isSuccess, isError, onClose, router, memberData]);
 
   const handleDelete = () => {
     if (!goalId) {
