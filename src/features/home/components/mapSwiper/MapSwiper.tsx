@@ -13,11 +13,11 @@ const settings = {
   modules: [Pagination],
 };
 
-interface MapSwiperProps extends PropsWithChildren {
+interface MapSwiperProps {
   currentPage: number | null;
 }
 
-export const MapSwiper = ({ currentPage, children }: MapSwiperProps) => {
+export const MapSwiper = ({ currentPage, children }: PropsWithChildren<MapSwiperProps>) => {
   return (
     currentPage !== null && (
       <Swiper {...settings} initialSlide={currentPage} className="h-full">

@@ -41,7 +41,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
     positionPage: null,
   });
   const [currentPage, setCurrentPage] = useState<number | null>(null);
-  const paramId = Number(useSearchParams().get('id'));
+  const paramGoalId = Number(useSearchParams().get('id'));
 
   useEffect(() => {
     if (goalsData?.goals) {
@@ -73,8 +73,8 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
 
     let page = positionPage;
     // check if query params contains id value
-    if (paramId) {
-      const index = goals.findIndex(({ id: goalId }) => goalId === paramId);
+    if (paramGoalId) {
+      const index = goals.findIndex(({ id: goalId }) => goalId === paramGoalId);
       if (index > -1) {
         page = Math.floor((index + 1) / GOAL_COUNT_PER_PAGE);
       }
@@ -125,6 +125,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
                     ) : (
                       <MapCardPositioner type="B" goals={goals} isLast={page === LAST_PAGE - 1} />
                     )}
+                    {/** 현재 위치에 별 위치 시키기 위해 1) 현재 날짜가 포함된 페이지를 찾아서, 2) 포지션 위치에 별을 출력함. */}
                     {positionState.positionPage === page && positionState.position && (
                       <CurrentPositionCover currentPosition={positionState.position} />
                     )}
