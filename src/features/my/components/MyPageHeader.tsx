@@ -4,10 +4,10 @@ import EditIcon from '@/assets/icons/edit-icon.svg';
 import BackIcon from '@/assets/icons/goal/back-icon.svg';
 import { Typography } from '@/components';
 
-const MypageHeader = ({ username }: { username?: string }) => {
+const MypageHeader = () => {
   return (
     <div className="flex justify-between items-center">
-      <Link href={`/home/${username}`}>
+      <Link href="/home">
         <BackIcon />
       </Link>
       <Typography type="title1">마이페이지</Typography>
