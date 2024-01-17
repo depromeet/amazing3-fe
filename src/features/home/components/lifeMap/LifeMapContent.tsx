@@ -27,11 +27,19 @@ interface LifeMapProps {
   isPublic?: boolean;
 }
 
+interface PositionStateProps {
+  position: number | null;
+  positionPage: number | null;
+}
+
 export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPublic = false }: LifeMapProps) => {
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
   const LAST_PAGE = participatedGoalsArray.length;
 
-  const [position, setPosition] = useState<number | null>(null);
+  const [positionState, setPositionState] = useState<PositionStateProps>({
+    position: null,
+    positionPage: null,
+  });
   const [currentPage, setCurrentPage] = useState<number | null>(null);
   const paramId = Number(useSearchParams().get('id'));
 
@@ -59,9 +67,11 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
       default:
         position = currentPosition + 1;
     }
-    setPosition(position);
+    const positionPage = Math.floor(position / GOAL_COUNT_PER_PAGE);
+    position = position % TOTAL_CURRENT_POSITIONS;
+    setPositionState({ position, positionPage });
 
-    let page = Math.floor(position / GOAL_COUNT_PER_PAGE);
+    let page = positionPage;
     // check if query params contains id value
     if (paramId) {
       const index = goals.findIndex(({ id: goalId }) => goalId === paramId);
@@ -115,8 +125,8 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
                     ) : (
                       <MapCardPositioner type="B" goals={goals} isLast={page === LAST_PAGE - 1} />
                     )}
-                    {position && currentPage === page && (
-                      <CurrentPositionCover currentPosition={position % TOTAL_CURRENT_POSITIONS} />
+                    {positionState.positionPage === page && positionState.position && (
+                      <CurrentPositionCover currentPosition={positionState.position} />
                     )}
                   </div>
                 </SwiperSlide>

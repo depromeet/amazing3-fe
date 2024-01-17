@@ -13,15 +13,16 @@ interface SavedHeaderProps {
 export const SavedHeader = ({ goalId }: SavedHeaderProps) => {
   const { data: memberData } = useGetMemberData();
 
-  const pathname = `/home/${memberData?.username}?id=${goalId}`;
+  const pathname = `/home/${memberData?.username}`;
+  const query = { id: goalId };
 
   return (
     <>
-      <Link href={{ pathname }}>
+      <Link href={{ pathname, query }}>
         <BackIcon />
       </Link>
       <Typography type="header1">목표 저장 완료!</Typography>
-      <Link href={{ pathname }}>
+      <Link href={{ pathname, query }}>
         <CloseIcon />
       </Link>
     </>
