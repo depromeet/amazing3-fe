@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { DevTool } from '@hookform/devtools';
 
-import { useCreateMemberData } from '@/hooks/reactQuery/auth';
+import { useCreateMemberData, useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useIsMounted } from '@/hooks/useIsMounted';
 
 import type { NewMemberFormValues } from '../types';
@@ -11,13 +11,14 @@ import type { NewMemberFormValues } from '../types';
 const NewMemberFormProvider = ({ children }: PropsWithChildren) => {
   const router = useRouter();
   const isMounted = useIsMounted();
-  const { data, mutate, isSuccess } = useCreateMemberData();
+  const { mutate, isSuccess } = useCreateMemberData();
+  const { data: memberData } = useGetMemberData();
 
   useEffect(() => {
     if (isSuccess) {
-      router.push(`/home/${data?.username}`);
+      router.push(`/home/${memberData?.username}`);
     }
-  }, [isSuccess, router]);
+  }, [isSuccess, memberData, router]);
 
   const methods = useForm<NewMemberFormValues>();
 
