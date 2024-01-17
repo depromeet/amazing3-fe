@@ -22,7 +22,7 @@ const OAuthTokenPage = () => {
 
   useEffect(() => {
     if (memberData) {
-      router.push(memberData?.nickname ? `/home/${memberData?.username}` : '/onboarding');
+      router.push(memberData?.nickname ? '/home' : '/onboarding');
     }
   }, [memberData, router]);
 

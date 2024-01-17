@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 
 import BackIcon from '@/assets/icons/goal/back-icon.svg';
 import CloseIcon from '@/assets/icons/goal/close-icon.svg';
-import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
 import { NEW_GOAL_FORM_ORDERS_LENGTH } from '../../constants';
 
@@ -16,9 +15,6 @@ interface FormHeaderProps {
 const FormHeader = ({ formNumber }: FormHeaderProps) => {
   const totalPages = NEW_GOAL_FORM_ORDERS_LENGTH;
   const currentProgress = (formNumber / totalPages) * 100;
-
-  const { data: memberData } = useGetMemberData();
-
   const router = useRouter();
   const handleClickBackButton = () => {
     router.back();
@@ -37,7 +33,7 @@ const FormHeader = ({ formNumber }: FormHeaderProps) => {
           />
         </div>
       </div>
-      <Link href={{ pathname: `/home/${memberData?.username}` }}>
+      <Link href={{ pathname: '/home' }}>
         <CloseIcon />
       </Link>
     </div>

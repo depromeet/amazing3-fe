@@ -11,11 +11,11 @@ import type { NewMemberFormValues } from '../types';
 const NewMemberFormProvider = ({ children }: PropsWithChildren) => {
   const router = useRouter();
   const isMounted = useIsMounted();
-  const { data, mutate, isSuccess } = useCreateMemberData();
+  const { mutate, isSuccess } = useCreateMemberData();
 
   useEffect(() => {
     if (isSuccess) {
-      router.push(`/home/${data?.username}`);
+      router.push('/home');
     }
   }, [isSuccess, router]);
 
