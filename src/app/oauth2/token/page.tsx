@@ -14,7 +14,6 @@ const OAuthTokenPage = () => {
   const token = searchParams.get('token');
   const [isLogin, setIsLogin] = useAtom(isLoginAtom);
 
-  // const { data: memberData } = useGetMemberData({ enabled: true });
   const { data: memberData } = useGetMemberData();
 
   // TODO: useGetMemberData 가져오는 로직이 항상 token 저장 이후에 실행되도록 수정 필요.
