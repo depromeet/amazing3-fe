@@ -3,18 +3,19 @@
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
-import { Input } from '@/components';
+import { Input, Typography } from '@/components';
 import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
 
 import { formatDate, isValidDate } from '../../utils/date';
 
 interface DateInputProps {
+  labelName?: string;
   intitalValue?: string;
   maxLength: number;
   onChange?: (value: string) => void;
 }
 
-export const DateInput = ({ intitalValue = '', maxLength, onChange }: DateInputProps) => {
+export const DateInput = ({ labelName = '', intitalValue = '', maxLength, onChange }: DateInputProps) => {
   const [formattedValue, setFormattedValue] = useState<string>(intitalValue);
   const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD';
 
@@ -46,12 +47,17 @@ export const DateInput = ({ intitalValue = '', maxLength, onChange }: DateInputP
   };
 
   return (
-    <Input
-      type="text"
-      placeholder={placeholder}
-      value={formattedValue}
-      maxLength={maxLength}
-      onChange={handleInputChange}
-    />
+    <div className="flex flex-col gap-5xs">
+      <Typography type="title3" className="text-gray-50">
+        {labelName}
+      </Typography>
+      <Input
+        type="text"
+        placeholder={placeholder}
+        value={formattedValue}
+        maxLength={maxLength}
+        onChange={handleInputChange}
+      />
+    </div>
   );
 };
