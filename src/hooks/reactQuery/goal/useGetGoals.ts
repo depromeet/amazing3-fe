@@ -34,3 +34,11 @@ export const usePrefetchGoals = (): void => {
     queryFn: () => api.get<GoalResponse>('/life-map'),
   });
 };
+
+export const usePrefetchGoals = (): void => {
+  const queryClient = useQueryClient();
+  queryClient.prefetchQuery({
+    queryKey: ['goals'],
+    queryFn: () => api.get<GoalResponse>('/life-map'),
+  });
+};
