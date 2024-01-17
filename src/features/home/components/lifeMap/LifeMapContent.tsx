@@ -3,6 +3,7 @@
 import type { RefObject } from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { SwiperSlide } from 'swiper/react';
 
 import StarBg from '@/app/home/[username]/startBg';
@@ -32,6 +33,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
 
   const [position, setPosition] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
+  const paramId = Number(useSearchParams().get('id'));
 
   useEffect(() => {
     if (goalsData?.goals) {
@@ -58,7 +60,16 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
         position = currentPosition + 1;
     }
     setPosition(position);
-    setCurrentPage(Math.floor(position / GOAL_COUNT_PER_PAGE));
+
+    let page = Math.floor(position / GOAL_COUNT_PER_PAGE);
+    // check if query params contains id value
+    if (paramId) {
+      const index = goals.findIndex(({ id: goalId }) => goalId === paramId);
+      if (index > -1) {
+        page = Math.floor((index + 1) / GOAL_COUNT_PER_PAGE);
+      }
+    }
+    setCurrentPage(page);
   };
 
   return (
@@ -95,7 +106,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
         <StarBg />
         <div className="h-[520px]">
           <div className="absolute inset-x-0">
-            <MapSwiper currentPosition={position}>
+            <MapSwiper currentPage={currentPage}>
               {participatedGoalsArray?.map((goals, page) => (
                 <SwiperSlide key={`swiper-goal-${page}`}>
                   <div className={isPublic ? `pointer-events-none` : ''}>
