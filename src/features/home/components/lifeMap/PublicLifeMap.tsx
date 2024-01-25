@@ -18,7 +18,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
       <LifeMapContent isPublic goalsData={publicGoals} memberData={publicGoals?.user} />
       <div className="px-xs pt-5xs mt-[18px] w-full">
         <Link href={{ pathname: myHomePath }} className="w-full">
-          <Button>내 지도로 돌아가기</Button>
+          <Button>{memberData?.username ? '내 지도로 돌아가기' : '로그인하기'}</Button>
         </Link>
       </div>
     </>

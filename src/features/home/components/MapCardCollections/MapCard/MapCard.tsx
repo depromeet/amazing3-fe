@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useOverlay } from '@toss/use-overlay';
 import { useAtomValue } from 'jotai';
 
@@ -18,19 +18,20 @@ export interface MapCardProps extends MapCardLayoutProps {
 
 export const MapCard = ({ goal, position }: MapCardProps) => {
   const { id, stickerUrl, deadline, tagContent } = goal;
+  const router = useRouter();
   const isLogin = useAtomValue(isLoginAtom);
-  console.log(isLogin);
-  const goalDetailPath = isLogin ? `/goal/detail/${id}` : '';
   const { open } = useOverlay();
 
   const handleMapCardClick = () => {
-    if (isLogin) return;
-
-    open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
+    if (isLogin) {
+      router.push(`/goal/detail/${id}`);
+    } else {
+      open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
+    }
   };
 
   return (
-    <Link href={{ pathname: goalDetailPath }} onClick={handleMapCardClick}>
+    <button onClick={handleMapCardClick}>
       <MapCardLayout position={position}>
         <Image
           src={stickerUrl}
@@ -51,6 +52,6 @@ export const MapCard = ({ goal, position }: MapCardProps) => {
           </Typography>
         </div>
       </MapCardLayout>
-    </Link>
+    </button>
   );
 };
