@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAtomValue } from 'jotai';
 import Cookies from 'js-cookie';
 
 import { Button } from '@/components/atoms';
 import { Spinner } from '@/components/atoms/spinner';
-import { isLoginAtom } from '@/features/auth/atom';
 import { useDeleteMemberData } from '@/hooks/reactQuery/auth/useDeleteMemberData';
 
 interface FooterProps {
@@ -15,7 +13,6 @@ interface FooterProps {
 const Footer = ({ onClose }: FooterProps) => {
   const router = useRouter();
   const { mutate, isSuccess, isPending } = useDeleteMemberData();
-  const isLogin = useAtomValue(isLoginAtom);
 
   useEffect(() => {
     if (isSuccess) {
