@@ -1,5 +1,5 @@
 import type { ChangeEvent, ChangeEventHandler } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Input, Typography } from '@/components';
 import { Textarea } from '@/components/atoms/textarea';
@@ -34,10 +34,6 @@ export const TextInput = ({
     onChange && onChange(event.target.value);
   };
 
-  useEffect(() => {
-    setText(value);
-  }, [value]);
-
   return (
     <div className="flex flex-col gap-5xs">
       <div className="flex justify-between items-center">
@@ -52,7 +48,7 @@ export const TextInput = ({
         </div>
       </div>
       {type === 'single' ? (
-        <Input type="text" value={value} placeholder={placeholder} onChange={handleChangeInput} />
+        <Input type="text" value={text} placeholder={placeholder} onChange={handleChangeInput} />
       ) : (
         <Textarea
           style={{ height: `${height}px` }}

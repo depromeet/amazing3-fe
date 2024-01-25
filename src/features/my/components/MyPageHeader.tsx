@@ -11,8 +11,7 @@ const MypageHeader = ({ username }: { username?: string }) => {
         <BackIcon />
       </Link>
       <Typography type="title1">마이페이지</Typography>
-      {/* TODO: 수정 버튼 클릭시 수정페이지로 이동 */}
-      <Link href="/my">
+      <Link href="/my/update">
         <EditIcon />
       </Link>
     </div>

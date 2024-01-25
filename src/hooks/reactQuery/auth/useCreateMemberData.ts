@@ -1,7 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { api } from '@/apis';
-import type { NewMemberFormValues as MemberRequest } from '@/features/member/types';
+
+export interface MemberRequest {
+  nickname: string;
+  username: string;
+  birth: string;
+}
 
 export const useCreateMemberData = () => {
   const queryClient = useQueryClient();
