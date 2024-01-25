@@ -1,7 +1,9 @@
 import { useRouter } from 'next/navigation';
+import { useSetAtom } from 'jotai';
 import Cookies from 'js-cookie';
 
 import { Button } from '@/components/atoms';
+import { isLoginAtom } from '@/features/auth/atom';
 
 interface FooterProps {
   onClose: VoidFunction;
@@ -9,9 +11,11 @@ interface FooterProps {
 
 const Footer = ({ onClose }: FooterProps) => {
   const router = useRouter();
+  const setIsLogin = useSetAtom(isLoginAtom);
 
   const handleClickLogout = () => {
     Cookies.remove('accessToken');
+    setIsLogin(false);
     router.push('/');
   };
 
