@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { DevTool } from '@hookform/devtools';
 
-import { useCreateMemberData } from '@/hooks/reactQuery/auth';
+import { useUpdateMemberData } from '@/hooks/reactQuery/auth';
 import { useIsMounted } from '@/hooks/useIsMounted';
 
 import type { UpdateMemberDataFormValues } from '../types';
@@ -11,7 +11,7 @@ import type { UpdateMemberDataFormValues } from '../types';
 const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
   const router = useRouter();
   const isMounted = useIsMounted();
-  const { mutate, isSuccess } = useCreateMemberData();
+  const { mutate, isSuccess } = useUpdateMemberData();
 
   useEffect(() => {
     if (isSuccess) {
