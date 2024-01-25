@@ -4,7 +4,6 @@ import { api } from '@/apis';
 
 export interface MemberRequest {
   nickname: string;
-  username: string;
   birth: string;
 }
 
