@@ -21,7 +21,7 @@ const toastIcon = {
   warning: <WarningIcon />,
 };
 
-const TOAST_DURATION = 1500;
+const TOAST_DURATION = 2000;
 const ANIMATION_DURATION = 200;
 
 export const Toast = ({ id, title, type = 'success' }: ToastProps) => {
