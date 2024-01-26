@@ -22,7 +22,7 @@ export const LoginBottomSheet = ({ open, onClose }: LoginBottomSheetProps) => {
         </div>
         <div className="absolute bottom-0 w-full h-[237px] pt-[100px] bg-gradient7 flex flex-col gap-4xs items-center">
           <ToolTip title="3초만에 시작하기" />
-          <LoginIconSet google />
+          <LoginIconSet google naver kakao />
         </div>
         <div className="absolute top-[127px]">
           <Image src={BandiBoodi3DImage} width={220} alt="bandiboodi" />

@@ -1,11 +1,15 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useOverlay } from '@toss/use-overlay';
+import { useAtomValue } from 'jotai';
 
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Typography } from '@/components';
 import { blueDataURL } from '@/constants';
+import { isLoginAtom } from '@/features/auth/atom';
 import type { GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
 
+import { LoginBottomSheet } from '../../loginBottomSheet';
 import { MapCardLayout, type MapCardLayoutProps } from '../MapCardLayout';
 
 export interface MapCardProps extends MapCardLayoutProps {
@@ -14,9 +18,20 @@ export interface MapCardProps extends MapCardLayoutProps {
 
 export const MapCard = ({ goal, position }: MapCardProps) => {
   const { id, stickerUrl, deadline, tagContent } = goal;
+  const router = useRouter();
+  const isLogin = useAtomValue(isLoginAtom);
+  const { open } = useOverlay();
+
+  const handleMapCardClick = () => {
+    if (isLogin) {
+      router.push(`/goal/detail/${id}`);
+    } else {
+      open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
+    }
+  };
 
   return (
-    <Link href={{ pathname: `/goal/detail/${id}` }}>
+    <button onClick={handleMapCardClick}>
       <MapCardLayout position={position}>
         <Image
           src={stickerUrl}
@@ -37,6 +52,6 @@ export const MapCard = ({ goal, position }: MapCardProps) => {
           </Typography>
         </div>
       </MapCardLayout>
-    </Link>
+    </button>
   );
 };
