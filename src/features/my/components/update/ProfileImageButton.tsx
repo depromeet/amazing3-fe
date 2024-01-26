@@ -20,18 +20,18 @@ const ProfileImageButton = ({ image, control }: ProfileImageButtonProps) => {
     open(({ isOpen, close }) => <ProfileImageBottomSheet open={isOpen} onClose={close} control={control} />);
   };
   return (
-    <div className="relative">
+    <button
+      className="relative"
+      onClick={(e) => {
+        e.preventDefault();
+        handleOpenBottomSheet();
+      }}
+    >
       <Avatar size={151} profileImage={image} />
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          handleOpenBottomSheet();
-        }}
-        className="p-[6px] rounded-xl absolute right-0 bottom-0 bg-white drop-shadow-[0_0_7.9px_rgba(0,88,255,0.1)]"
-      >
+      <div className="p-[6px] rounded-xl absolute right-0 bottom-0 bg-white drop-shadow-[0_0_7.9px_rgba(0,88,255,0.1)]">
         <CameraIcon />
-      </button>
-    </div>
+      </div>
+    </button>
   );
 };
 
