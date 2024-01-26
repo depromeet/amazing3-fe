@@ -15,7 +15,7 @@ import GoalGuideBottomSheet from './GoalGuideBottomSheet';
 import { TextInput } from './TextInput';
 
 export const GoalForm = () => {
-  const { register, setValue, control } = useFormContext<GoalFormValues>();
+  const { register, control } = useFormContext<GoalFormValues>();
   const { field } = useController({ name: 'title', control });
   const { onChange, value } = field;
   const overlay = useOverlay();
@@ -51,7 +51,7 @@ export const GoalForm = () => {
                 rounded="xl"
                 onClick={() => {
                   overlay.open(({ isOpen, close }) => {
-                    return <GoalGuideBottomSheet open={isOpen} onClose={close} setValue={setValue} />;
+                    return <GoalGuideBottomSheet open={isOpen} onClose={close} onChange={onChange} />;
                   });
                 }}
               >

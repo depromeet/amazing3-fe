@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import type { UseFormSetValue } from 'react-hook-form';
 import * as Tabs from '@radix-ui/react-tabs';
 
 import {
@@ -13,15 +12,14 @@ import {
 import { SelectableCardList } from '@/components';
 import { BottomSheet, Button, Typography } from '@/components/atoms';
 import type { TabsProps } from '@/components/molecules/tabs';
-import type { GoalFormValues } from '@/features/goal/types';
 
 interface GoalGuideBottomSheetProps {
   open: boolean;
   onClose: VoidFunction;
-  setValue: UseFormSetValue<GoalFormValues>;
+  onChange: (...event: unknown[]) => void;
 }
 
-const GoalGuideBottomSheet = ({ open, onClose, setValue }: GoalGuideBottomSheetProps) => {
+const GoalGuideBottomSheet = ({ open, onClose, onChange }: GoalGuideBottomSheetProps) => {
   const [title, setTitle] = useState('');
   const [goalGuide, setGoalGuide] = useState<TabsProps>();
 
@@ -43,7 +41,7 @@ const GoalGuideBottomSheet = ({ open, onClose, setValue }: GoalGuideBottomSheetP
   };
 
   const handleApply = () => {
-    setValue('title', title);
+    onChange(title);
     onClose();
   };
 

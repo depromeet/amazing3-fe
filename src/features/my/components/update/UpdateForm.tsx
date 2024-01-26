@@ -68,7 +68,7 @@ export const UpdateForm = () => {
                   labelName="닉네임"
                   maxLength={MAX_NICKNAME_LENGTH}
                   placeholder="닉네임"
-                  value={memberData.nickname}
+                  value={nicknameField.value || memberData.nickname}
                   onChange={nicknameField.onChange}
                 />
               </div>
@@ -85,7 +85,7 @@ export const UpdateForm = () => {
                   labelName="아이디"
                   maxLength={MAX_USERNAME_LENGTH}
                   placeholder="아이디"
-                  value={memberData.username}
+                  value={usernameField.value || memberData.username}
                   onChange={usernameField.onChange}
                 />
               </div>

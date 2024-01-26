@@ -1,5 +1,4 @@
 import type { ChangeEvent, ChangeEventHandler } from 'react';
-import { useState } from 'react';
 
 import { Input, Typography } from '@/components';
 import { Textarea } from '@/components/atoms/textarea';
@@ -25,12 +24,10 @@ export const TextInput = ({
   placeholder,
   onChange,
 }: TextInputProps) => {
-  const [text, setText] = useState<string>(value);
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (event.target.value.length > maxLength) {
       event.target.value = event.target.value.slice(0, maxLength);
     }
-    setText(event.target.value);
     onChange && onChange(event.target.value);
   };
 
@@ -42,13 +39,13 @@ export const TextInput = ({
         </Typography>
         <div className="flex">
           <Typography type="title5" className="text-gray-40">
-            {text.length}
+            {value.length}
           </Typography>
           <Typography type="title5" className="text-gray-30">{`/${maxLength}`}</Typography>
         </div>
       </div>
       {type === 'single' ? (
-        <Input type="text" value={text} placeholder={placeholder} onChange={handleChangeInput} />
+        <Input type="text" value={value} placeholder={placeholder} onChange={handleChangeInput} />
       ) : (
         <Textarea
           style={{ height: `${height}px` }}
