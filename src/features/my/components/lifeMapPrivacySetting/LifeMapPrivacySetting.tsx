@@ -3,22 +3,19 @@
 import { Typography } from '@/components';
 import { useUpdatePublication } from '@/hooks/reactQuery/lifeMap/useUpdatePublication';
 
+import { PRIVACY_SETTING_RADIO_BUTTONS, Visibility } from '../../constants';
+
 import RadioButton from './RadioButton';
 
 interface LifeMapPrivacySettingProps {
   isPublic: boolean;
 }
 
-const groupItems = [
-  { description: '전체보기', value: 'public' },
-  { description: '나만보기', value: 'private' },
-];
-
 export const LifeMapPrivacySetting = ({ isPublic }: LifeMapPrivacySettingProps) => {
   const { mutate } = useUpdatePublication();
 
-  const handleClickRadioButton = (value: string) => {
-    mutate({ isPublic: value === 'public' });
+  const handleClickRadioButton = (selected: string) => {
+    mutate({ isPublic: selected === Visibility.PUBLIC });
   };
 
   return (
@@ -28,13 +25,13 @@ export const LifeMapPrivacySetting = ({ isPublic }: LifeMapPrivacySettingProps) 
           인생지도 공개 범위
         </Typography>
         <div className="flex gap-3xs">
-          {groupItems.map(({ description, value }) => (
+          {PRIVACY_SETTING_RADIO_BUTTONS.map(({ description, value }) => (
             <RadioButton
               key={value}
               name="lifeMapPrivacySetting"
               description={description}
               value={value}
-              selectedValue={isPublic ? 'public' : 'private'}
+              selectedValue={isPublic ? Visibility.PUBLIC : Visibility.PRIVATE}
               onChange={handleClickRadioButton}
             />
           ))}
