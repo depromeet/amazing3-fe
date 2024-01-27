@@ -4,7 +4,7 @@ import { useOverlay } from '@toss/use-overlay';
 
 import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 import DeleteIcon from '@/assets/icons/goal/delete-icon.svg';
-import { useGetMemberData } from '@/hooks/reactQuery/auth';
+import { useIsMyMap } from '@/hooks';
 
 import { DeleteGoalBottomSheet } from './DeleteGoalBottomSheet';
 
@@ -14,15 +14,15 @@ interface DetailHeaderProps {
 
 export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
   const overlay = useOverlay();
-  const { data } = useGetMemberData();
+  const { isMyMap, currentUsername } = useIsMyMap();
 
   return (
     <>
-      <Link href={{ pathname: `/home/${data?.username}`, query: { id: goalId } }}>
+      <Link href={{ pathname: `/home/${currentUsername}`, query: { id: goalId } }}>
         <CloseIcon />
       </Link>
 
-      {goalId && (
+      {isMyMap && goalId && (
         <button
           onClick={() => {
             overlay.open(({ isOpen, close }) => {
