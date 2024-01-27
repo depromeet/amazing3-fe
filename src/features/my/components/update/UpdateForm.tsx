@@ -8,6 +8,7 @@ import { MAX_DATE_LENGTH_UNTIL_DAY, MAX_NICKNAME_LENGTH, MAX_USERNAME_LENGTH } f
 import { DateInput } from '@/features/goal/components/new/DateInput';
 import { TextInput } from '@/features/goal/components/new/TextInput';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
+import { useValidBirth } from '@/hooks/useValidBirth';
 
 import type { UpdateMemberDataFormValues } from '../../types';
 
@@ -23,6 +24,7 @@ export const UpdateForm = () => {
   const { field: nicknameField } = useController({ name: 'nickname', control });
   const { field: birthField } = useController({ name: 'birth', control });
   const { field: usernameField } = useController({ name: 'username', control });
+  const isValidBirth = useValidBirth(birthField.value);
 
   const [isDisabledSubmit, setIsDisabledSubmit] = useState(true);
 
@@ -57,8 +59,8 @@ export const UpdateForm = () => {
       usernameField.value.length === 0 ||
       birthField.value.length !== 10;
 
-    setIsDisabledSubmit(isNotFilled || isNotModified);
-  }, [memberData, imageField, nicknameField, birthField, usernameField]);
+    setIsDisabledSubmit(isNotFilled || isNotModified || !isValidBirth);
+  }, [memberData, imageField, nicknameField, birthField, usernameField, isValidBirth]);
 
   return (
     <FormLayout
