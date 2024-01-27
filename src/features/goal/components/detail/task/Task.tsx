@@ -8,7 +8,7 @@ import CheckedIcon from '@/assets/icons/goal/radio/radio-checked.svg';
 import UnCheckedIcon from '@/assets/icons/goal/radio/radio-unchecked.svg';
 import { Typography } from '@/components';
 import { TaskMoreOptionBottomSheet } from '@/features/goal/components/detail/TaskMoreOptionBottomSheet';
-import { useInput } from '@/hooks';
+import { useInput, useIsMyMap } from '@/hooks';
 import { useUpdateDescription } from '@/hooks/reactQuery/task/useUpdateDescription';
 
 import { TaskEditInput } from './TaskEditInput';
@@ -25,6 +25,7 @@ interface TaskProps {
 
 export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps) => {
   const CheckIcon = isDone ? CheckedIcon : UnCheckedIcon;
+  const { isMyMap } = useIsMyMap();
   const { open } = useOverlay();
 
   const [isEditing, setIsEditing] = useState(false);
@@ -56,7 +57,7 @@ export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps
   return (
     <div className="w-full flex gap-6xs items-start px-3xs py-4xs rounded-[8px] border-gray-20 bg-white shadow-thumb">
       <div className="w-[24px] h-[24px]">
-        <button onClick={handleDoneClick}>
+        <button onClick={handleDoneClick} disabled={!isMyMap}>
           <CheckIcon width={24} height={24} />
         </button>
       </div>
@@ -70,9 +71,11 @@ export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps
           <Typography type="body3" className="text-gray-70">
             {text}
           </Typography>
-          <button className="px-5xs" onClick={handleMoreOptionClick}>
-            <EllipsisVerticalIcon />
-          </button>
+          {isMyMap && (
+            <button className="px-5xs" onClick={handleMoreOptionClick}>
+              <EllipsisVerticalIcon />
+            </button>
+          )}
         </div>
       )}
     </div>

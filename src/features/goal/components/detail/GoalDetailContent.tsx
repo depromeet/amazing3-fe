@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { useIsMyMap } from '@/hooks';
 import { useGetGoal } from '@/hooks/reactQuery/goal';
 
 import { AddTaskInput } from './AddTaskInput';
@@ -10,6 +11,7 @@ import { Tasks } from './Tasks';
 import { AddSubGoalPrompt, ContentBody, DetailFooterButton, DetailHeader, Sticker } from '.';
 
 export const GoalDetailContent = ({ id }: { id: number }) => {
+  const { isMyMap } = useIsMyMap();
   const { data: goal } = useGetGoal({ goalId: Number(id) });
   const [isOpenTaskInput, setOpenTaskInput] = useState(false);
 
@@ -32,7 +34,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
               {goal.tasks.length ? (
                 <Tasks goalId={id} tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
-                !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
+                isMyMap && !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
               )}
             </div>
           )
