@@ -20,7 +20,10 @@ export const useUpdateMemberData = () => {
 
   return useMutation({
     mutationFn: (data: UpdateMemberRequest) => api.put('/users', data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['memberData'] }),
+    onSuccess: (data) => {
+      localStorage.setItem('username', data.username);
+      queryClient.invalidateQueries({ queryKey: ['memberData'] });
+    },
     onError: (error: ResponseError) => {
       const errorMessage = error.status === 409 ? '이미 존재하는 아이디에요.' : '다시 시도해주세요.';
       toast.warning(`회원정보 수정에 실패했어요. ${errorMessage}`);

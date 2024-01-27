@@ -12,14 +12,13 @@ const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
   const router = useRouter();
   const isMounted = useIsMounted();
   const { mutate, isSuccess } = useUpdateMemberData();
+  const methods = useForm<UpdateMemberDataFormValues>();
 
   useEffect(() => {
     if (isSuccess) {
       router.push('/my');
     }
-  }, [isSuccess, router]);
-
-  const methods = useForm<UpdateMemberDataFormValues>();
+  }, [isSuccess, router, methods]);
 
   const submit = (formData: UpdateMemberDataFormValues) => {
     const { nickname, username, birth } = formData;
