@@ -32,7 +32,7 @@ export const BirthInputForm = () => {
     <FormLayout
       icon={<BirthIcon width={40} height={40} />}
       title={`반가워요, ${nickname}님!\n생년월일을 입력해 주세요.`}
-      description="beta에서는 생년월일을 수정할 수 없어요."
+      description="생년월일은 마이페이지에서 수정할 수 있어요."
     >
       <div className="mt-xs flex flex-col grow w-full">
         <div className="w-full h-full flex flex-col justify-between">

@@ -23,7 +23,7 @@ const Footer = ({ onClose }: FooterProps) => {
 
   const handleClickWithdraw = () => {
     if (process.env.NODE_ENV !== 'development') {
-      alert('준비중인 기능입니다!');
+      alert('준비 중인 기능입니다. 지금 탈퇴를 원하시면 피드백 보내기를 통해 요청해 주세요.');
       return;
     }
 
