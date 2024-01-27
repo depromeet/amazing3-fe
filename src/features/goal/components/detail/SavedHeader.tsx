@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-import BackIcon from '@/assets/icons/goal/back-icon.svg';
 import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 import { Typography } from '@/components/atoms';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
@@ -17,14 +16,13 @@ export const SavedHeader = ({ goalId }: SavedHeaderProps) => {
   const query = { id: goalId };
 
   return (
-    <>
-      <Link href={{ pathname, query }}>
-        <BackIcon />
-      </Link>
+    <div className="w-full h-[20px] flex justify-center items-center">
       <Typography type="header1">목표 저장 완료!</Typography>
-      <Link href={{ pathname, query }}>
-        <CloseIcon />
-      </Link>
-    </>
+      <div className="absolute right-[24px]">
+        <Link href={{ pathname, query }}>
+          <CloseIcon />
+        </Link>
+      </div>
+    </div>
   );
 };
