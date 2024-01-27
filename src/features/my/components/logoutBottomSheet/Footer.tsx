@@ -15,6 +15,7 @@ const Footer = ({ onClose }: FooterProps) => {
 
   const handleClickLogout = () => {
     Cookies.remove('accessToken');
+    localStorage.removeItem('username');
     setIsLogin(false);
     router.push('/');
   };
