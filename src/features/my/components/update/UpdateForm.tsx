@@ -64,7 +64,8 @@ export const UpdateForm = () => {
     <FormLayout
       header={<Header />}
       body={
-        memberData && (
+        memberData &&
+        birthField !== undefined && (
           <div className="pb-xl flex flex-col">
             <div className="flex justify-center">
               <ProfileImageButton image={imageField.value} control={control} />
@@ -75,7 +76,7 @@ export const UpdateForm = () => {
                   labelName="닉네임"
                   maxLength={MAX_NICKNAME_LENGTH}
                   placeholder="닉네임"
-                  value={nicknameField.value || memberData.nickname}
+                  value={nicknameField.value}
                   onChange={nicknameField.onChange}
                 />
               </div>
@@ -92,7 +93,7 @@ export const UpdateForm = () => {
                   labelName="아이디"
                   maxLength={MAX_USERNAME_LENGTH}
                   placeholder="아이디"
-                  value={usernameField.value || memberData.username}
+                  value={usernameField.value}
                   onChange={usernameField.onChange}
                 />
               </div>
