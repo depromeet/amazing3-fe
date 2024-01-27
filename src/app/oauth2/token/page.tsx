@@ -27,6 +27,7 @@ const OAuthTokenPage = () => {
   useEffect(() => {
     if (isLogin && memberData) {
       router.push(memberData?.nickname ? `/home/${memberData?.username}` : '/onboarding');
+      localStorage.setItem('username', memberData.username);
     }
   }, [memberData, router, isLogin]);
 
