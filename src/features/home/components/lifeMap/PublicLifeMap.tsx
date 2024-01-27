@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import { Button } from '@/components/atoms';
-import LikeButton from '@/features/LifeMapView/LikeButton';
+import LikeButton from '@/features/like/LikeButton';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useGetPublicGoals } from '@/hooks/reactQuery/goal/useGetPublicGoals';
 
