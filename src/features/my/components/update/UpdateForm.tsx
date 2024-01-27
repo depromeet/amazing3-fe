@@ -19,6 +19,7 @@ export const UpdateForm = () => {
   const { data: memberData } = useGetMemberData();
 
   const { register, setValue, control } = useFormContext<UpdateMemberDataFormValues>();
+  const { field: imageField } = useController({ name: 'image', control });
   const { field: nicknameField } = useController({ name: 'nickname', control });
   const { field: birthField } = useController({ name: 'birth', control });
   const { field: usernameField } = useController({ name: 'username', control });
@@ -28,6 +29,7 @@ export const UpdateForm = () => {
   useEffect(() => {
     if (!memberData) return;
 
+    setValue('image', memberData.image);
     setValue('nickname', memberData.nickname);
     setValue('username', memberData.username);
     setValue('birth', memberData.birth);
@@ -36,6 +38,7 @@ export const UpdateForm = () => {
   useEffect(() => {
     if (
       !memberData ||
+      imageField.value === undefined ||
       nicknameField.value === undefined ||
       usernameField.value === undefined ||
       birthField.value === undefined
@@ -43,15 +46,19 @@ export const UpdateForm = () => {
       return;
 
     const isNotModified =
+      memberData.image === imageField.value &&
       memberData.nickname === nicknameField.value &&
       memberData.username === usernameField.value &&
       memberData.birth === birthField.value;
 
     const isNotFilled =
-      nicknameField.value.length === 0 || usernameField.value.length === 0 || birthField.value.length !== 10;
+      imageField.value.length === 0 ||
+      nicknameField.value.length === 0 ||
+      usernameField.value.length === 0 ||
+      birthField.value.length !== 10;
 
     setIsDisabledSubmit(isNotFilled || isNotModified);
-  }, [memberData, nicknameField, birthField, usernameField]);
+  }, [memberData, imageField, nicknameField, birthField, usernameField]);
 
   return (
     <FormLayout
@@ -60,7 +67,7 @@ export const UpdateForm = () => {
         memberData && (
           <div className="pb-xl flex flex-col">
             <div className="flex justify-center">
-              <ProfileImageButton image={memberData.image} />
+              <ProfileImageButton image={imageField.value} control={control} />
             </div>
             <div className="pt-[26px] flex flex-col gap-3xs">
               <div {...register('nickname')}>
@@ -75,7 +82,7 @@ export const UpdateForm = () => {
               <div {...register('birth')}>
                 <DateInput
                   labelName="생년월일"
-                  intitalValue={memberData.birth}
+                  intitalValue={memberData.birth.replace(/\-/g, '.')}
                   maxLength={MAX_DATE_LENGTH_UNTIL_DAY}
                   onChange={birthField.onChange}
                 />

@@ -1,7 +1,6 @@
 export interface NewMemberFormValues {
   nickname: string;
   birth: string;
-  username: string;
 }
 
 export interface MemberProps {

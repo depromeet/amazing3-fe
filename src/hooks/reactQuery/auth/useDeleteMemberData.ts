@@ -2,16 +2,11 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
-export interface MemberRequest {
-  nickname: string;
-  birth: string;
-}
-
-export const useCreateMemberData = () => {
+export const useDeleteMemberData = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: MemberRequest) => api.put('/my', data),
+    mutationFn: () => api.delete('/my'),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['memberData'] }),
   });
 };
