@@ -20,7 +20,7 @@ export const MoreForm = () => {
   const { register, getValues, control } = useFormContext<GoalFormValues>();
   const router = useRouter();
   const { field } = useController({ name: 'content', control });
-  const { onChange } = field;
+  const { value, onChange } = field;
   const { mutate, isPending, data } = useCreateGoal();
 
   useEffect(() => {
@@ -65,6 +65,7 @@ export const MoreForm = () => {
             labelName="메모"
             maxLength={MAX_TEXTAREA_LENGTH}
             placeholder="ex) 꼬박꼬박 저금하자 아자자!"
+            value={value}
             onChange={onChange}
           />
         </div>
