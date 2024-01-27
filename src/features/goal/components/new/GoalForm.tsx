@@ -46,6 +46,7 @@ export const GoalForm = () => {
             <div className="w-[200px]">
               <Button
                 className="py-3xs px-xs text-sm"
+                style={{ boxShadow: '0px 0px 1px 0px rgba(67, 95, 208, 0.17)' }}
                 variant="blue"
                 height="h44"
                 rounded="xl"
