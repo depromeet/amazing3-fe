@@ -42,7 +42,7 @@ export const NicknameInputForm = () => {
       <FormLayout
         icon={<SmileIcon width={40} height={40} />}
         title="닉네임을 입력해 주세요."
-        description="beta에서는 닉네임을 수정할 수 없어요."
+        description="닉네임은 마이페이지에서 수정할 수 있어요."
       >
         <div className="mt-xs flex flex-col grow w-full">
           <div className="h-full flex flex-col justify-between">
