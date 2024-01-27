@@ -1,9 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import BackIcon from '@/assets/icons/goal/back-icon.svg';
+import LikeIcon from '@/assets/icons/like-icon.png';
 import { Typography } from '@/components';
+import { formatOver999 } from '@/utils/number';
 
 import LikeClicker from './LikeClicker';
 
@@ -21,12 +24,11 @@ const LikeClickerList = () => {
         <Typography type="title1">내가 받은 응원</Typography>
       </div>
 
-      <div className="flex justify-center px-[43px] py-[14.5px] mx-2xs my-[10px] rounded-md bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]">
+      <div className="flex items-center justify-center px-[43px] py-[14.5px] mx-2xs my-[10px] rounded-md bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]">
         <Typography className="font-insungit text-[13px] text-purple-30">
-          {/* TODO: PR 머지 후 주석 해제 */}
-          {/* <Image src={LikeIcon} alt="like-button-image" width={24} height={24} /> */}
-          {/* FIXME: formatOver999 적용 */}
-          <span>999명</span>
+          <Image src={LikeIcon} alt="like-button-image" width={24} height={24} className="inline-block mr-[8px]" />
+
+          <span>{`${formatOver999(1000)}명`}</span>
           <span className="text-[#6884F6]">의 반디가 내 인생 지도를 응원했어요 !</span>
         </Typography>
       </div>
