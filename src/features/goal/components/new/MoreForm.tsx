@@ -65,6 +65,7 @@ export const MoreForm = () => {
             labelName="메모"
             maxLength={MAX_TEXTAREA_LENGTH}
             placeholder="ex) 꼬박꼬박 저금하자 아자자!"
+            height="25vh"
             value={value}
             onChange={onChange}
           />

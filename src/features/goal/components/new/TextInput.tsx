@@ -9,7 +9,7 @@ interface TextInputProps {
   labelName?: string;
   value?: string;
   type?: lineType;
-  height?: number;
+  height?: string;
   maxLength: number;
   placeholder: string;
   onChange?: (value: string) => void;
@@ -19,7 +19,7 @@ export const TextInput = ({
   labelName = '',
   value = '',
   type = 'single',
-  height = 140,
+  height = '140px',
   maxLength,
   placeholder,
   onChange,
@@ -48,7 +48,7 @@ export const TextInput = ({
         <Input type="text" value={value} placeholder={placeholder} onChange={handleChangeInput} />
       ) : (
         <Textarea
-          style={{ height: `${height}px` }}
+          style={{ height }}
           placeholder={placeholder}
           onChange={handleChangeInput as ChangeEventHandler<HTMLTextAreaElement>}
         />
