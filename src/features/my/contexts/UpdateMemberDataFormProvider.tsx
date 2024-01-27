@@ -16,9 +16,6 @@ const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     if (isSuccess) {
-      const username = methods.getValues('username');
-      localStorage.setItem('username', username);
-
       router.push('/my');
     }
   }, [isSuccess, router, methods]);
