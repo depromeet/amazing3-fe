@@ -3,7 +3,7 @@ import Image from 'next/image';
 import BandiMoori from '@/assets/images/bandi-moori.png';
 import { Typography } from '@/components';
 
-const EmptyCheerer = () => {
+export const EmptyCheerer = () => {
   return (
     <div className="flex flex-col items-center justify-center h-[calc(100dvh-64px)]">
       <Typography type="body3" className="text-gray-50">
@@ -13,5 +13,3 @@ const EmptyCheerer = () => {
     </div>
   );
 };
-
-export default EmptyCheerer;

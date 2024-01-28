@@ -9,7 +9,7 @@ import { Typography } from '@/components';
 import { formatOver999 } from '@/utils/number';
 
 import Cheerer from './Cheerer';
-import EmptyCheerer from './EmptyCheerer';
+import { EmptyCheerer } from './EmptyCheerer';
 
 const CheererList = () => {
   // FIXME: 추후 api로 수정 예정

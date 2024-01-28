@@ -6,7 +6,7 @@ import { Button, Typography } from '@/components';
 
 interface CheeringButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const CheeringButton = (props: CheeringButtonProps) => {
+export const CheeringButton = (props: CheeringButtonProps) => {
   return (
     <Button className="flex items-center bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]" {...props}>
       <Image src={LikeIcon} alt="like-button-image" width={24} height={24} />
@@ -16,5 +16,3 @@ const CheeringButton = (props: CheeringButtonProps) => {
     </Button>
   );
 };
-
-export default CheeringButton;

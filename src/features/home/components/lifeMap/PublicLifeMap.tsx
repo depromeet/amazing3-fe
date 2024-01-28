@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import { Button } from '@/components/atoms';
-import CheeringButton from '@/features/cheering/CheeringButton';
+import { CheeringButton } from '@/features/cheering/CheeringButton';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useGetPublicGoals } from '@/hooks/reactQuery/goal/useGetPublicGoals';
 
