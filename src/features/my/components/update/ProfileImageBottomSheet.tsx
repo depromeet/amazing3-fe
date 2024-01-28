@@ -23,7 +23,7 @@ const ProfileImageBottomSheet = ({ open, onClose, control }: ProfileImageBottomS
           name="image"
           control={control}
           render={({ field: { onChange, value } }) => (
-            <div className="grid grid-cols-3 gap-3xs">
+            <div className="grid grid-cols-2 gap-3xs">
               {profileImageData?.map(({ id, name, url }) => (
                 <button
                   key={id}
