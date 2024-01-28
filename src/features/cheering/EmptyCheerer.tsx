@@ -3,7 +3,7 @@ import Image from 'next/image';
 import BandiMoori from '@/assets/images/bandi-moori.png';
 import { Typography } from '@/components';
 
-const EmptyLikeClicker = () => {
+const EmptyCheerer = () => {
   return (
     <div className="flex flex-col items-center justify-center h-[calc(100dvh-64px)]">
       <Typography type="body3" className="text-gray-50">
@@ -14,4 +14,4 @@ const EmptyLikeClicker = () => {
   );
 };
 
-export default EmptyLikeClicker;
+export default EmptyCheerer;

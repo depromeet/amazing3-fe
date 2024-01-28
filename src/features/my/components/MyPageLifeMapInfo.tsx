@@ -18,7 +18,7 @@ const MyPageLifeMapInfo = () => {
           </Typography>
           <Typography type="title4">{`${formatOver999(1000)}명`}</Typography>
         </div>
-        <Link href="/my/like">
+        <Link href="/my/cheering">
           <ForwardIcon />
         </Link>
       </div>

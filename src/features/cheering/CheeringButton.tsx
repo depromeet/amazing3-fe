@@ -4,9 +4,9 @@ import Image from 'next/image';
 import LikeIcon from '@/assets/icons/like-icon.png';
 import { Button, Typography } from '@/components';
 
-interface LikeButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+interface CheeringButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const LikeButton = (props: LikeButtonProps) => {
+const CheeringButton = (props: CheeringButtonProps) => {
   return (
     <Button className="flex items-center bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]" {...props}>
       <Image src={LikeIcon} alt="like-button-image" width={24} height={24} />
@@ -17,4 +17,4 @@ const LikeButton = (props: LikeButtonProps) => {
   );
 };
 
-export default LikeButton;
+export default CheeringButton;

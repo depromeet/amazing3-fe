@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 import { Typography } from '@/components';
 
-interface LikeClickerProps {
+interface CheererProps {
   image: string;
   nickname: string;
   likedAt: string;
 }
 
-const LikeClicker = ({ image, nickname, likedAt }: LikeClickerProps) => {
+const Cheerer = ({ image, nickname, likedAt }: CheererProps) => {
   return (
     <div className="flex items-center justify-between py-5xs">
       <div className="flex items-center">
@@ -22,4 +22,4 @@ const LikeClicker = ({ image, nickname, likedAt }: LikeClickerProps) => {
   );
 };
 
-export default LikeClicker;
+export default Cheerer;

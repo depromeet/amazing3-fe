@@ -37,7 +37,7 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
       <Divider className="mx-5xs" />
 
       {/* TODO: 응원하기 개수 응답 값으로 수정 예정 */}
-      <Link href="/my/like">
+      <Link href="/my/cheering">
         <div className="flex items-center">
           <ThumbsIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
           <Typography type="title4" className="text-gray-50 mr-[2px]">

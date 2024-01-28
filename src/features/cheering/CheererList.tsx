@@ -8,12 +8,12 @@ import LikeIcon from '@/assets/icons/like-icon.png';
 import { Typography } from '@/components';
 import { formatOver999 } from '@/utils/number';
 
-import EmptyLikeClicker from './EmptyLikeClicker';
-import LikeClicker from './LikeClicker';
+import Cheerer from './Cheerer';
+import EmptyCheerer from './EmptyCheerer';
 
-const LikeClickerList = () => {
+const CheererList = () => {
   // FIXME: 추후 api로 수정 예정
-  const likeClickerCount = 0;
+  const cheererCount = 0;
   const router = useRouter();
 
   const handleClickBack = () => {
@@ -29,8 +29,8 @@ const LikeClickerList = () => {
         </Typography>
       </div>
 
-      {!likeClickerCount ? (
-        <EmptyLikeClicker />
+      {!cheererCount ? (
+        <EmptyCheerer />
       ) : (
         <>
           <div className="flex items-center justify-center px-2xs py-[14.5px] mx-2xs my-[10px] rounded-md bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]">
@@ -44,9 +44,9 @@ const LikeClickerList = () => {
 
           {/* FIXME: api 수정 예정 */}
           <div className="flex flex-col gap-6xs mx-[24px]">
-            <LikeClicker image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
-            <LikeClicker image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
-            <LikeClicker image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
+            <Cheerer image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
+            <Cheerer image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
+            <Cheerer image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
           </div>
         </>
       )}
@@ -54,4 +54,4 @@ const LikeClickerList = () => {
   );
 };
 
-export default LikeClickerList;
+export default CheererList;
