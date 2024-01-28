@@ -9,16 +9,19 @@ import ShareBottomSheetFooter from './ShareBottomSheetFooter';
 interface ShareGoalBottomSheetProps {
   open: boolean;
   onClose: () => void;
+  onClickImageDownload: () => void;
 }
 
 export const ShareBottomSheet = forwardRef<HTMLElement, ShareGoalBottomSheetProps>(
-  ({ open, onClose }: ShareGoalBottomSheetProps, ref) => {
+  ({ open, onClose, onClickImageDownload }: ShareGoalBottomSheetProps, ref) => {
     return (
       <BottomSheet
         open={open}
         onDismiss={onClose}
         fixedMaxHeight={480}
-        FooterComponent={<ShareBottomSheetFooter ref={ref} onClose={onClose} />}
+        FooterComponent={
+          <ShareBottomSheetFooter ref={ref} onClose={onClose} onClickImageDownload={onClickImageDownload} />
+        }
       >
         <div className="flex flex-col items-center justify-center gap-3xs translate-y-[20px]">
           <Typography type="title1" className="text-gray-70 text-center">

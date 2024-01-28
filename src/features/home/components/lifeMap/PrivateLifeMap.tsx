@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { useOverlay } from '@toss/use-overlay';
 
@@ -9,6 +9,7 @@ import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useGetGoals } from '@/hooks/reactQuery/goal/useGetGoals';
 
 import { ShareBottomSheet } from '../shareBottomSheet';
+import { ImageDownloadBottomSheet } from '../shareBottomSheet/ImageDownloadBottomSheet';
 import { ShareButton } from '../shareButton';
 
 import { LifeMapContent } from './LifeMapContent';
@@ -18,11 +19,21 @@ export const PrivateLifeMap = () => {
   const { data: privateGoals } = useGetGoals();
 
   const downloadSectionRef = useRef<HTMLElement>(null);
-  const { open } = useOverlay();
+  const overlay = useOverlay();
 
-  const handleOpenShareBottomSheet = () => {
-    open(({ isOpen, close }) => <ShareBottomSheet ref={downloadSectionRef} open={isOpen} onClose={close} />);
-  };
+  const handleOpenShareBottomSheet = useCallback(() => {
+    overlay.open(({ isOpen, close }) => (
+      <ShareBottomSheet
+        open={isOpen}
+        onClose={close}
+        onClickImageDownload={() => {
+          overlay.open(({ isOpen, close }) => (
+            <ImageDownloadBottomSheet open={isOpen} onClose={close} ref={downloadSectionRef} />
+          ));
+        }}
+      />
+    ));
+  }, [overlay]);
 
   return (
     <>
