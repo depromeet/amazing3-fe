@@ -9,8 +9,8 @@ import { useGetPublicGoals } from '@/hooks/reactQuery/goal/useGetPublicGoals';
 import { LifeMapContent } from './LifeMapContent';
 
 export const PublicLifeMap = ({ username }: { username: string }) => {
-  const { data: publicGoals } = useGetPublicGoals({ username });
   const { data: memberData } = useGetMemberData();
+  const { data: publicGoals } = useGetPublicGoals({ username });
   const myHomePath = memberData?.username ? `/home/${memberData.username}` : '/';
 
   return (

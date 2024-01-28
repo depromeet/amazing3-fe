@@ -12,8 +12,8 @@ export const ResetButton = ({ statusCode }: ErrorPageLayoutProps) => {
 
   if (statusCode === 403)
     return (
-      <Link href={{ pathname: '/' }} className="w-full">
-        <Button>반디부디 바로가기</Button>
+      <Link href={{ pathname: memberData ? `/home/${memberData.username}` : '/' }} className="w-full">
+        <Button>{memberData ? '내 인생지도 바로가기' : '반디부디 바로가기'}</Button>
       </Link>
     );
 
