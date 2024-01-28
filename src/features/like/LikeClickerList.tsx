@@ -26,7 +26,7 @@ const LikeClickerList = () => {
         </Typography>
       </div>
 
-      <div className="flex items-center justify-center px-[43px] py-[14.5px] mx-2xs my-[10px] rounded-md bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]">
+      <div className="flex items-center justify-center px-2xs py-[14.5px] mx-2xs my-[10px] rounded-md bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]">
         <Typography className="font-insungit text-[13px] text-purple-30">
           <Image src={LikeIcon} alt="like-button-image" width={24} height={24} className="inline-block mr-[8px]" />
 
