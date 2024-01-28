@@ -24,7 +24,8 @@ export const BottomSheet = forwardRef<RefHandles, BottomSheetProps>(
         open={open}
         onDismiss={onDismiss}
         snapPoints={({ maxHeight }) => fixedMaxHeight || maxHeight - maxHeight / 5}
-        expandOnContentDrag
+        skipInitialTransition
+        expandOnContentDrag={false}
         header={HeaderComponent}
         footer={FooterComponent}
       >
