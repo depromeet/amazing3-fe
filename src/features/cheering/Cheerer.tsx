@@ -5,10 +5,10 @@ import { Typography } from '@/components';
 interface CheererProps {
   image: string;
   nickname: string;
-  likedAt: string;
+  cheeredAt: string;
 }
 
-const Cheerer = ({ image, nickname, likedAt }: CheererProps) => {
+const Cheerer = ({ image, nickname, cheeredAt }: CheererProps) => {
   return (
     <div className="flex items-center justify-between py-5xs">
       <div className="flex items-center">
@@ -16,7 +16,7 @@ const Cheerer = ({ image, nickname, likedAt }: CheererProps) => {
         <Typography type="body2">{nickname}</Typography>
       </div>
       <Typography type="body2" className="text-gray-40">
-        {likedAt}
+        {cheeredAt}
       </Typography>
     </div>
   );
