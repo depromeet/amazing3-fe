@@ -21,7 +21,9 @@ const LikeClickerList = () => {
     <div className="flex flex-col gap-3xs pt-5xs">
       <div className="flex items-center px-[24px]">
         <BackIcon onClick={handleClickBack} />
-        <Typography type="title1">내가 받은 응원</Typography>
+        <Typography type="title1" className="absolute left-[50%] -translate-x-1/2">
+          내가 받은 응원
+        </Typography>
       </div>
 
       <div className="flex items-center justify-center px-[43px] py-[14.5px] mx-2xs my-[10px] rounded-md bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]">
