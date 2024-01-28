@@ -1,5 +1,10 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAtomValue } from 'jotai';
+
+import { isLoginAtom } from '@/features/auth/atom';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
 import { getDateDiffFromToday } from '../utils';
@@ -11,6 +16,14 @@ import MypageHeader from './MyPageHeader';
 
 export const MyPageLayout = () => {
   const { data: memberData } = useGetMemberData();
+  const isLogin = useAtomValue(isLoginAtom);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLogin === false) {
+      router.push('/');
+    }
+  }, [isLogin, router]);
 
   return (
     <div className="pt-5xs px-xs h-full flex flex-col">
