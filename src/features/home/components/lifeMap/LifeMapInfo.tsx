@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { colors } from '@/../styles/theme';
 import Divider from '@/assets/icons/divider.svg';
 import StarIcon from '@/assets/icons/star-rate.svg';
@@ -35,15 +37,17 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
       <Divider className="mx-5xs" />
 
       {/* TODO: 응원하기 개수 응답 값으로 수정 예정 */}
-      <div className="flex items-center">
-        <ThumbsIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
-        <Typography type="title4" className="text-gray-50 mr-[2px]">
-          {formatOver999(1000)}
-        </Typography>
-        <Typography type="title4" className="text-gray-40">
-          개의 응원
-        </Typography>
-      </div>
+      <Link href="/my/cheering">
+        <div className="flex items-center">
+          <ThumbsIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
+          <Typography type="title4" className="text-gray-50 mr-[2px]">
+            {formatOver999(1000)}
+          </Typography>
+          <Typography type="title4" className="text-gray-40">
+            개의 응원
+          </Typography>
+        </div>
+      </Link>
     </div>
   );
 };

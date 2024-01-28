@@ -8,6 +8,7 @@ import UserProfile from './userProfile/UserProfile';
 import { LifeMapPrivacySetting } from './lifeMapPrivacySetting';
 import MyPageBody from './MyPageBody';
 import MypageHeader from './MyPageHeader';
+import MyPageLifeMapInfo from './MyPageLifeMapInfo';
 
 export const MyPageLayout = () => {
   const { data: memberData } = useGetMemberData();
@@ -26,8 +27,13 @@ export const MyPageLayout = () => {
             subscriptionPeriod={getDateDiffFromToday(memberData.createdAt)}
             goalCount={memberData.lifeMap.goalsCount}
           />
+          <div className="flex justify-center w-full ">
+            <div className="flex flex-col w-[349px] mt-3xs px-3xs py-5xs bg-white rounded-lg shadow-[0_1.001px_40px_0_rgba(197,229,255,0.3)] divide-y">
+              <LifeMapPrivacySetting isPublic={memberData.lifeMap.isPublic} />
+              <MyPageLifeMapInfo />
+            </div>
+          </div>
           <MyPageBody />
-          <LifeMapPrivacySetting isPublic={memberData.lifeMap.isPublic} />
         </>
       )}
     </div>
