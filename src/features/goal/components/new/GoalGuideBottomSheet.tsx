@@ -41,7 +41,9 @@ const GoalGuideBottomSheet = ({ open, onClose, onChange }: GoalGuideBottomSheetP
   };
 
   const handleApply = () => {
-    onChange(title);
+    if (title !== '') {
+      onChange(title);
+    }
     onClose();
   };
 

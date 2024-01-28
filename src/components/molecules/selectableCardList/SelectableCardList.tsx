@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { CheckIcon } from '@/assets/icons';
 import { Typography } from '@/components';
 
@@ -12,14 +14,30 @@ interface SelectableCardListProps {
 }
 
 export const SelectableCardList = ({ items, onClick }: SelectableCardListProps) => {
+  const [lastClicked, setLastClicked] = useState<string>('');
+
   const handleCardClick = (itemTitle: string) => {
-    onClick(itemTitle);
+    if (isSelectedItem(itemTitle)) {
+      onClick('');
+      setLastClicked('');
+    } else {
+      onClick(itemTitle);
+      setLastClicked(itemTitle);
+    }
+  };
+
+  const isSelectedItem = (itemTitle: string) => {
+    return itemTitle === lastClicked;
   };
 
   return (
     <div>
       {items.map((item, index) => (
-        <button className="w-full group" onClick={() => handleCardClick(item.title)} key={`card${index + 1}`}>
+        <button
+          className={`w-full ${isSelectedItem(item.title) && 'group'}`}
+          onClick={() => handleCardClick(item.title)}
+          key={`card${index + 1}`}
+        >
           <div className="p-4xs relative flex items-center justify-between rounded-md gap-4xs group-focus:bg-purple-10 group-hover:bg-purple-10 shadow-[0_0_7.9px_0_rgba(0,88,255,0.10)] mb-4xs">
             <Typography type="title3" className="text-gray-50">
               {item.content}
