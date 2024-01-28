@@ -44,9 +44,9 @@ const CheererList = () => {
 
           {/* FIXME: api 수정 예정 */}
           <div className="flex flex-col gap-6xs mx-[24px]">
-            <Cheerer image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
-            <Cheerer image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
-            <Cheerer image="/" nickname="유저 닉네임" likedAt="2023.08.23" />
+            <Cheerer image="/" nickname="유저 닉네임" cheeredAt="2023.08.23" />
+            <Cheerer image="/" nickname="유저 닉네임" cheeredAt="2023.08.23" />
+            <Cheerer image="/" nickname="유저 닉네임" cheeredAt="2023.08.23" />
           </div>
         </>
       )}
