@@ -7,10 +7,10 @@ import MapIcon from '@/assets/icons/map-icon.png';
 import { Typography } from '@/components';
 import { formatOver999 } from '@/utils/number';
 
-const MyPageLikeClicker = () => {
+const MyPageLifeMapInfo = () => {
   return (
-    <>
-      <div className="flex items-center gap-[8px] py-[12px] w-full">
+    <div>
+      <div className="flex items-center gap-[8px] py-[13px] w-full">
         <Image src={LikeIcon} alt="like-icon" width={24} height={24} />
         <div className="flex justify-between w-full">
           <Typography type="title4" className="text-gray-40">
@@ -22,7 +22,7 @@ const MyPageLikeClicker = () => {
           <ForwardIcon />
         </Link>
       </div>
-      <div className="flex items-center gap-[8px] py-[12px] w-full">
+      <div className="flex items-center gap-[8px] py-[13px] w-full">
         <Image src={MapIcon} alt="like-icon" width={24} height={24} />
         <div className="flex justify-between w-full">
           <Typography type="title4" className="text-gray-40">
@@ -33,8 +33,8 @@ const MyPageLikeClicker = () => {
           </Typography>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default MyPageLikeClicker;
+export default MyPageLifeMapInfo;
