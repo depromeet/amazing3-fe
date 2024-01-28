@@ -38,7 +38,7 @@ export const TagForm = () => {
         </Typography>
       }
       body={
-        <div className="absolute h-[50%] inset-x-0 w-full pt-2xs">
+        <div className="absolute h-[calc(50%-40px)] inset-x-0 w-full pt-2xs">
           <div className="h-[calc(100%-90px)] my-2xs px-2xs overflow-auto">
             <div {...register('tag')} className="flex flex-wrap justify-center gap-5xs overflow-auto">
               {tagsData?.map(({ id, content }) => (
