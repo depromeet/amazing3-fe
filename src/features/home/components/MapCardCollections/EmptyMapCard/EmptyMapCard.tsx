@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import bandiboodiGray from '@/assets/images/bandi-boodi-gray.png';
 import { Typography } from '@/components';
@@ -13,11 +14,13 @@ const EMPTY_ALTERNATIVE_TEXTS = ['나의 3년 후는?', '목표 생각중..', '�
 
 export const EmptyMapCard = ({ alternativeTextIndex, position }: EmptyMapCardProps) => {
   return (
-    <MapCardLayout position={position} cursor="default">
-      <Image src={bandiboodiGray} width="100" height="100" alt="empty_goal" />
-      <Typography type="title5" className="text-gray-40 text-center font-bold">
-        {EMPTY_ALTERNATIVE_TEXTS[alternativeTextIndex]}
-      </Typography>
-    </MapCardLayout>
+    <Link href={{ pathname: '/goal/new/goal' }}>
+      <MapCardLayout position={position} cursor="default">
+        <Image src={bandiboodiGray} width="100" height="100" alt="empty_goal" />
+        <Typography type="title5" className="text-gray-40 text-center font-bold">
+          {EMPTY_ALTERNATIVE_TEXTS[alternativeTextIndex]}
+        </Typography>
+      </MapCardLayout>
+    </Link>
   );
 };
