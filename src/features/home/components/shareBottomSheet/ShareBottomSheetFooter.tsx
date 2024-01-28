@@ -1,28 +1,18 @@
 import { forwardRef } from 'react';
-import { useOverlay } from '@toss/use-overlay';
 
 import { Button } from '@/components';
 import { shareLink } from '@/utils/share';
 
-import { ImageDownloadBottomSheet } from './ImageDownloadBottomSheet';
-
 interface ShareBottomSheetFooterProps {
   onClose: VoidFunction;
+  onClickImageDownload: VoidFunction;
 }
 
 const ShareBottomSheetFooter = forwardRef<HTMLElement, ShareBottomSheetFooterProps>(
-  ({ onClose }: ShareBottomSheetFooterProps, ref) => {
-    const { open } = useOverlay();
-
+  ({ onClose, onClickImageDownload }: ShareBottomSheetFooterProps) => {
     const handleCopyClipboard = () => {
       shareLink({ url: location.href });
       onClose();
-    };
-
-    const handleDownloadImage = () => {
-      open(({ isOpen, close }) => (
-        <ImageDownloadBottomSheet ref={ref} open={isOpen} onClose={close} onCloseShareBottomSheet={onClose} />
-      ));
     };
 
     return (
@@ -30,7 +20,7 @@ const ShareBottomSheetFooter = forwardRef<HTMLElement, ShareBottomSheetFooterPro
         <Button variant="blue" onClick={handleCopyClipboard}>
           URL 복사
         </Button>
-        <Button variant="heavy" onClick={handleDownloadImage}>
+        <Button variant="heavy" onClick={onClickImageDownload}>
           이미지 저장
         </Button>
       </div>

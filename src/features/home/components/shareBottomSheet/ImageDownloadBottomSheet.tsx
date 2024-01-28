@@ -8,11 +8,10 @@ import { useDownloadImage } from '@/hooks';
 interface ImageDownloadBottomSheetProps {
   open: boolean;
   onClose: () => void;
-  onCloseShareBottomSheet: () => void;
 }
 
 export const ImageDownloadBottomSheet = forwardRef<HTMLElement, ImageDownloadBottomSheetProps>(
-  ({ open, onClose, onCloseShareBottomSheet }: ImageDownloadBottomSheetProps, ref) => {
+  ({ open, onClose }: ImageDownloadBottomSheetProps, ref) => {
     const { isDownloading: isCurrentPageDownloading, onDownloadImage: onDownloadCurrentPageImage } = useDownloadImage({
       type: 'CURRENT',
       imageRef: ref as RefObject<HTMLElement>,
@@ -27,14 +26,12 @@ export const ImageDownloadBottomSheet = forwardRef<HTMLElement, ImageDownloadBot
       await onDownloadCurrentPageImage();
 
       onClose();
-      onCloseShareBottomSheet();
     };
 
     const handleDownloadAllPage = async () => {
       await onDownloadAllPageImage();
 
       onClose();
-      onCloseShareBottomSheet();
     };
 
     const handleCloseBottomSheet = () => {
