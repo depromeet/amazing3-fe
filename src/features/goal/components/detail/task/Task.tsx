@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useOverlay } from '@toss/use-overlay';
 
 import EllipsisVerticalIcon from '@/assets/icons/ellipsis-vertical.svg';
@@ -8,13 +8,13 @@ import CheckedIcon from '@/assets/icons/goal/radio/radio-checked.svg';
 import UnCheckedIcon from '@/assets/icons/goal/radio/radio-unchecked.svg';
 import { Typography } from '@/components';
 import { TaskMoreOptionBottomSheet } from '@/features/goal/components/detail/TaskMoreOptionBottomSheet';
-import { useInput, useIsMyMap } from '@/hooks';
+import { useDebounceCall, useInput, useIsMyMap } from '@/hooks';
 import { useUpdateDescription } from '@/hooks/reactQuery/task/useUpdateDescription';
 
 import { TaskEditInput } from './TaskEditInput';
 
 interface TaskProps {
-  isDone?: boolean;
+  initialIsDone?: boolean;
   text: string;
   targetIds: {
     goalId: number;
@@ -23,8 +23,10 @@ interface TaskProps {
   onDoneClick: VoidFunction;
 }
 
-export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps) => {
+export const Task = ({ initialIsDone = false, text, targetIds, onDoneClick }: TaskProps) => {
+  const [isDone, setIsDone] = useState(initialIsDone);
   const CheckIcon = isDone ? CheckedIcon : UnCheckedIcon;
+
   const { isMyMap } = useIsMyMap();
   const { open } = useOverlay();
 
@@ -32,9 +34,14 @@ export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps
   const { value: editText, handleChange: handleEditText } = useInput(text);
   const { mutate } = useUpdateDescription();
 
-  const handleDoneClick = useCallback(() => {
-    onDoneClick();
-  }, [onDoneClick]);
+  const debounceHandleIsDone = useDebounceCall(() => {
+    if (initialIsDone !== isDone) onDoneClick();
+  }, 500);
+
+  const handleDoneClick = () => {
+    setIsDone((prev) => !prev);
+    debounceHandleIsDone();
+  };
 
   const handleMoreOptionClick = () => {
     const targetTask = { ...targetIds, description: text };
