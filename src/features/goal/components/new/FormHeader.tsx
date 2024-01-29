@@ -26,7 +26,7 @@ const FormHeader = ({ formNumber }: FormHeaderProps) => {
 
   return (
     <div className="flex justify-between items-center">
-      <button onClick={handleClickBackButton}>
+      <button onClick={handleClickBackButton} type="button">
         <BackIcon />
       </button>
       <div className="w-[30%]">

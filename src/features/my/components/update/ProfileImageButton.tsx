@@ -22,6 +22,7 @@ const ProfileImageButton = ({ image, control }: ProfileImageButtonProps) => {
   return (
     <button
       className="relative"
+      type="button"
       onClick={(e) => {
         e.preventDefault();
         handleOpenBottomSheet();
