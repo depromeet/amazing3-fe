@@ -8,7 +8,7 @@ export interface MapCardLayoutProps {
 export const MapCardLayout = ({ position, cursor = 'cursor', children }: PropsWithChildren<MapCardLayoutProps>) => {
   return (
     <div
-      className={`flex flex-col items-center absolute w-[130px] h-[130px] rounded-lg bg-white p-[5px] shadow-thumb ${position.x} ${position.y} overflow-hidden cursor-${cursor}`}
+      className={`flex flex-col items-center absolute w-[130px] h-[130px] rounded-lg bg-white p-[5px] ${position.x} ${position.y} overflow-hidden cursor-${cursor}`}
     >
       {children}
     </div>
