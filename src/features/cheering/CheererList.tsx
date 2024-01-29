@@ -22,7 +22,7 @@ const CheererList = () => {
           <Image src={LikeIcon} alt="like-button-image" width={24} height={24} className="inline-block mr-[8px]" />
 
           <span>{`${formatOver999(1000)}명`}</span>
-          <span className="text-[#6884F6]">의 반디가 내 인생 지도를 응원했어요 !</span>
+          <span className="text-blue-35">의 반디가 내 인생 지도를 응원했어요 !</span>
         </Typography>
       </div>
 
