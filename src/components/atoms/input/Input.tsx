@@ -35,6 +35,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const handleFocus = useCallback(() => setIsFocused(true), []);
     const handleBlur = useCallback(() => setIsFocused(false), []);
 
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+      }
+    };
+
     return (
       <div className={inputContainerVariants({ isFocused })}>
         <input
@@ -42,6 +48,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onKeyDown={handleKeyPress}
           {...props}
         />
         {includeSubmitButton && (
