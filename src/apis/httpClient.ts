@@ -11,7 +11,7 @@ import Cookies from 'js-cookie';
 const getResult = (response: AxiosResponse) => response.data.body;
 
 class HttpClient {
-  private client: AxiosInstance;
+  client: AxiosInstance;
 
   constructor(config?: AxiosRequestConfig) {
     this.client = axios.create(config);
@@ -39,12 +39,12 @@ class HttpClient {
     return this.client.delete<T>(...args).then(getResult);
   }
 
-  private setInterceptor() {
+  setInterceptor() {
     this.client.interceptors.request.use(this.onRequestFulfilled, this.onRequestRejected);
     this.client.interceptors.response.use(this.onResponseFulfilled, this.onResponseRejected);
   }
 
-  private onRequestFulfilled(config: InternalAxiosRequestConfig) {
+  onRequestFulfilled(config: InternalAxiosRequestConfig) {
     const token = Cookies.get('accessToken');
 
     if (token) {
@@ -53,15 +53,15 @@ class HttpClient {
     return config;
   }
 
-  private onRequestRejected(error: AxiosError) {
+  onRequestRejected(error: AxiosError) {
     return Promise.reject(error);
   }
 
-  private onResponseFulfilled(response: AxiosResponse) {
+  onResponseFulfilled(response: AxiosResponse) {
     return response;
   }
 
-  private onResponseRejected(error: AxiosError) {
+  onResponseRejected(error: AxiosError) {
     if (!isAxiosError(error) || !error.response) return Promise.reject(error);
 
     const { status: errorStatus } = error.response;
