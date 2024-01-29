@@ -125,7 +125,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
                     <MapCardPositioner type="B" goals={goals} isLast={page === LAST_PAGE - 1} />
                   )}
                   {/** 현재 위치에 별 위치 시키기 위해 1) 현재 날짜가 포함된 페이지를 찾아서, 2) 포지션 위치에 별을 출력함. */}
-                  {positionState.positionPage === page && positionState.position && (
+                  {positionState.positionPage === page && positionState.position !== null && (
                     <CurrentPositionCover currentPosition={positionState.position} />
                   )}
                 </SwiperSlide>

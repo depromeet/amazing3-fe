@@ -50,9 +50,7 @@ export const NicknameInputForm = () => {
               <LimitedLengthInput maxLength={MAX_NICKNAME_LENGTH} placeholder="닉네임" onChange={onChange} />
             </div>
             <Link href="/member/new/birth">
-              <Button type="button" disabled={!isMounted || isInvalidInput()}>
-                다음
-              </Button>
+              <Button disabled={!isMounted || isInvalidInput()}>다음</Button>
             </Link>
           </div>
         </div>

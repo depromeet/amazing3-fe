@@ -50,6 +50,7 @@ export const GoalForm = () => {
                 variant="blue"
                 height="h44"
                 rounded="xl"
+                type="button"
                 onClick={() => {
                   overlay.open(({ isOpen, close }) => {
                     return <GoalGuideBottomSheet open={isOpen} onClose={close} onChange={onChange} />;
