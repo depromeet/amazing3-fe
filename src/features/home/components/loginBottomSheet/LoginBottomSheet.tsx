@@ -6,6 +6,8 @@ import { BottomSheet, LoginIconSet, ToolTip, Typography } from '@/components';
 
 import { StarBg } from './StarBg';
 
+import './LoginBottomSheet.styles.css';
+
 interface LoginBottomSheetProps {
   open: boolean;
   onClose: VoidFunction;
