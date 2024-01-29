@@ -2,6 +2,10 @@
   @apply bg-gradient6 h-full rounded-[15px];
 }
 
+[data-rsbs-scroll] {
+  @apply z-10;
+}
+
 [data-rsbs-content] {
   @apply absolute w-full top-[15px] z-10;
 }
