@@ -5,7 +5,7 @@ import { type InternalAxiosRequestConfig, isAxiosError } from 'axios';
 import HttpClient from './httpClient';
 
 class HttpServer extends HttpClient {
-  async onRequestFulfilledServer(config: InternalAxiosRequestConfig) {
+  onRequestFulfilledServer(config: InternalAxiosRequestConfig) {
     const cookieStore = cookies();
     const token = cookieStore.get('accessToken')?.value;
 
@@ -15,7 +15,7 @@ class HttpServer extends HttpClient {
     return config;
   }
 
-  async onResponseRejectedServer(error: AxiosError) {
+  onResponseRejectedServer(error: AxiosError) {
     if (!isAxiosError(error) || !error.response) return Promise.reject(error);
 
     const { status: errorStatus } = error.response;
