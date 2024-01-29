@@ -8,8 +8,6 @@ import axios, {
 } from 'axios';
 import Cookies from 'js-cookie';
 
-const getResult = (response: AxiosResponse) => response.data.body;
-
 class HttpClient {
   client: AxiosInstance;
 
@@ -20,23 +18,23 @@ class HttpClient {
   }
 
   get<T>(...args: Parameters<typeof this.client.get>) {
-    return this.client.get<T>(...args).then(getResult);
+    return this.client.get<T>(...args);
   }
 
   post<T>(...args: Parameters<typeof this.client.post>) {
-    return this.client.post<T>(...args).then(getResult);
+    return this.client.post<T>(...args);
   }
 
   put<T>(...args: Parameters<typeof this.client.put>) {
-    return this.client.put<T>(...args).then(getResult);
+    return this.client.put<T>(...args);
   }
 
   patch<T>(...args: Parameters<typeof this.client.patch>) {
-    return this.client.patch<T>(...args).then(getResult);
+    return this.client.patch<T>(...args);
   }
 
   delete<T>(...args: Parameters<typeof this.client.delete>) {
-    return this.client.delete<T>(...args).then(getResult);
+    return this.client.delete<T>(...args);
   }
 
   setInterceptor() {
@@ -58,7 +56,7 @@ class HttpClient {
   }
 
   onResponseFulfilled(response: AxiosResponse) {
-    return response;
+    return response.data.body;
   }
 
   onResponseRejected(error: AxiosError) {
