@@ -30,15 +30,6 @@ export const useCreateCheering = (cheeredUsername: string) => {
 
       return await optimisticUpdater({ queryKey: targetQueryKey, updater });
     },
-    onSuccess: () => {
-      queryClient.setQueryData(targetQueryKey, (old: PublicGoalResponse) => ({
-        ...old,
-        count: {
-          ...old.count,
-          cheering: old.count.cheering + 1,
-        },
-      }));
-    },
     onError: (_, __, context) => {
       queryClient.setQueryData(targetQueryKey, context?.previous);
     },
