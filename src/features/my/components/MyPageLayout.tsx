@@ -30,7 +30,7 @@ export const MyPageLayout = () => {
           <div className="flex justify-center w-full ">
             <div className="flex flex-col w-[349px] mt-3xs px-3xs py-5xs bg-white rounded-lg shadow-[0_1.001px_40px_0_rgba(197,229,255,0.3)] divide-y">
               <LifeMapPrivacySetting isPublic={memberData.lifeMap.isPublic} />
-              <MyPageLifeMapInfo />
+              <MyPageLifeMapInfo username={memberData.username} />
             </div>
           </div>
           <MyPageBody />
