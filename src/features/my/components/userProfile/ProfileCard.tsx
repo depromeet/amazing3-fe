@@ -10,7 +10,7 @@ interface ProfileCardProps {
 const ProfileCard = ({ days, totalGoals }: ProfileCardProps) => {
   return (
     <div className="w-[349px] h-[130px] bg-white rounded-lg overflow-hidden relative">
-      <div className="absolute top-2xs left-3xs text-[#6884F6]">
+      <div className="absolute top-2xs left-3xs text-blue-35">
         <Typography className="font-insungit">
           반디부디와 함께한지 <Span type="purple30">{days}일</Span>
         </Typography>
