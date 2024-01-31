@@ -1,21 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 
-export const useDebounceCall = (callback: VoidFunction, delay: number) => {
-  const [callNow, setCallNow] = useState(false);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      if (callNow) callback();
-      setCallNow(false);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [callNow, callback, delay]);
+export const useDebounceCall = (callback: VoidFunction, delay = 500) => {
+  const timeoutId = useRef<NodeJS.Timeout | null>(null);
 
   const triggerCall = () => {
-    setCallNow(true);
+    if (timeoutId.current) {
+      clearTimeout(timeoutId.current);
+    }
+
+    timeoutId.current = setTimeout(() => {
+      callback();
+    }, delay);
   };
 
   return triggerCall;

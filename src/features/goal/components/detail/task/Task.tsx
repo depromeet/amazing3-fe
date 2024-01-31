@@ -35,8 +35,8 @@ export const Task = ({ initialIsDone = false, text, targetIds, onDoneClick }: Ta
   const { mutate } = useUpdateDescription();
 
   const debounceHandleIsDone = useDebounceCall(() => {
-    if (initialIsDone !== isDone) onDoneClick();
-  }, 500);
+    onDoneClick();
+  });
 
   const handleDoneClick = () => {
     setIsDone((prev) => !prev);
