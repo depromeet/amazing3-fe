@@ -15,7 +15,7 @@ const SplashPage = () => {
       <div className="absolute top-0 right-0">
         <Image src={PurpleBlurImage} sizes="100vw" alt="blur_image" />
       </div>
-      <div className="w-full h-[60vh] bg-gradient1 flex flex-col items-center">
+      <div className="w-full h-[65vh] bg-gradient1 flex flex-col items-center">
         <div className="h-[38vh] flex flex-col gap-[1vh] z-10 justify-center">
           <Typography type="heading2" className="text-center bg-clip-text bg-gradient4 text-transparent">
             내가 직접 그리는 <br /> 나의 인생지도
