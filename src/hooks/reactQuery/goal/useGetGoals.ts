@@ -15,6 +15,11 @@ export type GoalResponse = {
   isPublic: boolean;
   goals: Array<GoalProps>;
   goalsCount: number;
+  count: {
+    cheering: number;
+    history: number;
+    view: number;
+  };
 };
 
 export const useGetGoals = () => {

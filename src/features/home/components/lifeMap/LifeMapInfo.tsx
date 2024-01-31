@@ -15,33 +15,35 @@ interface LifeMapInfoProps {
 const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
   if (!goalsData) return null;
 
-  // TODO: 조회수, 응원하기 개수 api 호출
-  const { goalsCount } = goalsData;
+  const {
+    count: { cheering },
+    goalsCount,
+  } = goalsData;
 
   return (
     <div className="flex items-center mt-5xs">
       {goalsCount ? (
-        <div className="flex items-center">
-          <StarIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
-          <Typography type="title4" className="text-gray-50 mr-[2px]">
-            {`${formatOver999(goalsData.goalsCount)}`}
-          </Typography>
-          <Typography type="title4" className="text-gray-40">
-            개의 목표 조각
-          </Typography>
-        </div>
+        <>
+          <div className="flex items-center">
+            <StarIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
+            <Typography type="title4" className="text-gray-50 mr-[2px]">
+              {`${formatOver999(goalsData.goalsCount)}`}
+            </Typography>
+            <Typography type="title4" className="text-gray-40">
+              개의 목표 조각
+            </Typography>
+          </div>
+          <Divider className="mx-5xs" />
+        </>
       ) : (
         ''
       )}
 
-      <Divider className="mx-5xs" />
-
-      {/* TODO: 응원하기 개수 응답 값으로 수정 예정 */}
       <Link href="/my/cheering">
         <div className="flex items-center">
           <ThumbsIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
           <Typography type="title4" className="text-gray-50 mr-[2px]">
-            {formatOver999(1000)}
+            {formatOver999(cheering)}
           </Typography>
           <Typography type="title4" className="text-gray-40">
             개의 응원
