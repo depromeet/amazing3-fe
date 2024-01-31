@@ -25,3 +25,14 @@ export const isLargerThanToday = (year: string, month: string) => {
 
   return date > new Date();
 };
+
+/**
+ * 서버에서 받은 시간을 YYYY.MM.DD 형식으로 바꿔주는 함수
+ *
+ * @param time 2024-01-30T20:09:01.820762
+ * @returns YYYY.MM.DD
+ */
+export const formatDotYYYYMMDD = (time: string) => {
+  const [YYYYMMDD] = time.split('T');
+  return YYYYMMDD.replaceAll('-', '.');
+};
