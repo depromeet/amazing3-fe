@@ -1,0 +1,18 @@
+import { useQuery } from '@tanstack/react-query';
+
+import { api } from '@/apis';
+
+type CheeringCountRequest = {
+  username?: string | null;
+};
+
+export type CheeringCountResponse = {
+  count: number;
+};
+
+export const useGetCheeringCount = ({ username }: CheeringCountRequest) => {
+  return useQuery<CheeringCountResponse>({
+    queryKey: ['cheering', username],
+    queryFn: () => api.get<CheeringCountResponse>(`/cheering/count/${username}`),
+  });
+};
