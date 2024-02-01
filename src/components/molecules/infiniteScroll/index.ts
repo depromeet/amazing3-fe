@@ -1,1 +1,1 @@
-export { LoadingInfiniteScroll } from './LoadingInfiniteScroll';
+export { InfiniteScroller } from './InfiniteScroller';
