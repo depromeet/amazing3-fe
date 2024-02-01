@@ -11,6 +11,7 @@ import CheererCount from './CheererCount';
 import { EmptyCheerer } from './EmptyCheerer';
 
 const CheererList = () => {
+  // FIXME: 응원하는 사람 총 수 api 수정 예정
   const username = useStorage('username');
   const { data: cheererCount } = useGetCheeringCount({ username });
   const { data: cheererList, fetchNextPage, hasNextPage } = useGetCheerer();
