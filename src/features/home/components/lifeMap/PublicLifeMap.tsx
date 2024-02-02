@@ -20,14 +20,14 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
   const { data: publicGoals } = useGetPublicGoals({ username });
   const { mutate, isSuccess, isError } = useCreateCheering(username);
   const { open } = useOverlay();
-  const [isCheeringClicked, setIsCheeringClicked] = useState(false);
+  const [isCheeringSuccess, setIsCheeringSuccess] = useState(false);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | undefined;
     if (isSuccess) {
-      setIsCheeringClicked(true);
+      setIsCheeringSuccess(true);
       timeoutId = setTimeout(() => {
-        setIsCheeringClicked(false);
+        setIsCheeringSuccess(false);
       }, 5400);
     }
     return () => {
@@ -53,7 +53,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
   return (
     <>
       <LifeMapContent isPublic goalsData={publicGoals} memberData={publicGoals?.user} />
-      {isCheeringClicked && <CheeringClickedLottie />}
+      {isCheeringSuccess && <CheeringClickedLottie />}
       <div className="flex gap-5xs  px-xs pt-5xs mt-[18px] w-full z-[1]">
         <CheeringButton onClick={handleClickCheeringButton} />
         <Link href={{ pathname: myHomePath }} className="w-full">
