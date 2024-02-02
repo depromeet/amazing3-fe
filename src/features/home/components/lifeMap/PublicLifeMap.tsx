@@ -18,10 +18,11 @@ import { LifeMapContent } from './LifeMapContent';
 export const PublicLifeMap = ({ username }: { username: string }) => {
   const { data: memberData } = useGetMemberData();
   const { data: publicGoals } = useGetPublicGoals({ username });
-  const { mutate, isSuccess, isError } = useCreateCheering(username);
+  const { mutate, isSuccess } = useCreateCheering(username);
   const { open } = useOverlay();
   const [isCheeringSuccess, setIsCheeringSuccess] = useState(false);
 
+  // TODO: Lottie atom을 수정해서 로티 이미지를 플레이하는 방식으로 변경
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | undefined;
     if (isSuccess) {
@@ -30,12 +31,13 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
         setIsCheeringSuccess(false);
       }, 5400);
     }
+
     return () => {
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
     };
-  }, [isSuccess, isError]);
+  }, [isSuccess]);
 
   const myHomePath = memberData?.username ? `/home/${memberData.username}` : '/';
 
