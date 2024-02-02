@@ -1,7 +1,15 @@
 import type { PropsWithChildren } from 'react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import PurpleBlurImage from '@/assets/images/purple-blur.png';
+import { getMetadata } from '@/utils/getMetadata';
+
+import type { HomeRouteParams } from './page';
+
+export const generateMetadata = async ({ params: { username } }: HomeRouteParams): Promise<Metadata> => {
+  return getMetadata({ title: username, asPath: `/home/${username}` });
+};
 
 const HomeLayout = ({ children }: PropsWithChildren) => {
   return (
