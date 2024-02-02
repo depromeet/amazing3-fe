@@ -1,4 +1,5 @@
 import { useRouter } from 'next/navigation';
+import { m } from 'framer-motion';
 
 import { colors } from '@/../styles/theme';
 import Divider from '@/assets/icons/divider.svg';
@@ -24,6 +25,8 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
     goalsCount,
   } = goalsData;
 
+  // chearing 값이 변했을 때 애니메이션 호출
+
   const handleClickCheering = () => {
     if (!isMyMap) return;
 
@@ -34,7 +37,9 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
     <div className="flex items-center mt-5xs">
       <>
         <div className="flex items-center">
-          <StarIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
+          <m.div initial={initial} animate={animate} transition={transition}>
+            <StarIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
+          </m.div>
           <Typography type="title4" className="text-gray-50 mr-[2px]">
             {`${formatOver999(goalsCount || 0)}`}
           </Typography>
@@ -47,7 +52,9 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
 
       <button type="button" onClick={handleClickCheering}>
         <div className="flex items-center">
-          <ThumbsIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
+          <m.div initial={initial} animate={animate} transition={transition}>
+            <ThumbsIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
+          </m.div>
           <Typography type="title4" className="text-gray-50 mr-[2px]">
             {formatOver999(cheering)}
           </Typography>
@@ -61,3 +68,19 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
 };
 
 export default LifeMapInfo;
+
+// TODO: animation 개선
+const initial = {
+  opacity: 0,
+  scale: 0.3,
+};
+
+const animate = {
+  opacity: 1,
+  scale: 1,
+};
+
+const transition = {
+  duration: 0.1,
+  scale: { type: 'spring', damping: 8, stiffness: 100, restDelta: 0.001 },
+};
