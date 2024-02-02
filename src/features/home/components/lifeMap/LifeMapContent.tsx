@@ -14,11 +14,12 @@ import { type GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
 import { isLargerThanToday } from '@/utils/date';
 
 import { GOAL_COUNT_PER_PAGE, TOTAL_CURRENT_POSITIONS } from '../../constants';
-import { makeHomeDescription } from '../../utils/makeHomeDescription';
 import { CurrentPositionCover } from '../currentPositionCover';
 import { MapCardPositioner } from '../mapCardPositioner';
 import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
 import { MapSwiper } from '../mapSwiper';
+
+import LifeMapInfo from './LifeMapInfo';
 
 interface LifeMapProps {
   goalsData?: GoalResponse;
@@ -109,10 +110,10 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
             앞날을 응원해요!
           </>
         }
-        description={makeHomeDescription(goalsData?.goalsCount || 0)}
         sectionStyles="px-xs"
         ref={downloadSectionRef}
       >
+        <LifeMapInfo goalsData={goalsData} />
         <StarBg />
         <div className="h-[520px]">
           <div className="absolute inset-x-0">
