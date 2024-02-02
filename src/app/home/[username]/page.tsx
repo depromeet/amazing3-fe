@@ -1,6 +1,6 @@
 import { LifeMap } from '@/features/home/components';
 
-interface HomeRouteParams {
+export interface HomeRouteParams {
   params: { username: string };
 }
 

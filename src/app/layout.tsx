@@ -1,48 +1,16 @@
-import type { Metadata, Viewport } from 'next';
+import type { Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { META } from '@/constants';
 import Providers from '@/contexts/Providers';
 import { GoogleAnalytics } from '@/features/analyzer';
+import { getMetadata } from '@/utils/getMetadata';
 
 import { insungIt, pretendard } from './fonts';
 
 import './globals.css';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(META.url),
-  alternates: {
-    canonical: '/',
-  },
-  title: META.title,
-  description: META.description,
-  keywords: [...META.keyword],
-  openGraph: {
-    title: META.title,
-    description: META.description,
-    siteName: META.siteName,
-    locale: 'ko_KR',
-    type: 'website',
-    url: META.url,
-    images: {
-      url: META.ogImage,
-    },
-  },
-  verification: {
-    google: META.googleVerification,
-    other: {
-      'naver-site-verification': META.naverVerification,
-    },
-  },
-  twitter: {
-    title: META.title,
-    description: META.description,
-    images: {
-      url: META.ogImage,
-    },
-  },
-};
+export const metadata = getMetadata();
 
 export const viewport: Viewport = {
   width: 'device-width',
