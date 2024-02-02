@@ -18,7 +18,7 @@ export const getMetadata = (seoProps?: generateMetadataProps) => {
   const OG_IMAGE = ogImage || META.ogImage;
 
   const metadata: Metadata = {
-    metadataBase: new URL(PAGE_URL),
+    metadataBase: new URL(META.url),
     alternates: {
       canonical: PAGE_URL,
     },
