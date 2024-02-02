@@ -36,7 +36,7 @@ export const getMetadata = (seoProps?: generateMetadataProps) => {
       siteName: META.siteName,
       locale: 'ko_KR',
       type: 'website',
-      url: PAGE_URL,
+      url: META.url,
       images: {
         url: OG_IMAGE,
       },
