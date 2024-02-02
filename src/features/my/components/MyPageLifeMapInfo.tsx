@@ -6,6 +6,7 @@ import LikeIcon from '@/assets/icons/like-icon.png';
 import MapIcon from '@/assets/icons/map-icon.png';
 import { Typography } from '@/components';
 import { useGetCheeringCount } from '@/hooks/reactQuery/cheering';
+import { useGetGoals } from '@/hooks/reactQuery/goal';
 import { formatOver999 } from '@/utils/number';
 
 interface MyPageLifeMapInfoProps {
@@ -13,7 +14,8 @@ interface MyPageLifeMapInfoProps {
 }
 
 const MyPageLifeMapInfo = ({ username }: MyPageLifeMapInfoProps) => {
-  const { data } = useGetCheeringCount({ username });
+  const { data: cheering } = useGetCheeringCount({ username });
+  const { data: privateGoals } = useGetGoals();
 
   return (
     <div>
@@ -23,7 +25,7 @@ const MyPageLifeMapInfo = ({ username }: MyPageLifeMapInfoProps) => {
           <Typography type="title4" className="text-gray-40">
             내가 받은 응원
           </Typography>
-          <Typography type="title4">{`${formatOver999(data?.count || 0)}명`}</Typography>
+          <Typography type="title4">{`${formatOver999(cheering?.count || 0)}명`}</Typography>
         </div>
         <Link href="/my/cheering">
           <ForwardIcon />
@@ -36,7 +38,7 @@ const MyPageLifeMapInfo = ({ username }: MyPageLifeMapInfoProps) => {
             내 지도에 다녀간 반디
           </Typography>
           <Typography type="title4" className="pr-[26px]">
-            {`${formatOver999(1000)}명`}
+            {`${formatOver999(privateGoals?.count?.view || 0)}명`}
           </Typography>
         </div>
       </div>

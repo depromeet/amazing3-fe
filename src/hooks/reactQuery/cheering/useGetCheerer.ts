@@ -8,6 +8,7 @@ export type CheererResponse = {
   contents: {
     userId: number;
     userName: string;
+    userNickName: string;
     userImageUrl: string;
     cheeringAt: string;
   }[];

@@ -20,11 +20,12 @@ const CheererList = () => {
       <InfiniteScroller isLastPage={!hasNextPage} onIntersected={() => fetchNextPage()}>
         <div className="flex flex-col gap-6xs mx-[24px] h-[calc(100dvh - 80px)]">
           {cheererList?.pages.map((page) =>
-            page.contents.map(({ userId, userName, userImageUrl, cheeringAt }) => (
+            page.contents.map(({ userId, userName, userNickName, userImageUrl, cheeringAt }) => (
               <Cheerer
                 key={`${userId}-${cheeringAt}`}
                 image={userImageUrl}
-                nickname={userName}
+                username={userName}
+                nickname={userNickName}
                 cheeredAt={formatDotYYYYMMDD(cheeringAt)}
               />
             )),
