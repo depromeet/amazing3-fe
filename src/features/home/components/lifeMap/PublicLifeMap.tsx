@@ -11,6 +11,7 @@ import { useThrottle } from '@/hooks';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useCreateCheering } from '@/hooks/reactQuery/cheering';
 import { useGetPublicGoals } from '@/hooks/reactQuery/goal/useGetPublicGoals';
+import { useToast } from '@/hooks/useToast';
 
 import { LoginBottomSheet } from '../loginBottomSheet';
 
@@ -22,10 +23,13 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
   const { data: publicGoals } = useGetPublicGoals({ username });
 
   const { open } = useOverlay();
+  const toast = useToast();
   const [isCheeringSuccess, setIsCheeringSuccess] = useState(false);
 
   // TODO: Lottie atom을 수정해서 로티 이미지를 플레이하는 방식으로 변경
   const { mutate: cheer, isSuccess } = useCreateCheering(username);
+
+  const CHEER_ANIMATION_INTERVAL = 5400;
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | undefined;
@@ -33,7 +37,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
       setIsCheeringSuccess(true);
       timeoutId = setTimeout(() => {
         setIsCheeringSuccess(false);
-      }, 5400);
+      }, CHEER_ANIMATION_INTERVAL);
     }
 
     return () => {
@@ -52,6 +56,8 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
       open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
       return;
     }
+
+    if (!isCheeringSuccess) toast.warning('1분 뒤에 응원할 수 있어요.');
 
     throttleCheer();
   };
