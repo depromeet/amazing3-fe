@@ -1,13 +1,15 @@
 'use client';
 
 import Link from 'next/link';
+import { useOverlay } from '@toss/use-overlay';
 
 import { Button } from '@/components/atoms';
 import { CheeringButton } from '@/features/cheering/CheeringButton';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useCreateCheering } from '@/hooks/reactQuery/cheering';
 import { useGetPublicGoals } from '@/hooks/reactQuery/goal/useGetPublicGoals';
-import { useToast } from '@/hooks/useToast';
+
+import { LoginBottomSheet } from '../loginBottomSheet';
 
 import { LifeMapContent } from './LifeMapContent';
 
@@ -15,17 +17,17 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
   const { data: memberData } = useGetMemberData();
   const { data: publicGoals } = useGetPublicGoals({ username });
   const { mutate } = useCreateCheering(username);
-
-  const toast = useToast();
+  const { open } = useOverlay();
 
   const myHomePath = memberData?.username ? `/home/${memberData.username}` : '/';
 
   const handleClickCheeringButton = () => {
     if (!memberData) {
-      toast.warning('응원하기는 로그인 후 사용할 수 있어요.');
+      open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
       return;
     }
     // TODO: 디바운스 처리 / 1분
+    // 1분 전일 때 toast로 이미 응원했다고 알림.
     mutate({ lifeMapId: publicGoals?.lifeMapId });
   };
 
