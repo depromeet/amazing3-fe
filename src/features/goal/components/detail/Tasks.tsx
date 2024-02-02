@@ -30,7 +30,7 @@ export const Tasks = ({ goalId, tasks, onOpenInput }: TasksProps) => {
         <Task
           key={taskId}
           text={taskDescription}
-          isDone={isTaskDone}
+          initialIsDone={isTaskDone}
           targetIds={{ goalId, taskId }}
           onDoneClick={() => mutate({ goalId, isDone: !isTaskDone, taskId })}
         />
