@@ -15,7 +15,12 @@ export const getMetadata = (seoProps?: generateMetadataProps) => {
   const TITLE = title ? `${title} | 반디부디` : META.title;
   const DESCRIPTION = description || META.description;
   const PAGE_URL = asPath ? META.url + asPath : META.url;
-  const OG_IMAGE = ogImage || META.ogImage;
+  let OG_IMAGE = ogImage || META.ogImage;
+
+  if (OG_IMAGE === 'dynamic') {
+    // ogImage 인자로 'dynamic'이 전달될 경우 해당 파일에서 ogImage 관련 설정을 하지 않도록
+    OG_IMAGE = '';
+  }
 
   const metadata: Metadata = {
     metadataBase: new URL(PAGE_URL),
