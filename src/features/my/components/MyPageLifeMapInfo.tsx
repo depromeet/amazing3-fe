@@ -5,9 +5,16 @@ import ForwardIcon from '@/assets/icons/forward-icon.svg';
 import LikeIcon from '@/assets/icons/like-icon.png';
 import MapIcon from '@/assets/icons/map-icon.png';
 import { Typography } from '@/components';
+import { useGetCheeringCount } from '@/hooks/reactQuery/cheering';
 import { formatOver999 } from '@/utils/number';
 
-const MyPageLifeMapInfo = () => {
+interface MyPageLifeMapInfoProps {
+  username: string;
+}
+
+const MyPageLifeMapInfo = ({ username }: MyPageLifeMapInfoProps) => {
+  const { data } = useGetCheeringCount({ username });
+
   return (
     <div>
       <div className="flex items-center gap-[8px] py-[13px] w-full">
@@ -16,7 +23,7 @@ const MyPageLifeMapInfo = () => {
           <Typography type="title4" className="text-gray-40">
             내가 받은 응원
           </Typography>
-          <Typography type="title4">{`${formatOver999(1000)}명`}</Typography>
+          <Typography type="title4">{`${formatOver999(data?.count || 0)}명`}</Typography>
         </div>
         <Link href="/my/cheering">
           <ForwardIcon />
