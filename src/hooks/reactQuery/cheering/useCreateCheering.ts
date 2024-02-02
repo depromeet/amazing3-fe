@@ -2,9 +2,14 @@ import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 import type { MemberProps } from '@/features/member/types';
+import { useToast } from '@/hooks/useToast';
 
 import type { PublicGoalResponse } from '../goal/useGetPublicGoals';
 import { useOptimisticUpdate } from '../useOptimisticUpdate';
+
+type CustomError = Error & {
+  status: number;
+};
 
 type CheeringRequest = {
   lifeMapId?: number;
@@ -14,6 +19,7 @@ type CheeringRequest = {
 export const useCreateCheering = (cheeredUsername: string) => {
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
   const memberData = queryClient.getQueryData<MemberProps>(['memberData']);
+  const toast = useToast();
 
   const targetQueryKey = ['life-map', cheeredUsername];
 
@@ -30,8 +36,10 @@ export const useCreateCheering = (cheeredUsername: string) => {
 
       return await optimisticUpdater({ queryKey: targetQueryKey, updater });
     },
-    onError: (_, __, context) => {
+    onError: (error: CustomError, _, context) => {
       queryClient.setQueryData(targetQueryKey, context?.previous);
+
+      if (error.status === 429) toast.warning('이미 응원했어요.');
     },
   });
 };
