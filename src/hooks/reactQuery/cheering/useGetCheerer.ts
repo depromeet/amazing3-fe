@@ -12,6 +12,7 @@ export type CheererResponse = {
     cheeringAt: string;
   }[];
   isLastPage: boolean;
+  total: number;
 };
 
 const PAGE_SIZE = 20;
