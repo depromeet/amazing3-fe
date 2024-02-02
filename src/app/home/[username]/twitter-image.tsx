@@ -1,7 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-import type { HomeRouteParams } from './page';
-
 export const runtime = 'edge';
 
 export const contentType = 'image/png';
@@ -11,7 +9,7 @@ export const size = {
   height: 630,
 };
 
-export default async function Image({ params: { username } }: HomeRouteParams) {
+export default async function Image({ params }: { params: { username: string } }) {
   return new ImageResponse(
     (
       <div
@@ -34,7 +32,7 @@ export default async function Image({ params: { username } }: HomeRouteParams) {
             fontWeight: '600',
           }}
         >
-          @ {username}
+          @ {params.username}
         </p>
       </div>
     ),
