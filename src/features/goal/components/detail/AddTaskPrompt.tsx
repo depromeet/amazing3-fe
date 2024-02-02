@@ -15,7 +15,7 @@ export const AddSubGoalPrompt = ({ onClick }: AddSubGoalsPromptProps) => {
     <div className="w-full flex flex-col gap-[10px] pt-2xs pb-3xs px-3xs h-[130px] bg-gradient5 rounded-[12px]">
       <div className="flex gap-4xs">
         <Image src={BandiboodiSubGoalImage} width={40} height={40} alt="bandiboodi_sub_goal" />
-        <Typography className="font-insungit text-[13px] text-[#6884F6]">
+        <Typography className="font-insungit text-[13px] text-blue-35">
           하..너무 멋진 목표다 ! <br /> <span className="text-purple-30">세부 목표</span>를 세우고 차근차근 이뤄보자
           <StarIcon width={15} height={15} fill={colors.purple[30]} className="inline-block" />
         </Typography>
