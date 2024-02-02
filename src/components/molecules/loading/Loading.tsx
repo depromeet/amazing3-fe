@@ -1,3 +1,5 @@
+'use client';
+
 import type { HTMLAttributes } from 'react';
 
 import { Lottie } from '@/components/atoms/lottie';

@@ -11,5 +11,5 @@ export interface MemberProps {
   birth: string;
   image: string;
   createdAt: string;
-  lifeMap: { isPublic: boolean; goalsCount: number };
+  lifeMap: { isPublic: boolean; goalsCount: number; lifeMapId: number };
 }
