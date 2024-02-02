@@ -6,7 +6,7 @@ import type { HomeRouteParams } from './page';
 
 export const runtime = 'edge';
 
-export const OgImage = async ({ params: { username } }: HomeRouteParams) => {
+const OgImage = async ({ params: { username } }: HomeRouteParams) => {
   return new ImageResponse(
     (
       <div
@@ -36,3 +36,5 @@ export const OgImage = async ({ params: { username } }: HomeRouteParams) => {
     OG_IMAGE_SIZE,
   );
 };
+
+export default OgImage;
