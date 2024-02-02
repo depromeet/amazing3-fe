@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
-type CheeringCountRequest = {
+export type CheeringCountRequest = {
   username?: string | null;
 };
 

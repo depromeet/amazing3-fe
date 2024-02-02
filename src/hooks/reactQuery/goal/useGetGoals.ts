@@ -20,6 +20,7 @@ export type GoalResponse = {
     history: number;
     view: number;
   };
+  lifeMapId: number;
 };
 
 export const useGetGoals = () => {

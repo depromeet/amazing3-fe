@@ -9,7 +9,7 @@ type GoalRequestParams = {
   username: string;
 };
 
-type PublicGoalResponse = GoalResponse & { user: Pick<MemberProps, 'nickname' | 'image'> };
+export type PublicGoalResponse = GoalResponse & { user: Pick<MemberProps, 'nickname' | 'image'> };
 
 export const useGetPublicGoals = ({ username }: GoalRequestParams) => {
   const queryClient = useQueryClient();
