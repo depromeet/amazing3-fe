@@ -32,5 +32,6 @@ export const useGetCheerer = () => {
     },
     initialPageParam: null,
     getNextPageParam: ({ isLastPage, contents }) => (isLastPage ? null : contents[contents.length - 1].cheeringAt),
+    enabled: my?.lifeMap.lifeMapId !== undefined,
   });
 };
