@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { DevTool } from '@hookform/devtools';
 
-import { useUpdateMemberData } from '@/hooks/reactQuery/auth';
+import { useGetMemberData, useUpdateMemberData } from '@/hooks/reactQuery/auth';
 import { useIsMounted } from '@/hooks/useIsMounted';
 import { useToast } from '@/hooks/useToast';
 
@@ -12,6 +12,7 @@ import type { UpdateMemberDataFormValues } from '../types';
 const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
   const router = useRouter();
   const isMounted = useIsMounted();
+  const { data: memberData } = useGetMemberData();
   const { mutate, isSuccess } = useUpdateMemberData();
   const methods = useForm<UpdateMemberDataFormValues>();
   const toast = useToast();
@@ -26,7 +27,7 @@ const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
     const { nickname, username, birth } = formData;
     if (!nickname || !username || !birth) return;
 
-    if (username.toUpperCase().startsWith('BANDIBOODI-')) {
+    if (memberData?.username !== username && username.toUpperCase().startsWith('BANDIBOODI-')) {
       toast.warning('BANDIBOODI-로 시작하는 닉네임은 사용할 수 없습니다.');
       return;
     }
