@@ -9,8 +9,8 @@ interface generateMetadataProps {
   ogImage?: string;
 }
 
-export const getMetadata = (seoProps?: generateMetadataProps) => {
-  const { title, description, asPath, ogImage } = seoProps || {};
+export const getMetadata = (metadataProps?: generateMetadataProps) => {
+  const { title, description, asPath, ogImage } = metadataProps || {};
 
   const TITLE = title ? `${title} | 반디부디` : META.title;
   const DESCRIPTION = description || META.description;
@@ -28,10 +28,10 @@ export const getMetadata = (seoProps?: generateMetadataProps) => {
     openGraph: {
       title: TITLE,
       description: DESCRIPTION,
-      siteName: META.siteName,
+      siteName: TITLE,
       locale: 'ko_KR',
       type: 'website',
-      url: META.url,
+      url: PAGE_URL,
       images: {
         url: OG_IMAGE,
       },
