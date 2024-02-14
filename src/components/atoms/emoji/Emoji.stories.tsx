@@ -60,3 +60,10 @@ export const CountOver99: Story = {
     count: 100,
   },
 };
+
+export const OnlyImage: Story = {
+  args: {
+    ...SmallSize.args,
+    onlyImage: true,
+  },
+};

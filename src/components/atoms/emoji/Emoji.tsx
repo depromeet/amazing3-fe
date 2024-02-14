@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 import AngryEmoji from '@/assets/emoji/angry.png';
 import AwesomeEmoji from '@/assets/emoji/awesome.png';
@@ -60,26 +58,32 @@ export interface EmojiProps {
   name: EmojiTitleProps;
   count: number;
   size?: keyof typeof SIZE_CSS;
+  onlyImage?: boolean;
+  onClick?: VoidFunction;
 }
 
-export const Emoji = ({ name, count, size = 'full' }: EmojiProps) => {
-  const path = usePathname();
+export const Emoji = ({ name, count, size = 'full', onlyImage = false, onClick }: EmojiProps) => {
   const convertOver99 = count > 99 ? '99+' : count;
   const { image: imageSize, title: titleTextSize, count: countTextSize } = SIZE_CSS[size];
 
   return (
-    <div className={`${imageSize} flex flex-col gap-[3px] justify-center cursor-pointer`}>
-      <Link href={{ pathname: `${path}/emoji/${name}` }}>
-        <div
-          className={`${imageSize} relative aspect-[1/1] hover:shadow-md transition duration-300 rounded-lg overflow-hidden`}
-        >
-          <Image src={EMOJI[name].image} fill alt={`${name} 이모티콘`} />
-        </div>
-        <div className="flex justify-between items-center">
+    <button
+      className={`${imageSize} flex flex-col gap-[3px] justify-center ${!onClick && 'cursor-default'}`}
+      onClick={onClick}
+    >
+      <div
+        className={`${imageSize} relative aspect-[1/1] ${
+          onClick && 'hover:shadow-md transition duration-300 rounded-lg overflow-hidden'
+        }`}
+      >
+        <Image src={EMOJI[name].image} fill alt={`${name} 이모티콘`} />
+      </div>
+      {!onlyImage && (
+        <div className="flex w-full  justify-between items-center">
           <span className={`text-[#8490A0] ${titleTextSize}`}>{EMOJI[name].title}</span>
           <span className={`text-gray-70 ${countTextSize}`}>{convertOver99}</span>
         </div>
-      </Link>
-    </div>
+      )}
+    </button>
   );
 };
