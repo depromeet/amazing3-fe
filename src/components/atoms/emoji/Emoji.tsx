@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import AngryEmoji from '@/assets/emoji/angry.png';
 import AwesomeEmoji from '@/assets/emoji/awesome.png';
@@ -62,12 +63,13 @@ export interface EmojiProps {
 }
 
 export const Emoji = ({ name, count, size = 'full' }: EmojiProps) => {
+  const path = usePathname();
   const convertOver99 = count > 99 ? '99+' : count;
   const { image: imageSize, title: titleTextSize, count: countTextSize } = SIZE_CSS[size];
 
   return (
-    <Link>
-      <div className={`${imageSize} flex flex-col gap-[3px] justify-center cursor-pointer`}>
+    <div className={`${imageSize} flex flex-col gap-[3px] justify-center cursor-pointer`}>
+      <Link href={{ pathname: `${path}/emoji/${name}` }}>
         <div className={`${imageSize} relative aspect-[1/1]`}>
           <Image src={EMOJI[name].image} fill alt={`${name} 이모티콘`} />
         </div>
@@ -75,7 +77,7 @@ export const Emoji = ({ name, count, size = 'full' }: EmojiProps) => {
           <span className={`text-[#8490A0] ${titleTextSize}`}>{EMOJI[name].title}</span>
           <span className={`text-gray-70 ${countTextSize}`}>{convertOver99}</span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
