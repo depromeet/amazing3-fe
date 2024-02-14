@@ -39,7 +39,7 @@
 <br />
 
 <img src="https://github.com/depromeet/amazing3-fe/assets/112946860/301f1277-5c23-4e89-bd25-44cf5703398b" alt="description 4" />
-지도가 늘어날수록 내가 가고 싶은 길이 선명해질 거예요
+지도가 늘어날수록 내가 가고 싶은 길이 선명해질 거예요.
 
 <br />
 <br />
@@ -50,6 +50,14 @@
 <img src="https://github.com/depromeet/amazing3-fe/assets/112946860/0361ee81-e60d-400e-8a47-3f32722eb2a6" alt="system architecture" />
 
 <br />
+<br />
+
+## 📬 Contacts
+
+- 문의사항 | [team@bandiboodi.com](mailto:team@bandiboodi.com)
+- 인스타그램 | [@bandi_boodi](https://www.instagram.com/bandi_boodi/)
+- 피드백 | [반디부디에게 피드백 보내기](https://docs.google.com/forms/d/e/1FAIpQLSeqBJ8zgFwM6csrKlF_FP56SSWhIJJSlqbBFt_q60jzS7p5MA/viewform)
+
 <br />
 <br />
 
