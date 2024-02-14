@@ -70,7 +70,9 @@ export const Emoji = ({ name, count, size = 'full' }: EmojiProps) => {
   return (
     <div className={`${imageSize} flex flex-col gap-[3px] justify-center cursor-pointer`}>
       <Link href={{ pathname: `${path}/emoji/${name}` }}>
-        <div className={`${imageSize} relative aspect-[1/1]`}>
+        <div
+          className={`${imageSize} relative aspect-[1/1] hover:shadow-md transition duration-300 rounded-lg overflow-hidden`}
+        >
           <Image src={EMOJI[name].image} fill alt={`${name} 이모티콘`} />
         </div>
         <div className="flex justify-between items-center">
