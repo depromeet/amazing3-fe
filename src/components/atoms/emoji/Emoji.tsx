@@ -34,6 +34,9 @@ export const EMOJI = {
   },
 };
 
+export type EmojiTitleProps = keyof typeof EMOJI;
+export const emojiNameSet = Object.entries(EMOJI).map(([name]) => name) as EmojiTitleProps[];
+
 const SIZE_CSS = {
   small: {
     image: 'w-[50px]',
@@ -52,17 +55,15 @@ const SIZE_CSS = {
   },
 };
 
-export type EmojiTitleProps = keyof typeof EMOJI;
-
 export interface EmojiProps {
   name: EmojiTitleProps;
-  count: number;
+  count?: number;
   size?: keyof typeof SIZE_CSS;
   onlyImage?: boolean;
   onClick?: VoidFunction;
 }
 
-export const Emoji = ({ name, count, size = 'full', onlyImage = false, onClick }: EmojiProps) => {
+export const Emoji = ({ name, count = 0, size = 'full', onlyImage = false, onClick }: EmojiProps) => {
   const convertOver99 = count > 99 ? '99+' : count;
   const { image: imageSize, title: titleTextSize, count: countTextSize } = SIZE_CSS[size];
 

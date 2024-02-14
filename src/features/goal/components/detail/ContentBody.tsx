@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { EmojiSet } from '@/components';
 import { Span, Typography } from '@/components/atoms';
-import type { EmojiSetProps } from '@/components/molecules/emojiSet';
+import { Emoji, emojiNameSet, type EmojiProps } from '@/components/atoms/emoji/Emoji';
 
 interface ContentBodyProps {
   title: string;
@@ -12,7 +11,7 @@ interface ContentBodyProps {
 }
 
 // mock
-const emojis: EmojiSetProps = {
+const emojis: Record<EmojiProps['name'], number> = {
   like: 10,
   cheer: 10,
   angry: 10,
@@ -29,7 +28,11 @@ export const ContentBody = ({ title, date, tag, more }: ContentBodyProps) => {
         <Typography type="title3" className="text-gray-40">
           <Span type="blue55">{date}</Span>까지 이룰 거에요 | <Span type="blue55">{tag}</Span>
         </Typography>
-        <EmojiSet {...emojis} />
+        <div className="flex gap-[8px]">
+          {emojiNameSet.map((name) => (
+            <Emoji key={name} name={name} count={emojis[name]} />
+          ))}
+        </div>
         <Typography type="body3" className="text-gray-40">
           {more}
         </Typography>

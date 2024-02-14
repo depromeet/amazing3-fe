@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Emoji } from './Emoji';
+import { Emoji, emojiNameSet } from './Emoji';
 
 const meta: Meta<typeof Emoji> = {
   title: 'components/atoms/emoji',
@@ -20,7 +20,7 @@ const meta: Meta<typeof Emoji> = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[100px]">
+      <div className="w-[300px]">
         <Story />
       </div>
     ),
@@ -66,4 +66,24 @@ export const OnlyImage: Story = {
     ...SmallSize.args,
     onlyImage: true,
   },
+};
+
+export const AllEmojis: Story = {
+  decorators: [
+    (Story) => (
+      <>
+        <Story />
+        <p className="text-[12px] mt-[20px]">
+          <strong>emojiNameSet</strong>을 이용해서 모든 이모지를 출력할 수 있어요.
+        </p>
+      </>
+    ),
+  ],
+  render: () => (
+    <div className="grid grid-cols-3 gap-[8px]">
+      {emojiNameSet.map((name) => (
+        <Emoji key={name} name={name} />
+      ))}
+    </div>
+  ),
 };
