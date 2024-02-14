@@ -63,8 +63,8 @@ export interface EmojiProps {
   onClick?: VoidFunction;
 }
 
-export const Emoji = ({ name, count = 0, size = 'full', onlyImage = false, onClick }: EmojiProps) => {
-  const convertOver99 = count > 99 ? '99+' : count;
+export const Emoji = ({ name, count, size = 'full', onlyImage = false, onClick }: EmojiProps) => {
+  const convertOver99 = count && count > 99 ? '99+' : count;
   const { image: imageSize, title: titleTextSize, count: countTextSize } = SIZE_CSS[size];
 
   return (
@@ -80,7 +80,7 @@ export const Emoji = ({ name, count = 0, size = 'full', onlyImage = false, onCli
         <Image src={EMOJI[name].image} fill alt={`${name} 이모티콘`} />
       </div>
       {!onlyImage && (
-        <div className="flex w-full  justify-between items-center">
+        <div className={`flex w-full items-center ${count ? 'justify-between' : 'justify-center'}`}>
           <span className={`text-[#8490A0] ${titleTextSize}`}>{EMOJI[name].title}</span>
           <span className={`text-gray-70 ${countTextSize}`}>{convertOver99}</span>
         </div>
