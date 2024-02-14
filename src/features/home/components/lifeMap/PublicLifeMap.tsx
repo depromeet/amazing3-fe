@@ -52,7 +52,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
   const throttleCheer = useThrottle(() => cheer({ lifeMapId: publicGoals?.lifeMapId }), CHEER_INTERVAL);
 
   const handleClickCheeringButton = () => {
-    if (!memberData) {
+    if (!memberData?.nickname) {
       open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
       return;
     }
