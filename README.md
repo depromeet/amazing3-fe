@@ -39,7 +39,7 @@
 <br />
 
 <img src="https://github.com/depromeet/amazing3-fe/assets/112946860/301f1277-5c23-4e89-bd25-44cf5703398b" alt="description 4" />
-지도가 늘어날수록 내가 가고 싶은 길이 선명해 질거예요.
+지도가 늘어날수록 내가 가고 싶은 길이 선명해질 거예요
 
 <br />
 <br />
