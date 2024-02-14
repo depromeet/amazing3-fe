@@ -9,7 +9,7 @@ const meta: Meta<typeof Emoji> = {
     name: {
       control: {
         type: 'radio',
-        options: ['like', 'cheer', 'sad', 'angry', 'awesome', 'surprised'],
+        options: emojiNameSet,
       },
     },
     count: {
