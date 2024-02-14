@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import { AddEmojiButton } from './emoji';
+
 interface LayoutProps {
   header: ReactNode;
   sticker: ReactNode;
@@ -14,6 +16,9 @@ export const DetailLayout = ({ header, sticker, body, footer }: LayoutProps) => 
         <div className="flex items-center justify-between p-5xs px-3xs">{header}</div>
         <div className="flex flex-col items-center justify-center flex-shrink-0 h-[272px] p-[136px] rounded-none">
           <div className="absolute w-[227px] h-[227px] bg-[#ffffff66] rounded-xl" />
+          <div className="absolute mb-[18px] bottom-0 right-[23px]">
+            <AddEmojiButton />
+          </div>
           {sticker}
         </div>
       </div>
