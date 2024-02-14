@@ -1,6 +1,7 @@
 export { Avatar } from './avatar';
 export { BottomSheet } from './bottomSheet';
 export { Button } from './button';
+export { EMOJI, Emoji } from './emoji';
 export { Input } from './input';
 export { Span } from './span';
 export { Star } from './star';
