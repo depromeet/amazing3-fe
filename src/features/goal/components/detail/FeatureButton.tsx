@@ -1,13 +1,9 @@
-import type { PropsWithChildren } from 'react';
+import type { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 
-interface FeatureButtonProps {
-  onClick?: VoidFunction;
-}
-
-export const FeatureButton = ({ onClick, children }: PropsWithChildren<FeatureButtonProps>) => {
+export const FeatureButton = ({ children, ...props }: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>) => {
   return (
     <button
-      onClick={onClick}
+      {...props}
       className="relative w-[48px] h-[48px] bg-white shadow-button rounded-xl flex items-center justify-center hover:scale-105 transition duration-500"
     >
       {children}
