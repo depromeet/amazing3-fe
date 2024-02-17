@@ -1,68 +1,60 @@
-import type { ChangeEvent } from 'react';
-import React from 'react';
+import type { InputHTMLAttributes } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
 
-import { Input, Textarea, Typography } from '@/components/atoms';
+import { Input, Typography } from '@/components/atoms';
 
-export interface TextFieldProps {
+export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label?: string;
-  type?: 'text' | 'number' | 'email' | 'password';
-  placeholder?: string;
-  value?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   helperText?: string;
-  multiline?: boolean;
-  rows?: number;
-  defaultValue?: string;
-  maxLength?: number;
 }
 
-export const RHFTextField = ({
-  name,
-  label,
-  type = 'text',
-  placeholder,
-  value,
-  onChange,
-  helperText,
-  multiline = false,
-  rows = 1,
-  defaultValue,
-  maxLength,
-}: TextFieldProps) => {
-  const inputProps = {
-    name: name,
-    placeholder: placeholder,
-    value: value,
-    defaultValue: defaultValue,
-    onChange: onChange,
-  };
+export const RHFTextField = ({ name, label, type, helperText, maxLength }: TextFieldProps) => {
+  const { control } = useFormContext();
+
   return (
-    <div className="flex flex-col gap-5xs">
-      {label && (
-        <div className="flex justify-between items-center">
-          <Typography type="title3" className="text-gray-50">
-            {label}
-          </Typography>
-          {maxLength && (
-            <div className="flex">
-              <Typography type="title5" className="text-gray-40">
-                {value?.length}
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <div className="flex flex-col gap-5xs">
+          {label && (
+            <div className="flex justify-between items-center">
+              <Typography type="title3" className="text-gray-50">
+                {label}
               </Typography>
-              <Typography type="title5" className="text-gray-30">{`/${maxLength}`}</Typography>
+              {maxLength && (
+                <div className="flex">
+                  <Typography type="title5" className="text-gray-40">
+                    {field.value?.length}
+                  </Typography>
+                  <Typography type="title5" className="text-gray-30">{`/${maxLength}`}</Typography>
+                </div>
+              )}
+            </div>
+          )}
+          <Input
+            {...field}
+            type={type}
+            value={type === 'number' && field.value === 0 ? '' : field.value}
+            onChange={(event) => {
+              if (type === 'number') {
+                field.onChange(Number(event.target.value));
+              } else {
+                field.onChange(event.target.value);
+              }
+            }}
+          />
+          {helperText && (
+            <div className="px-5xs">
+              <Typography type="body3" className="text-gray-40">
+                {helperText}
+              </Typography>
             </div>
           )}
         </div>
       )}
-      {multiline ? <Textarea {...inputProps} rows={rows} /> : <Input type={type} {...inputProps} />}
-      {helperText && (
-        <div className="px-5xs">
-          <Typography type="body3" className="text-gray-40">
-            {helperText}
-          </Typography>
-        </div>
-      )}
-    </div>
+    />
   );
 };
 RHFTextField.displayName = 'RHFTextField';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import GoalUpdateForm from '@/features/goal/components/update/GoalUpdateForm';
 import GoalUpdateHeader from '@/features/goal/components/update/GoalUpdateHeader';
 
