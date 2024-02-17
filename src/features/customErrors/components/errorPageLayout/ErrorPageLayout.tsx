@@ -43,7 +43,7 @@ const ERROR_VALUES: ErrorValuesProps = {
     },
   },
   '403': {
-    title: '공개되지 않은 인생지도에요. \n 돌아가세요.',
+    title: '공개되지 않은 인생 지도예요. \n 돌아가세요.',
     statusImage: {
       src: LockImage,
       width: 146,
