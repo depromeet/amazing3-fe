@@ -1,12 +1,13 @@
 'use client';
 
+import React from 'react';
 import { useRouter } from 'next/navigation';
 
 import BackIcon from '@/assets/icons/goal/back-icon.svg';
-import { Typography } from '@/components/atoms';
+import { Typography } from '@/compongents/atoms';
 
 // TODO: 응원 페이지, 내 정보 수정 페이지와 중복됨. 공통 컴포넌트로 분리 필요.
-const UpdateGoalHeader = () => {
+const GoalUpdateHeader = () => {
   const router = useRouter();
 
   const handleClickBack = () => {
@@ -24,4 +25,4 @@ const UpdateGoalHeader = () => {
     </div>
   );
 };
-export default UpdateGoalHeader;
+export default GoalUpdateHeader;
