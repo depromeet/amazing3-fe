@@ -27,7 +27,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
   const [isCheeringSuccessAfterWaiting, setIsCheeringSuccessAfterWaiting] = useState(false);
 
   // TODO: Lottie atom을 수정해서 로티 이미지를 플레이하는 방식으로 변경
-  const { mutate: cheer, isSuccess } = useCreateCheering(username);
+  const { mutate: cheer, isSuccess, isError } = useCreateCheering(username);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | undefined;
@@ -53,7 +53,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
       return;
     }
 
-    if (isCheeringSuccessAfterWaiting) toast.warning('1분 뒤에 응원할 수 있어요.');
+    if (isError || isCheeringSuccessAfterWaiting) toast.warning('1분 뒤에 응원할 수 있어요.');
     throttleCheer();
   };
 
