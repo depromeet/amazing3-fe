@@ -2,11 +2,11 @@
 
 import type { RefObject } from 'react';
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { SwiperSlide } from 'swiper/react';
 
-import StarBg from '@/app/home/[username]/startBg';
 import { Avatar, ContentWrapper } from '@/components';
 import type { MemberProps } from '@/features/member/types';
 import type { GoalResponse } from '@/hooks/reactQuery/goal/useGetGoals';
@@ -17,9 +17,10 @@ import { GOAL_COUNT_PER_PAGE, TOTAL_CURRENT_POSITIONS } from '../../constants';
 import { CurrentPositionCover } from '../currentPositionCover';
 import { MapCardPositioner } from '../mapCardPositioner';
 import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
-import { MapSwiper } from '../mapSwiper';
 
-import LifeMapInfo from './LifeMapInfo';
+const StarBg = dynamic(() => import('@/app/home/[username]/startBg'));
+const LifeMapInfo = dynamic(() => import('./LifeMapInfo'));
+const MapSwiper = dynamic(() => import('../mapSwiper/MapSwiper'));
 
 interface LifeMapProps {
   goalsData?: GoalResponse;
