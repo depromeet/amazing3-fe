@@ -1,5 +1,3 @@
-'use client';
-
 import dynamic from 'next/dynamic';
 
 const PublicLifeMapBottomArea = dynamic(() => import('@/features/home/components/lifeMap/PublicLifeMapBottomArea'));
