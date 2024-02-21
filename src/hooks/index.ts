@@ -8,3 +8,4 @@ export { useOpenExternalBrowser } from './useOpenExternalBrowser';
 export { useOutsideClick } from './useOutsideClick';
 export { useScrollOnTrigger } from './useScrollOnTrigger';
 export { useThrottle } from './useThrottle';
+export { useToast } from './useToast';

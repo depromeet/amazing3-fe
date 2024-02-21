@@ -10,7 +10,7 @@ interface CheererProps {
   cheeredAt: string;
 }
 
-const Cheerer = ({ image, username, nickname, cheeredAt }: CheererProps) => {
+export const Cheerer = ({ image, username, nickname, cheeredAt }: CheererProps) => {
   return (
     <div className="flex items-center justify-between py-5xs">
       <Link href={`/home/${username}`}>
@@ -25,5 +25,3 @@ const Cheerer = ({ image, username, nickname, cheeredAt }: CheererProps) => {
     </div>
   );
 };
-
-export default Cheerer;
