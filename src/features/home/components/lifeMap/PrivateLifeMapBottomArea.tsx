@@ -5,9 +5,8 @@ import { useOverlay } from '@toss/use-overlay';
 
 import { Button } from '@/components';
 
-import ImageDownloadBottomSheet from '../shareBottomSheet/ImageDownloadBottomSheet';
-import ShareBottomSheet from '../shareBottomSheet/ShareBottomSheet';
-import ShareButton from '../shareButton/ShareButton';
+import { ImageDownloadBottomSheet, ShareBottomSheet } from '../shareBottomSheet';
+import { ShareButton } from '../shareButton';
 
 interface PrivateLifeMapBottomAreaProps {
   downloadSectionRef?: RefObject<HTMLElement>;

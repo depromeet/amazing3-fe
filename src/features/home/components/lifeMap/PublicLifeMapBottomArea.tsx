@@ -4,7 +4,7 @@ import { useOverlay } from '@toss/use-overlay';
 
 import { Button } from '@/components';
 import { CHEER_INTERVAL } from '@/constants';
-import CheeringButton from '@/features/cheering/CheeringButton';
+import { CheeringButton } from '@/features/cheering/CheeringButton';
 import { useThrottle } from '@/hooks';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useCreateCheering } from '@/hooks/reactQuery/cheering';
