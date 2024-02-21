@@ -21,3 +21,5 @@ const HomeLayout = ({ children }: PropsWithChildren) => {
 };
 
 export default HomeLayout;
+
+export const runtime = 'edge';
