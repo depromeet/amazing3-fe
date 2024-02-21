@@ -36,3 +36,8 @@ export const formatDotYYYYMMDD = (time: string) => {
   const [YYYYMMDD] = time.split('T');
   return YYYYMMDD.replaceAll('-', '.');
 };
+
+export const formatDotYYYYMM = (time: string) => {
+  const [YYYYMM] = time.split('T');
+  return YYYYMM.split('-').slice(0, -1).join('.');
+};

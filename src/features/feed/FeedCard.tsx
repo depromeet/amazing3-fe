@@ -5,6 +5,7 @@ import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Avatar, Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
+import { formatDotYYYYMM } from '@/utils/date';
 
 interface FeedCardProps {
   feedData: GoalFeedProps;
@@ -51,7 +52,7 @@ const FeedCard = ({ feedData: { user, goal, count } }: FeedCardProps) => {
           </div>
           <div className="flex items-center gap-5xs">
             <Typography type="title5" className="text-gray-40">
-              <Span type="gray50">{goal.deadline}</Span>까지 이룰거에요
+              <Span type="gray50">{formatDotYYYYMM(goal.deadline)}</Span>까지 이룰거에요
             </Typography>
             <VerticalBarIcon width="2" height="16" />
             <Typography type="title5" className="text-gray-50">
