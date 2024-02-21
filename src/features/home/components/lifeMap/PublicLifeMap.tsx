@@ -3,14 +3,11 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useOverlay } from '@toss/use-overlay';
-import { useAtomValue } from 'jotai';
 
-import { isLoggedInAtom } from '@/atoms';
 import { Button } from '@/components/atoms';
 import { CHEER_INTERVAL } from '@/constants';
 import { CheeringButton } from '@/features/cheering';
-import { useThrottle, useToast } from '@/hooks';
-import { useGetMemberData } from '@/hooks/reactQuery/auth';
+import { useAuth, useThrottle, useToast } from '@/hooks';
 import { useCreateCheering } from '@/hooks/reactQuery/cheering';
 import { useGetPublicGoals } from '@/hooks/reactQuery/goal';
 
@@ -22,10 +19,9 @@ import { LifeMapContent } from './LifeMapContent';
 const CHEER_ANIMATION_INTERVAL = 5400;
 
 export const PublicLifeMap = ({ username }: { username: string }) => {
-  const { open } = useOverlay();
   const toast = useToast();
-  const isLoggedIn = useAtomValue(isLoggedInAtom);
-  const { data: memberData } = useGetMemberData();
+  const { open } = useOverlay();
+  const { isLoggedIn, username: myUsername } = useAuth();
   const { data: publicGoals } = useGetPublicGoals({ username });
 
   const [isCheeringSuccessAfterWaiting, setIsCheeringSuccessAfterWaiting] = useState(false);
@@ -67,7 +63,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
       {isCheeringSuccessAfterWaiting && <CheeringClickedLottie />}
       <div className="flex gap-5xs  px-xs pt-5xs mt-[18px] w-full z-[1]">
         <CheeringButton onClick={handleClickCheeringButton} />
-        <Link href={{ pathname: isLoggedIn ? `/home/${memberData?.username}` : '/' }} className="w-full">
+        <Link href={{ pathname: isLoggedIn ? `/home/${myUsername}` : '/' }} className="w-full">
           <Button>{isLoggedIn ? '내 지도로 돌아가기' : '로그인하기'}</Button>
         </Link>
       </div>
