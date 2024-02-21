@@ -35,5 +35,3 @@ export const CheererList = () => {
     </>
   );
 };
-
-export default CheererList;
