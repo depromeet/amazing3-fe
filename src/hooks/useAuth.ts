@@ -7,7 +7,7 @@ import { isLoggedInAtom } from '@/atoms';
 export const useAuth = () => {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useAtom(isLoggedInAtom);
-  const username = localStorage.getItem('username');
+  const username = typeof window !== 'undefined' ? localStorage.getItem('username') : null;
 
   const handleLogin = (token: string) => {
     Cookies.set('accessToken', token, { secure: process.env.NODE_ENV !== 'development', expires: 7 });
