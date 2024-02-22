@@ -35,9 +35,9 @@ const FeedCard = ({ feedData: { user, goal, count } }: FeedCardProps) => {
         </button>
       </div>
       {/* Card Body */}
-      <div>
-        <div></div>
-        <div className="p-3xs flex flex-col gap-5xs bg-gray-10 rounded-lg">
+      <div className="relative">
+        <div className="absolute top-0 left-3xs right-0 bottom-0 w-1 bg-gray-10 rounded-full" />
+        <div className=" ml-lg p-3xs flex flex-col gap-5xs bg-gray-10 rounded-lg">
           <div className="flex gap-5xs items-center">
             <Image
               src={goal.sticker}
