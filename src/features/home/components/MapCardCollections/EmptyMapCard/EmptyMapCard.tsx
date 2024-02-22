@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useOverlay } from '@toss/use-overlay';
-import { useAtomValue } from 'jotai';
 
 import bandiboodiGray from '@/assets/images/bandi-boodi-gray.png';
 import { Typography } from '@/components';
-import { isLoginAtom } from '@/features/auth/atom';
-import { useIsMyMap } from '@/hooks';
+import { useAuth, useIsMyMap } from '@/hooks';
 
 import { LoginBottomSheet } from '../../loginBottomSheet';
 import { MapCardLayout, type MapCardLayoutProps } from '../MapCardLayout';
@@ -19,14 +17,14 @@ const EMPTY_ALTERNATIVE_TEXTS = ['나의 3년 후는?', '목표 생각중..', '�
 
 export const EmptyMapCard = ({ alternativeTextIndex, position }: EmptyMapCardProps) => {
   const router = useRouter();
-  const isLogin = useAtomValue(isLoginAtom);
+  const { isLoggedIn } = useAuth();
   const { isMyMap } = useIsMyMap();
   const { open } = useOverlay();
 
   const handleMapCardClick = () => {
     if (isMyMap) {
       router.push(`/goal/new/goal`);
-    } else if (isLogin) {
+    } else if (isLoggedIn) {
       // 로그인한 사용자가 내 지도가 아닌 카드를 클릭했을 때 어떤 작업을 해야하는지 의논 필요.
       return;
     } else {
