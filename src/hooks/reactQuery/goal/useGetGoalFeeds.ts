@@ -6,6 +6,7 @@ export type GoalFeedProps = {
   user: {
     id: number;
     nickname: string;
+    username: string;
     image: string;
   };
   goal: {
@@ -15,6 +16,7 @@ export type GoalFeedProps = {
     deadline: string;
     sticker: string;
     tag: string;
+    createdAt: string;
   };
   count: {
     reaction: number;
