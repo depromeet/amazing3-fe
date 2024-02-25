@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import CommentIcon from '@/assets/icons/comment-icon.svg';
 import ForwardIcon from '@/assets/icons/forward-icon.svg';
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Avatar, Span, Typography } from '@/components';
@@ -40,35 +41,46 @@ const FeedCard = ({ feedData: { user, goal, count } }: FeedCardProps) => {
       {/* Card Body */}
       <div className="relative">
         <div className="absolute top-0 left-3xs right-0 bottom-0 w-1 bg-gray-10 rounded-full" />
-        <Link href={{ pathname: `/goal/detail/${goal.id}` }}>
-          <div className="ml-lg p-3xs flex flex-col gap-5xs bg-gray-10 rounded-lg">
-            <div className="flex gap-5xs items-center">
-              <Image
-                src={goal.sticker}
-                width={48}
-                height={48}
-                alt="goal sticker"
-                priority
-                placeholder="blur"
-                blurDataURL={blueDataURL.mapCard}
-              />
-              <Typography type="heading4">{goal.title}</Typography>
+        <div className="ml-lg flex flex-col gap-4xs">
+          <Link href={{ pathname: `/goal/detail/${goal.id}` }}>
+            <div className="p-3xs flex flex-col gap-5xs bg-gray-10 rounded-lg">
+              <div className="flex gap-5xs items-center">
+                <Image
+                  src={goal.sticker}
+                  width={48}
+                  height={48}
+                  alt="goal sticker"
+                  priority
+                  placeholder="blur"
+                  blurDataURL={blueDataURL.mapCard}
+                />
+                <Typography type="heading4">{goal.title}</Typography>
+              </div>
+              <div className="flex items-center gap-5xs">
+                <Typography type="title5" className="text-gray-40">
+                  <Span type="gray50">{formatDotYYYYMM(goal.deadline)}</Span>까지 이룰거에요
+                </Typography>
+                <VerticalBarIcon width="2" height="16" />
+                <Typography type="title5" className="text-gray-50">
+                  {goal.tag}
+                </Typography>
+                <VerticalBarIcon width="2" height="16" />
+                <Typography type="title5" className="text-gray-40">
+                  세부목표 <Span type="gray50">{count.task}개</Span>
+                </Typography>
+              </div>
             </div>
-            <div className="flex items-center gap-5xs">
-              <Typography type="title5" className="text-gray-40">
-                <Span type="gray50">{formatDotYYYYMM(goal.deadline)}</Span>까지 이룰거에요
+          </Link>
+          {/* TODO: 댓글 페이지 이동 */}
+          <div>
+            <button className="flex gap-6xs items-center">
+              <CommentIcon />
+              <Typography type="title4" className="text-gray-40">
+                {count.comment > 0 ? `${count.comment}개의 댓글` : '댓글 작성하기'}
               </Typography>
-              <VerticalBarIcon width="2" height="16" />
-              <Typography type="title5" className="text-gray-50">
-                {goal.tag}
-              </Typography>
-              <VerticalBarIcon width="2" height="16" />
-              <Typography type="title5" className="text-gray-40">
-                세부목표 <Span type="gray50">{count.task}개</Span>
-              </Typography>
-            </div>
+            </button>
           </div>
-        </Link>
+        </div>
       </div>
     </div>
   );
