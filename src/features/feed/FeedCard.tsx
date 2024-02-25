@@ -8,7 +8,7 @@ import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Avatar, Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
-import { formatDotYYYYMM } from '@/utils/date';
+import { convertTimeToElapsedTime, formatDotYYYYMM } from '@/utils/date';
 
 interface FeedCardProps {
   feedData: GoalFeedProps;
@@ -26,7 +26,7 @@ const FeedCard = ({ feedData: { user, goal, count } }: FeedCardProps) => {
               {user.nickname}
             </Typography>
             <Typography type="caption1" className="text-gray-40">
-              {goal.createdAt}
+              {convertTimeToElapsedTime(goal.createdAt)}
             </Typography>
           </div>
         </div>
