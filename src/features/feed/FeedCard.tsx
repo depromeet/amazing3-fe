@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import CommentIcon from '@/assets/icons/comment-icon.svg';
 import ForwardIcon from '@/assets/icons/forward-icon.svg';
+import PlusIcon from '@/assets/icons/plus.svg';
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Avatar, Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
@@ -71,6 +72,12 @@ const FeedCard = ({ feedData: { user, goal, count } }: FeedCardProps) => {
               </div>
             </div>
           </Link>
+          {/* TODO: 이모지 추가 */}
+          <div>
+            <button className="w-[28px] h-[28px] flex justify-center items-center rounded-full bg-gradient3">
+              <PlusIcon width={18} fill="#FFFFFF" />
+            </button>
+          </div>
           {/* TODO: 댓글 페이지 이동 */}
           <div>
             <button className="flex gap-6xs items-center">
