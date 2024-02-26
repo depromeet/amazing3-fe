@@ -21,6 +21,7 @@ export type GoalResponse = {
     tagId: number;
     tagContent: string;
   };
+  isMyGoal: boolean;
   tasks: GoalTasksProps[];
 };
 
