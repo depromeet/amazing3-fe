@@ -4,7 +4,6 @@ import { EmojisContainer, EmojisItem } from '../emojis';
 
 const meta = {
   title: 'components/molecules/emojis',
-  component: EmojisContainer,
 };
 
 export default meta;
