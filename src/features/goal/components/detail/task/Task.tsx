@@ -63,11 +63,11 @@ export const Task = ({ initialIsDone = false, text, targetIds, onDoneClick }: Ta
 
   return (
     <div className="w-full flex gap-6xs items-start px-3xs py-4xs rounded-[8px] border-gray-20 bg-white shadow-thumb">
-      <div className="w-[24px] h-[24px]">
-        <button onClick={handleDoneClick} disabled={!isMyMap}>
+      {isMyMap && (
+        <button onClick={handleDoneClick} className="w-[24px] h-[24px]">
           <CheckIcon width={24} height={24} />
         </button>
-      </div>
+      )}
       {isEditing ? (
         <div className="flex flex-col w-full gap-7xs justify-center mt-7xs">
           <TaskEditInput value={editText} onChange={handleEditText} onBlur={handleUpdateDescription} />
@@ -75,7 +75,7 @@ export const Task = ({ initialIsDone = false, text, targetIds, onDoneClick }: Ta
         </div>
       ) : (
         <div className="flex w-full justify-between items-center">
-          <Typography type="body3" className="text-gray-70">
+          <Typography type="body3" className={`${!isMyMap && isDone && 'line-through text-gray-40'}`}>
             {text}
           </Typography>
           {isMyMap && (
