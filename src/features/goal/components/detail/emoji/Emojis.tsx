@@ -1,6 +1,4 @@
-import { m } from 'framer-motion';
-
-import { Emoji, Typography } from '@/components';
+import { EmojisContainer, EmojisItem } from '@/components';
 
 const emojis = [
   {
@@ -21,29 +19,19 @@ export const Emojis = ({ onToggle }: EmojisProps) => {
   };
 
   return (
-    <m.div
-      initial={initial}
-      animate={animate}
-      exit={initial}
-      transition={transition}
+    <EmojisContainer
       className="absolute left-0 right-0 transform -translate-y-1/2 top-[-110px] flex justify-center z-[2]"
+      animate={{ ...animate, exit: animate.initial }}
     >
-      <div className="flex gap-6xs px-5xs py-4xs rounded-[20px] bg-white shadow-thumbStrong">
-        {emojis.map(({ id, ...props }) => (
-          <button
-            key={id}
-            className="flex flex-col gap-6xs items-center transition-transform duration-300 hover:-translate-y-1"
-            onClick={handleReactEmoji}
-          >
-            <Emoji {...props} size={56} />
-            <Typography type="body3">{props.name}</Typography>
-          </button>
-        ))}
-      </div>
-    </m.div>
+      {emojis.map((emoji) => (
+        <EmojisItem key={emoji.name} {...emoji} size={56} onClick={handleReactEmoji} />
+      ))}
+    </EmojisContainer>
   );
 };
 
-const initial = { opacity: 0, scale: 0.3 };
-const animate = { opacity: 1, scale: 1 };
-const transition = { duration: 0.2 };
+const animate = {
+  initial: { opacity: 0, scale: 0.3 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.2 },
+};
