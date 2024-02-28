@@ -7,8 +7,6 @@ import FeedCard from './FeedCard';
 export const FeedBody = () => {
   const { data: goalFeedsData } = useGetGoalFeeds();
 
-  console.log(goalFeedsData?.goals);
-
   // TODO: 피드가 0개일 때, 처리 필요
 
   return (
