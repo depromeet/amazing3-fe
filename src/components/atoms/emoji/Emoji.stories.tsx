@@ -17,24 +17,10 @@ export default meta;
 
 type Story = StoryObj<typeof Emoji>;
 
-export const Small: Story = {
+export const Basic: Story = {
   args: {
-    src: 'https://github.com/depromeet/amazing3-fe/assets/112946860/5c103242-786d-4700-bf32-b87e4c4a8970',
+    url: 'https://github.com/depromeet/amazing3-fe/assets/112946860/5c103242-786d-4700-bf32-b87e4c4a8970',
     name: 'like',
-    size: 'small',
-  },
-};
-
-export const Medium: Story = {
-  args: {
-    ...Small.args,
-    size: 'medium',
-  },
-};
-
-export const Large: Story = {
-  args: {
-    ...Small.args,
-    size: 'large',
+    size: 56,
   },
 };
