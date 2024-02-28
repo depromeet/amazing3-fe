@@ -5,12 +5,12 @@ import { BottomSheet } from '@/components';
 import { Content } from './Content';
 import { Header } from './Header';
 
-interface ReactionMembersBottomSheetProps {
+interface ReactUserBottomSheetProps {
   open: boolean;
   onClose: VoidFunction;
 }
 
-export const ReactUserBottomSheet = ({ open, onClose }: ReactionMembersBottomSheetProps) => {
+export const ReactUserBottomSheet = ({ open, onClose }: ReactUserBottomSheetProps) => {
   const data = {
     totalReactedEmojisCount: 1000,
     reactedEmojis: [
