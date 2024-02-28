@@ -8,6 +8,7 @@ import { Button } from '@/components/atoms';
 import { CHEER_INTERVAL } from '@/constants';
 import { CheeringButton } from '@/features/cheering';
 import { useAuth, useThrottle, useToast } from '@/hooks';
+import { useGetMemberData } from '@/hooks/reactQuery/auth';
 import { useCreateCheering } from '@/hooks/reactQuery/cheering';
 import { useGetPublicGoals } from '@/hooks/reactQuery/goal';
 
@@ -21,7 +22,10 @@ const CHEER_ANIMATION_INTERVAL = 5400;
 export const PublicLifeMap = ({ username }: { username: string }) => {
   const toast = useToast();
   const { open } = useOverlay();
-  const { isLoggedIn, username: myUsername } = useAuth();
+  const { username: myUsername } = useAuth();
+
+  // TODO: 정책 논의 후 memberData를 통해 로그인 유무 검사하는 로직 수정
+  const { data: memberData } = useGetMemberData();
   const { data: publicGoals } = useGetPublicGoals({ username });
 
   const [isCheeringSuccessAfterWaiting, setIsCheeringSuccessAfterWaiting] = useState(false);
@@ -48,7 +52,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
   const throttleCheer = useThrottle(() => cheer({ lifeMapId: publicGoals?.lifeMapId }), CHEER_INTERVAL);
 
   const handleClickCheeringButton = () => {
-    if (!isLoggedIn) {
+    if (!memberData?.nickname) {
       open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
       return;
     }
@@ -63,8 +67,8 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
       {isCheeringSuccessAfterWaiting && <CheeringClickedLottie />}
       <div className="flex gap-5xs  px-xs pt-5xs mt-[18px] w-full z-[1]">
         <CheeringButton onClick={handleClickCheeringButton} />
-        <Link href={{ pathname: isLoggedIn ? `/home/${myUsername}` : '/' }} className="w-full">
-          <Button>{isLoggedIn ? '내 지도로 돌아가기' : '로그인하기'}</Button>
+        <Link href={{ pathname: memberData?.nickname ? `/home/${myUsername}` : '/' }} className="w-full">
+          <Button>{memberData?.nickname ? '내 지도로 돌아가기' : '로그인하기'}</Button>
         </Link>
       </div>
     </>
