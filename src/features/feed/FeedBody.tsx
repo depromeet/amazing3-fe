@@ -12,8 +12,7 @@ export const FeedBody = () => {
   return (
     <div>
       <div className="mx-xs my-xs flex flex-col gap-md">
-        {goalFeedsData &&
-          goalFeedsData.goals.map((goalData) => <FeedCard key={goalData.goal.id} feedData={goalData} />)}
+        {goalFeedsData?.goals.map((goalData) => <FeedCard key={goalData.goal.id} feedData={goalData} />)}
       </div>
     </div>
   );
