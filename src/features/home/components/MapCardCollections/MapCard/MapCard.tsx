@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useOverlay } from '@toss/use-overlay';
+import { useAtomValue } from 'jotai';
 
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Typography } from '@/components';
 import { blueDataURL } from '@/constants';
-import { useAuth } from '@/hooks';
+import { isLoginAtom } from '@/features/auth/atom';
 import type { GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
 
 import { LoginBottomSheet } from '../../loginBottomSheet';
@@ -18,11 +19,11 @@ export interface MapCardProps extends MapCardLayoutProps {
 export const MapCard = ({ goal, position }: MapCardProps) => {
   const { id, stickerUrl, deadline, tagContent } = goal;
   const router = useRouter();
-  const { isLoggedIn } = useAuth();
+  const isLogin = useAtomValue(isLoginAtom);
   const { open } = useOverlay();
 
   const handleMapCardClick = () => {
-    if (isLoggedIn) {
+    if (isLogin) {
       router.push(`/goal/detail/${id}`);
     } else {
       open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);

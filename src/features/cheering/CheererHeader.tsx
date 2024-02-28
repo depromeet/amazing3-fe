@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import BackIcon from '@/assets/icons/goal/back-icon.svg';
 import { Typography } from '@/components/atoms';
 
-export const CheererHeader = () => {
+const CheererHeader = () => {
   const router = useRouter();
 
   const handleClickBack = () => {
@@ -23,3 +23,4 @@ export const CheererHeader = () => {
     </div>
   );
 };
+export default CheererHeader;

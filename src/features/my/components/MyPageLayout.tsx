@@ -2,8 +2,9 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAtomValue } from 'jotai';
 
-import { useAuth } from '@/hooks';
+import { isLoginAtom } from '@/features/auth/atom';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
 import { getDateDiffFromToday } from '../utils';
@@ -16,14 +17,14 @@ import MyPageLifeMapInfo from './MyPageLifeMapInfo';
 
 export const MyPageLayout = () => {
   const { data: memberData } = useGetMemberData();
-  const { isLoggedIn } = useAuth();
+  const isLogin = useAtomValue(isLoginAtom);
   const router = useRouter();
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (isLogin === false) {
       router.push('/');
     }
-  }, [isLoggedIn, router]);
+  }, [isLogin, router]);
 
   return (
     <div className="pt-5xs px-xs h-full flex flex-col">

@@ -1,7 +1,8 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useAtomValue } from 'jotai';
 
 import { api } from '@/apis';
-import { useAuth } from '@/hooks';
+import { isLoginAtom } from '@/features/auth/atom';
 
 export type GoalProps = {
   id: number;
@@ -23,12 +24,12 @@ export type GoalResponse = {
 };
 
 export const useGetGoals = () => {
-  const { isLoggedIn } = useAuth();
+  const isLogin = useAtomValue(isLoginAtom);
 
   return useQuery<GoalResponse>({
     queryKey: ['goals'],
     queryFn: () => api.get<GoalResponse>('/life-map'),
-    enabled: isLoggedIn,
+    enabled: isLogin,
   });
 };
 

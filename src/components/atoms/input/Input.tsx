@@ -1,5 +1,3 @@
-'use client';
-
 import { forwardRef, useCallback, useState } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 

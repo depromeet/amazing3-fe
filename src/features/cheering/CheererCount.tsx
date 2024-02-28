@@ -4,7 +4,7 @@ import LikeIcon from '@/assets/icons/like-icon.png';
 import { Typography } from '@/components';
 import { formatOver999 } from '@/utils/number';
 
-export const CheererCount = ({ count }: { count?: number }) =>
+const CheererCount = ({ count }: { count?: number }) =>
   count && (
     <div className="flex items-center justify-center px-2xs py-[14.5px] mx-2xs my-[10px] rounded-md bg-gradient-to-r to-[#FCF3FF] from-[#EAF1FF]">
       <Typography className="font-insungit text-[13px] text-purple-30">
@@ -15,3 +15,5 @@ export const CheererCount = ({ count }: { count?: number }) =>
       </Typography>
     </div>
   );
+
+export default CheererCount;

@@ -1,15 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
+import { useAtomValue } from 'jotai';
 
 import { api } from '@/apis';
+import { isLoginAtom } from '@/features/auth/atom';
 import type { MemberProps } from '@/features/member/types';
-import { useAuth } from '@/hooks';
 
 export const useGetMemberData = () => {
-  const { isLoggedIn } = useAuth();
+  const isLogin = useAtomValue(isLoginAtom);
 
   return useQuery<MemberProps>({
     queryKey: ['memberData'],
     queryFn: () => api.get<MemberProps>('/my'),
-    enabled: isLoggedIn,
+    enabled: isLogin,
   });
 };
