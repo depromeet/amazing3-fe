@@ -1,4 +1,5 @@
-import { Emoji, type EmojiProps } from '@/components/atoms/emoji';
+import { Emoji } from '@/components';
+import type { EmojiProps } from '@/components/atoms/emoji';
 
 interface CountEmojiProps extends EmojiProps {
   count: number;
