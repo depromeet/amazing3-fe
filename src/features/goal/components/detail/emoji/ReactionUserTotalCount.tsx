@@ -7,12 +7,12 @@ import { addSuffixIfExceedsLength, addSuffixIfExceedsLimit } from '@/utils/suffi
 
 import { ReactUserBottomSheet } from './BottomSheet/ReactUserBottomSheet';
 
-interface ReactionMemberCountProps {
+interface ReactionUserTotalCountProps {
   username: string;
   count: number;
 }
 
-export const ReactUserCount = ({ username, count }: ReactionMemberCountProps) => {
+export const ReactionUserTotalCount = ({ username, count }: ReactionUserTotalCountProps) => {
   const { open } = useOverlay();
   const countExceptOne = count - 1;
 

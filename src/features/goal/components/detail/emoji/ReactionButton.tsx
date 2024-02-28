@@ -2,11 +2,11 @@ import type { ButtonHTMLAttributes } from 'react';
 
 import PlusIcon from '@/assets/icons/react-emoji-plus-icon.svg';
 
-interface ReactionButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ReactionAddButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isOpen: boolean;
 }
 
-export const ReactionButton = ({ isOpen, ...props }: ReactionButtonProps) => {
+export const ReactionAddButton = ({ isOpen, ...props }: ReactionAddButtonProps) => {
   return (
     <button
       className="w-fit h-fit rounded-full transition duration-300 hover:shadow-thumb hover:scale-105 transform"

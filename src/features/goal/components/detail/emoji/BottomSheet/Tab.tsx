@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
 
-export const ColoredTabTrigger = ({ children, ...props }: PropsWithChildren<Tabs.TabsTriggerProps>) => {
+export const Tab = ({ children, ...props }: PropsWithChildren<Tabs.TabsTriggerProps>) => {
   return (
     <Tabs.Trigger
       {...props}

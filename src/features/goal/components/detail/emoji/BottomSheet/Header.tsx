@@ -3,7 +3,7 @@ import * as Tabs from '@radix-ui/react-tabs';
 import { Emoji, Typography } from '@/components';
 import { addSuffixIfExceedsLimit } from '@/utils/suffix';
 
-import { ColoredTabTrigger } from './ColoredTabTrigger';
+import { Tab } from './Tab';
 
 interface HeaderProps {
   totalReactedEmojisCount: number;
@@ -23,12 +23,12 @@ export const Header = ({ totalReactedEmojisCount, reactedEmojis }: HeaderProps) 
       </Typography>
       <Tabs.List className="flex items-center gap-4xs py-5xs overflow-scroll px-xs scrollbar-width-none">
         {reactedEmojis.map((emoji) => (
-          <ColoredTabTrigger key={emoji.id} value={emoji.name}>
+          <Tab key={emoji.id} value={emoji.name}>
             <div className="flex gap-6xs items-center">
               <Emoji name={emoji.name} url={emoji.url} size={24} />
               <Typography type="caption1">{addSuffixIfExceedsLimit(emoji.reactCount, 999)}</Typography>
             </div>
-          </ColoredTabTrigger>
+          </Tab>
         ))}
       </Tabs.List>
     </div>
