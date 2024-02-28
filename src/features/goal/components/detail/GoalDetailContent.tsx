@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
 
-import { useIsMyMap } from '@/hooks';
 import { useGetGoal } from '@/hooks/reactQuery/goal';
+
+import { isMyGoalAtom } from '../../atom';
 
 import { AddTaskInput } from './AddTaskInput';
 import DetailLayout from './DetailLayout';
@@ -11,9 +13,13 @@ import { Tasks } from './Tasks';
 import { AddSubGoalPrompt, ContentBody, DetailFooterButton, DetailHeader, Sticker } from '.';
 
 export const GoalDetailContent = ({ id }: { id: number }) => {
-  const { isMyMap } = useIsMyMap();
   const { data: goal } = useGetGoal({ goalId: Number(id) });
+  const [isMyGoal, setIsMyGoal] = useAtom(isMyGoalAtom);
   const [isOpenTaskInput, setOpenTaskInput] = useState(false);
+
+  useEffect(() => {
+    if (goal) setIsMyGoal(goal.isMyGoal);
+  }, [goal, setIsMyGoal]);
 
   const handleOpenTaskInput = (status: boolean) => () => setOpenTaskInput(status);
 
@@ -34,7 +40,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
               {goal.tasks.length ? (
                 <Tasks goalId={id} tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
-                isMyMap && !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
+                isMyGoal && !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
               )}
             </div>
           )
