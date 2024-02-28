@@ -16,6 +16,7 @@ export const Basic: Story = {
     url: 'https://github.com/depromeet/amazing3-fe/assets/112946860/5c103242-786d-4700-bf32-b87e4c4a8970',
     name: 'like',
     count: 10,
+    size: 56,
   },
 };
 
