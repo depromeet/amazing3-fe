@@ -4,11 +4,11 @@ import { InfiniteScroller } from '@/components/molecules';
 import { useGetCheerer } from '@/hooks/reactQuery/cheering';
 import { formatDotYYYYMMDD } from '@/utils/date';
 
-import Cheerer from './Cheerer';
-import CheererCount from './CheererCount';
+import { Cheerer } from './Cheerer';
+import { CheererCount } from './CheererCount';
 import { EmptyCheerer } from './EmptyCheerer';
 
-const CheererList = () => {
+export const CheererList = () => {
   const { data: cheererList, fetchNextPage, hasNextPage } = useGetCheerer();
 
   if (cheererList?.pages[0].contents.length === 0) return <EmptyCheerer />;
@@ -35,5 +35,3 @@ const CheererList = () => {
     </>
   );
 };
-
-export default CheererList;
