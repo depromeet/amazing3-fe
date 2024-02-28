@@ -4,7 +4,7 @@ import { ToolTip } from '@/components';
 
 import { Emojis } from './Emojis';
 import { ReactedEmojis } from './ReactedEmojis';
-import { ReactionAddButton } from './ReactionButton';
+import { ReactionAddButton } from './ReactionAddButton';
 import { ReactionUserTotalCount } from './ReactionUserTotalCount';
 
 // TODO: api 연결 후 제거

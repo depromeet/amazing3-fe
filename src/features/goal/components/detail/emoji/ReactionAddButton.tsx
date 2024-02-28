@@ -9,8 +9,9 @@ interface ReactionAddButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
 export const ReactionAddButton = ({ isOpen, ...props }: ReactionAddButtonProps) => {
   return (
     <button
-      className="w-fit h-fit rounded-full transition duration-300 hover:shadow-thumb hover:scale-105 transform"
-      style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+      className={`w-fit h-fit rounded-full transition duration-300 hover:shadow-thumb hover:scale-105 transform ${
+        isOpen ? 'rotate-45' : 'rotate-0'
+      }`}
       {...props}
     >
       <PlusIcon />
