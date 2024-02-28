@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes, type TextareaHTMLAttributes, useCallback } from 'react';
+import { type InputHTMLAttributes, type TextareaHTMLAttributes } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 import { Input, Textarea, Typography } from '@/components/atoms';
@@ -19,19 +19,6 @@ export const RHFTextField = (props: InputTextFieldProps | TextareaTextFieldProps
   const { name, label, helperText, maxLength } = props;
   const { control } = useFormContext();
   const isTextarea = 'rows' in props;
-  const type = isTextarea ? undefined : (props as InputTextFieldProps).type;
-
-  const handleChange = useCallback(
-    (onChange: (value: string | number) => void) =>
-      (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { value } = event.target;
-        if (maxLength && value.length > maxLength) return;
-
-        const updatedValue = type === 'number' ? Number(value) : value;
-        onChange(updatedValue);
-      },
-    [maxLength, type],
-  );
 
   return (
     <Controller
@@ -41,9 +28,9 @@ export const RHFTextField = (props: InputTextFieldProps | TextareaTextFieldProps
         <div className="flex flex-col gap-5xs">
           {label && <Label label={label} value={field.value} maxLength={maxLength} />}
           {isTextarea ? (
-            <Textarea {...field} onChange={handleChange(field.onChange)} />
+            <Textarea {...field} maxLength={maxLength} rows={props.rows} />
           ) : (
-            <Input {...field} onChange={handleChange(field.onChange)} />
+            <Input {...field} maxLength={maxLength} />
           )}
           {helperText && <HelperText text={helperText} />}
         </div>
