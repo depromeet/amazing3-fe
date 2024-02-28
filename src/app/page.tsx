@@ -13,7 +13,7 @@ const SplashPage = () => {
   return (
     <div className="relative w-full h-[100dvh] flex flex-col items-center overflow-hidden">
       <div className="absolute top-0 right-0">
-        <Image src={PurpleBlurImage} sizes="100vw" alt="blur_image" />
+        <Image src={PurpleBlurImage} width={390} height={125} alt="blur_image" priority />
       </div>
       <div className="w-full h-[65vh] bg-gradient1 flex flex-col items-center">
         <div className="h-[38vh] flex flex-col gap-[1vh] z-10 justify-center">

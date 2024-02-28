@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 import type { BottomSheetProps as BaseBottomSheetProps } from 'react-spring-bottom-sheet';
 import { BottomSheet as BaseBottomSheet } from 'react-spring-bottom-sheet';

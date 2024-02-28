@@ -6,37 +6,35 @@ import { useOverlay } from '@toss/use-overlay';
 
 import { Button } from '@/components/atoms';
 import { CHEER_INTERVAL } from '@/constants';
-import { CheeringButton } from '@/features/cheering/CheeringButton';
-import { useThrottle } from '@/hooks';
-import { useGetMemberData } from '@/hooks/reactQuery/auth';
+import { CheeringButton } from '@/features/cheering';
+import { useAuth, useThrottle, useToast } from '@/hooks';
 import { useCreateCheering } from '@/hooks/reactQuery/cheering';
-import { useGetPublicGoals } from '@/hooks/reactQuery/goal/useGetPublicGoals';
-import { useToast } from '@/hooks/useToast';
+import { useGetPublicGoals } from '@/hooks/reactQuery/goal';
 
 import { LoginBottomSheet } from '../loginBottomSheet';
 
 import { CheeringClickedLottie } from './CheeringClicked';
 import { LifeMapContent } from './LifeMapContent';
 
+const CHEER_ANIMATION_INTERVAL = 5400;
+
 export const PublicLifeMap = ({ username }: { username: string }) => {
-  const { data: memberData } = useGetMemberData();
+  const toast = useToast();
+  const { open } = useOverlay();
+  const { isLoggedIn, username: myUsername } = useAuth();
   const { data: publicGoals } = useGetPublicGoals({ username });
 
-  const { open } = useOverlay();
-  const toast = useToast();
-  const [isCheeringSuccess, setIsCheeringSuccess] = useState(false);
+  const [isCheeringSuccessAfterWaiting, setIsCheeringSuccessAfterWaiting] = useState(false);
 
   // TODO: Lottie atom을 수정해서 로티 이미지를 플레이하는 방식으로 변경
-  const { mutate: cheer, isSuccess } = useCreateCheering(username);
-
-  const CHEER_ANIMATION_INTERVAL = 5400;
+  const { mutate: cheer, isSuccess, isError } = useCreateCheering(username);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | undefined;
     if (isSuccess) {
-      setIsCheeringSuccess(true);
+      setIsCheeringSuccessAfterWaiting(true);
       timeoutId = setTimeout(() => {
-        setIsCheeringSuccess(false);
+        setIsCheeringSuccessAfterWaiting(false);
       }, CHEER_ANIMATION_INTERVAL);
     }
 
@@ -47,29 +45,26 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
     };
   }, [isSuccess]);
 
-  const myHomePath = memberData?.username ? `/home/${memberData.username}` : '/';
-
   const throttleCheer = useThrottle(() => cheer({ lifeMapId: publicGoals?.lifeMapId }), CHEER_INTERVAL);
 
   const handleClickCheeringButton = () => {
-    if (!memberData?.nickname) {
+    if (!isLoggedIn) {
       open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
       return;
     }
 
-    if (!isCheeringSuccess) toast.warning('1분 뒤에 응원할 수 있어요.');
-
+    if (isError || isCheeringSuccessAfterWaiting) toast.warning('1분 뒤에 응원할 수 있어요.');
     throttleCheer();
   };
 
   return (
     <>
       <LifeMapContent isPublic goalsData={publicGoals} memberData={publicGoals?.user} />
-      {isCheeringSuccess && <CheeringClickedLottie />}
+      {isCheeringSuccessAfterWaiting && <CheeringClickedLottie />}
       <div className="flex gap-5xs  px-xs pt-5xs mt-[18px] w-full z-[1]">
         <CheeringButton onClick={handleClickCheeringButton} />
-        <Link href={{ pathname: myHomePath }} className="w-full">
-          <Button>{memberData?.username ? '내 지도로 돌아가기' : '로그인하기'}</Button>
+        <Link href={{ pathname: isLoggedIn ? `/home/${myUsername}` : '/' }} className="w-full">
+          <Button>{isLoggedIn ? '내 지도로 돌아가기' : '로그인하기'}</Button>
         </Link>
       </div>
     </>
