@@ -35,7 +35,7 @@ export const EmptyMapCard = ({ alternativeTextIndex, position }: EmptyMapCardPro
   return (
     <button onClick={handleMapCardClick}>
       <MapCardLayout position={position} cursor="default">
-        <Image src={bandiboodiGray} width="100" height="100" alt="empty_goal" />
+        <Image src={bandiboodiGray} width="100" height="100" alt="empty_goal" priority />
         <Typography type="title5" className="text-gray-40 text-center text-ellipsis !whitespace-nowrap">
           {EMPTY_ALTERNATIVE_TEXTS[alternativeTextIndex]}
         </Typography>
