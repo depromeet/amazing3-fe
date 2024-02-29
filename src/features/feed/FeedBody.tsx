@@ -2,7 +2,7 @@
 
 import { useGetGoalFeeds } from '@/hooks/reactQuery/goal';
 
-import FeedCard from './FeedCard';
+import FeedCard from './feedCard/FeedCard';
 
 export const FeedBody = () => {
   const { data: goalFeedsData } = useGetGoalFeeds();

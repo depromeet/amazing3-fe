@@ -2,13 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import CommentIcon from '@/assets/icons/comment-icon.svg';
-import ForwardIcon from '@/assets/icons/forward-icon.svg';
 import PlusIcon from '@/assets/icons/plus.svg';
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
-import { Avatar, Span, Typography } from '@/components';
+import { Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
-import { convertTimeToElapsedTime, formatDotYYYYMM } from '@/utils/date';
+import { formatDotYYYYMM } from '@/utils/date';
+
+import FeedCardHeader from './FeedCardHeader';
 
 interface FeedCardProps {
   feedData: GoalFeedProps;
@@ -17,29 +18,13 @@ interface FeedCardProps {
 const FeedCard = ({ feedData: { user, goal, count } }: FeedCardProps) => {
   return (
     <div className="flex flex-col gap-4xs">
-      {/* Card Header */}
-      <div className="flex justify-between items-center">
-        <div className="flex gap-5xs">
-          <Avatar size={40} profileImage={user.image} />
-          <div className="flex flex-col">
-            <Typography type="title4" className="text-gray-50">
-              {user.nickname}
-            </Typography>
-            <Typography type="caption1" className="text-gray-40">
-              {convertTimeToElapsedTime(goal.createdAt)}
-            </Typography>
-          </div>
-        </div>
-        <Link href={{ pathname: `/home/${user.username}` }}>
-          <button className="px-4xs py-6xs flex gap-6xs bg-blue-10 rounded-md">
-            <Typography type="title5" className="text-blue-30">
-              {count.goal} 개 목표조각 보러가기
-            </Typography>
-            <ForwardIcon width={16} fill="#69B1FF" />
-          </button>
-        </Link>
-      </div>
-      {/* Card Body */}
+      <FeedCardHeader
+        profileImage={user.image}
+        nickname={user.nickname}
+        username={user.username}
+        goalCreatedTime={goal.createdAt}
+        goalCounts={count.goal}
+      />
       <div className="relative">
         <div className="absolute top-0 left-3xs right-0 bottom-0 w-1 bg-gray-10 rounded-full" />
         <div className="ml-lg flex flex-col gap-4xs">
