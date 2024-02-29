@@ -7,4 +7,5 @@ export const backgroundImage = {
   gradient6: 'linear-gradient(233deg, rgba(200, 180, 255, 1) -50.9%, rgba(255, 255, 255, 0) 87.98%)',
   gradient7:
     'linear-gradient(180deg, rgba(169, 194, 220, 1) 0%, rgba(207, 223, 242, 1) 17.71%, rgba(203, 211, 221, 1) 54.17%, rgba(210, 216, 222, 1) 68.69%)',
+  gradientPurpleBlur: 'radial-gradient(129.59% 115.58% at 85.9% -33.6%, #C7C5FF 0%, #BBBBFF00 100%)',
 };
