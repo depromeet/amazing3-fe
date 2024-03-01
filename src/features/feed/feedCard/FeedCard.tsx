@@ -60,7 +60,7 @@ const FeedCard = ({ feedData: { user, goal, count } }: FeedCardProps) => {
           {/* TODO: 이모지 추가 */}
           <div>
             <button className="w-[28px] h-[28px] flex justify-center items-center rounded-full bg-gradient3">
-              <PlusIcon width={18} fill="#FFFFFF" />
+              <PlusIcon width={18} height={18} fill="#FFFFFF" />
             </button>
           </div>
           {/* TODO: 댓글 페이지 이동 */}
