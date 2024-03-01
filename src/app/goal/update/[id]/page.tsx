@@ -1,6 +1,9 @@
-import { Loading } from '@/components/molecules/loading';
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 import GoalUpdateForm from '@/features/goal/components/update/GoalUpdateForm';
-import GoalUpdateHeader from '@/features/goal/components/update/GoalUpdateHeader';
 import { useGetGoal } from '@/hooks/reactQuery/goal';
 
 interface ParamsProps {
@@ -11,24 +14,16 @@ interface ParamsProps {
 
 const UpdateGoalPage = ({ params }: ParamsProps) => {
   const goalId = +params['id'];
-  const { data: goal, isLoading } = useGetGoal({ goalId });
+  const { data: goal } = useGetGoal({ goalId });
+  const router = useRouter();
 
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <Loading />
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (goal?.isMyGoal === false) {
+      router.push(`/goal/detail/${goalId}`);
+    }
+  }, [goal, goalId, router]);
 
-  return (
-    goal && (
-      <>
-        <GoalUpdateHeader />
-        <GoalUpdateForm goalId={goalId} goal={goal} />
-      </>
-    )
-  );
+  return goal?.isMyGoal && <GoalUpdateForm goalId={goalId} goal={goal} />;
 };
 
 export default UpdateGoalPage;
