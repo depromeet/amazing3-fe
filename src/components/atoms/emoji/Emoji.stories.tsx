@@ -5,12 +5,6 @@ import { Emoji } from '../emoji';
 const meta: Meta<typeof Emoji> = {
   title: 'components/atoms/emoji',
   component: Emoji,
-  argTypes: {
-    size: {
-      control: 'inline-radio',
-      options: ['small', 'medium', 'large'],
-    },
-  },
 };
 
 export default meta;
