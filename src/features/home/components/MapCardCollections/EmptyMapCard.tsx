@@ -6,8 +6,9 @@ import bandiboodiGray from '@/assets/images/bandi-boodi-gray.png';
 import { Typography } from '@/components';
 import { useAuth, useIsMyMap } from '@/hooks';
 
-import { LoginBottomSheet } from '../../loginBottomSheet';
-import { MapCardLayout, type MapCardLayoutProps } from '../MapCardLayout';
+import { LoginBottomSheet } from '../loginBottomSheet';
+
+import { MapCardLayout, type MapCardLayoutProps } from './MapCardLayout';
 
 interface EmptyMapCardProps extends MapCardLayoutProps {
   alternativeTextIndex: 0 | 1 | 2 | 3;

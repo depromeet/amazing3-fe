@@ -1,4 +1,4 @@
-export { EmptyMapCard } from './EmptyMapCard/EmptyMapCard';
-export type { MapCardProps } from './MapCard/MapCard';
-export { MapCard } from './MapCard/MapCard';
-export { StartMapCard } from './StartMapCard/StartMapCard';
+export { EmptyMapCard } from './EmptyMapCard';
+export type { MapCardProps } from './MapCard';
+export { MapCard } from './MapCard';
+export { StartMapCard } from './StartMapCard';
