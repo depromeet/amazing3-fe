@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 import { ToolTip } from '@/components';
+import { ReactionAddButton } from '@/features/emoji/ReactionAddButton';
+import { ReactedEmojis } from '@/features/goal/components/detail/emoji/ReactedEmojis';
+import { ReactionUserTotalCount } from '@/features/goal/components/detail/emoji/ReactionUserTotalCount';
 
 import { Emojis } from './Emojis';
-import { ReactedEmojis } from './ReactedEmojis';
-import { ReactionAddButton } from './ReactionAddButton';
-import { ReactionUserTotalCount } from './ReactionUserTotalCount';
 
 // TODO: api 연결 후 제거
 const data = {

@@ -3,9 +3,8 @@ import { useOverlay } from '@toss/use-overlay';
 
 import ReactionMembersImage from '@/assets/images/reaction-members.png';
 import { Typography } from '@/components';
+import { ReactUserBottomSheet } from '@/features/emoji/BottomSheet';
 import { addSuffixIfExceedsLength, addSuffixIfExceedsLimit } from '@/utils/suffix';
-
-import { ReactUserBottomSheet } from './BottomSheet/ReactUserBottomSheet';
 
 interface ReactionUserTotalCountProps {
   username: string;
