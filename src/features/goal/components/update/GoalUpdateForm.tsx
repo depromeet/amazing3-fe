@@ -55,8 +55,6 @@ export const GoalUpdateForm = ({ goalId, goal }: GoalUpdateFormProps) => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
       if (!data.title || !data.year || !data.month || !data.tag || !data.sticker) {
         // TODO: Input field가 error를 처리할 수 있게 되면 toast 제거
         toast.warning('필수 항목을 입력해 주세요.');
