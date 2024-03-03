@@ -8,8 +8,9 @@ import { blueDataURL } from '@/constants';
 import { useAuth } from '@/hooks';
 import type { GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
 
-import { LoginBottomSheet } from '../../loginBottomSheet';
-import { MapCardLayout, type MapCardLayoutProps } from '../MapCardLayout';
+import { LoginBottomSheet } from '../loginBottomSheet';
+
+import { MapCardLayout, type MapCardLayoutProps } from './MapCardLayout';
 
 export interface MapCardProps extends MapCardLayoutProps {
   goal: GoalProps;
