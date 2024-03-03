@@ -9,6 +9,7 @@ import { isMyGoalAtom } from '../../atom';
 
 import { AddTaskInput } from './AddTaskInput';
 import DetailLayout from './DetailLayout';
+import { Reaction } from './emoji';
 import { Tasks } from './Tasks';
 import { AddSubGoalPrompt, ContentBody, DetailFooterButton, DetailHeader, Sticker } from '.';
 
@@ -37,6 +38,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
                 tag={goal.tagInfo.tagContent}
                 more={goal.description}
               />
+              <Reaction />
               {goal.tasks.length ? (
                 <Tasks goalId={id} tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
