@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+import { AddCommentButton } from './comment';
+
 interface LayoutProps {
   header: ReactNode;
   sticker: ReactNode;
@@ -15,6 +17,9 @@ export const DetailLayout = ({ header, sticker, body, footer }: LayoutProps) => 
         <div className="flex flex-col items-center justify-center flex-shrink-0 h-[272px] p-[136px] rounded-none">
           <div className="absolute w-[227px] h-[227px] bg-[#ffffff66] rounded-xl" />
           {sticker}
+          <div className="absolute right-0 bottom-0 mr-[23px] mb-[28px]">
+            <AddCommentButton />
+          </div>
         </div>
       </div>
 
