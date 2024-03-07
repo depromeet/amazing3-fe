@@ -129,7 +129,7 @@ const data = {
 
 export const CommentsBottomSheet = ({ goalId, ...props }: CommentsBottomSheetProps) => {
   return (
-    <CommentBottomSheetLayout title="댓글" total={data.totalComments} goalId={goalId} {...props}>
+    <CommentBottomSheetLayout total={data.totalComments} goalId={goalId} {...props}>
       {data.totalComments ? (
         <>
           {data.comments.map((comment) => (

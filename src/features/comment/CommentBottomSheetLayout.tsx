@@ -9,7 +9,6 @@ import { AddCommentInput } from './AddCommentInput';
 import './styles/CommentBottomSheetLayout.styles.css';
 
 export interface HeaderProps {
-  title: string;
   total: number;
 }
 
@@ -23,7 +22,6 @@ export const CommentBottomSheetLayout = ({
   goalId,
   open,
   onClose,
-  title,
   total,
   children,
   ...props
@@ -39,21 +37,21 @@ export const CommentBottomSheetLayout = ({
       ref={sheetRef}
       open={open}
       onDismiss={onClose}
-      HeaderComponent={<Header title={title} total={total} />}
+      HeaderComponent={<Header total={total} />}
       FooterComponent={<AddCommentInput goalId={goalId} onFocus={handleFocusInput} />}
       defaultSnap={({ maxHeight }) => maxHeight * 0.99}
       snapPoints={({ maxHeight }) => [maxHeight / 2, maxHeight * 0.99]}
       {...props}
     >
-      <div className="w-full flex flex-col px-xs">{children}</div>
+      <div className="w-full flex flex-col px-xs mt-6xs">{children}</div>
     </BottomSheet>
   );
 };
 
-const Header = ({ title, total }: HeaderProps) => {
+const Header = ({ total }: HeaderProps) => {
   return (
     <div className="flex gap-5xs items-center">
-      <Typography type="heading3">{title}</Typography>
+      <Typography type="heading3">댓글</Typography>
       <Typography type="body3" className="text-gray-40">
         {total}개
       </Typography>
