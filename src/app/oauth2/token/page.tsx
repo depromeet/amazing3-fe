@@ -21,7 +21,7 @@ const OAuthTokenPage = () => {
 
   useEffect(() => {
     if (isLoggedIn && memberData) {
-      router.push(memberData.birth ? `/home/${memberData.username}` : '/onboarding');
+      router.push(isLoggedIn ? `/home/${memberData.username}` : '/onboarding');
       localStorage.setItem('username', memberData.username);
     }
   }, [memberData, router, isLoggedIn]);
