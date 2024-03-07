@@ -85,7 +85,7 @@ export const UpdateForm = () => {
               <div {...register('birth')}>
                 <DateInput
                   labelName="생년월일"
-                  intitalValue={memberData.birth.replace(/\-/g, '.')}
+                  intitalValue={memberData.birth?.replace(/\-/g, '.')}
                   maxLength={MAX_DATE_LENGTH_UNTIL_DAY}
                   onChange={birthField.onChange}
                 />

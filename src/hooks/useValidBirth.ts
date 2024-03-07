@@ -4,7 +4,7 @@ import { MAX_DATE_LENGTH_UNTIL_DAY } from '@/constants';
 
 import { useToast } from './useToast';
 
-export const useValidBirth = (value: string) => {
+export const useValidBirth = (value?: string) => {
   const toast = useToast();
   const [isValid, setIsValid] = useState(false);
 
