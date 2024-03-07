@@ -29,7 +29,7 @@ export const CommentBottomSheetLayout = ({
   const sheetRef = useRef<BottomSheetRef | null>(null);
 
   const handleFocusInput = () => {
-    sheetRef.current?.snapTo(({ maxHeight }) => maxHeight * 0.99);
+    sheetRef.current?.snapTo(({ maxHeight }) => maxHeight * 0.6);
   };
 
   return (
@@ -39,8 +39,8 @@ export const CommentBottomSheetLayout = ({
       onDismiss={onClose}
       HeaderComponent={<Header total={total} />}
       FooterComponent={<AddCommentInput goalId={goalId} onFocus={handleFocusInput} />}
-      defaultSnap={({ maxHeight }) => maxHeight * 0.99}
-      snapPoints={({ maxHeight }) => [maxHeight / 2, maxHeight * 0.99]}
+      defaultSnap={({ maxHeight }) => maxHeight * 0.6}
+      snapPoints={({ maxHeight }) => [maxHeight / 2, maxHeight * 0.6, maxHeight * 0.99]}
       {...props}
     >
       <div className="w-full flex flex-col px-xs mt-6xs">{children}</div>

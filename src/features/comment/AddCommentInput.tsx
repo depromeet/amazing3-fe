@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 import { Input, type InputProps } from '@/components/atoms/input/Input';
 import { useInput } from '@/hooks';
@@ -18,8 +18,6 @@ export const AddCommentInput = ({ goalId, ...props }: AddCommentInputProps) => {
     reset();
     inputRef.current?.focus();
   };
-
-  useEffect(() => inputRef.current?.focus(), []);
 
   return (
     <Input
