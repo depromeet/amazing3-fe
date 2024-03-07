@@ -57,7 +57,7 @@ export const UpdateForm = () => {
       imageField.value.length === 0 ||
       nicknameField.value.length === 0 ||
       usernameField.value.length === 0 ||
-      birthField.value.length !== 10;
+      birthField.value?.length !== 10;
 
     setIsDisabledSubmit(isNotFilled || isNotModified || !isValidBirth);
   }, [memberData, imageField, nicknameField, birthField, usernameField, isValidBirth]);
