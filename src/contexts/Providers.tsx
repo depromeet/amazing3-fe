@@ -1,7 +1,6 @@
 'use client';
 
 import type { PropsWithChildren } from 'react';
-import React from 'react';
 import { OverlayProvider } from '@toss/use-overlay';
 import { domAnimation, LazyMotion } from 'framer-motion';
 
