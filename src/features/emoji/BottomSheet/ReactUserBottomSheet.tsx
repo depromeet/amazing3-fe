@@ -1,6 +1,6 @@
 'use client';
 
-import { Root as TabsRoot } from '@radix-ui/react-tabs';
+import * as Tabs from '@radix-ui/react-tabs';
 
 import { BottomSheet } from '@/components';
 
@@ -34,10 +34,10 @@ export const ReactUserBottomSheet = ({ open, onClose }: ReactUserBottomSheetProp
 
   return (
     <BottomSheet open={open} onDismiss={onClose} fixedMaxHeight={450}>
-      <TabsRoot>
+      <Tabs.Root>
         <Header {...data} />
         <Content reactedEmojis={data.reactedEmojis} />
-      </TabsRoot>
+      </Tabs.Root>
     </BottomSheet>
   );
 };

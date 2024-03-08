@@ -1,6 +1,4 @@
-'use client';
-
-import { Content as BaseContent } from '@radix-ui/react-tabs';
+import * as Tabs from '@radix-ui/react-tabs';
 
 import { ReactUser } from './ReactUser';
 
@@ -24,11 +22,11 @@ export const Content = ({ reactedEmojis }: ContentProps) => {
   return (
     <>
       {reactedEmojis.map((emoji) => (
-        <BaseContent value={emoji.name} key={emoji.id} className="px-xs pt-[13px]">
+        <Tabs.Content value={emoji.name} key={emoji.id} className="px-xs pt-[13px]">
           {emoji.reactUsers.map((user) => (
             <ReactUser key={`${emoji.id}-${user.username}`} {...user} />
           ))}
-        </BaseContent>
+        </Tabs.Content>
       ))}
     </>
   );

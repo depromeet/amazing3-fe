@@ -1,6 +1,4 @@
-'use client';
-
-import { List } from '@radix-ui/react-tabs';
+import * as Tabs from '@radix-ui/react-tabs';
 
 import { Emoji, Typography } from '@/components';
 import { addSuffixIfExceedsLimit } from '@/utils/suffix';
@@ -23,7 +21,7 @@ export const Header = ({ totalReactedEmojisCount, reactedEmojis }: HeaderProps) 
       <Typography type="body3" className="px-xs pt-5xs">
         총 {addSuffixIfExceedsLimit(totalReactedEmojisCount, 999)}개
       </Typography>
-      <List className="flex items-center gap-4xs py-5xs overflow-scroll px-xs scrollbar-width-none">
+      <Tabs.List className="flex items-center gap-4xs py-5xs overflow-scroll px-xs scrollbar-width-none">
         {reactedEmojis.map((emoji) => (
           <Tab key={emoji.id} value={emoji.name}>
             <div className="flex gap-6xs items-center">
@@ -32,7 +30,7 @@ export const Header = ({ totalReactedEmojisCount, reactedEmojis }: HeaderProps) 
             </div>
           </Tab>
         ))}
-      </List>
+      </Tabs.List>
     </div>
   );
 };

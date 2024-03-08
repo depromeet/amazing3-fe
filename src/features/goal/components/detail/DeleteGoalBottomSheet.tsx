@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 
 import BandiMoori from '@/assets/images/bandi-moori.png';

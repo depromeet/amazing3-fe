@@ -1,5 +1,3 @@
-'use client';
-
 import { WITHDRAW_BOTTOM_SHEET_SUBTITLE, WITHDRAW_BOTTOM_SHEET_TITLE } from '../../constants';
 import MyPageBottomSheet from '../MyPageBottomSheet';
 

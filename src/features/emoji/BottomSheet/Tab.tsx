@@ -1,5 +1,3 @@
-'use client';
-
 import type { PropsWithChildren } from 'react';
 import type { TabsTriggerProps } from '@radix-ui/react-tabs';
 import { Trigger } from '@radix-ui/react-tabs';

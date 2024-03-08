@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 
 import BandiBoodi3DImage from '@/assets/images/bandiboodi-3d.png';

@@ -1,5 +1,3 @@
-'use client';
-
 import { LOGOUT_BOTTOM_SHEET_SUBTITLE, LOGOUT_BOTTOM_SHEET_TITLE } from '../../constants';
 import MyPageBottomSheet from '../MyPageBottomSheet';
 
