@@ -1,4 +1,5 @@
 import { type RefObject, useState } from 'react';
+import * as Sentry from '@sentry/nextjs';
 import { domToJpeg } from 'modern-screenshot';
 
 import { GOAL_COUNT_PER_PAGE } from '@/features/home/constants';
@@ -66,6 +67,7 @@ export const useDownloadImage = ({ type, imageRef }: DownloadImageOption) => {
       downloadFile(imageUrl, IMAGE_FILE_NAME);
     } catch (error) {
       toast.warning('인생지도 다운로드에 실패했어요.');
+      Sentry.captureException(error);
     } finally {
       setIsDownloading(false);
     }

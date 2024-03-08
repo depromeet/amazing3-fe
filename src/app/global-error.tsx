@@ -2,10 +2,13 @@
 
 import { useEffect } from 'react';
 import NextError from 'next/error';
+import * as Sentry from '@sentry/nextjs';
 
 const GlobalError = ({ error }: { error: Error & { digest?: string } }) => {
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') return;
+
+    Sentry.captureException(error);
   }, [error]);
 
   return (
