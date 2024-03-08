@@ -1,4 +1,4 @@
-import { EmojisContainer, EmojisItem } from '@/components';
+import { EmojiGroup } from '@/components';
 
 const emojis = [
   {
@@ -19,14 +19,14 @@ export const Emojis = ({ onToggle }: EmojisProps) => {
   };
 
   return (
-    <EmojisContainer
+    <EmojiGroup.Container
       className="absolute left-0 right-0 transform -translate-y-1/2 top-[-110px] flex justify-center z-[2]"
       animate={{ ...animate, exit: animate.initial }}
     >
       {emojis.map((emoji) => (
-        <EmojisItem key={emoji.name} {...emoji} size={56} onClick={handleReactEmoji} />
+        <EmojiGroup.Emoji key={emoji.name} {...emoji} size={56} onClick={handleReactEmoji} />
       ))}
-    </EmojisContainer>
+    </EmojiGroup.Container>
   );
 };
 
