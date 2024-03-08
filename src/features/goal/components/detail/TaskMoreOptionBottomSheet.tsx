@@ -1,3 +1,5 @@
+'use client';
+
 import { BottomSheet, Button, Typography } from '@/components';
 import { useDeleteTask } from '@/hooks/reactQuery/task/useDeleteTask';
 

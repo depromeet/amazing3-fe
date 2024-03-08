@@ -1,3 +1,5 @@
+'use client';
+
 import type { Control } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 import Image from 'next/image';
