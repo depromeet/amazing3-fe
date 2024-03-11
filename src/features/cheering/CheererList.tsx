@@ -2,7 +2,6 @@
 
 import { InfiniteScroller } from '@/components/molecules';
 import { useGetCheerer } from '@/hooks/reactQuery/cheering';
-import { formatDotYYYYMMDD } from '@/utils/date';
 
 import { Cheerer } from './Cheerer';
 import { CheererCount } from './CheererCount';
@@ -20,15 +19,7 @@ export const CheererList = () => {
       <InfiniteScroller isLastPage={!hasNextPage} onIntersected={() => fetchNextPage()}>
         <div className="flex flex-col gap-6xs mx-[24px] h-[calc(100dvh - 80px)]">
           {cheererList?.pages.map((page) =>
-            page.contents.map(({ userId, userName, userNickName, userImageUrl, cheeringAt }) => (
-              <Cheerer
-                key={`${userId}-${cheeringAt}`}
-                image={userImageUrl}
-                username={userName}
-                nickname={userNickName}
-                cheeredAt={formatDotYYYYMMDD(cheeringAt)}
-              />
-            )),
+            page.contents.map(({ ...props }) => <Cheerer key={`${props.userId}-${props.cheeringAt}`} {...props} />),
           )}
         </div>
       </InfiniteScroller>
