@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react';
 import type { AnimationProps } from 'framer-motion';
 import { m } from 'framer-motion';
 
-import { Emoji, Typography } from '@/components';
+import { Emoji as BaseEmoji, Typography } from '@/components';
 import type { EmojiProps } from '@/components/atoms/emoji';
 
 interface EmojisContainerProps {
@@ -14,7 +14,7 @@ interface EmojisItemProps extends EmojiProps {
   onClick?: VoidFunction;
 }
 
-export const EmojisContainer = ({ className, animate, children }: PropsWithChildren<EmojisContainerProps>) => {
+const Container = ({ className, animate = defaultAnimate, children }: PropsWithChildren<EmojisContainerProps>) => {
   return (
     <m.div className={className} {...animate}>
       <div className="flex gap-6xs px-5xs py-4xs rounded-[20px] bg-white shadow-thumbStrong">{children}</div>
@@ -22,14 +22,22 @@ export const EmojisContainer = ({ className, animate, children }: PropsWithChild
   );
 };
 
-export const EmojisItem = ({ onClick, ...emoji }: EmojisItemProps) => {
+const Emoji = ({ onClick, ...emoji }: EmojisItemProps) => {
   return (
     <button
       className="flex flex-col gap-6xs items-center transition-transform duration-300 hover:-translate-y-1"
       onClick={onClick}
     >
-      <Emoji {...emoji} size={emoji.size} />
+      <BaseEmoji {...emoji} size={emoji.size} />
       <Typography type="body3">{emoji.name}</Typography>
     </button>
   );
+};
+
+export const EmojiGroup = { Container, Emoji };
+
+const defaultAnimate = {
+  initial: { opacity: 0, scale: 0.3 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.2 },
 };
