@@ -1,9 +1,9 @@
 import type { StoryObj } from '@storybook/react';
 
-import { EmojisContainer, EmojisItem } from '../emojis';
+import { EmojiGroup } from './EmojiGroup';
 
 const meta = {
-  title: 'components/molecules/emojis',
+  title: 'components/molecules/emojiGroup',
 };
 
 export default meta;
@@ -45,11 +45,11 @@ const emojis = [
 
 const ExampleEmojis = () => {
   return (
-    <EmojisContainer className="absolute top-0">
+    <EmojiGroup.Container className="absolute top-0">
       {emojis.map((emoji) => (
-        <EmojisItem key={emoji.name} {...emoji} size={56} onClick={() => alert('예를 들어 mutate?')} />
+        <EmojiGroup.Emoji key={emoji.name} {...emoji} size={56} onClick={() => alert('예를 들어 mutate?')} />
       ))}
-    </EmojisContainer>
+    </EmojiGroup.Container>
   );
 };
 
