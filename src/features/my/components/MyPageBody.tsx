@@ -33,7 +33,7 @@ const MyPageBody = () => {
                 반디부디에게 피드백 보내기
               </Typography>
             </div>
-            <ForwardIcon />
+            <ForwardIcon fill="#8490A0" />
           </div>
         </button>
         <button className="h-12 text-left border-b" onClick={handleOpenLogoutBottomSheet}>
