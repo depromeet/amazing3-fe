@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useAtom } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
 
 import { useGetGoal } from '@/hooks/reactQuery/goal';
 
-import { isMyGoalAtom } from '../../atom';
+import { goalIdAtom, isMyGoalAtom } from '../../atom';
 
 import { AddTaskInput } from './AddTaskInput';
 import DetailLayout from './DetailLayout';
@@ -16,11 +16,13 @@ import { AddSubGoalPrompt, ContentBody, DetailFooterButton, DetailHeader, Sticke
 export const GoalDetailContent = ({ id }: { id: number }) => {
   const { data: goal } = useGetGoal({ goalId: Number(id) });
   const [isMyGoal, setIsMyGoal] = useAtom(isMyGoalAtom);
+  const setGoalId = useSetAtom(goalIdAtom);
   const [isOpenTaskInput, setOpenTaskInput] = useState(false);
 
   useEffect(() => {
     if (goal) setIsMyGoal(goal.isMyGoal);
-  }, [goal, setIsMyGoal]);
+    setGoalId(id);
+  }, [goal, id, setGoalId, setIsMyGoal]);
 
   const handleOpenTaskInput = (status: boolean) => () => setOpenTaskInput(status);
 
