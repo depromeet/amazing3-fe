@@ -1,3 +1,5 @@
+'use client';
+
 import { forwardRef, type PropsWithChildren, type ReactNode } from 'react';
 
 import { Typography } from '@/components';
