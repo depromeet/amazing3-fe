@@ -19,19 +19,10 @@ export const Emojis = ({ onToggle }: EmojisProps) => {
   };
 
   return (
-    <EmojiGroup.Container
-      className="absolute left-0 right-0 transform -translate-y-1/2 top-[-110px] flex justify-center z-[2]"
-      animate={{ ...animate, exit: animate.initial }}
-    >
+    <EmojiGroup.Container className="absolute left-0 right-0 transform -translate-y-1/2 top-[-110px] flex justify-center z-[2]">
       {emojis.map((emoji) => (
         <EmojiGroup.Emoji key={emoji.name} {...emoji} size={56} onClick={handleReactEmoji} />
       ))}
     </EmojiGroup.Container>
   );
-};
-
-const animate = {
-  initial: { opacity: 0, scale: 0.3 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.2 },
 };

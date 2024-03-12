@@ -14,7 +14,7 @@ interface EmojisItemProps extends EmojiProps {
   onClick?: VoidFunction;
 }
 
-const Container = ({ className, animate, children }: PropsWithChildren<EmojisContainerProps>) => {
+const Container = ({ className, animate = defaultAnimate, children }: PropsWithChildren<EmojisContainerProps>) => {
   return (
     <m.div className={className} {...animate}>
       <div className="flex gap-6xs px-5xs py-4xs rounded-[20px] bg-white shadow-thumbStrong">{children}</div>
@@ -35,3 +35,9 @@ const Emoji = ({ onClick, ...emoji }: EmojisItemProps) => {
 };
 
 export const EmojiGroup = { Container, Emoji };
+
+const defaultAnimate = {
+  initial: { opacity: 0, scale: 0.3 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.2 },
+};
