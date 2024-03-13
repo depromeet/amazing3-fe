@@ -1,18 +1,18 @@
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import PlusIcon from '@/assets/icons/plus.svg';
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 import { formatDotYYYYMM } from '@/utils/date';
 
-import ViewCommentButton from './ViewCommentButton';
+interface FeedCardBodyProps extends GoalFeedProps {
+  interactionComponent?: ReactNode;
+}
 
-interface FeedCardBodyProps extends GoalFeedProps {}
-
-const FeedCardBody = ({ goal, count }: FeedCardBodyProps) => {
+const FeedCardBody = ({ goal, count, interactionComponent }: FeedCardBodyProps) => {
   return (
     <div className="ml-lg flex flex-col gap-4xs">
       <Link href={{ pathname: `/goal/detail/${goal.id}` }}>
@@ -44,13 +44,7 @@ const FeedCardBody = ({ goal, count }: FeedCardBodyProps) => {
           </div>
         </div>
       </Link>
-      {/* TODO: 이모지 추가 */}
-      <div>
-        <button className="w-[28px] h-[28px] flex justify-center items-center rounded-full bg-gradient3">
-          <PlusIcon width={18} height={18} fill="#FFFFFF" />
-        </button>
-      </div>
-      <ViewCommentButton numberOfComments={count.comment} />
+      {interactionComponent}
     </div>
   );
 };
