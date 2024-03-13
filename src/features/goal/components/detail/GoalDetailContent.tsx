@@ -40,7 +40,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
               />
               <Reaction />
               {goal.tasks.length ? (
-                <Tasks goalId={id} tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
+                <Tasks tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
                 isMyGoal && !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
               )}
@@ -49,7 +49,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
         }
         footer={<DetailFooterButton />}
       />
-      {isOpenTaskInput && <AddTaskInput goalId={id} isOpen={isOpenTaskInput} onOpen={setOpenTaskInput} />}
+      {isOpenTaskInput && <AddTaskInput isOpen={isOpenTaskInput} onOpen={setOpenTaskInput} />}
     </>
   );
 };

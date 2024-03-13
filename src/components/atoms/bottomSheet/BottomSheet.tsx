@@ -21,7 +21,6 @@ export const BottomSheet = forwardRef<RefHandles, BottomSheetProps>(
   ) => {
     return (
       <BaseBottomSheet
-        {...props}
         ref={ref}
         open={open}
         onDismiss={onDismiss}
@@ -30,6 +29,7 @@ export const BottomSheet = forwardRef<RefHandles, BottomSheetProps>(
         expandOnContentDrag={false}
         header={HeaderComponent}
         footer={FooterComponent}
+        {...props}
       >
         {children}
       </BaseBottomSheet>
