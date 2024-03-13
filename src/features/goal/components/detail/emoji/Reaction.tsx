@@ -7,6 +7,7 @@ import { goalIdAtom } from '@/features/goal/atom';
 import { ReactedEmojis } from '@/features/goal/components/detail/emoji/ReactedEmojis';
 import { ReactionUserTotalCount } from '@/features/goal/components/detail/emoji/ReactionUserTotalCount';
 import { useGetEmojiByGoal } from '@/hooks/reactQuery/emoji';
+import { usePrefetchAllEmoji } from '@/hooks/reactQuery/emoji/useGetAllEmoji';
 
 import { Emojis } from './Emojis';
 
@@ -14,6 +15,7 @@ export const Reaction = () => {
   const [isOpenEmojis, setOpenEmojis] = useState(false);
   const goalId = useAtomValue(goalIdAtom);
   const { data } = useGetEmojiByGoal({ goalId });
+  usePrefetchAllEmoji();
 
   const handleToggleEmojis = () => setOpenEmojis((prev) => !prev);
 
