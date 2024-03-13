@@ -10,7 +10,7 @@ export const ReactUser = ({ username, image, nickname }: ReactedUserProps) => {
     <Link href={{ pathname: `/home/${username}` }}>
       <button className="w-full flex flex-col gap-xs">
         <div className="flex gap-4xs items-center">
-          <Image src={image} width={50} height={50} alt="user-profile" />
+          <Image src={image} width={50} height={50} alt="user-profile" className="rounded-full" />
           <Typography type="body1">{nickname}</Typography>
         </div>
       </button>

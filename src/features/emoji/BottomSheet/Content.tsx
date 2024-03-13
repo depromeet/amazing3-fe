@@ -24,7 +24,10 @@ export const Content = ({ reactedEmojis }: ContentProps) => {
       {reactedEmojis.map((emoji) => (
         <Tabs.Content value={emoji.name} key={emoji.id} className="px-xs pt-[13px]">
           {emoji.reactUsers.map((user) => (
-            <ReactUser key={`${emoji.id}-${user.username}`} {...user} />
+            <div key={`${emoji.id}-${user.username}`} className="pb-4xs">
+              <ReactUser {...user} />
+              <div className="h-[1px] bg-gray-20 mt-4xs" />
+            </div>
           ))}
         </Tabs.Content>
       ))}
