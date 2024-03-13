@@ -1,9 +1,9 @@
-import PlusIcon from '@/assets/icons/plus.svg';
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 
 import FeedCardBody from './FeedCardBody';
 import FeedCardHeader from './FeedCardHeader';
 import FeedCardLayout from './FeedCardLayout';
+import { ReactionGroup } from './reactionGroup';
 import ViewCommentButton from './ViewCommentButton';
 
 interface FeedCardProps {
@@ -33,12 +33,8 @@ const FeedCard = ({ feedData }: FeedCardProps) => {
               count={count}
               interactionComponent={
                 <>
-                  {/* TODO: 이모지 추가 */}
-                  <div>
-                    <button className="w-[28px] h-[28px] flex justify-center items-center rounded-full bg-gradient3">
-                      <PlusIcon width={18} height={18} fill="#FFFFFF" />
-                    </button>
-                  </div>
+                  {/* TODO: 다른 유저가 이미 반응한 이모지 버튼 추가 */}
+                  <ReactionGroup />
                   <ViewCommentButton numberOfComments={count.comment} />
                 </>
               }
