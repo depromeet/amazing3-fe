@@ -10,6 +10,7 @@ const spanVariants = cva('whitespace-pre-line', {
       blue55: 'text-blue-55',
       blue50: 'text-blue-50',
       purple30: 'text-purple-30',
+      gray50: 'text-gray-50',
     },
   },
   defaultVariants: {
