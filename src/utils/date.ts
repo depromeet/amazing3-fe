@@ -1,3 +1,5 @@
+import { HOURS_PER_DAY, MINUTES_PER_HOUR, SECONDS_PER_MINUTE } from '@/constants';
+
 export const formatDate = (splitedDate: string[], separator: string) => {
   return splitedDate.join(separator);
 };
@@ -35,4 +37,25 @@ export const isLargerThanToday = (year: string, month: string) => {
 export const formatDotYYYYMMDD = (time: string) => {
   const [YYYYMMDD] = time.split('T');
   return YYYYMMDD.replaceAll('-', '.');
+};
+
+export const formatDotYYYYMM = (time: string) => {
+  const [YYYYMM] = time.split('T');
+  return YYYYMM.split('-').slice(0, -1).join('.');
+};
+
+export const convertTimeToElapsedTime = (time: string) => {
+  const start = new Date(time);
+  const end = new Date();
+
+  const seconds = Math.floor((end.getTime() - start.getTime()) / 1000);
+  if (seconds < SECONDS_PER_MINUTE) return '방금 전';
+
+  const minutes = seconds / SECONDS_PER_MINUTE;
+  if (minutes < MINUTES_PER_HOUR) return `${Math.floor(minutes)}분 전`;
+
+  const hours = minutes / MINUTES_PER_HOUR;
+  if (hours < HOURS_PER_DAY) return `${Math.floor(hours)}시간 전`;
+
+  return `${start.toLocaleDateString()}`;
 };
