@@ -1,7 +1,7 @@
 import { EmojiGroup } from '@/components';
 
 // TODO: 모든 emoji를 받아오는 API로 수정 예정
-const emojis = [
+export const emojis = [
   {
     id: 1,
     url: 'https://github.com/depromeet/amazing3-fe/assets/112946860/3727715a-a778-4630-82b7-663662516ecc',
@@ -45,7 +45,7 @@ const SelectReactionWindow = ({ onToggle }: EmojisProps) => {
   };
 
   return (
-    <EmojiGroup.Container className="absolute left-0 right-0 transform -translate-y-1/2 top-[48px] flex justify-center z-[2]">
+    <EmojiGroup.Container className="absolute left-0 right-0 transform -translate-y-1/2 top-[16px] flex justify-center z-[2]">
       {emojis.map((emoji) => (
         <EmojiGroup.Emoji key={emoji.name} {...emoji} size={56} onClick={handleReactEmoji} />
       ))}
