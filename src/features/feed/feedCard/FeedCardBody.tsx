@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import CommentIcon from '@/assets/icons/comment-icon.svg';
 import PlusIcon from '@/assets/icons/plus.svg';
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 import { formatDotYYYYMM } from '@/utils/date';
+
+import ViewCommentButton from './ViewCommentButton';
 
 interface FeedCardBodyProps extends GoalFeedProps {}
 
@@ -49,15 +50,7 @@ const FeedCardBody = ({ goal, count }: FeedCardBodyProps) => {
           <PlusIcon width={18} height={18} fill="#FFFFFF" />
         </button>
       </div>
-      {/* TODO: 댓글 페이지 이동 */}
-      <div>
-        <button className="flex gap-6xs items-center">
-          <CommentIcon />
-          <Typography type="title4" className="text-gray-40">
-            {count.comment > 0 ? `${count.comment}개의 댓글` : '댓글 작성하기'}
-          </Typography>
-        </button>
-      </div>
+      <ViewCommentButton numberOfComments={count.comment} />
     </div>
   );
 };
