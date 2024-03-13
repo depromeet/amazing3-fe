@@ -1,18 +1,21 @@
 import { useRef } from 'react';
+import { useAtomValue } from 'jotai';
 
 import { Input } from '@/components';
 import { useFocusInput, useInput, useOutsideClick } from '@/hooks';
 import { useCreateTask } from '@/hooks/reactQuery/task';
 
+import { goalIdAtom } from '../../atoms';
+
 interface AddTaskInputProps {
-  goalId: number;
   isOpen: boolean;
   onOpen: (status: boolean) => void;
 }
 
 export const TASK_MAX_LENGTH = 30;
 
-export const AddTaskInput = ({ goalId, isOpen, onOpen }: AddTaskInputProps) => {
+export const AddTaskInput = ({ isOpen, onOpen }: AddTaskInputProps) => {
+  const goalId = useAtomValue(goalIdAtom);
   const { mutate } = useCreateTask();
 
   const inputRef = useFocusInput(isOpen);

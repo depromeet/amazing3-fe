@@ -1,0 +1,1 @@
+export { goalIdAtom } from './goalId';

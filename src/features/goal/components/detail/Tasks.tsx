@@ -6,18 +6,19 @@ import type { GoalTasksProps } from '@/hooks/reactQuery/goal/useGetGoal';
 import { useUpdateIsDone } from '@/hooks/reactQuery/task';
 
 import { isMyGoalAtom } from '../../atom';
+import { goalIdAtom } from '../../atoms';
 
 import { Task } from './task';
 
 interface TasksProps {
-  goalId: number;
   tasks: GoalTasksProps[];
   onOpenInput: VoidFunction;
 }
 
-export const Tasks = ({ goalId, tasks, onOpenInput }: TasksProps) => {
-  const isMyGoal = useAtomValue(isMyGoalAtom);
+export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
+  const goalId = useAtomValue(goalIdAtom);
   const { mutate } = useUpdateIsDone();
+  const isMyGoal = useAtomValue(isMyGoalAtom);
 
   return (
     <div className="flex flex-col gap-4xs pb-4xl">

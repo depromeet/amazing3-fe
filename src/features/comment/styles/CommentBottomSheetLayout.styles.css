@@ -1,0 +1,15 @@
+[data-rsbs-overlay] {
+  max-height: calc(100dvh - 24px);
+}
+
+[data-rsbs-header] {
+  @apply px-xs pb-4xs;
+}
+
+[data-rsbs-scroll] {
+  @apply w-full h-full;
+}
+
+[data-rsbs-content] {
+  @apply w-full min-h-full flex flex-col items-center justify-center;
+}

@@ -1,3 +1,4 @@
+export { Comment } from './comment';
 export { ContentWrapper } from './contentWrapper';
 export { CountEmoji } from './countEmoji';
 export { EmojiGroup } from './emojiGroup';
