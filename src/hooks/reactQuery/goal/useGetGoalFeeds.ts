@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
@@ -33,9 +33,16 @@ export type GoalFeedResponse = {
   };
 };
 
+const PAGE_SIZE = 10;
+
 export const useGetGoalFeeds = () => {
-  return useQuery<GoalFeedResponse>({
+  return useInfiniteQuery<GoalFeedResponse>({
     queryKey: ['goalFeeds'],
-    queryFn: () => api.get<GoalFeedResponse>('/goal/explore'),
+    queryFn: ({ pageParam }) => {
+      const queryString = pageParam ? `?cursor=${pageParam}` : '';
+      return api.get<GoalFeedResponse>(`/goal/explore${queryString}`);
+    },
+    initialPageParam: null,
+    getNextPageParam: ({ goals, cursor }) => (cursor && goals.length === PAGE_SIZE ? cursor.next : null),
   });
 };
