@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
@@ -28,7 +28,7 @@ type ReactUserProps = {
 };
 
 export const useGetEmojiByGoal = ({ goalId }: EmojiRequestParams) => {
-  return useQuery<EmojiResponse>({
+  return useSuspenseQuery<EmojiResponse>({
     queryKey: ['emoji', goalId],
     queryFn: () => api.get<EmojiResponse>(`/goal/${goalId}/emoji`),
   });

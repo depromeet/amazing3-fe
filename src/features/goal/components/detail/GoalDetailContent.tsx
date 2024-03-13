@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useAtom, useSetAtom } from 'jotai';
 
+import { Skeleton } from '@/components';
 import { useGetGoal } from '@/hooks/reactQuery/goal';
 
 import { goalIdAtom, isMyGoalAtom } from '../../atom';
@@ -40,7 +41,9 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
                 tag={goal.tagInfo.tagContent}
                 more={goal.description}
               />
-              <Reaction />
+              <Suspense fallback={<Skeleton className="w-full h-[122px]" />}>
+                <Reaction />
+              </Suspense>
               {goal.tasks.length ? (
                 <Tasks tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
