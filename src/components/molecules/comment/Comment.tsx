@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { m } from 'framer-motion';
 
 import TrashIcon from '@/assets/icons/trash-icon.svg';
 import { Typography } from '@/components';
@@ -19,7 +22,7 @@ interface CommentProps {
 
 export const Comment = ({ commenter, content, writtenAt, isDeletable, onDelete }: CommentProps) => {
   return (
-    <div className="flex gap-4xs">
+    <m.div className="flex gap-4xs" {...animate}>
       <Link href={{ pathname: `/home/${commenter.username}` }}>
         <Image src={commenter.image} width={50} height={50} alt="user_profile_image" className="rounded-full" />
       </Link>
@@ -41,6 +44,14 @@ export const Comment = ({ commenter, content, writtenAt, isDeletable, onDelete }
         </div>
         <Typography type="body2">{content}</Typography>
       </div>
-    </div>
+    </m.div>
   );
+};
+
+const animate = {
+  layout: true,
+  initial: { y: -20 },
+  animate: { y: 0 },
+  exit: { opacity: 0, y: -20, height: 0, overflow: 'hidden', transition: { duration: 0.3 } },
+  transition: { duration: 0.3 },
 };
