@@ -13,7 +13,13 @@ interface FeedCardHeaderProps {
   goalCounts: number;
 }
 
-const FeedCardHeader = ({ profileImage, nickname, username, goalCreatedTime, goalCounts }: FeedCardHeaderProps) => {
+export const FeedCardHeader = ({
+  profileImage,
+  nickname,
+  username,
+  goalCreatedTime,
+  goalCounts,
+}: FeedCardHeaderProps) => {
   return (
     <div className="flex justify-between items-center">
       <div className="flex gap-5xs">
@@ -38,5 +44,3 @@ const FeedCardHeader = ({ profileImage, nickname, username, goalCreatedTime, goa
     </div>
   );
 };
-
-export default FeedCardHeader;
