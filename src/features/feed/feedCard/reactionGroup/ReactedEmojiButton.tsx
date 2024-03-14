@@ -1,6 +1,7 @@
 import { type ButtonHTMLAttributes, useState } from 'react';
 
 import { Emoji, Typography } from '@/components';
+import { formatOver999 } from '@/utils/number';
 
 interface ReactedEmojiButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   url: string;
@@ -29,7 +30,7 @@ export const ReactedEmojiButton = ({ url, name, count, isMyReaction, ...props }:
     >
       <Emoji url={url} size={24} name={name} />
       <Typography type="caption1" className={`${isClicked ? 'text-blue-50' : 'text-gray-40'}`}>
-        {currentCount > 999 ? '999+' : currentCount}
+        {formatOver999(currentCount)}
       </Typography>
     </button>
   );
