@@ -11,7 +11,7 @@ interface CommentButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   numberOfComments: number;
 }
 
-export const ViewCommentButton = ({ numberOfComments, ...props }: CommentButtonProps) => {
+export const CommentButton = ({ numberOfComments, ...props }: CommentButtonProps) => {
   const { open } = useOverlay();
   const goalId = useAtomValue(goalIdAtom);
 

@@ -4,7 +4,7 @@ import { FeedCardBody } from './FeedCardBody';
 import { FeedCardHeader } from './FeedCardHeader';
 import { FeedCardLayout } from './FeedCardLayout';
 import { ReactionGroup } from './reactionGroup';
-import { ViewCommentButton } from './ViewCommentButton';
+import { CommentButton } from './ViewCommentButton';
 
 interface FeedCardProps {
   feedData: Array<GoalFeedProps>;
@@ -35,7 +35,7 @@ const FeedCard = ({ feedData }: FeedCardProps) => {
                 <>
                   {/* TODO: 다른 유저가 이미 반응한 이모지 버튼 추가 */}
                   <ReactionGroup />
-                  <ViewCommentButton numberOfComments={count.comment} />
+                  <CommentButton numberOfComments={count.comment} />
                 </>
               }
             />
