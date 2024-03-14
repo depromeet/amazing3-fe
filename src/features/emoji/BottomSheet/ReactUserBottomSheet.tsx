@@ -1,4 +1,4 @@
-import * as Tabs from '@radix-ui/react-tabs';
+import { Root as TabsRoot } from '@radix-ui/react-tabs';
 
 import { BottomSheet } from '@/components';
 import { useGetEmojiByGoal } from '@/hooks/reactQuery/emoji';
@@ -18,10 +18,10 @@ export const ReactUserBottomSheet = ({ goalId, open, onClose }: ReactUserBottomS
   return (
     <BottomSheet open={open} onDismiss={onClose} fixedMaxHeight={450}>
       {data && (
-        <Tabs.Root>
+        <TabsRoot>
           <Header totalReactedEmojisCount={data?.totalReactedEmojisCount} reactedEmojis={data?.reactedEmojis} />
           <Content reactedEmojis={data.reactedEmojis} />
-        </Tabs.Root>
+        </TabsRoot>
       )}
     </BottomSheet>
   );
