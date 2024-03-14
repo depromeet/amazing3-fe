@@ -2,17 +2,17 @@ import { useState } from 'react';
 
 import { ReactionAddButton } from '@/features/emoji';
 
+import { Emojis, emojisData } from './Emojis';
 import { ReactedEmojiButton } from './ReactedEmojiButton';
-import { emojis, SelectReactionWindow } from './SelectReactionWindow';
 
 // TODO: API 연결 후 삭제 예정
 const reactedEmojis = [
-  { url: emojis[0].url, name: emojis[0].name, count: 3, isMyReaction: true },
-  { url: emojis[0].url, name: emojis[0].name, count: 27, isMyReaction: false },
-  { url: emojis[0].url, name: emojis[0].name, count: 123, isMyReaction: true },
-  { url: emojis[0].url, name: emojis[0].name, count: 12313, isMyReaction: true },
-  { url: emojis[0].url, name: emojis[0].name, count: 11, isMyReaction: false },
-  { url: emojis[0].url, name: emojis[0].name, count: 999, isMyReaction: false },
+  { url: emojisData[0].url, name: emojisData[0].name, count: 3, isMyReaction: true },
+  { url: emojisData[0].url, name: emojisData[0].name, count: 27, isMyReaction: false },
+  { url: emojisData[0].url, name: emojisData[0].name, count: 123, isMyReaction: true },
+  { url: emojisData[0].url, name: emojisData[0].name, count: 12313, isMyReaction: true },
+  { url: emojisData[0].url, name: emojisData[0].name, count: 11, isMyReaction: false },
+  { url: emojisData[0].url, name: emojisData[0].name, count: 999, isMyReaction: false },
 ];
 
 export const ReactionGroup = () => {
@@ -30,7 +30,7 @@ export const ReactionGroup = () => {
         ))}
         <ReactionAddButton isOpen={isOpenWindow} onClick={handleToggleWindow} />
       </div>
-      <div className="relative w-full">{isOpenWindow && <SelectReactionWindow onToggle={handleToggleWindow} />}</div>
+      <div className="relative w-full">{isOpenWindow && <Emojis onToggle={handleToggleWindow} />}</div>
     </>
   );
 };
