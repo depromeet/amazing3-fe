@@ -1,0 +1,1 @@
+export { useGetComment } from './useGetComment';
