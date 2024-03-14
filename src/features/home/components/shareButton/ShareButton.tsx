@@ -1,15 +1,37 @@
-import type { ButtonHTMLAttributes } from 'react';
+import type { RefObject } from 'react';
+import { useCallback } from 'react';
+import { useOverlay } from '@toss/use-overlay';
 
 import ShareIcon from '@/assets/icons/share.svg';
 
-/**
- * TODO 1: 디자인 시스템 반영된 Button으로 대체하기
- * TODO 2: 클릭 이벤트 연결하기
- */
+import { ImageDownloadBottomSheet, ShareBottomSheet } from '../shareBottomSheet';
 
-export const ShareButton = ({ ...props }: ButtonHTMLAttributes<HTMLButtonElement>) => {
+interface ShareButtonProps {
+  shareRef?: RefObject<HTMLElement>;
+}
+
+export const ShareButton = ({ shareRef }: ShareButtonProps) => {
+  const overlay = useOverlay();
+
+  const handleOpenShareBottomSheet = useCallback(() => {
+    overlay.open(({ isOpen, close }) => (
+      <ShareBottomSheet
+        open={isOpen}
+        onClose={close}
+        onClickImageDownload={() => {
+          overlay.open(({ isOpen, close }) => (
+            <ImageDownloadBottomSheet open={isOpen} onClose={close} ref={shareRef} />
+          ));
+        }}
+      />
+    ));
+  }, [overlay, shareRef]);
+
   return (
-    <button className="w-[60px] h-[60px] p-2xs flex justify-center items-center bg-blue-10 rounded-lg" {...props}>
+    <button
+      className="flex justify-center items-center w-[40px] h-[40px] rounded-full bg-white transition duration-300 ease-in-out hover:scale-110 hover:bg-gradient5"
+      onClick={handleOpenShareBottomSheet}
+    >
       <ShareIcon />
     </button>
   );
