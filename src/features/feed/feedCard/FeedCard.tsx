@@ -31,7 +31,7 @@ const FeedCard = ({ feedData }: FeedCardProps) => {
               user={user}
               goal={goal}
               count={count}
-              interactionComponent={
+              footer={
                 <>
                   {/* TODO: 다른 유저가 이미 반응한 이모지 버튼 추가 */}
                   <ReactionGroup />

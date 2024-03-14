@@ -9,10 +9,10 @@ import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 import { formatDotYYYYMM } from '@/utils/date';
 
 interface FeedCardBodyProps extends GoalFeedProps {
-  interactionComponent?: ReactNode;
+  footer?: ReactNode;
 }
 
-export const FeedCardBody = ({ goal, count, interactionComponent }: FeedCardBodyProps) => {
+export const FeedCardBody = ({ goal, count, footer }: FeedCardBodyProps) => {
   return (
     <div className="ml-lg flex flex-col gap-4xs">
       <Link href={{ pathname: `/goal/detail/${goal.id}` }}>
@@ -44,7 +44,7 @@ export const FeedCardBody = ({ goal, count, interactionComponent }: FeedCardBody
           </div>
         </div>
       </Link>
-      {interactionComponent}
+      {footer}
     </div>
   );
 };
