@@ -3,7 +3,7 @@ import { useAtomValue } from 'jotai';
 
 import { ToolTip } from '@/components';
 import { ReactionAddButton } from '@/features/emoji/ReactionAddButton';
-import { goalIdAtom } from '@/features/goal/atom';
+import { goalIdAtom } from '@/features/goal/atoms';
 import { ReactedEmojis } from '@/features/goal/components/detail/emoji/ReactedEmojis';
 import { ReactionUserTotalCount } from '@/features/goal/components/detail/emoji/ReactionUserTotalCount';
 import { useGetEmojiByGoal } from '@/hooks/reactQuery/emoji';
