@@ -1,17 +1,18 @@
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import CommentIcon from '@/assets/icons/comment-icon.svg';
-import PlusIcon from '@/assets/icons/plus.svg';
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 import { formatDotYYYYMM } from '@/utils/date';
 
-interface FeedCardBodyProps extends GoalFeedProps {}
+interface FeedCardBodyProps extends GoalFeedProps {
+  footer?: ReactNode;
+}
 
-const FeedCardBody = ({ goal, count }: FeedCardBodyProps) => {
+export const FeedCardBody = ({ goal, count, footer }: FeedCardBodyProps) => {
   return (
     <div className="ml-lg flex flex-col gap-4xs">
       <Link href={{ pathname: `/goal/detail/${goal.id}` }}>
@@ -43,23 +44,7 @@ const FeedCardBody = ({ goal, count }: FeedCardBodyProps) => {
           </div>
         </div>
       </Link>
-      {/* TODO: 이모지 추가 */}
-      <div>
-        <button className="w-[28px] h-[28px] flex justify-center items-center rounded-full bg-gradient3">
-          <PlusIcon width={18} height={18} fill="#FFFFFF" />
-        </button>
-      </div>
-      {/* TODO: 댓글 페이지 이동 */}
-      <div>
-        <button className="flex gap-6xs items-center">
-          <CommentIcon />
-          <Typography type="title4" className="text-gray-40">
-            {count.comment > 0 ? `${count.comment}개의 댓글` : '댓글 작성하기'}
-          </Typography>
-        </button>
-      </div>
+      {footer}
     </div>
   );
 };
-
-export default FeedCardBody;
