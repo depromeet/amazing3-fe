@@ -2,6 +2,7 @@ import { useRef } from 'react';
 
 import { Input, type InputProps } from '@/components/atoms/input/Input';
 import { useInput } from '@/hooks';
+import { useCreateComment } from '@/hooks/reactQuery/comment';
 
 interface AddCommentInputProps extends InputProps {
   goalId: number;
@@ -12,9 +13,10 @@ export const COMMENT_MAX_LENGTH = 30;
 export const AddCommentInput = ({ goalId, ...props }: AddCommentInputProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { value: comment, handleChange: handleComment, reset } = useInput('');
+  const { mutate } = useCreateComment();
 
   const handleSubmit = () => {
-    // TODO: 댓글 등록 api 요청
+    mutate({ goalId, content: comment });
     reset();
     inputRef.current?.focus();
   };
