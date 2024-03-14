@@ -5,7 +5,7 @@ interface FeedCardLayoutProps {
   body: ReactNode;
 }
 
-const FeedCardLayout = ({ header, body }: FeedCardLayoutProps) => {
+export const FeedCardLayout = ({ header, body }: FeedCardLayoutProps) => {
   return (
     <div className="flex flex-col gap-4xs">
       {header}
@@ -16,5 +16,3 @@ const FeedCardLayout = ({ header, body }: FeedCardLayoutProps) => {
     </div>
   );
 };
-
-export default FeedCardLayout;

@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { ReactionAddButton } from '@/features/emoji';
 
-import ReactedEmojiButton from './ReactedEmojiButton';
-import SelectReactionWindow, { emojis } from './SelectReactionWindow';
+import { ReactedEmojiButton } from './ReactedEmojiButton';
+import { emojis, SelectReactionWindow } from './SelectReactionWindow';
 
 // TODO: API 연결 후 삭제 예정
 const reactedEmojis = [

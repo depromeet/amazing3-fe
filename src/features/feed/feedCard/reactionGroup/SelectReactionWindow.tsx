@@ -38,7 +38,7 @@ interface EmojisProps {
   onToggle: VoidFunction;
 }
 
-const SelectReactionWindow = ({ onToggle }: EmojisProps) => {
+export const SelectReactionWindow = ({ onToggle }: EmojisProps) => {
   const handleReactEmoji = () => {
     // TODO: 리액션 추가하는 api
     onToggle();
@@ -52,5 +52,3 @@ const SelectReactionWindow = ({ onToggle }: EmojisProps) => {
     </EmojiGroup.Container>
   );
 };
-
-export default SelectReactionWindow;

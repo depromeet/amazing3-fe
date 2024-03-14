@@ -9,7 +9,7 @@ interface ReactedEmojiButtonProps extends ButtonHTMLAttributes<HTMLButtonElement
   isMyReaction: boolean;
 }
 
-const ReactedEmojiButton = ({ url, name, count, isMyReaction, ...props }: ReactedEmojiButtonProps) => {
+export const ReactedEmojiButton = ({ url, name, count, isMyReaction, ...props }: ReactedEmojiButtonProps) => {
   const [isClicked, setIsClicked] = useState(isMyReaction);
   const [currentCount, setCurrentCount] = useState(count);
 
@@ -34,5 +34,3 @@ const ReactedEmojiButton = ({ url, name, count, isMyReaction, ...props }: Reacte
     </button>
   );
 };
-
-export default ReactedEmojiButton;

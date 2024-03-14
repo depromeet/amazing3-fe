@@ -30,5 +30,3 @@ export const ViewCommentButton = ({ numberOfComments, ...props }: CommentButtonP
     </div>
   );
 };
-
-export default ViewCommentButton;

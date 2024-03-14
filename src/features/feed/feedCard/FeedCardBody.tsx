@@ -12,7 +12,7 @@ interface FeedCardBodyProps extends GoalFeedProps {
   interactionComponent?: ReactNode;
 }
 
-const FeedCardBody = ({ goal, count, interactionComponent }: FeedCardBodyProps) => {
+export const FeedCardBody = ({ goal, count, interactionComponent }: FeedCardBodyProps) => {
   return (
     <div className="ml-lg flex flex-col gap-4xs">
       <Link href={{ pathname: `/goal/detail/${goal.id}` }}>
@@ -48,5 +48,3 @@ const FeedCardBody = ({ goal, count, interactionComponent }: FeedCardBodyProps) 
     </div>
   );
 };
-
-export default FeedCardBody;

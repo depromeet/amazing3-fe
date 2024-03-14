@@ -1,10 +1,10 @@
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 
-import FeedCardBody from './FeedCardBody';
-import FeedCardHeader from './FeedCardHeader';
-import FeedCardLayout from './FeedCardLayout';
+import { FeedCardBody } from './FeedCardBody';
+import { FeedCardHeader } from './FeedCardHeader';
+import { FeedCardLayout } from './FeedCardLayout';
 import { ReactionGroup } from './reactionGroup';
-import ViewCommentButton from './ViewCommentButton';
+import { ViewCommentButton } from './ViewCommentButton';
 
 interface FeedCardProps {
   feedData: Array<GoalFeedProps>;
