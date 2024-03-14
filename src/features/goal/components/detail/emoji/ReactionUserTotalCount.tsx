@@ -5,7 +5,7 @@ import { useAtomValue } from 'jotai';
 import ReactionMembersImage from '@/assets/images/reaction-members.png';
 import { Typography } from '@/components';
 import { ReactUserBottomSheet } from '@/features/emoji/BottomSheet';
-import { goalIdAtom } from '@/features/goal/atom';
+import { goalIdAtom } from '@/features/goal/atoms';
 import { addSuffixIfExceedsLength, addSuffixIfExceedsLimit } from '@/utils/suffix';
 
 interface ReactionUserTotalCountProps {
