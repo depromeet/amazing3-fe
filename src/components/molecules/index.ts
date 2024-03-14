@@ -6,4 +6,5 @@ export { InfiniteScroller } from './infiniteScroll';
 export { LimitedLengthInput } from './limitedLengthInput';
 export { LoginIconSet } from './loginIconSet';
 export { SelectableCardList } from './selectableCardList';
+export { Skeleton } from './skeleton';
 export { Tabs } from './tabs';

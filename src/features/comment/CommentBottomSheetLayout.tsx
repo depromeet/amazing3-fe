@@ -34,6 +34,7 @@ export const CommentBottomSheetLayout = ({
 
   return (
     <BottomSheet
+      className="commentBottomSheet"
       ref={sheetRef}
       open={open}
       onDismiss={onClose}
