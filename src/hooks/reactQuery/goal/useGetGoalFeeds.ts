@@ -38,10 +38,7 @@ const PAGE_SIZE = 10;
 export const useGetGoalFeeds = () => {
   return useInfiniteQuery<GoalFeedResponse>({
     queryKey: ['goalFeeds'],
-    queryFn: ({ pageParam }) => {
-      const queryString = pageParam ? `?cursor=${pageParam}` : '';
-      return api.get<GoalFeedResponse>(`/goal/explore${queryString}`);
-    },
+    queryFn: ({ pageParam }) => api.get<GoalFeedResponse>('/goal/explore', { params: { cursor: pageParam } }),
     initialPageParam: null,
     getNextPageParam: ({ goals, cursor }) => (cursor && goals.length === PAGE_SIZE ? cursor.next : null),
   });
