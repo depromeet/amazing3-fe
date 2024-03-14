@@ -1,26 +1,24 @@
-'use client';
-
 import type { PropsWithChildren } from 'react';
-import { useEffect, useRef } from 'react';
 
 import { Lottie } from '@/components/atoms/lottie';
 import { useIntersectionObserver } from '@/hooks';
 
 interface InfiniteScrollerProps extends PropsWithChildren {
   isLastPage: boolean;
-  onIntersected: (entry?: IntersectionObserverEntry) => void;
+  onIntersect: (entry?: IntersectionObserverEntry) => void;
 }
 
-export const InfiniteScroller = ({ onIntersected, isLastPage, children }: InfiniteScrollerProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const entry = useIntersectionObserver(ref, { threshold: 0.9 });
+export const InfiniteScroller = ({ onIntersect, isLastPage, children }: InfiniteScrollerProps) => {
+  const ref = useIntersectionObserver(
+    (entry, observer) => {
+      observer.unobserve(entry.target);
 
-  useEffect(() => {
-    if (!entry?.isIntersecting) return;
-    if (isLastPage) return;
+      if (isLastPage) return;
 
-    onIntersected(entry);
-  }, [entry, entry?.isIntersecting, onIntersected, isLastPage]);
+      onIntersect();
+    },
+    { threshold: 0.9 },
+  );
 
   return (
     <>
