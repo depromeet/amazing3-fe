@@ -1,23 +1,30 @@
 'use client';
 
-import { useGetGoalFeeds } from '@/hooks/reactQuery/goal';
-import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
+import { InfiniteScroller } from '@/components';
+import { type GoalFeedProps, useGetGoalFeeds } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 
 import FeedCard from './feedCard/FeedCard';
 
 export const FeedBody = () => {
-  const { data: goalFeedsData } = useGetGoalFeeds();
+  const { data: goalFeedsData, fetchNextPage, hasNextPage } = useGetGoalFeeds();
 
   // TODO: 피드가 0개일 때, 처리 필요
 
   return (
     <div>
-      <div className="mx-xs my-xs flex flex-col gap-md">
-        {createFeedDataGroupedByUser(goalFeedsData?.goals)?.map((feedData) => {
-          const recentGoalId = feedData[0].goal.id;
-          return <FeedCard key={recentGoalId} feedData={feedData} />;
-        })}
-      </div>
+      {goalFeedsData && (
+        <InfiniteScroller isLastPage={!hasNextPage} onIntersect={() => fetchNextPage()}>
+          <div className="mx-xs my-xs flex flex-col gap-md">
+            {goalFeedsData?.pages.map(
+              (page) =>
+                createFeedDataGroupedByUser(page.goals)?.map((feedData) => {
+                  const recentGoalId = feedData[0].goal.id;
+                  return <FeedCard key={recentGoalId} feedData={feedData} />;
+                }),
+            )}
+          </div>
+        </InfiniteScroller>
+      )}
     </div>
   );
 };
