@@ -1,27 +1,33 @@
-import type { RefObject } from 'react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+
+type IntersectHandler = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => void;
 
 export const useIntersectionObserver = (
-  elementRef: RefObject<Element>,
+  onIntersect: IntersectHandler,
   { threshold = 0, root = null, rootMargin = '0%' }: IntersectionObserverInit,
 ) => {
-  const [entry, setEntry] = useState<IntersectionObserverEntry>();
+  const ref = useRef<HTMLDivElement>(null);
 
-  const updateEntry = ([entry]: IntersectionObserverEntry[]) => {
-    setEntry(entry);
-  };
+  const updateEntry = useCallback(
+    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) onIntersect(entry, observer);
+      });
+    },
+    [onIntersect],
+  );
 
   useEffect(() => {
-    const element = elementRef?.current;
     const isIOSupport = !!window.IntersectionObserver;
 
-    if (!isIOSupport || entry?.isIntersecting || !element) return;
+    if (!isIOSupport || !ref?.current) return;
 
     const observer = new IntersectionObserver(updateEntry, { threshold, root, rootMargin });
-    observer.observe(element);
+
+    observer.observe(ref?.current);
 
     return () => observer.disconnect();
-  }, [elementRef, entry, root, rootMargin, threshold]);
+  }, [updateEntry, ref, root, rootMargin, threshold]);
 
-  return entry;
+  return ref;
 };
