@@ -1,7 +1,10 @@
 import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 
-import FeedCardHeader from './FeedCardHeader';
-import FeedCardLayout from './FeedCardLayout';
+import { FeedCardBody } from './FeedCardBody';
+import { FeedCardHeader } from './FeedCardHeader';
+import { FeedCardLayout } from './FeedCardLayout';
+import { ReactionGroup } from './reactionGroup';
+import { CommentButton } from './ViewCommentButton';
 
 interface FeedCardProps {
   feedData: Array<GoalFeedProps>;
@@ -20,7 +23,25 @@ const FeedCard = ({ feedData }: FeedCardProps) => {
           goalCounts={count.goal}
         />
       }
-      bodyPropsList={feedData}
+      body={
+        <>
+          {feedData?.map(({ user, goal, count }) => (
+            <FeedCardBody
+              key={goal.id}
+              user={user}
+              goal={goal}
+              count={count}
+              footer={
+                <>
+                  {/* TODO: 다른 유저가 이미 반응한 이모지 버튼 추가 */}
+                  <ReactionGroup />
+                  <CommentButton numberOfComments={count.comment} />
+                </>
+              }
+            />
+          ))}
+        </>
+      }
     />
   );
 };
