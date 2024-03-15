@@ -22,10 +22,10 @@ interface ReactionGroupProps {
 }
 
 export const ReactionGroup = ({ targetGoalId, reactedEmojis }: ReactionGroupProps) => {
-  const [isOpenWindow, setOpenWindow] = useState(false);
+  const [isOpenEmojis, setOpenEmojis] = useState(false);
 
-  const handleToggleWindow = () => {
-    setOpenWindow((prev) => !prev);
+  const handleToggleEmojis = () => {
+    setOpenEmojis((prev) => !prev);
   };
   const handleClickEmojiButton = (emojiId: number) => {
     // TODO: 이모지 API 연결 (임시 console)
@@ -47,9 +47,9 @@ export const ReactionGroup = ({ targetGoalId, reactedEmojis }: ReactionGroupProp
             }}
           />
         ))}
-        <ReactionAddButton isOpen={isOpenWindow} onClick={handleToggleWindow} />
+        <ReactionAddButton isOpen={isOpenEmojis} onClick={handleToggleEmojis} />
       </div>
-      <div className="relative w-full">{isOpenWindow && <Emojis onToggle={handleToggleWindow} />}</div>
+      <div className="relative w-full">{isOpenEmojis && <Emojis onToggle={handleToggleEmojis} />}</div>
     </>
   );
 };
