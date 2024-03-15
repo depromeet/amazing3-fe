@@ -5,10 +5,12 @@ import Link from 'next/link';
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
-import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
+import type { CountProps, GoalProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 import { formatDotYYYYMM } from '@/utils/date';
 
-interface FeedCardBodyProps extends GoalFeedProps {
+interface FeedCardBodyProps {
+  goal: GoalProps;
+  count: CountProps;
   footer?: ReactNode;
 }
 

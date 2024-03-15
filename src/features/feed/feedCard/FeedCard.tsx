@@ -25,10 +25,9 @@ const FeedCard = ({ feedData }: FeedCardProps) => {
       }
       body={
         <>
-          {feedData?.map(({ user, goal, count }) => (
+          {feedData?.map(({ goal, count }) => (
             <FeedCardBody
               key={goal.id}
-              user={user}
               goal={goal}
               count={count}
               footer={
