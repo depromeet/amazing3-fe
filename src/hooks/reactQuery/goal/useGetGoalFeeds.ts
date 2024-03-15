@@ -2,6 +2,14 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
+type FeedEmojis = {
+  id: number;
+  name: string;
+  url: string;
+  reactCount: number;
+  isMyReaction: boolean;
+};
+
 export type GoalFeedProps = {
   user: {
     id: number;
@@ -24,6 +32,7 @@ export type GoalFeedProps = {
     task: number;
     goal: number;
   };
+  emojis: Array<FeedEmojis>;
 };
 
 export type GoalFeedResponse = {
