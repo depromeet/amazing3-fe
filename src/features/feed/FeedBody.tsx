@@ -12,7 +12,7 @@ export const FeedBody = () => {
 
   return (
     <div>
-      {goalFeedsData && (
+      {goalFeedsData ? (
         <InfiniteScroller isLastPage={!hasNextPage} onIntersect={() => fetchNextPage()}>
           <div className="mx-xs my-xs flex flex-col gap-md">
             {goalFeedsData?.pages.map(
@@ -24,6 +24,9 @@ export const FeedBody = () => {
             )}
           </div>
         </InfiniteScroller>
+      ) : (
+        // FIXME: 레이아웃 시프트 해결을 위해 추가 -> 추후에 Suspense를 사용해서 fallback으로 변경 예정
+        <div className="h-[100dvh]"></div>
       )}
     </div>
   );

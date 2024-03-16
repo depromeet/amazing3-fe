@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { BottomNavigation } from '@/components/molecules/bottomNavigation';
 import { useAuth } from '@/hooks';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
@@ -49,7 +48,6 @@ export const MyPageLayout = () => {
           <MyPageBody />
         </>
       )}
-      <BottomNavigation />
     </div>
   );
 };
