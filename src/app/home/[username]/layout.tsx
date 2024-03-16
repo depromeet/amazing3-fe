@@ -14,7 +14,7 @@ const HomeLayout = ({ children }: PropsWithChildren) => {
     <main className="relative flex justify-center bg-gradient1">
       <div className="absolute right-0 w-full h-[125px] bg-gradientPurpleBlur" />
       <div className="w-full h-[100dvh]">
-        <div className="w-full h-[100dvh] flex flex-col items-center justify-between pb-xs">{children}</div>
+        <div className="w-full h-[100dvh] flex flex-col items-center justify-between">{children}</div>
       </div>
     </main>
   );
