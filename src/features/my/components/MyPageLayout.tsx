@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+import { BottomNavigation } from '@/components/molecules/bottomNavigation';
 import { useAuth } from '@/hooks';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
@@ -26,7 +27,7 @@ export const MyPageLayout = () => {
   }, [isLoggedIn, router]);
 
   return (
-    <div className="pt-5xs px-xs h-full flex flex-col">
+    <div className="pt-5xs h-full flex flex-col">
       <MypageHeader username={memberData?.username} />
       {memberData && (
         <>
@@ -48,6 +49,7 @@ export const MyPageLayout = () => {
           <MyPageBody />
         </>
       )}
+      <BottomNavigation />
     </div>
   );
 };
