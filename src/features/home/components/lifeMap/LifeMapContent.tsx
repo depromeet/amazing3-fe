@@ -1,13 +1,11 @@
 'use client';
 
-import type { RefObject } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { SwiperSlide } from 'swiper/react';
 
-import { Avatar, ContentWrapper } from '@/components';
+import { ContentWrapper } from '@/components';
 import type { MemberProps } from '@/features/member/types';
 import type { GoalResponse } from '@/hooks/reactQuery/goal/useGetGoals';
 import { type GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
@@ -17,6 +15,7 @@ import { GOAL_COUNT_PER_PAGE, TOTAL_CURRENT_POSITIONS } from '../../constants';
 import { CurrentPositionCover } from '../currentPositionCover';
 import { MapCardPositioner } from '../mapCardPositioner';
 import { partitionArrayWithSmallerFirstGroup } from '../mapCardPositioner/MapCardPositioner.utils';
+import { ShareButton } from '../shareButton';
 
 const StarBg = dynamic(() => import('@/app/home/[username]/startBg'));
 const LifeMapInfo = dynamic(() => import('./LifeMapInfo'));
@@ -25,8 +24,6 @@ const MapSwiper = dynamic(() => import('../mapSwiper/MapSwiper'));
 interface LifeMapProps {
   goalsData?: GoalResponse;
   memberData?: Pick<MemberProps, 'nickname' | 'image'>;
-  downloadSectionRef?: RefObject<HTMLElement>;
-  isPublic?: boolean;
 }
 
 interface PositionStateProps {
@@ -34,7 +31,8 @@ interface PositionStateProps {
   positionPage: number | null;
 }
 
-export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPublic = false }: LifeMapProps) => {
+export const LifeMapContent = ({ goalsData, memberData }: LifeMapProps) => {
+  const shareRef = useRef<HTMLElement>(null);
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
   const LAST_PAGE = participatedGoalsArray.length;
 
@@ -87,9 +85,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
   return (
     <div className="w-[390px] relative pt-xs">
       <span className="absolute right-[24px]">
-        <Link href="/my" className={isPublic ? `pointer-events-none` : ''}>
-          <Avatar size={40} profileImage={memberData?.image} />
-        </Link>
+        <ShareButton shareRef={shareRef} />
       </span>
 
       <ContentWrapper
@@ -112,7 +108,7 @@ export const LifeMapContent = ({ goalsData, memberData, downloadSectionRef, isPu
           </>
         }
         sectionStyles="px-xs"
-        ref={downloadSectionRef}
+        ref={shareRef}
       >
         <LifeMapInfo goalsData={goalsData} />
         <StarBg />
