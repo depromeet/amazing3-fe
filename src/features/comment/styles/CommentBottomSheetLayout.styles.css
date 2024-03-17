@@ -14,3 +14,7 @@
 .commentBottomSheet [data-rsbs-content] {
   @apply w-full min-h-full flex flex-col items-center justify-center;
 }
+
+.commentBottomSheet [data-rsbs-footer] {
+  @apply pt-0;
+}
