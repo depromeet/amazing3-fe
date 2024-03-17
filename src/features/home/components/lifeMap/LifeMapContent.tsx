@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { SwiperSlide } from 'swiper/react';
 
-import { ContentWrapper } from '@/components';
+import { Avatar, ContentWrapper } from '@/components';
 import type { MemberProps } from '@/features/member/types';
 import type { GoalResponse } from '@/hooks/reactQuery/goal/useGetGoals';
 import { type GoalProps } from '@/hooks/reactQuery/goal/useGetGoals';
@@ -24,6 +25,7 @@ const MapSwiper = dynamic(() => import('../mapSwiper/MapSwiper'));
 interface LifeMapProps {
   goalsData?: GoalResponse;
   memberData?: Pick<MemberProps, 'nickname' | 'image'>;
+  isPublic?: boolean;
 }
 
 interface PositionStateProps {
@@ -31,7 +33,7 @@ interface PositionStateProps {
   positionPage: number | null;
 }
 
-export const LifeMapContent = ({ goalsData, memberData }: LifeMapProps) => {
+export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: LifeMapProps) => {
   const shareRef = useRef<HTMLElement>(null);
   const participatedGoalsArray = partitionArrayWithSmallerFirstGroup(GOAL_COUNT_PER_PAGE, goalsData?.goals);
   const LAST_PAGE = participatedGoalsArray.length;
@@ -85,7 +87,13 @@ export const LifeMapContent = ({ goalsData, memberData }: LifeMapProps) => {
   return (
     <div className="w-[390px] relative pt-xs">
       <span className="absolute right-[24px]">
-        <ShareButton shareRef={shareRef} />
+        {isPublic ? (
+          <Link href="/my" className="pointer-events-none">
+            <Avatar size={40} profileImage={memberData?.image} />
+          </Link>
+        ) : (
+          <ShareButton shareRef={shareRef} />
+        )}
       </span>
 
       <ContentWrapper
