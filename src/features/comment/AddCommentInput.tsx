@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+import type { MutableRefObject } from 'react';
+import { forwardRef, useEffect } from 'react';
 
 import { Input, type InputProps } from '@/components/atoms/input/Input';
 import { useInput } from '@/hooks';
@@ -10,27 +11,34 @@ interface AddCommentInputProps extends InputProps {
 
 export const COMMENT_MAX_LENGTH = 30;
 
-export const AddCommentInput = ({ goalId, ...props }: AddCommentInputProps) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const { value: comment, handleChange: handleComment, reset } = useInput('');
-  const { mutate } = useCreateComment();
+export const AddCommentInput = forwardRef<HTMLInputElement, AddCommentInputProps>(
+  ({ goalId, ...props }: AddCommentInputProps, ref) => {
+    const { value: comment, handleChange: handleComment, reset } = useInput('');
+    const { mutate } = useCreateComment();
 
-  const handleSubmit = () => {
-    mutate({ goalId, content: comment });
-    reset();
-    inputRef.current?.focus();
-  };
+    const handleFocusAction = () => (ref as MutableRefObject<HTMLInputElement>).current?.focus();
 
-  return (
-    <Input
-      ref={inputRef}
-      value={comment}
-      onChange={handleComment}
-      placeholder="댓글 작성하기"
-      maxLength={COMMENT_MAX_LENGTH}
-      includeSubmitButton
-      onSubmit={handleSubmit}
-      {...props}
-    />
-  );
-};
+    const handleSubmit = () => {
+      mutate({ goalId, content: comment });
+      reset();
+      handleFocusAction();
+    };
+
+    useEffect(() => handleFocusAction(), []);
+
+    return (
+      <Input
+        ref={ref}
+        value={comment}
+        onChange={handleComment}
+        placeholder="댓글 작성하기"
+        maxLength={COMMENT_MAX_LENGTH}
+        includeSubmitButton
+        onSubmit={handleSubmit}
+        {...props}
+      />
+    );
+  },
+);
+
+AddCommentInput.displayName = 'AddCommentInput';
