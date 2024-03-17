@@ -23,7 +23,7 @@ export const useDeleteComment = () => {
 
       const updater = (old: CommentResponse): CommentResponse => {
         const updatedComment = old.comments.filter((comment) => comment.id !== commentId);
-        return { comments: updatedComment, commentCount: old.commentCount - 1 };
+        return { ...old, comments: updatedComment, commentCount: old.commentCount - 1 };
       };
       const context = await optimisticUpdater({ queryKey: targetQueryKey, updater });
       return context;
