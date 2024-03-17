@@ -11,7 +11,7 @@ export const PublicLifeMap = ({ username }: { username: string }) => {
 
   return (
     <>
-      <LifeMapContent goalsData={publicGoals} memberData={publicGoals?.user} />
+      <LifeMapContent isPublic goalsData={publicGoals} memberData={publicGoals?.user} />
       <PublicLifeMapBottomArea username={username} />
     </>
   );
