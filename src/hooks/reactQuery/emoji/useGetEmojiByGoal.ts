@@ -8,6 +8,7 @@ type EmojiRequestParams = {
 
 export type EmojiResponse = {
   totalReactedEmojisCount: number;
+  totalReactUserCount: number;
   latestReactUserNickname: string;
   reactedEmojis: ReactedEmojisProps[];
 };
