@@ -15,7 +15,7 @@ export const Cheerer = ({ image, username, nickname, cheeredAt }: CheererProps) 
     <div className="flex items-center justify-between py-5xs">
       <Link href={`/home/${username}`}>
         <div className="flex items-center">
-          <Image src={image} alt="user-profile" width={32} height={32} className="rounded-full mr-5xs" />
+          <Image src={image} alt="user-profile" width={32} height={32} className="rounded-full mr-5xs max-h-[32px]" />
           <Typography type="body2">{nickname}</Typography>
         </div>
       </Link>
