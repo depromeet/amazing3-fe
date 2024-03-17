@@ -26,7 +26,7 @@ export const Reaction = () => {
       {data && (
         <>
           {!hasNoReactions && (
-            <ReactionUserTotalCount count={data.totalReactedEmojisCount} username={data.latestReactUserNickname} />
+            <ReactionUserTotalCount count={data.totalReactUserCount} username={data.latestReactUserNickname} />
           )}
           <div className={`relative flex gap-4xs items-center ${hasNoReactions && 'mt-sm'}`}>
             <ReactedEmojis reactedEmojis={data.reactedEmojis} onCloseEmojis={() => setOpenEmojis(false)} />
