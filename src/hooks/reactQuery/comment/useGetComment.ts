@@ -7,6 +7,7 @@ type CommentRequestParams = {
 };
 
 export type CommentResponse = {
+  isMyGoal: boolean;
   comments: CommentProps[];
   commentCount: number;
 };
