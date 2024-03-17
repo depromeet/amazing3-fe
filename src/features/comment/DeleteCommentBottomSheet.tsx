@@ -16,7 +16,7 @@ export const DeleteCommentBottomSheet = ({ open, onClose, goalId, commentId }: D
       fixedMaxHeight={150}
       FooterComponent={<Footer goalId={goalId} commentId={commentId} onClose={onClose} />}
     >
-      <Typography type="title2" className="w-full text-left px-xs">
+      <Typography type="title2" className="w-full text-left px-xs pt-3xs">
         댓글을 삭제하시겠어요?
       </Typography>
     </BottomSheet>
