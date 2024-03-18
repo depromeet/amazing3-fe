@@ -19,7 +19,7 @@ export const BottomNavigation = () => {
   const isHome = pathname?.startsWith('/home');
 
   return (
-    <div className="sticky bottom-0 flex justify-center gap-[48px] w-full bg-white pt-5xs pb-xs px-xs shadow-thumb">
+    <div className="sticky bottom-0 z-10 flex justify-center gap-[48px] w-full bg-white pt-5xs pb-xs px-xs shadow-thumb">
       <SubMenu href="/feed" active={pathname === '/feed'} Icon={FeedIcon} menuName="목표 피드" />
       <MainMenu href={isHome ? '/goal/new/goal' : `/home/${username}`} Icon={isHome ? PlusIcon : HomeIcon} />
       <SubMenu href="/my" active={pathname === '/my'} Icon={UserIcon} menuName="마이" />
