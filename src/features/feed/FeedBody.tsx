@@ -1,12 +1,14 @@
 'use client';
 
 import { InfiniteScroller } from '@/components';
+import { usePrefetchAllEmoji } from '@/hooks/reactQuery/emoji/useGetAllEmoji';
 import { type GoalFeedProps, useGetGoalFeeds } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 
 import FeedCard from './feedCard/FeedCard';
 
 export const FeedBody = () => {
   const { data: goalFeedsData, fetchNextPage, hasNextPage } = useGetGoalFeeds();
+  usePrefetchAllEmoji();
 
   // TODO: 피드가 0개일 때, 처리 필요
 
