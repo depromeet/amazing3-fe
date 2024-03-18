@@ -1,3 +1,4 @@
+import { BottomNavigation } from '@/components/molecules/bottomNavigation';
 import { FeedBody, FeedHeader } from '@/features/feed';
 
 const FeedPage = () => {
@@ -5,6 +6,7 @@ const FeedPage = () => {
     <>
       <FeedHeader />
       <FeedBody />
+      <BottomNavigation />
     </>
   );
 };

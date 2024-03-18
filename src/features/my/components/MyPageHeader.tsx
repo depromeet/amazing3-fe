@@ -6,7 +6,7 @@ import { Typography } from '@/components';
 
 const MypageHeader = ({ username }: { username?: string }) => {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center px-xs">
       <Link href={`/home/${username}`}>
         <BackIcon />
       </Link>
