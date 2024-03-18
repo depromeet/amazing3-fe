@@ -17,9 +17,8 @@ export const ReactionGroup = ({ targetGoalId, reactedEmojis }: ReactionGroupProp
   const handleToggleEmojis = () => {
     setOpenEmojis((prev) => !prev);
   };
-  const handleClickEmojiButton = (emojiId: number) => {
-    // TODO: 이모지 API 연결 (임시 console)
-    console.log(targetGoalId, emojiId);
+  const handleCloseEmojis = () => {
+    () => setOpenEmojis(false);
   };
 
   return (
@@ -28,18 +27,20 @@ export const ReactionGroup = ({ targetGoalId, reactedEmojis }: ReactionGroupProp
         {reactedEmojis.map(({ id, url, name, reactCount, isMyReaction }) => (
           <ReactedEmojiButton
             key={id}
+            goalId={targetGoalId}
+            emojiId={id}
             url={url}
             name={name}
             count={reactCount}
             isMyReaction={isMyReaction}
-            onClick={() => {
-              handleClickEmojiButton(id);
-            }}
+            onCloseEmojis={handleCloseEmojis}
           />
         ))}
         <ReactionAddButton isOpen={isOpenEmojis} onClick={handleToggleEmojis} />
       </div>
-      <div className="relative w-full">{isOpenEmojis && <Emojis onToggle={handleToggleEmojis} />}</div>
+      <div className="relative w-full">
+        {isOpenEmojis && <Emojis goalId={targetGoalId} onToggle={handleToggleEmojis} />}
+      </div>
     </>
   );
 };

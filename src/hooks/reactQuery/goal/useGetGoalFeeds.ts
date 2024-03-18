@@ -18,6 +18,7 @@ export type GoalProps = {
   tag: string;
   createdAt: string;
 };
+
 export type CountProps = {
   reaction: number;
   comment: number;
