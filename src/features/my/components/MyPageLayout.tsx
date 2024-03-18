@@ -26,7 +26,7 @@ export const MyPageLayout = () => {
   }, [isLoggedIn, router]);
 
   return (
-    <div className="pt-5xs px-xs h-full flex flex-col">
+    <div className="pt-5xs h-full flex flex-col">
       <MypageHeader username={memberData?.username} />
       {memberData && (
         <>
