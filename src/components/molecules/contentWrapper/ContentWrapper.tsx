@@ -14,7 +14,7 @@ export const ContentWrapper = forwardRef<HTMLElement, PropsWithChildren<ContentW
   ({ title, description, sectionStyles = '', children }, ref) => {
     return (
       <section className={sectionStyles} ref={ref}>
-        <Typography type="heading1" className="text-blue-50">
+        <Typography type="heading2" className="text-blue-50">
           {title}
         </Typography>
         {description && (
