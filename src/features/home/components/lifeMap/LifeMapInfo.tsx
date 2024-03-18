@@ -1,5 +1,4 @@
 import { useRouter } from 'next/navigation';
-import { m } from 'framer-motion';
 
 import { colors } from '@/../styles/theme';
 import Divider from '@/assets/icons/divider.svg';
@@ -34,32 +33,28 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
   };
 
   return (
-    <div className="flex items-center mt-5xs">
+    <div className="flex items-center mt-4xs">
       <>
         <div className="flex items-center">
-          <m.div initial={initial} animate={animate} transition={transition}>
-            <StarIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
-          </m.div>
-          <Typography type="title4" className="text-gray-50 mr-[2px]">
+          <StarIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
+          <Typography type="title4" className="text-gray-40 mr-[2px]">
+            목표 조각
+          </Typography>
+          <Typography type="title4" className="text-gray-50">
             {`${formatOver999(goalsCount || 0)}`}
           </Typography>
-          <Typography type="title4" className="text-gray-40">
-            개의 목표 조각
-          </Typography>
         </div>
-        <Divider className="mx-5xs" />
+        <Divider className="mx-4xs" />
       </>
 
       <button type="button" onClick={handleClickCheering}>
         <div className="flex items-center">
-          <m.div initial={initial} animate={animate} transition={transition}>
-            <ThumbsIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
-          </m.div>
-          <Typography type="title4" className="text-gray-50 mr-[2px]">
-            {formatOver999(cheering)}
+          <ThumbsIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
+          <Typography type="title4" className="text-gray-40 mr-[2px]">
+            응원
           </Typography>
-          <Typography type="title4" className="text-gray-40">
-            개의 응원
+          <Typography type="title4" className="text-gray-50">
+            {formatOver999(cheering)}
           </Typography>
         </div>
       </button>

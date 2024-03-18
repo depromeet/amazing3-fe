@@ -5,9 +5,9 @@ import { useAuth } from '@/hooks';
 
 export type GoalProps = {
   id: number;
+  title: string;
   deadline: string;
   stickerUrl: string;
-  tagContent: string;
 };
 
 export type GoalResponse = {
