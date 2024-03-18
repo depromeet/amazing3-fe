@@ -85,7 +85,7 @@ export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: Life
   };
 
   return (
-    <div className="w-[390px] relative pt-xs">
+    <div className="w-[390px] relative pt-xs mb-[24px]">
       <span className="absolute right-[24px]">
         {isPublic ? (
           <Link href="/my" className="pointer-events-none">
