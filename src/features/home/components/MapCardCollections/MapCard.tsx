@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useOverlay } from '@toss/use-overlay';
 
-import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Typography } from '@/components';
 import { blueDataURL } from '@/constants';
 import { useAuth } from '@/hooks';
@@ -17,7 +16,7 @@ export interface MapCardProps extends MapCardLayoutProps {
 }
 
 export const MapCard = ({ goal, position }: MapCardProps) => {
-  const { id, stickerUrl, deadline, tagContent } = goal;
+  const { id, title, stickerUrl } = goal;
   const router = useRouter();
   const { isLoggedIn } = useAuth();
   const { open } = useOverlay();
@@ -42,13 +41,9 @@ export const MapCard = ({ goal, position }: MapCardProps) => {
           placeholder="blur"
           blurDataURL={blueDataURL.mapCard}
         />
-        <div className="flex max-w-[110px] gap-[4px] justify-center items-center">
-          <Typography type="title5" className="text-blue-50">
-            {deadline}
-          </Typography>
-          <VerticalBarIcon width="1" height="11" />
+        <div className="flex max-w-[114px] gap-[4px] px-[3px] justify-center items-center">
           <Typography type="title5" className="text-blue-50 text-ellipsis !whitespace-nowrap overflow-hidden">
-            {tagContent}
+            {title}
           </Typography>
         </div>
       </MapCardLayout>
