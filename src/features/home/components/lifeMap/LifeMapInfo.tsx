@@ -33,7 +33,7 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
   };
 
   return (
-    <div className="flex items-center mt-4xs">
+    <div className="flex items-center">
       <>
         <div className="flex items-center">
           <StarIcon width={20} height={20} fill={colors.blue[30]} className="inline-block mr-[4px]" />
@@ -63,19 +63,3 @@ const LifeMapInfo = ({ goalsData }: LifeMapInfoProps) => {
 };
 
 export default LifeMapInfo;
-
-// TODO: animation 개선
-const initial = {
-  opacity: 0,
-  scale: 0.3,
-};
-
-const animate = {
-  opacity: 1,
-  scale: 1,
-};
-
-const transition = {
-  duration: 0.1,
-  scale: { type: 'spring', damping: 8, stiffness: 100, restDelta: 0.001 },
-};
