@@ -59,3 +59,14 @@ export const convertTimeToElapsedTime = (time: string) => {
 
   return `${start.toLocaleDateString()}`;
 };
+
+export const getYYYYMMDD = (time: string, seperator = '-') => {
+  const [YYYY, MM, DD] = time.split(seperator);
+  return {
+    YYYY,
+    MM,
+    DD,
+  };
+};
+
+export const getYYYY = (time: string, seperator = '-') => getYYYYMMDD(time, seperator).YYYY;
