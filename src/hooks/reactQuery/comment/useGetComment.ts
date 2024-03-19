@@ -30,5 +30,6 @@ export const useGetComment = ({ goalId }: CommentRequestParams) => {
   return useQuery<CommentResponse>({
     queryKey: ['comment', goalId],
     queryFn: () => api.get<CommentResponse>(`/goal/${goalId}/comment`),
+    staleTime: 1000,
   });
 };

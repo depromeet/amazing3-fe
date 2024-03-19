@@ -1,8 +1,11 @@
 import { useOverlay } from '@toss/use-overlay';
 import { AnimatePresence } from 'framer-motion';
+import { useAtomValue } from 'jotai';
 
 import { Comment } from '@/components';
-import { useGetComment } from '@/hooks/reactQuery/comment';
+import { useGetComment, useGetHasNewComment } from '@/hooks/reactQuery/comment';
+
+import { isMyGoalAtom } from '../goal/atoms';
 
 import { CommentBottomSheetLayout } from './CommentBottomSheetLayout';
 import { DeleteCommentBottomSheet } from './DeleteCommentBottomSheet';
@@ -15,8 +18,10 @@ interface CommentsBottomSheetProps {
 }
 
 export const CommentsBottomSheet = ({ goalId, ...props }: CommentsBottomSheetProps) => {
+  const isMyGoal = useAtomValue(isMyGoalAtom);
   const { open } = useOverlay();
   const { data } = useGetComment({ goalId });
+  useGetHasNewComment({ goalId, isMyGoal });
 
   const handleDelete = (commentId: number) => () => {
     open(({ isOpen, close }) => (
