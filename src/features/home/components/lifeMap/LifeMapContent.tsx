@@ -9,7 +9,6 @@ import FeedMenuIcon from '@/assets/icons/home/feed-tab-default-icon.svg';
 import ActiveMapMenuIcon from '@/assets/icons/home/map-tab-active-icon.svg';
 import MapMenuIcon from '@/assets/icons/home/map-tab-default-icon.svg';
 import { Avatar, ContentWrapper } from '@/components';
-import { FeedBody } from '@/features/feed';
 import type { MemberProps } from '@/features/member/types';
 import type { GoalResponse } from '@/hooks/reactQuery/goal/useGetGoals';
 
@@ -87,7 +86,7 @@ export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: Life
           </div>
           <StarBg />
           <div className={`h-[520px] overflow-auto ${tab.name === 'FEED' ? 'mt-[16px] border-t border-blue-10' : ''}`}>
-            {tab.name === 'MAP' ? <Map goalsData={goalsData} /> : <FeedBody />}
+            {tab.name === 'MAP' ? <Map goalsData={goalsData} /> : <>타임라인</>}
           </div>
         </ContentWrapper>
       </div>
