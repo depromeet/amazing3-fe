@@ -17,7 +17,7 @@ export const Emojis = ({ goalId, onToggle }: EmojisProps) => {
   };
 
   return (
-    <EmojiGroup.Container className="absolute left-0 right-0 transform -translate-y-1/2 top-[16px] flex justify-center z-[2]">
+    <EmojiGroup.Container className="absolute w-[330px] left-[-20px] right-0 transform -translate-y-1/2 top-[16px] flex justify-center z-[2]">
       {emojisData?.map((emoji) => (
         <EmojiGroup.Emoji key={emoji.name} {...emoji} size={56} onClick={handleReactEmoji(emoji.id)} />
       ))}

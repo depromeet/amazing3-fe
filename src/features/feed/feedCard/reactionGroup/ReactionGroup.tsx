@@ -37,9 +37,9 @@ export const ReactionGroup = ({ targetGoalId, reactedEmojis }: ReactionGroupProp
           />
         ))}
         <ReactionAddButton isOpen={isOpenEmojis} onClick={handleToggleEmojis} />
-      </div>
-      <div className="relative w-full">
-        {isOpenEmojis && <Emojis goalId={targetGoalId} onToggle={handleToggleEmojis} />}
+        <div className="relative w-full">
+          {isOpenEmojis && <Emojis goalId={targetGoalId} onToggle={handleToggleEmojis} />}
+        </div>
       </div>
     </>
   );
