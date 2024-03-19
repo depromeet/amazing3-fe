@@ -9,6 +9,7 @@ import { useGetGoal } from '@/hooks/reactQuery/goal';
 import { goalIdAtom, isMyGoalAtom } from '../../atoms';
 
 import { AddTaskInput } from './AddTaskInput';
+import { AddCommentButton } from './comment';
 import DetailLayout from './DetailLayout';
 import { Reaction } from './emoji';
 import { Tasks } from './Tasks';
@@ -32,6 +33,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
       <DetailLayout
         header={<DetailHeader goalId={id} />}
         sticker={goal && <Sticker stickerUrl={goal.stickerUrl} />}
+        aside={<AddCommentButton />}
         body={
           goal && (
             <div className="flex flex-col gap-[28px]">
