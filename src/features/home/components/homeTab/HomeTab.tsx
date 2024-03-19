@@ -1,4 +1,4 @@
-import type { FC, SVGProps } from 'react';
+import type { Dispatch, FC, SetStateAction, SVGProps } from 'react';
 import { useState } from 'react';
 
 import { HomeTabMenu } from './HomeTabMenu';
@@ -11,7 +11,7 @@ interface TabMenu {
 
 interface HomeTabProps {
   tabList: TabMenu[];
-  onChangeActiveTab: (tab?: TabMenu) => void;
+  onChangeActiveTab: Dispatch<SetStateAction<TabMenu>>;
 }
 
 export const HomeTab = ({ tabList, onChangeActiveTab }: HomeTabProps) => {
