@@ -14,6 +14,7 @@ import type { GoalResponse } from '@/hooks/reactQuery/goal/useGetGoals';
 
 import { HomeTab } from '../homeTab/HomeTab';
 import { ShareButton } from '../shareButton';
+import { Timeline } from '../timeline';
 
 import { Map } from './Map';
 
@@ -84,9 +85,9 @@ export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: Life
               <HomeTab tabList={TAB_LIST} onChangeActiveTab={setTab} />
             </div>
           </div>
-          <StarBg />
+          {tab.name === 'MAP' && <StarBg />}
           <div className={`h-[520px] overflow-auto ${tab.name === 'FEED' ? 'mt-[16px] border-t border-blue-10' : ''}`}>
-            {tab.name === 'MAP' ? <Map goalsData={goalsData} /> : <>타임라인</>}
+            {tab.name === 'MAP' ? <Map goalsData={goalsData} /> : <Timeline />}
           </div>
         </ContentWrapper>
       </div>
