@@ -45,7 +45,7 @@ export const ReactionUserTotalCount = ({ username, count }: ReactionUserTotalCou
       <Typography type="body3">
         <ShowText />
       </Typography>
-      <ArrowIcon width="24" height="24" className="absolute right-[10px] rotate-180 ml-auto" />
+      <ArrowIcon width="24" height="24" className="absolute right-[10px] rotate-180" />
     </button>
   );
 };
