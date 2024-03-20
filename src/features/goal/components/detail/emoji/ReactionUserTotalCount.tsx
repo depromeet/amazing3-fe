@@ -2,11 +2,13 @@ import Image from 'next/image';
 import { useOverlay } from '@toss/use-overlay';
 import { useAtomValue } from 'jotai';
 
+import ArrowIcon from '@/assets/icons/arrow-icons.svg';
 import ReactionMembersImage from '@/assets/images/reaction-members.png';
 import { Typography } from '@/components';
 import { ReactUserBottomSheet } from '@/features/emoji/BottomSheet';
 import { goalIdAtom } from '@/features/goal/atom';
-import { addSuffixIfExceedsLength, addSuffixIfExceedsLimit } from '@/utils/suffix';
+import { formatOver999 } from '@/utils/number';
+import { formatOverLength } from '@/utils/string';
 
 interface ReactionUserTotalCountProps {
   username: string;
@@ -18,19 +20,14 @@ export const ReactionUserTotalCount = ({ username, count }: ReactionUserTotalCou
   const { open } = useOverlay();
   const countExceptOne = count - 1;
 
-  const visibleValue = {
-    username: addSuffixIfExceedsLength(username, 3, '..'),
-    count: addSuffixIfExceedsLimit(countExceptOne, 999),
-  };
-
-  const showText = () => {
+  const ShowText = () => {
     if (countExceptOne === 0) {
-      return `${visibleValue.username}님이 목표에 반응했어요.`;
+      return `${formatOverLength(username, 2)}님이 목표에 반응했어요.`;
     }
     return (
       <>
-        {visibleValue.username}님 외&nbsp;
-        <span className="text-blue-50">{visibleValue.count}</span>명이 목표에 반응했어요.
+        {formatOverLength(username, 2)}님 외&nbsp;
+        <span className="text-blue-50">{formatOver999(countExceptOne)}</span>명이 반응했어요.
       </>
     );
   };
@@ -41,13 +38,14 @@ export const ReactionUserTotalCount = ({ username, count }: ReactionUserTotalCou
 
   return (
     <button
-      className="w-full flex justify-center items-center rounded-[12px] bg-gray-10 gap-5xs py-5xs"
+      className="relative w-full flex justify-center items-center rounded-[12px] bg-gray-10 gap-5xs py-5xs"
       onClick={handleOpenMembersBottomSheet}
     >
       <Image src={ReactionMembersImage} width={54} height={36} alt="reaction_members_image" />
-      <div className="flex">
-        <Typography type="body3">{showText()}</Typography>
-      </div>
+      <Typography type="body3">
+        <ShowText />
+      </Typography>
+      <ArrowIcon width="24" height="24" className="absolute right-[10px] rotate-180 ml-auto" />
     </button>
   );
 };
