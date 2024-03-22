@@ -26,20 +26,18 @@ export const ReactedEmojiButton = ({
   ...props
 }: ReactedEmojiButtonProps) => {
   const [isClicked, setIsClicked] = useState(isMyReaction);
-  const [currentCount, setCurrentCount] = useState(count);
   const { mutate: createReactEmoji } = useCreateEmojiForFeed();
   const { mutate: deleteReactedEmoji } = useDeleteReactedEmojiForFeed();
 
   const handleClickButton = () => {
     setIsClicked((prev) => !prev);
-    setCurrentCount((prev) => (isClicked ? prev - 1 : prev + 1));
 
     isMyReaction ? deleteReactedEmoji({ goalId, emojiId }) : createReactEmoji({ goalId, emojiId });
 
     onCloseEmojis();
   };
 
-  if (currentCount <= 0) return null;
+  if (count <= 0) return null;
 
   return (
     <button
@@ -51,7 +49,7 @@ export const ReactedEmojiButton = ({
     >
       <Emoji url={url} size={24} name={name} />
       <Typography type="caption1" className={`${isClicked ? 'text-blue-50' : 'text-gray-40'}`}>
-        {formatOver999(currentCount)}
+        {formatOver999(count)}
       </Typography>
     </button>
   );
