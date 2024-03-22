@@ -2,28 +2,43 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
+export type UserProps = {
+  id: number;
+  nickname: string;
+  username: string;
+  image: string;
+};
+
+export type GoalProps = {
+  id: number;
+  title: string;
+  description: string;
+  deadline: string;
+  sticker: string;
+  tag: string;
+  createdAt: string;
+};
+
+export type CountProps = {
+  reaction: number;
+  comment: number;
+  task: number;
+  goal: number;
+};
+
+export type EmojisProps = {
+  id: number;
+  name: string;
+  url: string;
+  reactCount: number;
+  isMyReaction: boolean;
+};
+
 export type GoalFeedProps = {
-  user: {
-    id: number;
-    nickname: string;
-    username: string;
-    image: string;
-  };
-  goal: {
-    id: number;
-    title: string;
-    description: string;
-    deadline: string;
-    sticker: string;
-    tag: string;
-    createdAt: string;
-  };
-  count: {
-    reaction: number;
-    comment: number;
-    task: number;
-    goal: number;
-  };
+  user: UserProps;
+  goal: GoalProps;
+  count: CountProps;
+  emojis: Array<EmojisProps>;
 };
 
 export type GoalFeedResponse = {

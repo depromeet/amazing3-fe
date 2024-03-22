@@ -12,6 +12,7 @@ interface FeedCardProps {
 
 const FeedCard = ({ feedData }: FeedCardProps) => {
   const { user, goal, count } = feedData[0];
+
   return (
     <FeedCardLayout
       header={
@@ -25,16 +26,14 @@ const FeedCard = ({ feedData }: FeedCardProps) => {
       }
       body={
         <>
-          {feedData?.map(({ user, goal, count }) => (
+          {feedData?.map(({ goal, count, emojis }) => (
             <FeedCardBody
               key={goal.id}
-              user={user}
               goal={goal}
               count={count}
               footer={
                 <>
-                  {/* TODO: 다른 유저가 이미 반응한 이모지 버튼 추가 */}
-                  <ReactionGroup />
+                  <ReactionGroup targetGoalId={goal.id} reactedEmojis={emojis} />
                   <CommentButton numberOfComments={count.comment} />
                 </>
               }
