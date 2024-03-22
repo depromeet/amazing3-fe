@@ -1,21 +1,22 @@
 import { Typography } from '@/components';
-import { FeedCardBody } from '@/features/feed/feedCard/FeedCardBody';
 import { ReactionGroup } from '@/features/feed/feedCard/reactionGroup';
 import { CommentButton } from '@/features/feed/feedCard/ViewCommentButton';
-import type { GoalFeedProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
+import type { TimelineProps } from '@/hooks/reactQuery/goal/useGetTimeline';
 import { getYYYY } from '@/utils/date';
 
+import { TimelineCardBody } from './TimelineCardBody';
+
 interface TimelineCardProps {
-  feedData: GoalFeedProps;
+  timeline: TimelineProps;
   isSameYear: boolean;
 }
 
-const TimelineCard = ({ feedData, isSameYear }: TimelineCardProps) => {
+const TimelineCard = ({ timeline, isSameYear }: TimelineCardProps) => {
   return (
     <div className="flex flex-col gap-4xs">
       {!isSameYear && (
         <Typography type="title4" className="text-blue-50">
-          {`${getYYYY(feedData.goal.deadline)}년까지 달성할 목표`}
+          {`${getYYYY(timeline.goal.deadline)}년까지 달성할 목표`}
         </Typography>
       )}
 
@@ -26,16 +27,15 @@ const TimelineCard = ({ feedData, isSameYear }: TimelineCardProps) => {
           }`}
         />
         <div className="flex flex-col gap-sm">
-          <FeedCardBody
-            key={feedData.goal.id}
-            user={feedData.user}
-            goal={feedData.goal}
-            count={feedData.count}
+          <TimelineCardBody
+            key={timeline.goal.goalId}
+            goal={timeline.goal}
+            counts={timeline.counts}
             footer={
               <>
                 {/* TODO: 다른 유저가 이미 반응한 이모지 버튼 추가 */}
-                <ReactionGroup />
-                <CommentButton numberOfComments={feedData.count.comment} />
+                <ReactionGroup targetGoalId={timeline.goal.goalId} reactedEmojis={timeline.emojis} />
+                <CommentButton numberOfComments={timeline.counts.comment} />
               </>
             }
           />
