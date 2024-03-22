@@ -1,20 +1,20 @@
-import { isLargerThanToday, isValidDate } from './date';
+import { doesDateExist, isLargerThanToday } from './date';
 
 describe('isValidDate', () => {
   it('should return true for valid dates', () => {
-    expect(isValidDate('2022', '01', '01')).toBe(true);
-    expect(isValidDate('2022', '12', '31')).toBe(true);
-    expect(isValidDate('2024', '02', '29')).toBe(true); // Leap year
+    expect(doesDateExist('2022', '01', '01')).toBe(true);
+    expect(doesDateExist('2022', '12', '31')).toBe(true);
+    expect(doesDateExist('2024', '02', '29')).toBe(true); // Leap year
   });
 
   it('should return false for invalid dates', () => {
-    expect(isValidDate('2022', '02', '29')).toBe(false); // Not a leap year
-    expect(isValidDate('2022', '04', '31')).toBe(false); // April has 30 days
-    expect(isValidDate('2022', '13', '01')).toBe(false); // There is no 13th month
+    expect(doesDateExist('2022', '02', '29')).toBe(false); // Not a leap year
+    expect(doesDateExist('2022', '04', '31')).toBe(false); // April has 30 days
+    expect(doesDateExist('2022', '13', '01')).toBe(false); // There is no 13th month
   });
 
   it('should return false for dates with invalid format', () => {
-    expect(isValidDate('2022', '00', '01')).toBe(false); // There is no 0th month
+    expect(doesDateExist('2022', '00', '01')).toBe(false); // There is no 0th month
   });
 });
 

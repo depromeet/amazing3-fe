@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useOverlay } from '@toss/use-overlay';
 
+import EditIcon from '@/assets/icons/edit-icon.svg';
 import CloseIcon from '@/assets/icons/goal/close-icon.svg';
 import DeleteIcon from '@/assets/icons/goal/delete-icon.svg';
 import { useIsMyMap } from '@/hooks';
@@ -23,15 +24,20 @@ export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
       </Link>
 
       {isMyMap && goalId && (
-        <button
-          onClick={() => {
-            overlay.open(({ isOpen, close }) => {
-              return <DeleteGoalBottomSheet open={isOpen} onClose={close} goalId={goalId} />;
-            });
-          }}
-        >
-          <DeleteIcon />
-        </button>
+        <div className="flex space-x-4">
+          <Link href={{ pathname: `/goal/update/${goalId}` }}>
+            <EditIcon />
+          </Link>
+          <button
+            onClick={() => {
+              overlay.open(({ isOpen, close }) => {
+                return <DeleteGoalBottomSheet open={isOpen} onClose={close} goalId={goalId} />;
+              });
+            }}
+          >
+            <DeleteIcon />
+          </button>
+        </div>
       )}
     </>
   );
