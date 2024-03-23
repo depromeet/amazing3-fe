@@ -8,6 +8,10 @@
   --rsbs-mr: auto;
 }
 
+[data-rsbs-overlay] {
+  z-index: 99;
+}
+
 [data-rsbs-header] {
   text-align: left;
   padding-bottom: 0;
