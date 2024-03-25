@@ -30,18 +30,16 @@ const PublicLifeMapBottomArea = ({ username }: { username: string }) => {
   const CHEER_ANIMATION_INTERVAL = 5400;
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout | undefined;
-    if (isSuccess) {
-      setIsCheeringSuccess(true);
-      timeoutId = setTimeout(() => {
-        setIsCheeringSuccess(false);
-      }, CHEER_ANIMATION_INTERVAL);
-    }
+    if (!isSuccess) return;
+
+    setIsCheeringSuccess(true);
+
+    const timeoutId = setTimeout(() => {
+      setIsCheeringSuccess(false);
+    }, CHEER_ANIMATION_INTERVAL);
 
     return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      clearTimeout(timeoutId);
     };
   }, [isSuccess]);
 
@@ -54,7 +52,6 @@ const PublicLifeMapBottomArea = ({ username }: { username: string }) => {
       open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
       return;
     }
-
     if (!isCheeringSuccess) toast.warning('1분 뒤에 응원할 수 있어요.');
 
     throttleCheer();
