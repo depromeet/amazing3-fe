@@ -15,7 +15,7 @@ interface CheererProps {
 }
 
 export const Cheerer = ({ userId, userName, userNickName, userImageUrl, cheeringAt }: CheererProps) => {
-  const isDeletedUser = userId === 0;
+  const isDeletedUser = userId === -1;
 
   return (
     <div className="flex items-center justify-between py-5xs">
