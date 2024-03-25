@@ -1,5 +1,7 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
+
 import { InfiniteScroller } from '@/components';
 import { useGetTimeline } from '@/hooks/reactQuery/goal/useGetTimeline';
 import { getYYYY } from '@/utils/date';
@@ -8,7 +10,9 @@ import { EmptyTimeline } from './EmptyTimeline';
 import TimelineCard from './TimelineCard';
 
 export const Timeline = () => {
-  const { data: timeline, fetchNextPage, hasNextPage } = useGetTimeline();
+  const pathname = usePathname();
+  const [, , username] = pathname.split('/');
+  const { data: timeline, fetchNextPage, hasNextPage } = useGetTimeline(username);
   const isEmptyGoal = timeline.pages[0].contents.length === 0;
 
   return (
