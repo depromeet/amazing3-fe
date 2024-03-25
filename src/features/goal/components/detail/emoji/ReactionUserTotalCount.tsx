@@ -6,7 +6,7 @@ import ArrowIcon from '@/assets/icons/arrow-icons.svg';
 import ReactionMembersImage from '@/assets/images/reaction-members.png';
 import { Typography } from '@/components';
 import { ReactUserBottomSheet } from '@/features/emoji/BottomSheet';
-import { goalIdAtom } from '@/features/goal/atom';
+import { goalIdAtom } from '@/features/goal/atoms';
 import { formatOver999 } from '@/utils/number';
 import { formatOverLength } from '@/utils/string';
 
