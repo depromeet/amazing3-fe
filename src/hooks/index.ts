@@ -1,4 +1,5 @@
 export { useAuth } from './useAuth';
+export { useDateInput } from './useDateInput';
 export { useDebounceCall } from './useDebounceCall';
 export { useDownloadImage } from './useDownloadImage';
 export { useFocusInput } from './useFocusInput';
