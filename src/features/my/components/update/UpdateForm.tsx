@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
 
 import { Button } from '@/components';
-import { MAX_DATE_LENGTH_UNTIL_DAY, MAX_NICKNAME_LENGTH, MAX_USERNAME_LENGTH } from '@/constants';
+import { MAX_NICKNAME_LENGTH, MAX_USERNAME_LENGTH } from '@/constants';
 import { DateInput } from '@/features/goal/components/new/DateInput';
 import { TextInput } from '@/features/goal/components/new/TextInput';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
@@ -25,6 +25,8 @@ export const UpdateForm = () => {
   const { field: birthField } = useController({ name: 'birth', control });
   const { field: usernameField } = useController({ name: 'username', control });
   const isValidBirth = useValidBirth(birthField.value);
+
+  const [defaultYYYY, defaultMM, defaultDD] = (memberData?.birth ?? '').split('-');
 
   const [isDisabledSubmit, setIsDisabledSubmit] = useState(true);
 
@@ -85,8 +87,7 @@ export const UpdateForm = () => {
               <div {...register('birth')}>
                 <DateInput
                   labelName="생년월일"
-                  intitalValue={memberData.birth?.replace(/\-/g, '.')}
-                  maxLength={MAX_DATE_LENGTH_UNTIL_DAY}
+                  initialValue={{ YYYY: defaultYYYY, MM: defaultMM, DD: defaultDD }}
                   onChange={birthField.onChange}
                 />
               </div>
