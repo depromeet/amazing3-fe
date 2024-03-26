@@ -1,6 +1,6 @@
-import { HOURS_PER_DAY, MINUTES_PER_HOUR, SECONDS_PER_MINUTE } from '@/constants';
+import { DATE_SEPARATOR, HOURS_PER_DAY, MINUTES_PER_HOUR, SECONDS_PER_MINUTE } from '@/constants';
 
-export const formatDate = (splitedDate: string[], separator: string) => {
+export const formatDate = (splitedDate: string[], separator = DATE_SEPARATOR) => {
   return splitedDate.join(separator);
 };
 
