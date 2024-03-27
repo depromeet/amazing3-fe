@@ -2,7 +2,7 @@ import { m } from 'framer-motion';
 import { useAtomValue } from 'jotai';
 
 import { CountEmoji } from '@/components';
-import { goalIdAtom } from '@/features/goal/atom';
+import { goalIdAtom } from '@/features/goal/atoms';
 import { useCreateEmoji, useDeleteReactedEmoji } from '@/hooks/reactQuery/emoji';
 
 interface ReactedEmojis {

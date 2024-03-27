@@ -1,14 +1,15 @@
 'use client';
 
 import { Suspense, useEffect, useState } from 'react';
-import { useAtom, useSetAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 
 import { Skeleton } from '@/components';
 import { useGetGoal } from '@/hooks/reactQuery/goal';
 
-import { goalIdAtom, isMyGoalAtom } from '../../atom';
+import { goalIdAtom, isMyGoalAtom } from '../../atoms';
 
 import { AddTaskInput } from './AddTaskInput';
+import { AddCommentButton } from './comment';
 import DetailLayout from './DetailLayout';
 import { Reaction } from './emoji';
 import { Tasks } from './Tasks';
@@ -16,7 +17,7 @@ import { AddSubGoalPrompt, ContentBody, DetailFooterButton, DetailHeader, Sticke
 
 export const GoalDetailContent = ({ id }: { id: number }) => {
   const { data: goal } = useGetGoal({ goalId: Number(id) });
-  const [isMyGoal, setIsMyGoal] = useAtom(isMyGoalAtom);
+  const setIsMyGoal = useSetAtom(isMyGoalAtom);
   const setGoalId = useSetAtom(goalIdAtom);
   const [isOpenTaskInput, setOpenTaskInput] = useState(false);
 
@@ -32,6 +33,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
       <DetailLayout
         header={<DetailHeader goalId={id} />}
         sticker={goal && <Sticker stickerUrl={goal.stickerUrl} />}
+        aside={<AddCommentButton />}
         body={
           goal && (
             <div className="flex flex-col gap-[28px]">
@@ -47,7 +49,7 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
               {goal.tasks.length ? (
                 <Tasks tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
-                isMyGoal && !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
+                goal.isMyGoal && !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
               )}
             </div>
           )

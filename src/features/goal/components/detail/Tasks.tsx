@@ -5,8 +5,7 @@ import { Typography } from '@/components';
 import type { GoalTasksProps } from '@/hooks/reactQuery/goal/useGetGoal';
 import { useUpdateIsDone } from '@/hooks/reactQuery/task';
 
-import { isMyGoalAtom } from '../../atom';
-import { goalIdAtom } from '../../atoms';
+import { goalIdAtom, isMyGoalAtom } from '../../atoms';
 
 import { Task } from './task';
 

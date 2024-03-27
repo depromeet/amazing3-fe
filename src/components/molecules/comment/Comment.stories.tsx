@@ -20,13 +20,13 @@ type Story = StoryObj<typeof Comment>;
 
 export const Basic: Story = {
   args: {
-    user: {
-      url: 'https://github.com/depromeet/amazing3-fe/assets/112946860/8ee0540f-4c8f-4d9e-80f4-671e60c292e8',
+    commenter: {
+      image: 'https://github.com/depromeet/amazing3-fe/assets/112946860/8ee0540f-4c8f-4d9e-80f4-671e60c292e8',
       nickname: '산타할아버지',
       username: 'BANDIBOODI-6',
     },
     content: '엄청나다! 너의 목표',
-    createdAt: '2024-02-29T07:34:58.356Z',
+    writtenAt: '2024-02-29T07:34:58.356Z',
   },
 };
 

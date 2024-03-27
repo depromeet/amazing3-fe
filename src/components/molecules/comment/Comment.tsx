@@ -1,36 +1,39 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { m } from 'framer-motion';
 
 import TrashIcon from '@/assets/icons/trash-icon.svg';
 import { Typography } from '@/components';
+import { convertTimeToElapsedTime } from '@/utils/date';
 
 interface CommentProps {
-  user: {
-    url: string;
+  commenter: {
+    image: string;
     nickname: string;
     username: string;
   };
   content: string;
-  createdAt: string;
+  writtenAt: string;
   isDeletable?: boolean;
   onDelete?: VoidFunction;
 }
 
-export const Comment = ({ user, content, createdAt, isDeletable, onDelete }: CommentProps) => {
+export const Comment = ({ commenter, content, writtenAt, isDeletable, onDelete }: CommentProps) => {
   return (
-    <div className="flex gap-4xs">
-      <Link href={{ pathname: `/home/${user.username}` }}>
-        <Image src={user.url} width={50} height={50} alt="user_profile_image" className="rounded-full" />
+    <m.div className="flex gap-4xs" {...animate}>
+      <Link href={{ pathname: `/home/${commenter.username}` }}>
+        <Image src={commenter.image} width={50} height={50} alt="user_profile_image" className="rounded-full" />
       </Link>
       <div className="w-full flex flex-col justify-between">
         <div className="w-full flex justify-between">
           <div className="flex gap-6xs items-center">
-            <Link href={{ pathname: `/home/${user.username}` }}>
-              <Typography type="body3">{user.nickname}</Typography>
+            <Link href={{ pathname: `/home/${commenter.username}` }}>
+              <Typography type="body3">{commenter.nickname}</Typography>
             </Link>
-            {/* TODO: 시간 정책 맞게 변환해주는 유틸 함수 래핑 */}
             <Typography type="caption1" className="text-gray-40">
-              {createdAt}
+              {convertTimeToElapsedTime(writtenAt)}
             </Typography>
           </div>
           {isDeletable && (
@@ -41,6 +44,14 @@ export const Comment = ({ user, content, createdAt, isDeletable, onDelete }: Com
         </div>
         <Typography type="body2">{content}</Typography>
       </div>
-    </div>
+    </m.div>
   );
+};
+
+const animate = {
+  layout: true,
+  initial: { y: -20 },
+  animate: { y: 0 },
+  exit: { opacity: 0, y: -20, height: 0, overflow: 'hidden', transition: { duration: 0.3 } },
+  transition: { duration: 0.3 },
 };

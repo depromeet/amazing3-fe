@@ -44,6 +44,9 @@ export const formatDotYYYYMM = (time: string) => {
   return YYYYMM.split('-').slice(0, -1).join('.');
 };
 
+/**
+ * 시간 정책에 맞게 변환해주는 함수
+ */
 export const convertTimeToElapsedTime = (time: string) => {
   const start = new Date(time);
   const end = new Date();
