@@ -1,63 +1,50 @@
 'use client';
 
-import type { ChangeEvent } from 'react';
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 import { Input, Typography } from '@/components';
-import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
-
-import { formatDate, isValidDate } from '../../utils/date';
+import { useDateInput } from '@/hooks';
+import { type DateProps, type DateValueProps, typeToMaxLength } from '@/hooks/useDateInput';
+import { formatDate } from '@/utils/date';
 
 interface DateInputProps {
   labelName?: string;
-  intitalValue?: string;
-  maxLength?: number;
+  initialValue?: DateValueProps;
+  requireDateType?: DateProps[];
   onChange?: (value: string) => void;
 }
 
-export const DateInput = ({ labelName = '', intitalValue = '', maxLength, onChange }: DateInputProps) => {
-  const [formattedValue, setFormattedValue] = useState<string>(intitalValue);
-  const placeholder = maxLength === MAX_DATE_LENGTH_UNTIL_MONTH ? 'YYYY.MM' : 'YYYY.MM.DD';
+export const DateInput = ({
+  labelName = '',
+  initialValue = { YYYY: '', MM: '', DD: '' },
+  requireDateType = ['YYYY', 'MM', 'DD'],
+  onChange,
+}: DateInputProps) => {
+  const { inputRefs, dateValues, handleInputChange, handleInputBlur } = useDateInput({ initialValue });
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value.replace(/\D/g, '');
-    let formatted = inputValue;
-    let year, month, day;
-
-    if (inputValue.length > 4 && inputValue.length <= 6) {
-      year = inputValue.slice(0, 4);
-      month = inputValue.slice(4, 6);
-      month = +month > 12 ? '12' : +month === 0 ? '0' : month;
-      formatted = formatDate([year, month], '.');
-    } else if (inputValue.length > 6) {
-      year = inputValue.slice(0, 4);
-      month = inputValue.slice(4, 6);
-      day = inputValue.slice(6, 8);
-
-      if (inputValue.length < 8) {
-        formatted = formatDate([year, month, day], '.');
-      } else {
-        formatted = isValidDate(year, month, day)
-          ? formatDate([year, month, day], '.')
-          : formatDate([year, month], '.');
-      }
-    }
-    setFormattedValue(formatted);
-    onChange && onChange(formatted);
-  };
+  useEffect(() => {
+    onChange && onChange(formatDate(requireDateType.map((type) => dateValues[type])));
+  }, [dateValues, onChange, requireDateType]);
 
   return (
     <div className="flex flex-col gap-5xs">
       <Typography type="title3" className="text-gray-50">
         {labelName}
       </Typography>
-      <Input
-        type="text"
-        placeholder={placeholder}
-        value={formattedValue}
-        maxLength={maxLength}
-        onChange={handleInputChange}
-      />
+      <div className="flex gap-5xs">
+        {requireDateType.map((type) => (
+          <Input
+            key={type}
+            ref={inputRefs[type]}
+            placeholder={type}
+            className="text-center"
+            maxLength={typeToMaxLength[type]}
+            value={dateValues[type]}
+            onChange={(e) => handleInputChange(e, type)}
+            onBlur={(e) => handleInputBlur(e, type)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

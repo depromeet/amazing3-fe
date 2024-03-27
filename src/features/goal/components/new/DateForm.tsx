@@ -4,10 +4,10 @@ import { useController, useFormContext } from 'react-hook-form';
 import Link from 'next/link';
 
 import { Button, Span, Typography } from '@/components';
-import { MAX_DATE_LENGTH_UNTIL_MONTH } from '@/constants';
 import type { GoalFormValues } from '@/features/goal/types';
 
 import { NEW_GOAL_FORM_ORDERS } from '../../constants';
+import { isValidDateFormat } from '../../utils/date';
 
 import { DateInput } from './DateInput';
 import FormHeader from './FormHeader';
@@ -29,12 +29,12 @@ export const DateForm = () => {
       }
       body={
         <div {...register('date')} className="pt-sm">
-          <DateInput maxLength={MAX_DATE_LENGTH_UNTIL_MONTH} onChange={onChange} />
+          <DateInput onChange={onChange} requireDateType={['YYYY', 'MM']} />
         </div>
       }
       footer={
         <Link href="/goal/new/tag">
-          <Button disabled={value ? value.length !== MAX_DATE_LENGTH_UNTIL_MONTH : true}>다음</Button>
+          <Button disabled={!isValidDateFormat(value, 'YYYY.MM')}>다음</Button>
         </Link>
       }
     />
