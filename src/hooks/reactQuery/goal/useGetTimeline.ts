@@ -2,23 +2,46 @@ import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
-import type { GoalFeedResponse } from './useGetGoalFeeds';
+const PAGE_SIZE = 4;
 
-const PAGE_SIZE = 10;
+export type TimelineProps = {
+  goal: {
+    goalId: number;
+    title: string;
+    description: string;
+    deadline: string;
+    stickerUrl: string;
+    tag: string;
+    createdAt: string;
+    cursorId: number;
+  };
+  counts: {
+    comment: number;
+    task: number;
+  };
+  emojis: Array<{
+    id: number;
+    name: string;
+    url: string;
+    reactCount: number;
+    isMyReaction: boolean;
+  }>;
+};
+
+export type TimelineResponse = {
+  contents: Array<TimelineProps>;
+  isLast: boolean;
+  nextCursor: number;
+};
 
 export const useGetTimeline = (username: string) => {
-  return useSuspenseInfiniteQuery<GoalFeedResponse>({
+  return useSuspenseInfiniteQuery<TimelineResponse>({
     queryKey: ['timeline'],
-    // NOTE: 새로운 api로 수정 예정
-    queryFn: ({ pageParam }) => api.get<GoalFeedResponse>('/goal/explore', { params: { cursor: pageParam } }),
+    queryFn: ({ pageParam }) =>
+      api.get<TimelineResponse>(`/open/life-map/timeline/${username}`, {
+        params: { cursor: pageParam, size: PAGE_SIZE },
+      }),
     initialPageParam: null,
-    getNextPageParam: ({ goals, cursor }) => (cursor && goals.length === PAGE_SIZE ? cursor.next : null),
-    select: (data) => ({
-      pages: data.pages.flatMap((page) => ({
-        goals: page.goals.filter(({ user }) => user.username === username),
-        cursor: page.cursor,
-      })),
-      pageParams: data.pageParams,
-    }),
+    getNextPageParam: ({ isLast, nextCursor }) => (isLast ? null : nextCursor),
   });
 };
