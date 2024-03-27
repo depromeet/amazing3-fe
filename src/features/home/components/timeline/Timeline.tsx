@@ -12,9 +12,8 @@ import TimelineCard from './TimelineCard';
 export const Timeline = () => {
   const pathname = usePathname();
   const [, , username] = pathname.split('/');
-
   const { data: timeline, fetchNextPage, hasNextPage } = useGetTimeline(username);
-  const isEmptyGoal = timeline.pages[0].goals.length === 0;
+  const isEmptyGoal = timeline.pages[0].contents.length === 0;
 
   return (
     <>
@@ -23,14 +22,14 @@ export const Timeline = () => {
       ) : (
         <InfiniteScroller isLastPage={!hasNextPage} onIntersect={() => fetchNextPage()}>
           <div className="mx-xs my-xs flex flex-col gap-md">
-            {timeline.pages.map(({ goals }) =>
-              goals.map((timeline, index) => {
+            {timeline.pages.map(({ contents }) =>
+              contents.map((timeline, index) => {
                 const { goal } = timeline;
                 return (
                   <TimelineCard
-                    key={goal.id}
-                    feedData={timeline}
-                    isSameYear={index > 0 && getYYYY(goal.deadline) === getYYYY(goals[index - 1].goal.deadline)}
+                    key={goal.goalId}
+                    timeline={timeline}
+                    isSameYear={index > 0 && getYYYY(goal.deadline) === getYYYY(contents[index - 1].goal.deadline)}
                   />
                 );
               }),
