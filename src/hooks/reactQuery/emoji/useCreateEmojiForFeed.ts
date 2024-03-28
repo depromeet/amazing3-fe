@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 
-import type { GoalFeedProps, GoalFeedResponse } from '../goal/useGetGoalFeeds';
+import type { GoalFeedResponse } from '../goal/useGetGoalFeeds';
 import { useOptimisticUpdate } from '../useOptimisticUpdate';
 
 import type { Emoji, EmojisResponse } from './useGetAllEmoji';
@@ -57,15 +57,8 @@ export const useCreateEmojiForFeed = () => {
         }
 
         const newEmojis = existedEmojiIndex >= 0 ? targetEmojis : [...targetEmojis, newEmoji];
-        const newGoal = {
-          ...targetGoal,
-          emojis: newEmojis,
-          count: {
-            ...targetGoal.count,
-            reaction: targetGoal.count.reaction + 1,
-          },
-        } as GoalFeedProps;
-        currentPage.goals.splice(goalIndex, 1, newGoal);
+        targetGoal.emojis = newEmojis;
+        targetGoal.count.reaction++;
 
         return newData;
       };

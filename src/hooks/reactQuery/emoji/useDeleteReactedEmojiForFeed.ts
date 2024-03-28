@@ -16,7 +16,6 @@ interface GoalFeedInfinityResponse extends InfiniteData<GoalFeedResponse, unknow
 const NOT_FOUNDED_INDEX = -1;
 
 export const useDeleteReactedEmojiForFeed = () => {
-  // const queryClient = useQueryClient();
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
   const targetQueryKey = ['goalFeeds'];
 
@@ -42,13 +41,11 @@ export const useDeleteReactedEmojiForFeed = () => {
         const targetEmojis = targetGoal.emojis;
         const existedEmojiIndex = targetEmojis.findIndex(({ id }) => id === emojiId);
 
-        if (existedEmojiIndex === NOT_FOUNDED_INDEX) {
-          return old;
-        } else {
-          const targetEmoji = targetEmojis[existedEmojiIndex];
-          targetEmoji.reactCount--;
-          if (targetEmoji.reactCount === 0) targetEmojis.splice(existedEmojiIndex, 1);
-        }
+        if (existedEmojiIndex === NOT_FOUNDED_INDEX) return old;
+
+        const targetEmoji = targetEmojis[existedEmojiIndex];
+        targetEmoji.reactCount--;
+        if (targetEmoji.reactCount === 0) targetEmojis.splice(existedEmojiIndex, 1);
 
         return newData;
       };
