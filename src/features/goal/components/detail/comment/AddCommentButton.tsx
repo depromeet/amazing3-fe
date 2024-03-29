@@ -4,15 +4,14 @@ import { useAtomValue } from 'jotai';
 
 import BlueCommentIcon from '@/assets/icons/blue-comment-icon.svg';
 import { CommentsBottomSheet } from '@/features/comment';
-import { goalIdAtom } from '@/features/goal/atoms';
+import { goalIdAtom, isMyGoalAtom } from '@/features/goal/atoms';
+import { useGetHasNewComment } from '@/hooks/reactQuery/comment';
 
-interface AddCommentButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  hasUnreadComments?: boolean;
-}
-
-export const AddCommentButton = ({ hasUnreadComments, ...props }: AddCommentButtonProps) => {
+export const AddCommentButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { open } = useOverlay();
   const goalId = useAtomValue(goalIdAtom);
+  const isMyGoal = useAtomValue(isMyGoalAtom);
+  const { data: hasNewComments } = useGetHasNewComment({ goalId, isMyGoal });
 
   const handleOpenComments = () => {
     open(({ isOpen, close }) => <CommentsBottomSheet open={isOpen} onClose={close} goalId={goalId} />);
@@ -27,7 +26,9 @@ export const AddCommentButton = ({ hasUnreadComments, ...props }: AddCommentButt
       >
         <BlueCommentIcon />
       </button>
-      {hasUnreadComments && <span className="absolute top-0 right-0 w-[14px] h-[14px] rounded-full bg-red-30" />}
+      {isMyGoal && hasNewComments && (
+        <span className="absolute top-0 right-0 w-[14px] h-[14px] rounded-full bg-red-30" />
+      )}
     </div>
   );
 };

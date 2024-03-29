@@ -8,7 +8,7 @@ import EllipsisVerticalIcon from '@/assets/icons/ellipsis-vertical.svg';
 import CheckedIcon from '@/assets/icons/goal/radio/radio-checked.svg';
 import UnCheckedIcon from '@/assets/icons/goal/radio/radio-unchecked.svg';
 import { Typography } from '@/components';
-import { isMyGoalAtom } from '@/features/goal/atom';
+import { isMyGoalAtom } from '@/features/goal/atoms';
 import { TaskMoreOptionBottomSheet } from '@/features/goal/components/detail/TaskMoreOptionBottomSheet';
 import { useDebounceCall, useInput } from '@/hooks';
 import { useUpdateDescription } from '@/hooks/reactQuery/task/useUpdateDescription';

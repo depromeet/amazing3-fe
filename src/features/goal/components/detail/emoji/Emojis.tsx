@@ -1,7 +1,7 @@
 import { useAtomValue } from 'jotai';
 
 import { EmojiGroup } from '@/components';
-import { goalIdAtom } from '@/features/goal/atom';
+import { goalIdAtom } from '@/features/goal/atoms';
 import { useCreateEmoji, useGetAllEmoji } from '@/hooks/reactQuery/emoji';
 
 interface EmojisProps {
