@@ -18,11 +18,11 @@ export const ResetButton = ({ statusCode }: StandardErrorPageProps) => {
     );
 
   return (
-    <>
+    <div className="flex gap-5xs">
       <Link href={{ pathname: memberData ? `/home/${memberData.username}` : '/' }} className="w-full">
         <Button variant="tertiary">홈화면</Button>
       </Link>
       <Button onClick={() => router.back()}>이전페이지</Button>
-    </>
+    </div>
   );
 };
