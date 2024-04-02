@@ -4,10 +4,26 @@ export const formatDate = (splitedDate: string[], separator: string) => {
   return splitedDate.join(separator);
 };
 
-export const isValidDate = (year: string, month: string, day: string) => {
+export const isValidDate = (year: string, month: string, day?: string) => {
+  return hasValidDateLengths(year, month, day) && doesDateExist(year, month, day);
+};
+
+export const hasValidDateLengths = (year: string, month: string, day?: string) => {
+  if (year.length !== 4 || month.length !== 2) {
+    return false;
+  }
+
+  if (day && day.length !== 2) {
+    return false;
+  }
+
+  return true;
+};
+
+export const doesDateExist = (year: string, month: string, day?: string) => {
   const yearNum = +year;
   const monthNum = +month - 1;
-  const dayNum = +day;
+  const dayNum = day ? +day : 0;
 
   const date = new Date(yearNum, monthNum, dayNum);
 

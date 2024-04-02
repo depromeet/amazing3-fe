@@ -12,7 +12,7 @@ import CreateGoalFormProvider from '@/features/goal/contexts/CreateGoalFormProvi
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <CreateGoalFormProvider>
-      <div className="w-full h-screen bg-gradient1 relative">
+      <div className="w-full h-[100dvh] bg-gradient1 relative">
         <SpeechBubble className="absolute top-[-4%] w-full" />
         <Stars className="absolute top-[28%] left-1/4 w-1/2" />
         <Image
