@@ -36,7 +36,7 @@ export type TimelineResponse = {
 
 export const useGetTimeline = (username: string) => {
   return useSuspenseInfiniteQuery<TimelineResponse>({
-    queryKey: ['timeline'],
+    queryKey: ['timeline', username],
     queryFn: ({ pageParam }) =>
       api.get<TimelineResponse>(`/open/life-map/timeline/${username}`, {
         params: { cursor: pageParam, size: PAGE_SIZE },
