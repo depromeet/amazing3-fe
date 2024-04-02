@@ -1,2 +1,2 @@
 export { ErrorPageLayout } from './ErrorPageLayout';
-export { NumericErrorPageTopComponent } from './NumericErrorPageTopComponent';
+export { StatusCodeError } from './StatusCodeError';

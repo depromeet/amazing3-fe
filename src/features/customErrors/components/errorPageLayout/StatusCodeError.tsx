@@ -10,11 +10,11 @@ const statusToImage: Record<404 | 500, StaticImport> = {
   500: Error500Image,
 };
 
-interface NumericErrorPageTopComponentProps {
+interface StatusCodeErrorProps {
   status: keyof typeof statusToImage;
 }
 
-export const NumericErrorPageTopComponent = ({ status }: NumericErrorPageTopComponentProps) => {
+export const StatusCodeError = ({ status }: StatusCodeErrorProps) => {
   return (
     <div className="flex flex-col gap-2xs items-center">
       <Image src={statusToImage[status]} width={263} height={130} alt={`${status}_error`} />

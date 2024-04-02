@@ -1,7 +1,7 @@
-import { StandardErrorPage } from '@/features/customErrors/components';
+import { DefaultErrorPage } from '@/features/customErrors/components';
 
 const ErrorPage = () => {
-  return <StandardErrorPage statusCode={500} />;
+  return <DefaultErrorPage statusCode={500} />;
 };
 
 export default ErrorPage;

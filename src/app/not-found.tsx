@@ -1,7 +1,7 @@
-import { StandardErrorPage } from '@/features/customErrors/components';
+import { DefaultErrorPage } from '@/features/customErrors/components';
 
 const NotFoundPage = () => {
-  return <StandardErrorPage statusCode={404} />;
+  return <DefaultErrorPage statusCode={404} />;
 };
 
 export default NotFoundPage;

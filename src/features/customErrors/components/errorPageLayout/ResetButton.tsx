@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
-import type { StandardErrorPageProps } from '../StandardErrorPage';
+import type { DefaultErrorPageProps } from '../DefaultErrorPage';
 
-export const ResetButton = ({ statusCode }: StandardErrorPageProps) => {
+export const ResetButton = ({ statusCode }: DefaultErrorPageProps) => {
   const router = useRouter();
   const { data: memberData } = useGetMemberData();
 

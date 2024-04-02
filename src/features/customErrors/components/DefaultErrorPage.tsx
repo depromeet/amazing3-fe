@@ -6,10 +6,10 @@ import LockImage from '@/assets/images/error/lock.png';
 
 import { ErrorPageLayout, type ErrorPageLayoutProps } from './errorPageLayout/ErrorPageLayout';
 import { ResetButton } from './errorPageLayout/ResetButton';
-import { NumericErrorPageTopComponent } from './errorPageLayout';
+import { StatusCodeError } from './errorPageLayout';
 
 type StandardStatusCodeProps = 404 | 500 | 403;
-export interface StandardErrorPageProps {
+export interface DefaultErrorPageProps {
   statusCode: StandardStatusCodeProps;
 }
 
@@ -18,13 +18,13 @@ type ErrorValuesProps = Record<StandardStatusCodeProps, ErrorPageLayoutProps>;
 const ERROR_VALUES: ErrorValuesProps = {
   404: {
     title: '원하시는 페이지를 찾을 수 없어요. \n 페이지 주소를 다시 확인해 주세요.',
-    TopComponent: <NumericErrorPageTopComponent status={404} />,
+    TopComponent: <StatusCodeError status={404} />,
     bottomImage: 'default',
     footer: <ResetButton statusCode={404} />,
   },
   500: {
     title: '앗, 에러가 발생했어요. \n 다시 시도해 주세요.',
-    TopComponent: <NumericErrorPageTopComponent status={500} />,
+    TopComponent: <StatusCodeError status={500} />,
     bottomImage: 'default',
     footer: <ResetButton statusCode={500} />,
   },
@@ -36,7 +36,7 @@ const ERROR_VALUES: ErrorValuesProps = {
   },
 };
 
-export const StandardErrorPage = ({ statusCode }: StandardErrorPageProps) => (
+export const DefaultErrorPage = ({ statusCode }: DefaultErrorPageProps) => (
   <ErrorPageLayout
     TopComponent={ERROR_VALUES[statusCode].TopComponent}
     title={ERROR_VALUES[statusCode].title}
