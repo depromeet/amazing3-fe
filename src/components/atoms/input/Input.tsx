@@ -42,9 +42,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           className={inputVariants({ className })}
           ref={ref}
+          {...props}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          {...props}
         />
         {includeSubmitButton && (
           <div className="w-[32px] h-[32px]">
