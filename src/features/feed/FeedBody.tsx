@@ -1,5 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+
 import { InfiniteScroller } from '@/components';
 import { usePrefetchAllEmoji } from '@/hooks/reactQuery/emoji/useGetAllEmoji';
 import { type GoalFeedProps, useGetGoalFeeds } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
@@ -7,8 +10,15 @@ import { type GoalFeedProps, useGetGoalFeeds } from '@/hooks/reactQuery/goal/use
 import FeedCard from './feedCard/FeedCard';
 
 export const FeedBody = () => {
+  const queryClient = useQueryClient();
   const { data: goalFeedsData, fetchNextPage, hasNextPage } = useGetGoalFeeds();
   usePrefetchAllEmoji();
+
+  useEffect(() => {
+    return () => {
+      queryClient.removeQueries({ queryKey: ['goalFeeds'] });
+    };
+  }, [queryClient]);
 
   // TODO: 피드가 0개일 때, 처리 필요
 
