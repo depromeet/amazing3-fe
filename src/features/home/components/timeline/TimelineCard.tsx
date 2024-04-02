@@ -35,7 +35,7 @@ const TimelineCard = ({ timeline, isSameYear }: TimelineCardProps) => {
               <>
                 {/* TODO: 다른 유저가 이미 반응한 이모지 버튼 추가 */}
                 <ReactionGroup targetGoalId={timeline.goal.goalId} reactedEmojis={timeline.emojis} />
-                <CommentButton numberOfComments={timeline.counts.comment} />
+                <CommentButton targetGoalId={timeline.goal.goalId} numberOfComments={timeline.counts.comment} />
               </>
             }
           />
