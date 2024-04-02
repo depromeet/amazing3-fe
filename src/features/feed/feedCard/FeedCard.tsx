@@ -34,7 +34,7 @@ const FeedCard = ({ feedData }: FeedCardProps) => {
               footer={
                 <>
                   <ReactionGroup targetGoalId={goal.id} reactedEmojis={emojis} />
-                  <CommentButton numberOfComments={count.comment} />
+                  <CommentButton targetGoalId={goal.id} numberOfComments={count.comment} />
                 </>
               }
             />
