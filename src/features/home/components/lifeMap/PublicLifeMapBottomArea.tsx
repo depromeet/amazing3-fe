@@ -22,26 +22,23 @@ const PublicLifeMapBottomArea = ({ username }: { username: string }) => {
   const { open } = useOverlay();
   const toast = useToast();
 
-  const [isCheeringSuccess, setIsCheeringSuccess] = useState(false);
+  const [lastCheerTime, setLastCheerTime] = useState(0);
 
   // TODO: Lottie atom을 수정해서 로티 이미지를 플레이하는 방식으로 변경
   const { mutate: cheer, isSuccess } = useCreateCheering(username);
 
   const CHEER_ANIMATION_INTERVAL = 5400;
+  const CHEER_LIMIT_INTERVAL = 6000;
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout | undefined;
-    if (isSuccess) {
-      setIsCheeringSuccess(true);
-      timeoutId = setTimeout(() => {
-        setIsCheeringSuccess(false);
-      }, CHEER_ANIMATION_INTERVAL);
-    }
+    if (!isSuccess) return;
+
+    const timeoutId = setTimeout(() => {
+      setLastCheerTime(0);
+    }, CHEER_ANIMATION_INTERVAL);
 
     return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      clearTimeout(timeoutId);
     };
   }, [isSuccess]);
 
@@ -55,14 +52,19 @@ const PublicLifeMapBottomArea = ({ username }: { username: string }) => {
       return;
     }
 
-    if (!isCheeringSuccess) toast.warning('1분 뒤에 응원할 수 있어요.');
+    const now = Date.now();
+    if (now - lastCheerTime < CHEER_LIMIT_INTERVAL && lastCheerTime !== 0) {
+      toast.warning('1분 뒤에 응원할 수 있어요.');
+      return;
+    }
 
+    setLastCheerTime(now);
     throttleCheer();
   };
 
   return (
     <>
-      {isCheeringSuccess && <CheeringClickedLottie />}
+      {isSuccess && <CheeringClickedLottie />}
       <div className="flex gap-5xs  px-xs pt-5xs mt-[18px] w-full z-[1]">
         <CheeringButton onClick={handleClickCheeringButton} />
         <Link href={{ pathname: myHomePath }} className="w-full">
