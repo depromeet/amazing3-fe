@@ -1,7 +1,9 @@
 import type { HTMLAttributes } from 'react';
 import { useEffect, useRef } from 'react';
 import type { AnimationConfig, AnimationItem } from 'lottie-web';
-import lottie from 'lottie-web';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
+import lottie from 'lottie-web/build/player/lottie_light.min.js';
 
 interface LottieProps extends HTMLAttributes<HTMLDivElement>, Omit<AnimationConfig, 'container'> {
   src: string;

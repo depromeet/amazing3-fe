@@ -17,6 +17,7 @@ export type GoalResponse = {
   deadline: string;
   stickerUrl: string;
   description: string;
+  isMyGoal: boolean;
   tagInfo: {
     tagId: number;
     tagContent: string;

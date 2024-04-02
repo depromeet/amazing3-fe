@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import * as BaseTabs from '@radix-ui/react-tabs';
 

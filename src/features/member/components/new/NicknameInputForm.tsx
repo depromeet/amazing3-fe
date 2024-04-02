@@ -24,10 +24,11 @@ export const NicknameInputForm = () => {
   const router = useRouter();
   const [isReady, setIsReady] = useState(false);
 
+  // 이 페이지에 직접 접근했을 경우 birth 값이 있다면 home 페이지로 이동
   useEffect(() => {
     if (memberData) {
-      const nickname = memberData.nickname;
-      if (nickname) {
+      const birth = memberData.birth;
+      if (birth) {
         router.push(`/home/${memberData?.username}`);
       } else {
         setIsReady(true);

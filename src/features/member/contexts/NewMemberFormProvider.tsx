@@ -24,11 +24,11 @@ const NewMemberFormProvider = ({ children }: PropsWithChildren) => {
 
   const submit = (formData: NewMemberFormValues) => {
     const { nickname, birth } = formData;
-    if (!nickname || !birth) return;
+    if (!nickname) return;
 
     // Convert birth from "YYYY.MM.DD" to "YYYY-MM-DD"
     // TODO: 서버에서 YYYY.MM.DD 형식을 지원하면 이 부분 삭제
-    const convertedBirth = birth.replace(/\./g, '-');
+    const convertedBirth = birth?.replace(/\./g, '-');
 
     mutate({ ...formData, birth: convertedBirth });
   };

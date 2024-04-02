@@ -57,7 +57,7 @@ export const UpdateForm = () => {
       imageField.value.length === 0 ||
       nicknameField.value.length === 0 ||
       usernameField.value.length === 0 ||
-      birthField.value.length !== 10;
+      birthField.value?.length !== 10;
 
     setIsDisabledSubmit(isNotFilled || isNotModified || !isValidBirth);
   }, [memberData, imageField, nicknameField, birthField, usernameField, isValidBirth]);
@@ -85,7 +85,7 @@ export const UpdateForm = () => {
               <div {...register('birth')}>
                 <DateInput
                   labelName="생년월일"
-                  intitalValue={memberData.birth.replace(/\-/g, '.')}
+                  intitalValue={memberData.birth?.replace(/\-/g, '.')}
                   maxLength={MAX_DATE_LENGTH_UNTIL_DAY}
                   onChange={birthField.onChange}
                 />

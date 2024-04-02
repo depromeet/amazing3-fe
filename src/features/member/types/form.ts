@@ -1,6 +1,6 @@
 export interface NewMemberFormValues {
   nickname: string;
-  birth: string;
+  birth?: string;
 }
 
 export interface MemberProps {
@@ -8,7 +8,7 @@ export interface MemberProps {
   email: string;
   username: string;
   nickname: string;
-  birth: string;
+  birth?: string;
   image: string;
   createdAt: string;
   lifeMap: { isPublic: boolean; goalsCount: number; lifeMapId: number };

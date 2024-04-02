@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
 
-import type { ErrorPageLayoutProps } from './ErrorPageLayout';
+import type { DefaultErrorPageProps } from '../DefaultErrorPage';
 
-export const ResetButton = ({ statusCode }: ErrorPageLayoutProps) => {
+export const ResetButton = ({ statusCode }: DefaultErrorPageProps) => {
   const router = useRouter();
   const { data: memberData } = useGetMemberData();
 
@@ -18,11 +18,11 @@ export const ResetButton = ({ statusCode }: ErrorPageLayoutProps) => {
     );
 
   return (
-    <>
+    <div className="flex gap-5xs">
       <Link href={{ pathname: memberData ? `/home/${memberData.username}` : '/' }} className="w-full">
         <Button variant="tertiary">홈화면</Button>
       </Link>
       <Button onClick={() => router.back()}>이전페이지</Button>
-    </>
+    </div>
   );
 };

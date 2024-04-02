@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { withSentryConfig } = require('@sentry/nextjs');
-
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -62,14 +59,6 @@ const nextConfig = {
       },
     ],
   },
-  sentry: {
-    hideSourceMaps: true,
-  },
 };
 
-const sentryWebpackPluginOptions = {
-  silent: true,
-  authToken: process.env.NEXT_PUBLIC_SENTRY_AUTH_TOKEN,
-};
-
-module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
+module.exports = nextConfig;

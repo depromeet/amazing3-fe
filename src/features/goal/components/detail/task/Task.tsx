@@ -1,20 +1,22 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useOverlay } from '@toss/use-overlay';
+import { useAtomValue } from 'jotai';
 
 import EllipsisVerticalIcon from '@/assets/icons/ellipsis-vertical.svg';
 import CheckedIcon from '@/assets/icons/goal/radio/radio-checked.svg';
 import UnCheckedIcon from '@/assets/icons/goal/radio/radio-unchecked.svg';
 import { Typography } from '@/components';
+import { isMyGoalAtom } from '@/features/goal/atoms';
 import { TaskMoreOptionBottomSheet } from '@/features/goal/components/detail/TaskMoreOptionBottomSheet';
-import { useInput, useIsMyMap } from '@/hooks';
+import { useDebounceCall, useInput } from '@/hooks';
 import { useUpdateDescription } from '@/hooks/reactQuery/task/useUpdateDescription';
 
 import { TaskEditInput } from './TaskEditInput';
 
 interface TaskProps {
-  isDone?: boolean;
+  initialIsDone?: boolean;
   text: string;
   targetIds: {
     goalId: number;
@@ -23,18 +25,24 @@ interface TaskProps {
   onDoneClick: VoidFunction;
 }
 
-export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps) => {
+export const Task = ({ initialIsDone = false, text, targetIds, onDoneClick }: TaskProps) => {
+  const [isDone, setIsDone] = useState(initialIsDone);
   const CheckIcon = isDone ? CheckedIcon : UnCheckedIcon;
-  const { isMyMap } = useIsMyMap();
   const { open } = useOverlay();
 
   const [isEditing, setIsEditing] = useState(false);
   const { value: editText, handleChange: handleEditText } = useInput(text);
   const { mutate } = useUpdateDescription();
+  const isMyGoal = useAtomValue(isMyGoalAtom);
 
-  const handleDoneClick = useCallback(() => {
+  const debounceHandleIsDone = useDebounceCall(() => {
     onDoneClick();
-  }, [onDoneClick]);
+  });
+
+  const handleDoneClick = () => {
+    setIsDone((prev) => !prev);
+    debounceHandleIsDone();
+  };
 
   const handleMoreOptionClick = () => {
     const targetTask = { ...targetIds, description: text };
@@ -56,11 +64,11 @@ export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps
 
   return (
     <div className="w-full flex gap-6xs items-start px-3xs py-4xs rounded-[8px] border-gray-20 bg-white shadow-thumb">
-      <div className="w-[24px] h-[24px]">
-        <button onClick={handleDoneClick} disabled={!isMyMap}>
+      {isMyGoal && (
+        <button onClick={handleDoneClick} className="w-[24px] h-[24px]">
           <CheckIcon width={24} height={24} />
         </button>
-      </div>
+      )}
       {isEditing ? (
         <div className="flex flex-col w-full gap-7xs justify-center mt-7xs">
           <TaskEditInput value={editText} onChange={handleEditText} onBlur={handleUpdateDescription} />
@@ -68,10 +76,10 @@ export const Task = ({ isDone = false, text, targetIds, onDoneClick }: TaskProps
         </div>
       ) : (
         <div className="flex w-full justify-between items-center">
-          <Typography type="body3" className="text-gray-70">
+          <Typography type="body3" className={`${!isMyGoal && isDone && 'line-through text-gray-40'}`}>
             {text}
           </Typography>
-          {isMyMap && (
+          {isMyGoal && (
             <button className="px-5xs" onClick={handleMoreOptionClick}>
               <EllipsisVerticalIcon />
             </button>

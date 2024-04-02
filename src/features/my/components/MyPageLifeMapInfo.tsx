@@ -28,7 +28,7 @@ const MyPageLifeMapInfo = ({ username }: MyPageLifeMapInfoProps) => {
           <Typography type="title4">{`${formatOver999(cheering?.count || 0)}명`}</Typography>
         </div>
         <Link href="/my/cheering">
-          <ForwardIcon />
+          <ForwardIcon fill="#8490A0" />
         </Link>
       </div>
       <div className="flex items-center gap-[8px] py-[13px] w-full">

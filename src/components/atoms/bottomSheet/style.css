@@ -8,12 +8,14 @@
   --rsbs-mr: auto;
 }
 
+[data-rsbs-overlay] {
+  z-index: 99;
+}
+
 [data-rsbs-header] {
-  text-align: left;
-  padding-bottom: 0;
-  box-shadow: none;
+  @apply text-left pb-0 shadow-none px-xs;
 }
 
 [data-rsbs-footer] {
-  box-shadow: none;
+  @apply shadow-none px-xs;
 }

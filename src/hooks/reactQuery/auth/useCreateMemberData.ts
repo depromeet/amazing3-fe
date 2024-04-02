@@ -4,7 +4,7 @@ import { api } from '@/apis';
 
 export interface MemberRequest {
   nickname: string;
-  birth: string;
+  birth?: string;
 }
 
 export const useCreateMemberData = () => {

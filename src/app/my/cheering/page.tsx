@@ -1,5 +1,4 @@
-import CheererHeader from '@/features/cheering/CheererHeader';
-import CheererList from '@/features/cheering/CheererList';
+import { CheererHeader, CheererList } from '@/features/cheering';
 
 const CheeringPage = () => {
   return (

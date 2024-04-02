@@ -12,3 +12,8 @@
     @apply max-w-[var(--layout-max-w)] min-h-[var(--layout-min-h)] w-full mx-auto;
   }
 }
+
+::-webkit-scrollbar {
+  /* 가로 스크롤바 보이지 않도록 */
+  display: none;
+}

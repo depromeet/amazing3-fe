@@ -11,7 +11,7 @@ import { formatDate, isValidDate } from '../../utils/date';
 interface DateInputProps {
   labelName?: string;
   intitalValue?: string;
-  maxLength: number;
+  maxLength?: number;
   onChange?: (value: string) => void;
 }
 

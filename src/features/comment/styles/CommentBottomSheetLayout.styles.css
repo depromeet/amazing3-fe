@@ -1,0 +1,20 @@
+/* CommentBottomSheetLayout 특정 클래스에 대한 스타일 정의 */
+.commentBottomSheet [data-rsbs-overlay] {
+  max-height: calc(100dvh - 24px);
+}
+
+.commentBottomSheet [data-rsbs-header] {
+  @apply px-xs pb-4xs;
+}
+
+.commentBottomSheet [data-rsbs-scroll] {
+  @apply w-full h-full;
+}
+
+.commentBottomSheet [data-rsbs-content] {
+  @apply w-full min-h-full flex flex-col items-center justify-center;
+}
+
+.commentBottomSheet [data-rsbs-footer] {
+  @apply pt-0;
+}

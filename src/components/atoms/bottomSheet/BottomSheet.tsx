@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef } from 'react';
 import type { BottomSheetProps as BaseBottomSheetProps } from 'react-spring-bottom-sheet';
 import { BottomSheet as BaseBottomSheet } from 'react-spring-bottom-sheet';
@@ -19,7 +21,6 @@ export const BottomSheet = forwardRef<RefHandles, BottomSheetProps>(
   ) => {
     return (
       <BaseBottomSheet
-        {...props}
         ref={ref}
         open={open}
         onDismiss={onDismiss}
@@ -28,6 +29,7 @@ export const BottomSheet = forwardRef<RefHandles, BottomSheetProps>(
         expandOnContentDrag={false}
         header={HeaderComponent}
         footer={FooterComponent}
+        {...props}
       >
         {children}
       </BaseBottomSheet>
