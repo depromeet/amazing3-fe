@@ -2,17 +2,19 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 import { useGetMemberData } from '@/hooks/reactQuery/auth/useGetMemberData';
-import { createQueryString } from '@/utils/queryString';
 
 export type CheererResponse = {
   contents: {
+    cheererId: number;
     userId: number;
     userName: string;
     userNickName: string;
     userImageUrl: string;
     cheeringAt: string;
+    cursorId: number;
   }[];
-  isLastPage: boolean;
+  isLast: boolean;
+  nextCursor: number;
   total: number;
 };
 
@@ -24,14 +26,12 @@ export const useGetCheerer = () => {
   return useInfiniteQuery<CheererResponse>({
     queryKey: ['cheerer', my?.lifeMap.lifeMapId],
     queryFn: ({ pageParam }) => {
-      const queryString = createQueryString({
-        pageSize: PAGE_SIZE,
-        lastCursorAt: pageParam,
+      return api.get<CheererResponse>(`/cheering/squad/${my?.lifeMap.lifeMapId}`, {
+        params: { cursor: pageParam, size: PAGE_SIZE },
       });
-      return api.get<CheererResponse>(`/cheering/squad/${my?.lifeMap.lifeMapId}?${queryString}`);
     },
     initialPageParam: null,
-    getNextPageParam: ({ isLastPage, contents }) => (isLastPage ? null : contents[contents.length - 1].cheeringAt),
+    getNextPageParam: ({ isLast, nextCursor }) => (isLast ? null : nextCursor),
     enabled: my?.lifeMap.lifeMapId !== undefined,
   });
 };
