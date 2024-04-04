@@ -20,8 +20,8 @@ interface CommentsBottomSheetProps {
 export const CommentsBottomSheet = ({ goalId, ...props }: CommentsBottomSheetProps) => {
   const isMyGoal = useAtomValue(isMyGoalAtom);
   const { open } = useOverlay();
-  const { data } = useGetComment({ goalId });
-  useGetHasNewComment({ goalId, isMyGoal });
+  const { data, isSuccess } = useGetComment({ goalId });
+  useGetHasNewComment({ goalId, isMyGoal, enabled: isSuccess });
 
   const handleDelete = (commentId: number) => () => {
     open(({ isOpen, close }) => (
