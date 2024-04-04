@@ -11,7 +11,7 @@ export const AddCommentButton = (props: ButtonHTMLAttributes<HTMLButtonElement>)
   const { open } = useOverlay();
   const goalId = useAtomValue(goalIdAtom);
   const isMyGoal = useAtomValue(isMyGoalAtom);
-  const { data: hasNewComments } = useGetHasNewComment({ goalId, isMyGoal });
+  const { data: hasNewComments } = useGetHasNewComment({ goalId, isMyGoal, enabled: true });
 
   const handleOpenComments = () => {
     open(({ isOpen, close }) => <CommentsBottomSheet open={isOpen} onClose={close} goalId={goalId} />);
