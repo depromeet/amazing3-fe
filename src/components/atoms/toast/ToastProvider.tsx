@@ -16,7 +16,7 @@ export const ToastProvider = () => {
   return (
     isMounted && (
       <Portal>
-        <div className={`fixed ${position} left-0 right-0 flex flex-col items-center z-50`}>
+        <div className={`fixed ${position} left-0 right-0 flex flex-col items-center z-[999]`}>
           {toasts.map((toast) => (
             <Toast key={toast.id} {...toast} />
           ))}
