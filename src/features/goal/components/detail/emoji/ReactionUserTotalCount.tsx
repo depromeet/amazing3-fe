@@ -22,11 +22,11 @@ export const ReactionUserTotalCount = ({ username, count }: ReactionUserTotalCou
 
   const ShowText = () => {
     if (countExceptOne === 0) {
-      return `${formatOverLength(username, 2)}님이 목표에 반응했어요.`;
+      return `${formatOverLength(username)}님이 목표에 반응했어요.`;
     }
     return (
       <>
-        {formatOverLength(username, 2)}님 외&nbsp;
+        {formatOverLength(username)}님 외&nbsp;
         <span className="text-blue-50">{formatOver999(countExceptOne)}</span>명이 반응했어요.
       </>
     );
@@ -38,14 +38,18 @@ export const ReactionUserTotalCount = ({ username, count }: ReactionUserTotalCou
 
   return (
     <button
-      className="relative w-full flex justify-center items-center rounded-[12px] bg-gray-10 gap-5xs py-5xs"
+      className="w-full flex justify-center items-center rounded-[12px] bg-gray-10 gap-5xs py-5xs"
       onClick={handleOpenMembersBottomSheet}
     >
-      <Image src={ReactionMembersImage} width={54} height={36} alt="reaction_members_image" />
-      <Typography type="body3">
-        <ShowText />
-      </Typography>
-      <ArrowIcon width="24" height="24" className="absolute right-[10px] rotate-180" />
+      <div className="relative w-full h-[36px] flex items-center">
+        <div className="absolute left-[19px] flex gap-2xs items-center">
+          <Image src={ReactionMembersImage} width={54} height={36} alt="reaction_members_image" />
+          <Typography type="body3">
+            <ShowText />
+          </Typography>
+        </div>
+        <ArrowIcon width="24" height="24" className="absolute right-[10px] rotate-180" />
+      </div>
     </button>
   );
 };
