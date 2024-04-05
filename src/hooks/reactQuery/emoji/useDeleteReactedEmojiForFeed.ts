@@ -11,10 +11,6 @@ type EmojiRequestParams = {
   emojiId: number;
 };
 
-interface GoalFeedInfinityResponse extends InfiniteData<GoalFeedResponse, unknown> {}
-
-const NOT_FOUNDED_INDEX = -1;
-
 export const useDeleteReactedEmojiForFeed = () => {
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
   const targetQueryKey = ['goalFeeds'];
@@ -22,32 +18,28 @@ export const useDeleteReactedEmojiForFeed = () => {
   return useMutation({
     mutationFn: ({ goalId, emojiId }: EmojiRequestParams) => api.delete(`/goal/${goalId}/emoji/${emojiId}`),
     onMutate: async ({ goalId, emojiId }) => {
-      const updater = (old: GoalFeedInfinityResponse): GoalFeedInfinityResponse => {
-        const newData = JSON.parse(JSON.stringify(old)) as GoalFeedInfinityResponse;
-
-        let currentPage,
-          pageIndex = NOT_FOUNDED_INDEX,
-          goalIndex = NOT_FOUNDED_INDEX;
-
-        while (pageIndex < newData.pages.length && goalIndex < 0) {
-          pageIndex++;
-          currentPage = newData.pages[pageIndex];
-          goalIndex = currentPage.goals.findIndex(({ goal }) => goal.id === goalId);
-        }
-
-        if (!currentPage) return old;
-
-        const targetGoal = currentPage.goals[goalIndex];
-        const targetEmojis = targetGoal.emojis;
-        const existedEmojiIndex = targetEmojis.findIndex(({ id }) => id === emojiId);
-
-        if (existedEmojiIndex === NOT_FOUNDED_INDEX) return old;
-
-        const targetEmoji = targetEmojis[existedEmojiIndex];
-        targetEmoji.reactCount--;
-        if (targetEmoji.reactCount === 0) targetEmojis.splice(existedEmojiIndex, 1);
-
-        return newData;
+      const updater = (old: InfiniteData<GoalFeedResponse>) => {
+        return {
+          ...old,
+          pages: old.pages.map((page) => ({
+            ...page,
+            goals: page.goals.map((goal) =>
+              goal.goal.id === goalId
+                ? {
+                    ...goal,
+                    emojis: goal.emojis
+                      .map((emoji) =>
+                        emoji.id === emojiId
+                          ? { ...emoji, reactCount: emoji.reactCount - 1, isMyReaction: true }
+                          : emoji,
+                      )
+                      .filter(({ reactCount }) => reactCount > 0),
+                    count: { ...goal.count, reaction: goal.count.reaction - 1 },
+                  }
+                : goal,
+            ),
+          })),
+        };
       };
 
       const context = await optimisticUpdater({
