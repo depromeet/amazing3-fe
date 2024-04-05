@@ -30,7 +30,7 @@ export const useDeleteReactedEmojiForFeed = () => {
                     emojis: goal.emojis
                       .map((emoji) =>
                         emoji.id === emojiId
-                          ? { ...emoji, reactCount: emoji.reactCount - 1, isMyReaction: true }
+                          ? { ...emoji, reactCount: emoji.reactCount - 1, isMyReaction: false }
                           : emoji,
                       )
                       .filter(({ reactCount }) => reactCount > 0),
@@ -49,7 +49,6 @@ export const useDeleteReactedEmojiForFeed = () => {
       return context;
     },
     onSuccess: (_, { goalId }) => {
-      // queryClient.invalidateQueries({ queryKey: ['goalFeeds'] });
       queryClient.invalidateQueries({ queryKey: ['emoji', goalId] });
     },
     onError: (_, __, context) => {
