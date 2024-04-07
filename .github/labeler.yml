@@ -1,0 +1,24 @@
+enable:
+  issues: false
+  prs: true
+
+# 레이블
+labels:
+  'bug':
+    include:
+      - '\bbug\b'
+  'test':
+    include:
+      - '\btest\b'
+  'feature':
+    include:
+      - '\bfeat\b'
+  'docs':
+    include:
+      - '\bdocs\b'
+  'refactor':
+    include:
+      - '\brefactor\b'
+  'chore':
+    include:
+      - '\bchore\b'
