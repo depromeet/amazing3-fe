@@ -1,9 +1,11 @@
-name: Auto PR labeler
+name: PR labeler
 
+# 트리거될 이벤트 설정
 on:
   pull_request:
     types: [opened]
 
+# 트리거되었을 때 실행될 job 작성
 jobs:
   labeler:
     runs-on: ubuntu-latest
@@ -15,4 +17,4 @@ jobs:
         id: labeler
         uses: jimschubert/labeler-action@v1
         with:
-          GITHUB_TOKEN: ${{secrets.ACTION_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
