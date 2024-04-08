@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import BirthIcon from '@/assets/icons/birth-icon.svg';
 import { Button } from '@/components';
 import { DateInput } from '@/features/goal/components/new/DateInput';
+import { isValidDateFormat } from '@/features/goal/utils/date';
 
 import type { NewMemberFormValues } from '../../types';
 
@@ -36,7 +37,9 @@ export const BirthInputForm = () => {
           <div {...register('birth')}>
             <DateInput onChange={onChange} />
           </div>
-          <Button type="submit">{value?.length ? '완료' : '건너뛰기'}</Button>
+          <Button type="submit" disabled={value?.length ? !isValidDateFormat(value) : false}>
+            {value?.length ? '완료' : '건너뛰기'}
+          </Button>
         </div>
       </div>
     </FormLayout>
