@@ -1,5 +1,5 @@
 enable:
-  issues: false
+  issues: true
   prs: true
 
 # 레이블
