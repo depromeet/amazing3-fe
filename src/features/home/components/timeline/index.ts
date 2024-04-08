@@ -1,2 +1,2 @@
+export { Timeline } from './PrivateTimeline';
 export { PublicTimeline } from './PublicTimeline';
-export { Timeline } from './Timeline';
