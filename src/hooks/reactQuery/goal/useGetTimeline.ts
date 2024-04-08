@@ -34,11 +34,11 @@ export type TimelineResponse = {
   nextCursor: number;
 };
 
-export const useGetTimeline = (username: string) => {
+export const useGetTimeline = () => {
   return useSuspenseInfiniteQuery<TimelineResponse>({
-    queryKey: ['timeline', username],
+    queryKey: ['timeline'],
     queryFn: ({ pageParam }) =>
-      api.get<TimelineResponse>(`/open/life-map/timeline/${username}`, {
+      api.get<TimelineResponse>(`/life-map/timeline`, {
         params: { cursor: pageParam, size: PAGE_SIZE },
       }),
     initialPageParam: null,
