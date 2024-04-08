@@ -3,6 +3,7 @@ import type { InfiniteData } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
+import { useIsMyMap } from '@/hooks';
 import { useToast } from '@/hooks/useToast';
 
 import type { TimelineResponse } from '../goal/useGetTimeline';
@@ -18,6 +19,10 @@ type CommentDeleteRequest = {
 export const useDeleteComment = () => {
   const pathname = usePathname();
   const [, , username] = pathname.split('/');
+
+  const { isMyMap } = useIsMyMap();
+  const timelineQueryKey = isMyMap ? ['timeline'] : ['publicTimeline', username];
+
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
   const toast = useToast();
 
@@ -36,7 +41,7 @@ export const useDeleteComment = () => {
     onSuccess: (_, { goalId }) => {
       toast.success('댓글을 삭제했어요.');
 
-      queryClient.setQueryData(['timeline', username], (old: InfiniteData<TimelineResponse>) => {
+      queryClient.setQueryData(timelineQueryKey, (old: InfiniteData<TimelineResponse>) => {
         const newPages = old?.pages.map((page) => ({
           ...page,
           contents: page.contents.map((content) =>
