@@ -7,7 +7,7 @@ import { getYYYY } from '@/utils/date';
 import { EmptyTimeline } from './EmptyTimeline';
 import TimelineCard from './TimelineCard';
 
-export const Timeline = () => {
+export const PrivateTimeline = () => {
   const { data: timeline, fetchNextPage, hasNextPage } = useGetTimeline();
   const isEmptyGoal = timeline.pages[0].contents.length === 0;
 

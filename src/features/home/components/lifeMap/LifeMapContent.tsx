@@ -10,12 +10,11 @@ import ActiveMapMenuIcon from '@/assets/icons/home/map-tab-active-icon.svg';
 import MapMenuIcon from '@/assets/icons/home/map-tab-default-icon.svg';
 import { Avatar, ContentWrapper } from '@/components';
 import type { MemberProps } from '@/features/member/types';
-import { useIsMyMap } from '@/hooks';
 import type { GoalResponse } from '@/hooks/reactQuery/goal/useGetGoals';
 
 import { HomeTab } from '../homeTab/HomeTab';
 import { ShareButton } from '../shareButton';
-import { PublicTimeline, Timeline } from '../timeline';
+import { Timeline } from '../timeline';
 
 import { Map } from './Map';
 
@@ -43,7 +42,6 @@ const TAB_LIST = [
 
 export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: LifeMapProps) => {
   const shareRef = useRef<HTMLElement>(null);
-  const { isMyMap } = useIsMyMap();
 
   const [tab, setTab] = useState(TAB_LIST[0]);
 
@@ -89,7 +87,7 @@ export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: Life
           </div>
           {tab.name === 'MAP' && <StarBg />}
           <div className={`h-[520px] overflow-auto ${tab.name === 'FEED' ? 'mt-[16px] border-t border-blue-10' : ''}`}>
-            {tab.name === 'MAP' ? <Map goalsData={goalsData} /> : isMyMap ? <Timeline /> : <PublicTimeline />}
+            {tab.name === 'MAP' ? <Map goalsData={goalsData} /> : <Timeline />}
           </div>
         </ContentWrapper>
       </div>
