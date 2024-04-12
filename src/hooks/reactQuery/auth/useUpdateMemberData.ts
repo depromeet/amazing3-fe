@@ -5,7 +5,7 @@ import { useToast } from '@/hooks/useToast';
 
 export interface UpdateMemberRequest {
   nickname: string;
-  birth: string;
+  birth?: string;
   username: string;
   image: string;
 }

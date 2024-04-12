@@ -2,10 +2,6 @@ import { DATE_SEPARATOR } from '@/constants';
 import type { DateProps } from '@/hooks/useDateInput';
 import { typeToMaxLength } from '@/hooks/useDateInput';
 
-export const formatDate = (splitedDate: string[], separator = DATE_SEPARATOR) => {
-  return splitedDate.join(separator);
-};
-
 export const isValidDate = (year: string, month: string, day: string) => {
   const yearNum = +year;
   const monthNum = +month - 1;

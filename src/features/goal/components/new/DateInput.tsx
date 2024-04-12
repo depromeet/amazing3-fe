@@ -39,7 +39,7 @@ export const DateInput = ({
             placeholder={type}
             className="text-center"
             maxLength={typeToMaxLength[type]}
-            value={dateValues[type]}
+            value={dateValues[type] || ''} // uncontrolled warning 때문에 defaultValue 필요
             onChange={(e) => handleInputChange(e, type)}
             onBlur={(e) => handleInputBlur(e, type)}
           />

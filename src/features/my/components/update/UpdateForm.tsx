@@ -7,8 +7,8 @@ import { Button } from '@/components';
 import { MAX_NICKNAME_LENGTH, MAX_USERNAME_LENGTH } from '@/constants';
 import { DateInput } from '@/features/goal/components/new/DateInput';
 import { TextInput } from '@/features/goal/components/new/TextInput';
+import { isValidDateFormat } from '@/features/goal/utils/date';
 import { useGetMemberData } from '@/hooks/reactQuery/auth';
-import { useValidBirth } from '@/hooks/useValidBirth';
 
 import type { UpdateMemberDataFormValues } from '../../types';
 
@@ -24,7 +24,7 @@ export const UpdateForm = () => {
   const { field: nicknameField } = useController({ name: 'nickname', control });
   const { field: birthField } = useController({ name: 'birth', control });
   const { field: usernameField } = useController({ name: 'username', control });
-  const isValidBirth = useValidBirth(birthField.value);
+  const isValidBirth = birthField.value?.length ? isValidDateFormat(birthField.value) : true;
 
   const [defaultYYYY, defaultMM, defaultDD] = (memberData?.birth ?? '').split('-');
 
@@ -44,8 +44,7 @@ export const UpdateForm = () => {
       !memberData ||
       imageField.value === undefined ||
       nicknameField.value === undefined ||
-      usernameField.value === undefined ||
-      birthField.value === undefined
+      usernameField.value === undefined
     )
       return;
 
@@ -53,13 +52,10 @@ export const UpdateForm = () => {
       memberData.image === imageField.value &&
       memberData.nickname === nicknameField.value &&
       memberData.username === usernameField.value &&
-      memberData.birth === birthField.value;
+      (memberData.birth || '') === birthField.value;
 
     const isNotFilled =
-      imageField.value.length === 0 ||
-      nicknameField.value.length === 0 ||
-      usernameField.value.length === 0 ||
-      birthField.value?.length !== 10;
+      imageField.value.length === 0 || nicknameField.value.length === 0 || usernameField.value.length === 0;
 
     setIsDisabledSubmit(isNotFilled || isNotModified || !isValidBirth);
   }, [memberData, imageField, nicknameField, birthField, usernameField, isValidBirth]);

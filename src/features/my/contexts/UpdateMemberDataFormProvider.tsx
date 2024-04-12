@@ -25,7 +25,7 @@ const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
 
   const submit = (formData: UpdateMemberDataFormValues) => {
     const { nickname, username, birth } = formData;
-    if (!nickname || !username || !birth) return;
+    if (!nickname || !username) return;
 
     // TODO: react-hook-form을 사용하는 input field는 별도로 component로 분리해서 에러 상태에 대한 처리를 할 수 있도록 수정
     if (memberData?.username !== username && username.toUpperCase().startsWith('BANDIBOODI-')) {
@@ -41,9 +41,9 @@ const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
 
     // Convert birth from "YYYY.MM.DD" to "YYYY-MM-DD"
     // TODO: 서버에서 YYYY.MM.DD 형식을 지원하면 이 부분 삭제
-    const convertedBirth = birth.replace(/\./g, '-');
+    const convertedBirth = birth?.replace(/\./g, '-');
 
-    mutate({ ...formData, birth: convertedBirth });
+    mutate({ ...formData, ...(convertedBirth && { birth: convertedBirth }) });
   };
 
   return (
