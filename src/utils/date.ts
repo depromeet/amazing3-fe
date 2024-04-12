@@ -1,7 +1,7 @@
 import { DATE_SEPARATOR, HOURS_PER_DAY, MINUTES_PER_HOUR, SECONDS_PER_MINUTE } from '@/constants';
 
 export const formatDate = (splitedDate: string[], separator = DATE_SEPARATOR) => {
-  return splitedDate.filter((date) => date !== '').join(separator);
+  return splitedDate.filter((date) => date !== '' && date !== undefined).join(separator);
 };
 
 export const isValidDate = (year: string, month: string, day?: string) => {
