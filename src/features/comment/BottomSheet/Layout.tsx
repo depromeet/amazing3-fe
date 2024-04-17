@@ -1,32 +1,29 @@
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import type { BottomSheetRef } from 'react-spring-bottom-sheet';
+import { useAtomValue } from 'jotai';
 
-import { BottomSheet, Typography } from '@/components';
+import { BottomSheet } from '@/components';
 import type { BottomSheetProps } from '@/components/atoms/bottomSheet/BottomSheet';
 import { isIOS } from '@/utils/isIos';
 
-import { AddCommentInput } from './AddCommentInput';
+import { AddCommentInput } from '../AddCommentInput';
+
+import { goalIdAtom } from './atom';
 
 import './styles/CommentBottomSheetLayout.styles.css';
 
-export interface HeaderProps {
-  total: number;
-}
-
-export interface CommentBottomSheetLayoutProps extends Omit<BottomSheetProps, 'title'>, HeaderProps {
-  goalId: number;
+export interface CommentBottomSheetLayoutProps extends Omit<BottomSheetProps, 'title'> {
   open: boolean;
   onClose: VoidFunction;
 }
 
 export const CommentBottomSheetLayout = ({
-  goalId,
   open,
   onClose,
-  total,
   children,
   ...props
 }: PropsWithChildren<CommentBottomSheetLayoutProps>) => {
+  const goalId = useAtomValue(goalIdAtom);
   const [isFirstOpen, setFirstOpen] = useState(true);
   const sheetRef = useRef<BottomSheetRef | null>(null);
 
@@ -73,7 +70,6 @@ export const CommentBottomSheetLayout = ({
       ref={sheetRef}
       open={open}
       onDismiss={onClose}
-      HeaderComponent={<Header total={total} />}
       FooterComponent={<AddCommentInput ref={inputRef} goalId={goalId} onFocus={handleFocusInput} />}
       defaultSnap={({ maxHeight }) => maxHeight * 0.55}
       snapPoints={({ maxHeight }) => [maxHeight * 0.55, maxHeight * 0.99]}
@@ -81,16 +77,5 @@ export const CommentBottomSheetLayout = ({
     >
       <div className="w-full h-full flex flex-col justify-start px-xs mt-6xs flex-1">{children}</div>
     </BottomSheet>
-  );
-};
-
-const Header = ({ total }: HeaderProps) => {
-  return (
-    <div className="flex gap-5xs items-center">
-      <Typography type="heading3">댓글</Typography>
-      <Typography type="body3" className="text-gray-40">
-        {total}개
-      </Typography>
-    </div>
   );
 };

@@ -3,23 +3,20 @@ import { AnimatePresence } from 'framer-motion';
 import { useAtomValue } from 'jotai';
 
 import { Comment } from '@/components';
+import { isMyGoalAtom } from '@/features/goal/atoms';
 import { useGetComment, useGetHasNewComment } from '@/hooks/reactQuery/comment';
 
-import { isMyGoalAtom } from '../goal/atoms';
+import { DeleteCommentBottomSheet } from '../DeleteCommentBottomSheet';
+import { EmptyComments } from '../EmptyComments';
 
-import { CommentBottomSheetLayout } from './CommentBottomSheetLayout';
-import { DeleteCommentBottomSheet } from './DeleteCommentBottomSheet';
-import { EmptyComments } from './EmptyComments';
+import { goalIdAtom } from './atom';
 
-interface CommentsBottomSheetProps {
-  goalId: number;
-  open: boolean;
-  onClose: VoidFunction;
-}
-
-export const CommentsBottomSheet = ({ goalId, ...props }: CommentsBottomSheetProps) => {
+export const CommentBottomSheetContent = () => {
   const isMyGoal = useAtomValue(isMyGoalAtom);
+  const goalId = useAtomValue(goalIdAtom);
+
   const { open } = useOverlay();
+
   const { data, isSuccess } = useGetComment({ goalId });
   useGetHasNewComment({ goalId, isMyGoal, enabled: isSuccess });
 
@@ -30,7 +27,7 @@ export const CommentsBottomSheet = ({ goalId, ...props }: CommentsBottomSheetPro
   };
 
   return (
-    <CommentBottomSheetLayout total={data?.commentCount || 0} goalId={goalId} {...props}>
+    <>
       {data && data?.commentCount ? (
         <div className="h-full overflow-y-auto">
           <AnimatePresence>
@@ -49,6 +46,6 @@ export const CommentsBottomSheet = ({ goalId, ...props }: CommentsBottomSheetPro
       ) : (
         <EmptyComments />
       )}
-    </CommentBottomSheetLayout>
+    </>
   );
 };
