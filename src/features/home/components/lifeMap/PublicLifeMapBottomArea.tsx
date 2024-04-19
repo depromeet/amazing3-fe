@@ -64,7 +64,7 @@ const PublicLifeMapBottomArea = ({ username }: { username: string }) => {
 
   return (
     <>
-      {isSuccess && <CheeringClickedLottie />}
+      {isSuccess && lastCheerTime > 0 && <CheeringClickedLottie />}
       <div className="flex gap-5xs  px-xs pt-5xs mt-[18px] w-full z-[1]">
         <CheeringButton onClick={handleClickCheeringButton} />
         <Link href={{ pathname: myHomePath }} className="w-full">
