@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
 import { useUpdateTimelineEmojiCount } from '@/features/home/hooks/useUpdateTimelineEmojiCount';
+import { useToast } from '@/hooks';
 
 import type { GoalFeedResponse } from '../goal/useGetGoalFeeds';
 import { useOptimisticUpdate } from '../useOptimisticUpdate';
@@ -13,6 +14,8 @@ type EmojiRequestParams = {
 };
 
 export const useDeleteReactedEmojiForFeed = () => {
+  const toast = useToast();
+
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
   const targetQueryKey = ['goalFeeds'];
 
@@ -60,6 +63,7 @@ export const useDeleteReactedEmojiForFeed = () => {
       queryClient.setQueryData(timelineQueryKey, updateTimelineEmojiCount(goalId, emojiId));
     },
     onError: (_, __, context) => {
+      toast.warning('잠시후 다시 시도해주세요.');
       queryClient.setQueryData(targetQueryKey, context?.previous);
     },
   });
