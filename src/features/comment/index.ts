@@ -1,1 +1,1 @@
-export { CommentsBottomSheet } from './CommentsBottomSheet';
+export { CommentsBottomSheet } from './BottomSheet/CommentsBottomSheet';
