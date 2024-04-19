@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, useState } from 'react';
+import { type ButtonHTMLAttributes } from 'react';
 
 import { Emoji, Typography } from '@/components';
 import { useCreateEmojiForFeed } from '@/hooks/reactQuery/emoji/useCreateEmojiForFeed';
@@ -25,13 +25,10 @@ export const ReactedEmojiButton = ({
   onCloseEmojis,
   ...props
 }: ReactedEmojiButtonProps) => {
-  const [isClicked, setIsClicked] = useState(isMyReaction);
   const { mutate: createReactEmoji } = useCreateEmojiForFeed();
   const { mutate: deleteReactedEmoji } = useDeleteReactedEmojiForFeed();
 
   const handleClickButton = () => {
-    setIsClicked((prev) => !prev);
-
     isMyReaction ? deleteReactedEmoji({ goalId, emojiId }) : createReactEmoji({ goalId, emojiId });
 
     onCloseEmojis();
@@ -42,13 +39,13 @@ export const ReactedEmojiButton = ({
   return (
     <button
       className={`py-6xs px-5xs flex gap-6xs items-center rounded-full border box-border ${
-        isClicked ? 'bg-blue-10 border-blue-50' : 'bg-gray-10 border-white'
+        isMyReaction ? 'bg-blue-10 border-blue-50' : 'bg-gray-10 border-white'
       }`}
       onClick={handleClickButton}
       {...props}
     >
       <Emoji url={url} size={24} name={name} />
-      <Typography type="caption1" className={`${isClicked ? 'text-blue-50' : 'text-gray-40'}`}>
+      <Typography type="caption1" className={`${isMyReaction ? 'text-blue-50' : 'text-gray-40'}`}>
         {formatOver999(count)}
       </Typography>
     </button>
