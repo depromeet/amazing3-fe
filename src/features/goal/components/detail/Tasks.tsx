@@ -2,6 +2,7 @@ import { useAtomValue } from 'jotai';
 
 import PlusIcon from '@/assets/icons/plus.svg';
 import { Typography } from '@/components';
+import { useScrollOnIncrease } from '@/hooks';
 import type { GoalTasksProps } from '@/hooks/reactQuery/goal/useGetGoal';
 import { useUpdateIsDone } from '@/hooks/reactQuery/task';
 
@@ -18,6 +19,8 @@ export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
   const goalId = useAtomValue(goalIdAtom);
   const { mutate } = useUpdateIsDone();
   const isMyGoal = useAtomValue(isMyGoalAtom);
+
+  const bottomRef = useScrollOnIncrease({ triggerNumber: tasks.length });
 
   return (
     <div className="flex flex-col gap-4xs pb-4xl">
@@ -38,6 +41,7 @@ export const Tasks = ({ tasks, onOpenInput }: TasksProps) => {
           onDoneClick={() => mutate({ goalId, isDone: !isTaskDone, taskId })}
         />
       ))}
+      <div ref={bottomRef} />
     </div>
   );
 };
