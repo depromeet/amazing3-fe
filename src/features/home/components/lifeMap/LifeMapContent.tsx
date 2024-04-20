@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useSearchParams } from 'next/navigation';
 
 import ActiveFeedMenuIcon from '@/assets/icons/home/feed-tab-active-icon.svg';
 import FeedMenuIcon from '@/assets/icons/home/feed-tab-default-icon.svg';
@@ -42,10 +43,13 @@ const TAB_LIST = [
 export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: LifeMapProps) => {
   const shareRef = useRef<HTMLElement>(null);
 
-  const [tab, setTab] = useState(TAB_LIST[0]);
+  const [, setTab] = useState(TAB_LIST[0]);
+  const searchParams = useSearchParams();
+
+  const tabName = searchParams.get('tab') ?? TAB_LIST[0].name;
 
   return (
-    <div className={`flex justify-center w-full ${tab.name === 'MAP' ? 'bg-gradient1' : 'bg-white'}`}>
+    <div className={`flex justify-center w-full ${tabName === 'MAP' ? 'bg-gradient1' : 'bg-white'}`}>
       <div className="w-[390px] relative pt-xs">
         <span className="absolute right-[24px]">
           {isPublic ? <Avatar size={40} profileImage={memberData?.image} /> : <ShareButton shareRef={shareRef} />}
@@ -78,9 +82,9 @@ export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: Life
               <HomeTab tabList={TAB_LIST} onChangeActiveTab={setTab} />
             </div>
           </div>
-          {tab.name === 'MAP' && <StarBg />}
-          <div className={`h-[520px] overflow-auto ${tab.name === 'FEED' ? 'mt-[16px] border-t border-blue-10' : ''}`}>
-            {tab.name === 'MAP' ? <Map goalsData={goalsData} /> : <Timeline />}
+          {tabName === 'MAP' && <StarBg />}
+          <div className={`h-[520px] overflow-auto ${tabName === 'FEED' ? 'mt-[16px] border-t border-blue-10' : ''}`}>
+            {tabName === 'MAP' ? <Map goalsData={goalsData} /> : <Timeline />}
           </div>
         </ContentWrapper>
       </div>
