@@ -28,10 +28,10 @@ export const CommentBottomSheetContent = () => {
 
   return (
     <>
-      {data && data?.commentCount ? (
+      {data && data.commentCount ? (
         <div className="h-full overflow-y-auto">
           <AnimatePresence>
-            {data.comments.map((comment) => (
+            {data.comments?.map((comment) => (
               <div className="flex flex-col gap-3xs" key={comment.id}>
                 <Comment
                   {...comment}
