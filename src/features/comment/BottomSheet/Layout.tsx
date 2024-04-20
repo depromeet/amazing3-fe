@@ -30,19 +30,13 @@ export const CommentBottomSheetLayout = ({
     sheetRef.current?.snapTo(({ maxHeight }) => maxHeight * 0.55);
   };
 
-  const handleBlurInput = () => {
-    sheetRef.current?.snapTo(({ maxHeight }) => maxHeight * 0.99);
-  };
-
   return (
     <BottomSheet
       className="commentBottomSheet"
       ref={sheetRef}
       open={open}
       onDismiss={onClose}
-      FooterComponent={
-        <AddCommentInput ref={inputRef} goalId={goalId} onFocus={handleFocusInput} onBlur={handleBlurInput} />
-      }
+      FooterComponent={<AddCommentInput ref={inputRef} goalId={goalId} onFocus={handleFocusInput} />}
       defaultSnap={({ maxHeight }) => maxHeight * 0.55}
       snapPoints={({ maxHeight }) => [maxHeight * 0.55, maxHeight * 0.99]}
       {...props}
