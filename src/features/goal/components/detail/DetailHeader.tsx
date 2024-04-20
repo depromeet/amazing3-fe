@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import type { Route } from 'next';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useOverlay } from '@toss/use-overlay';
 
 import EditIcon from '@/assets/icons/edit-icon.svg';
@@ -15,13 +17,29 @@ interface DetailHeaderProps {
 
 export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
   const overlay = useOverlay();
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { isMyMap, currentUsername } = useIsMyMap();
+
+  useEffect(() => {
+    const handleBackEvent = (event: PopStateEvent) => {
+      event.preventDefault();
+      const previousPath = searchParams.get('previous') as Route;
+      if (previousPath) {
+        router.push(`${previousPath}?id=${goalId}`);
+      } else {
+        router.push(`/home/${currentUsername}?id=${goalId}`);
+      }
+    };
+    window.addEventListener('popstate', handleBackEvent);
+    return () => {
+      window.removeEventListener('popstate', handleBackEvent);
+    };
+  }, [currentUsername, goalId, router, searchParams]);
 
   return (
     <>
-      <Link href={{ pathname: `/home/${currentUsername}`, query: { id: goalId } }}>
-        <CloseIcon />
-      </Link>
+      <CloseIcon onClick={() => router.back()} />
 
       {isMyMap && goalId && (
         <div className="flex space-x-4">
