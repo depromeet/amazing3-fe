@@ -55,6 +55,7 @@ export const useGetGoalFeeds = () => {
     queryKey: ['goalFeeds'],
     queryFn: ({ pageParam }) => api.get<GoalFeedResponse>('/goal/explore', { params: { cursor: pageParam } }),
     initialPageParam: null,
-    getNextPageParam: ({ goals, cursor }) => (cursor && goals.length === PAGE_SIZE ? cursor.next : null),
+    getNextPageParam: (params) => (params?.cursor && params?.goals.length === PAGE_SIZE ? params?.cursor.next : null),
+    staleTime: 0,
   });
 };
