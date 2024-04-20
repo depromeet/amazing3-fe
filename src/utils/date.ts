@@ -23,7 +23,7 @@ export const hasValidDateLengths = (year: string, month: string, day?: string) =
 export const doesDateExist = (year: string, month: string, day?: string) => {
   const yearNum = +year;
   const monthNum = +month - 1;
-  const dayNum = day ? +day : 0;
+  const dayNum = day ? +day : 1;
 
   const date = new Date(yearNum, monthNum, dayNum);
 

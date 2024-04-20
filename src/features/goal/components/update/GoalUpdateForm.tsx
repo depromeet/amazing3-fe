@@ -62,7 +62,7 @@ export const GoalUpdateForm = ({ goalId, goal }: GoalUpdateFormProps) => {
       }
 
       // validate deadline
-      if (isValidDate(data.year, data.month)) {
+      if (!isValidDate(data.year, data.month)) {
         toast.warning('유효한 날짜를 입력해 주세요.');
         return;
       }
