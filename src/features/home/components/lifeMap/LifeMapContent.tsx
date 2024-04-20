@@ -2,7 +2,6 @@
 
 import { useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 
 import ActiveFeedMenuIcon from '@/assets/icons/home/feed-tab-active-icon.svg';
 import FeedMenuIcon from '@/assets/icons/home/feed-tab-default-icon.svg';
@@ -49,13 +48,7 @@ export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: Life
     <div className={`flex justify-center w-full ${tab.name === 'MAP' ? 'bg-gradient1' : 'bg-white'}`}>
       <div className="w-[390px] relative pt-xs">
         <span className="absolute right-[24px]">
-          {isPublic ? (
-            <Link href="/my" className="pointer-events-none">
-              <Avatar size={40} profileImage={memberData?.image} />
-            </Link>
-          ) : (
-            <ShareButton shareRef={shareRef} />
-          )}
+          {isPublic ? <Avatar size={40} profileImage={memberData?.image} /> : <ShareButton shareRef={shareRef} />}
         </span>
 
         <ContentWrapper
