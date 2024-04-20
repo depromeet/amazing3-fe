@@ -8,7 +8,6 @@ export const useThrottle = (callback: () => void, interval = 500) => {
       callback();
 
       timer.current = setTimeout(() => {
-        callback();
         timer.current = null;
       }, interval);
     }
