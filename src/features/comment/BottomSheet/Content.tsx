@@ -21,7 +21,7 @@ export const CommentBottomSheetContent = () => {
   const { data, isSuccess } = useGetComment({ goalId });
   useGetHasNewComment({ goalId, isMyGoal, enabled: isSuccess });
 
-  const bottomRef = useScrollOnIncrease(data.commentCount);
+  const bottomRef = useScrollOnIncrease({ triggerNumber: data.commentCount, scrollOnMount: true });
 
   const handleDelete = (commentId: number) => () => {
     open(({ isOpen, close }) => (
