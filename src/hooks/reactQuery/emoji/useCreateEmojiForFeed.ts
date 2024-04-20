@@ -2,6 +2,7 @@ import type { InfiniteData } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
+import { useUpdateTimelineEmojiCount } from '@/features/home/hooks/useUpdateTimelineEmojiCount';
 
 import type { EmojisProps, GoalFeedResponse } from '../goal/useGetGoalFeeds';
 import { useOptimisticUpdate } from '../useOptimisticUpdate';
@@ -17,10 +18,14 @@ export const useCreateEmojiForFeed = () => {
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
   const targetQueryKey = ['goalFeeds'];
 
+  const { queryKey: timelineQueryKey, updateTimelineEmojiCount } = useUpdateTimelineEmojiCount({ isAddingEmoji: true });
+
   return useMutation({
     mutationFn: ({ goalId, emojiId }: EmojiRequestParams) => api.post(`/goal/${goalId}/emoji/${emojiId}`),
     onMutate: async ({ goalId, emojiId }) => {
       const updater = (old: InfiniteData<GoalFeedResponse>) => {
+        if (!old) return old;
+
         const reactEmojiData = queryClient
           .getQueryData<EmojisResponse>(['all-emoji'])
           ?.find((emoji) => emoji.id === emojiId) as Emoji;
@@ -57,8 +62,11 @@ export const useCreateEmojiForFeed = () => {
       });
       return context;
     },
-    onSuccess: (_, { goalId }) => {
+    onSuccess: (_, { goalId, emojiId }) => {
       queryClient.invalidateQueries({ queryKey: ['emoji', goalId] });
+      // NOTE: + 버튼을 눌러서 이모지를 추가하는 경우에 낙관적 업데이트 불가능해서 논의 필요
+      queryClient.invalidateQueries({ queryKey: timelineQueryKey });
+      queryClient.setQueryData(timelineQueryKey, updateTimelineEmojiCount(goalId, emojiId));
     },
     onError: (_, __, context) => {
       queryClient.setQueryData(targetQueryKey, context?.previous);
