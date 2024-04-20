@@ -1,5 +1,5 @@
 import type { MutableRefObject } from 'react';
-import { forwardRef, useEffect } from 'react';
+import { forwardRef } from 'react';
 
 import { Input, type InputProps } from '@/components/atoms/input/Input';
 import { useInput } from '@/hooks';
@@ -24,8 +24,6 @@ export const AddCommentInput = forwardRef<HTMLInputElement, AddCommentInputProps
       handleFocusAction();
     };
 
-    useEffect(() => handleFocusAction(), []);
-
     return (
       <Input
         ref={ref}
@@ -35,6 +33,7 @@ export const AddCommentInput = forwardRef<HTMLInputElement, AddCommentInputProps
         maxLength={COMMENT_MAX_LENGTH}
         includeSubmitButton
         onSubmit={handleSubmit}
+        tabIndex={-1}
         {...props}
       />
     );
