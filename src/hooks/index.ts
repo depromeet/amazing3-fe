@@ -9,6 +9,6 @@ export { useIsMounted } from './useIsMounted';
 export { useIsMyMap } from './useIsMyMap';
 export { useOpenExternalBrowser } from './useOpenExternalBrowser';
 export { useOutsideClick } from './useOutsideClick';
-export { useScrollOnTrigger } from './useScrollOnTrigger';
+export { useScrollOnIncrease } from './useScrollOnIncrease';
 export { useThrottle } from './useThrottle';
 export { useToast } from './useToast';
