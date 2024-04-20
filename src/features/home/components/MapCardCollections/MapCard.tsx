@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useOverlay } from '@toss/use-overlay';
 
 import { Typography } from '@/components';
@@ -18,12 +18,13 @@ export interface MapCardProps extends MapCardLayoutProps {
 export const MapCard = ({ goal, position }: MapCardProps) => {
   const { id, title, stickerUrl } = goal;
   const router = useRouter();
+  const pathname = usePathname();
   const { isLoggedIn } = useAuth();
   const { open } = useOverlay();
 
   const handleMapCardClick = () => {
     if (isLoggedIn) {
-      router.push(`/goal/detail/${id}`);
+      router.push(`/goal/detail/${id}?previous=${pathname}`);
     } else {
       open(({ isOpen, close }) => <LoginBottomSheet open={isOpen} onClose={close} />);
     }

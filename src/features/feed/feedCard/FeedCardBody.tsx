@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Span, Typography } from '@/components';
@@ -15,9 +16,11 @@ interface FeedCardBodyProps {
 }
 
 export const FeedCardBody = ({ goal, count, footer }: FeedCardBodyProps) => {
+  const pathname = usePathname();
+
   return (
     <div className="ml-lg flex flex-col gap-4xs">
-      <Link href={{ pathname: `/goal/detail/${goal.id}` }}>
+      <Link href={{ pathname: `/goal/detail/${goal.id}`, query: { previous: pathname } }}>
         <div className="p-3xs flex flex-col gap-5xs bg-gray-10 rounded-lg">
           <div className="flex gap-5xs items-center">
             <Image
