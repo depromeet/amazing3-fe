@@ -27,7 +27,7 @@ export const useDeleteReactedEmojiForFeed = () => {
     mutationFn: ({ goalId, emojiId }: EmojiRequestParams) => api.delete(`/goal/${goalId}/emoji/${emojiId}`),
     onMutate: async ({ goalId, emojiId }) => {
       const updater = (old: InfiniteData<GoalFeedResponse>) => {
-        if (!old) return old;
+        if (!old) return null;
 
         return {
           ...old,

@@ -4,7 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 export const useOptimisticUpdate = () => {
   const queryClient = useQueryClient();
 
-  const optimisticUpdater = async <T>({ queryKey, updater }: { queryKey: QueryKey; updater: (old: T) => T }) => {
+  const optimisticUpdater = async <T>({ queryKey, updater }: { queryKey: QueryKey; updater: (old: T) => T | null }) => {
     await queryClient.cancelQueries({ queryKey });
     const previous = queryClient.getQueryData(queryKey);
 

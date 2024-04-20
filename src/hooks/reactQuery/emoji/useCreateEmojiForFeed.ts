@@ -27,7 +27,7 @@ export const useCreateEmojiForFeed = () => {
     mutationFn: ({ goalId, emojiId }: EmojiRequestParams) => api.post(`/goal/${goalId}/emoji/${emojiId}`),
     onMutate: async ({ goalId, emojiId }) => {
       const updater = (old: InfiniteData<GoalFeedResponse>) => {
-        if (!old) return old;
+        if (!old) return null;
 
         const reactEmojiData = queryClient
           .getQueryData<EmojisResponse>(['all-emoji'])
