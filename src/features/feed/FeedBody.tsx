@@ -28,8 +28,8 @@ export const FeedBody = () => {
         <InfiniteScroller isLastPage={!hasNextPage} onIntersect={() => fetchNextPage()}>
           <div className="mx-xs my-xs flex flex-col gap-md">
             {goalFeedsData?.pages.map(
-              ({ goals }) =>
-                createFeedDataGroupedByUser(goals)?.map((feedData) => {
+              (feedData) =>
+                createFeedDataGroupedByUser(feedData?.goals)?.map((feedData) => {
                   const recentGoalId = feedData[0].goal.id;
                   return <FeedCard key={recentGoalId} feedData={feedData} />;
                 }),
