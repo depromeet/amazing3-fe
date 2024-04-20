@@ -16,9 +16,11 @@ export const useUpdateTimelineEmojiCount = ({ isAddingEmoji }: useUpdateTimeline
   const queryKey = isMyMap ? ['timeline'] : ['publicTimeline', username];
 
   const updateTimelineEmojiCount = (goalId: number, emojiId: number) => (old: InfiniteData<TimelineResponse>) => {
-    const newPages = old?.pages.map((page) => ({
+    if (!old) return { pages: [null], pageParams: [null] };
+
+    const newPages = old?.pages?.map((page) => ({
       ...page,
-      contents: page.contents.map((content) =>
+      contents: page?.contents?.map((content) =>
         content.goal.goalId === goalId
           ? {
               ...content,
