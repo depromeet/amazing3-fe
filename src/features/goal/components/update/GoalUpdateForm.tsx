@@ -89,7 +89,7 @@ export const GoalUpdateForm = ({ goalId, goal }: GoalUpdateFormProps) => {
         stickerId: sticker.id,
         description: data.description,
       });
-      router.push(`/goal/detail/${goalId}`);
+      router.back();
       reset();
     } catch (error) {
       console.error(error);
