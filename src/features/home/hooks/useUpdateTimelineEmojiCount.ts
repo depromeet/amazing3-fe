@@ -4,18 +4,18 @@ import type { InfiniteData } from '@tanstack/react-query';
 import { useIsMyMap } from '@/hooks';
 import type { TimelineResponse } from '@/hooks/reactQuery/goal/useGetTimeline';
 
-interface useUpdateTimelineCommentCountProps {
-  isAddingComment: boolean;
+interface useUpdateTimelineEmojiCountProps {
+  isAddingEmoji: boolean;
 }
 
-export const useUpdateTimelineCommentCount = ({ isAddingComment }: useUpdateTimelineCommentCountProps) => {
+export const useUpdateTimelineEmojiCount = ({ isAddingEmoji }: useUpdateTimelineEmojiCountProps) => {
   const pathname = usePathname();
   const [, , username] = pathname.split('/');
 
   const { isMyMap } = useIsMyMap();
   const queryKey = isMyMap ? ['timeline'] : ['publicTimeline', username];
 
-  const updateTimelineCommentCount = (goalId: number) => (old: InfiniteData<TimelineResponse>) => {
+  const updateTimelineEmojiCount = (goalId: number, emojiId: number) => (old: InfiniteData<TimelineResponse>) => {
     if (!old) return { pages: [null], pageParams: [null] };
 
     const newPages = old?.pages?.map((page) => ({
@@ -24,10 +24,11 @@ export const useUpdateTimelineCommentCount = ({ isAddingComment }: useUpdateTime
         content.goal.goalId === goalId
           ? {
               ...content,
-              counts: {
-                ...content.counts,
-                comment: isAddingComment ? content.counts.comment + 1 : content.counts.comment - 1,
-              },
+              emojis: content.emojis.map((emoji) =>
+                emoji.id === emojiId
+                  ? { ...emoji, reactCount: emoji.reactCount + (isAddingEmoji ? 1 : -1), isMyReaction: isAddingEmoji }
+                  : emoji,
+              ),
             }
           : content,
       ),
@@ -38,6 +39,6 @@ export const useUpdateTimelineCommentCount = ({ isAddingComment }: useUpdateTime
 
   return {
     queryKey,
-    updateTimelineCommentCount,
+    updateTimelineEmojiCount,
   };
 };

@@ -43,5 +43,6 @@ export const useGetTimeline = () => {
       }),
     initialPageParam: null,
     getNextPageParam: ({ isLast, nextCursor }) => (isLast ? null : nextCursor),
+    staleTime: 0,
   });
 };
