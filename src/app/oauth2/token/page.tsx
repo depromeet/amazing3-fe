@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import type { Route } from 'next';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useAuth } from '@/hooks';
@@ -21,7 +22,14 @@ const OAuthTokenPage = () => {
 
   useEffect(() => {
     if (isLoggedIn && memberData) {
-      router.push(isLoggedIn ? `/home/${memberData.username}` : '/onboarding');
+      const prevPath = sessionStorage.getItem('savedPathBeforeLogin') as Route;
+      if (prevPath?.startsWith('/') && prevPath !== '/') {
+        router.push(prevPath);
+        sessionStorage.removeItem('savedPathBeforeLogin');
+      } else {
+        router.push(isLoggedIn ? `/home/${memberData.username}` : '/onboarding');
+      }
+
       localStorage.setItem('username', memberData.username);
     }
   }, [memberData, router, isLoggedIn]);
