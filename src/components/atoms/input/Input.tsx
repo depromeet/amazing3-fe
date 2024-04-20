@@ -5,6 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { colors } from '@/../styles/theme';
 import SubmitIcon from '@/assets/icons/submit.svg';
+import { composeEventHandlers } from '@/utils/composeEventHandlers';
 
 const inputContainerVariants = cva(
   'p-3xs flex gap-6xs items-center w-full h-[56px] rounded-md bg-white border shadow-thumb',
@@ -31,7 +32,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>,
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, includeSubmitButton = false, onSubmit = () => {}, ...props }: InputProps, ref) => {
+  ({ className, includeSubmitButton = false, onSubmit = () => {}, onFocus, onBlur, ...props }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
 
     const handleFocus = useCallback(() => setIsFocused(true), []);
@@ -43,8 +44,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           className={inputVariants({ className })}
           ref={ref}
           {...props}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          onFocus={composeEventHandlers(onFocus, () => {
+            handleFocus();
+          })}
+          onBlur={composeEventHandlers(onBlur, () => {
+            handleBlur();
+          })}
         />
         {includeSubmitButton && (
           <div className="w-[32px] h-[32px]">
