@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import AppleIcon from '@/assets/icons/auth/apple.svg';
 import GoogleIcon from '@/assets/icons/auth/google.svg';
@@ -20,25 +21,31 @@ const loginPath = {
 };
 
 export const LoginIconSet = ({ google = false, naver = false, kakao = false, apple = false }: LoginIconSetProps) => {
+  const pathname = usePathname();
+
+  const handleLogin = () => {
+    sessionStorage.setItem('savedPathBeforeLogin', pathname);
+  };
+
   return (
     <div className="w-fit flex justify-between items-center gap-[24px]">
       {google && (
-        <Link href={{ pathname: loginPath.google }}>
+        <Link href={{ pathname: loginPath.google }} onClick={handleLogin}>
           <GoogleIcon />
         </Link>
       )}
       {naver && (
-        <Link href={{ pathname: loginPath.naver }}>
+        <Link href={{ pathname: loginPath.naver }} onClick={handleLogin}>
           <NaverIcon />
         </Link>
       )}
       {kakao && (
-        <Link href={{ pathname: loginPath.kakao }}>
+        <Link href={{ pathname: loginPath.kakao }} onClick={handleLogin}>
           <KakaoIcon />
         </Link>
       )}
       {apple && (
-        <Link href={{ pathname: loginPath.apple }}>
+        <Link href={{ pathname: loginPath.apple }} onClick={handleLogin}>
           <AppleIcon />
         </Link>
       )}
