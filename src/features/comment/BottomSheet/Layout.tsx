@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { type PropsWithChildren, useEffect, useRef } from 'react';
 import type { BottomSheetRef } from 'react-spring-bottom-sheet';
 import { useAtomValue } from 'jotai';
 
@@ -24,45 +24,47 @@ export const CommentBottomSheetLayout = ({
   ...props
 }: PropsWithChildren<CommentBottomSheetLayoutProps>) => {
   const goalId = useAtomValue(goalIdAtom);
-  const [isFirstOpen, setFirstOpen] = useState(true);
   const sheetRef = useRef<BottomSheetRef | null>(null);
 
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
+  const handleFocusInput = () => {
+    sheetRef.current?.snapTo(({ maxHeight }) => maxHeight * 0.55);
+
+    /**
+     * NOTE
+     * IOS에서 Visual Viewport가 존재하여
+     * viewport가 아닌 document 자체를 키보드 높이 만큼 올려버림
+     * 참고 이미지:  https://velog.velcdn.com/images/gene028/post/acd8332c-9465-4b0e-94c9-469fe4e7056f/image.png
+     */
+    if (isIOS()) {
+      overlayRef.current = document.querySelector('[data-rsbs-overlay]') as HTMLDivElement;
+
+      overlayRef.current.style.bottom = '15px'; // 키패드 높이 만큼 올라감
+      overlayRef.current.style.height = '100%';
+      overlayRef.current.style.paddingBottom = '65%';
+    }
+  };
+
+  const handleBlur = () => {
+    if (overlayRef.current) {
+      // Revert to the original state
+      overlayRef.current.style.bottom = '';
+      overlayRef.current.style.height = '';
+      overlayRef.current.style.paddingBottom = '';
+    }
+  };
+
   useEffect(() => {
-    const handleBlur = () => {
-      if (overlayRef.current) {
-        setFirstOpen(false);
-
-        // 원래 상태로 복구
-        overlayRef.current.style.bottom = '';
-        overlayRef.current.style.height = '';
-        overlayRef.current.style.paddingBottom = '';
-      }
-    };
-    if (open && isIOS() && isFirstOpen) {
-      // open 상태가 true로 변경된 후에, 오버레이를 찾기 위해 약간의 지연
-      const timer = setTimeout(() => {
-        overlayRef.current = document.querySelector('[data-rsbs-overlay]') as HTMLDivElement;
-
-        overlayRef.current.style.bottom = '15px'; // 키패드 높이 만큼 올라감
-        overlayRef.current.style.height = '100%';
-        overlayRef.current.style.paddingBottom = '65%';
-
-        inputRef.current?.addEventListener('blur', handleBlur);
-      }, 300);
+    if (isIOS()) {
+      inputRef.current?.addEventListener('blur', handleBlur);
 
       return () => {
-        clearTimeout(timer);
         inputRef.current?.removeEventListener('blur', handleBlur);
       };
     }
-  }, [isFirstOpen, open]);
-
-  const handleFocusInput = () => {
-    sheetRef.current?.snapTo(({ maxHeight }) => maxHeight * 0.55);
-  };
+  }, []);
 
   return (
     <BottomSheet
