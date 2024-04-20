@@ -42,7 +42,15 @@ const YearField = () => {
       control={control}
       rules={{ required: 'Year is required' }}
       render={({ field, fieldState: { error } }) => (
-        <Input {...field} type="number" id="year" placeholder="YYYY" aria-invalid={error ? 'true' : 'false'} />
+        <Input
+          {...field}
+          type="text"
+          inputMode="numeric"
+          maxLength={4}
+          id="year"
+          placeholder="YYYY"
+          aria-invalid={error ? 'true' : 'false'}
+        />
       )}
     />
   );
@@ -57,14 +65,22 @@ const MonthField = () => {
       control={control}
       rules={{ required: 'Month is required', min: 1, max: 12 }}
       render={({ field, fieldState: { error } }) => (
-        <Input {...field} type="number" id="month" placeholder="MM" aria-invalid={error ? 'true' : 'false'} />
+        <Input
+          {...field}
+          type="text"
+          inputMode="numeric"
+          maxLength={2}
+          id="month"
+          placeholder="MM"
+          aria-invalid={error ? 'true' : 'false'}
+        />
       )}
     />
   );
 };
 
 const DayField = () => {
-  const { control, watch, setValue, getValues } = useFormContext();
+  const { control, watch } = useFormContext();
   const year = watch('year');
   const month = watch('month');
 
