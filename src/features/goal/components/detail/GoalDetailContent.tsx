@@ -40,13 +40,13 @@ export const GoalDetailContent = ({ id }: { id: number }) => {
               <ContentBody
                 title={goal.title}
                 date={goal.deadline}
-                tag={goal.tagInfo.tagContent}
+                tag={goal.tagInfo?.tagContent}
                 more={goal.description}
               />
               <Suspense fallback={<Skeleton className="w-full h-[122px]" />}>
                 <Reaction />
               </Suspense>
-              {goal.tasks.length ? (
+              {goal.tasks?.length ? (
                 <Tasks tasks={goal.tasks} onOpenInput={handleOpenTaskInput(true)} />
               ) : (
                 goal.isMyGoal && !isOpenTaskInput && <AddSubGoalPrompt onClick={handleOpenTaskInput(true)} />
