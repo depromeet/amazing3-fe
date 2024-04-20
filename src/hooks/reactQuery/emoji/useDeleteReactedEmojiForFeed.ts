@@ -2,6 +2,7 @@ import type { InfiniteData } from '@tanstack/react-query';
 import { useMutation } from '@tanstack/react-query';
 
 import { api } from '@/apis';
+import { useUpdateTimelineEmojiCount } from '@/features/home/hooks/useUpdateTimelineEmojiCount';
 
 import type { GoalFeedResponse } from '../goal/useGetGoalFeeds';
 import { useOptimisticUpdate } from '../useOptimisticUpdate';
@@ -15,10 +16,16 @@ export const useDeleteReactedEmojiForFeed = () => {
   const { queryClient, optimisticUpdater } = useOptimisticUpdate();
   const targetQueryKey = ['goalFeeds'];
 
+  const { queryKey: timelineQueryKey, updateTimelineEmojiCount } = useUpdateTimelineEmojiCount({
+    isAddingEmoji: false,
+  });
+
   return useMutation({
     mutationFn: ({ goalId, emojiId }: EmojiRequestParams) => api.delete(`/goal/${goalId}/emoji/${emojiId}`),
     onMutate: async ({ goalId, emojiId }) => {
       const updater = (old: InfiniteData<GoalFeedResponse>) => {
+        if (!old) return old;
+
         return {
           ...old,
           pages: old.pages.map((page) => ({
@@ -48,8 +55,9 @@ export const useDeleteReactedEmojiForFeed = () => {
       });
       return context;
     },
-    onSuccess: (_, { goalId }) => {
+    onSuccess: (_, { goalId, emojiId }) => {
       queryClient.invalidateQueries({ queryKey: ['emoji', goalId] });
+      queryClient.setQueryData(timelineQueryKey, updateTimelineEmojiCount(goalId, emojiId));
     },
     onError: (_, __, context) => {
       queryClient.setQueryData(targetQueryKey, context?.previous);
