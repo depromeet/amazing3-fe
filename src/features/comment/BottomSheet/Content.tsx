@@ -4,6 +4,7 @@ import { useAtomValue } from 'jotai';
 
 import { Comment } from '@/components';
 import { isMyGoalAtom } from '@/features/goal/atoms';
+import { useScrollOnIncrease } from '@/hooks';
 import { useGetComment, useGetHasNewComment } from '@/hooks/reactQuery/comment';
 
 import { DeleteCommentBottomSheet } from '../DeleteCommentBottomSheet';
@@ -19,6 +20,8 @@ export const CommentBottomSheetContent = () => {
 
   const { data, isSuccess } = useGetComment({ goalId });
   useGetHasNewComment({ goalId, isMyGoal, enabled: isSuccess });
+
+  const bottomRef = useScrollOnIncrease({ triggerNumber: data.commentCount, scrollOnMount: true });
 
   const handleDelete = (commentId: number) => () => {
     open(({ isOpen, close }) => (
@@ -41,6 +44,7 @@ export const CommentBottomSheetContent = () => {
                 <div className="h-[1px] bg-gray-20 mb-3xs" />
               </div>
             ))}
+            <div ref={bottomRef} />
           </AnimatePresence>
         </div>
       ) : (
