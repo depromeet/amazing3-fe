@@ -100,7 +100,7 @@ export const GoalUpdateForm = ({ goalId, goal }: GoalUpdateFormProps) => {
     <FormProvider {...methods}>
       <form onSubmit={onSubmit}>
         <FormLayout
-          header={<GoalUpdateHeader goalId={goalId} />}
+          header={<GoalUpdateHeader />}
           body={
             <div className="py-sm flex flex-col space-y-sm">
               <RHFTextField name="title" label="한줄목표" maxLength={30} />
