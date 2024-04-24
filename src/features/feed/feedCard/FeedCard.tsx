@@ -31,6 +31,7 @@ const FeedCard = ({ feedData }: FeedCardProps) => {
               key={goal.id}
               goal={goal}
               count={count}
+              username={user.username}
               footer={
                 <>
                   <ReactionGroup targetGoalId={goal.id} reactedEmojis={emojis} />
