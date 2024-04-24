@@ -39,8 +39,9 @@ export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
 
   return (
     <>
-      <CloseIcon onClick={() => router.back()} />
-
+      <button>
+        <CloseIcon onClick={() => router.back()} />
+      </button>
       {isMyMap && goalId && (
         <div className="flex space-x-4">
           <Link href={{ pathname: `/goal/update/${goalId}` }}>
