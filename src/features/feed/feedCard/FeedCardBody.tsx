@@ -6,21 +6,27 @@ import { usePathname } from 'next/navigation';
 import VerticalBarIcon from '@/assets/icons/vertical-bar.svg';
 import { Span, Typography } from '@/components';
 import { blueDataURL } from '@/constants';
+import { CURRENT_LIFEMAP_USERNAME_KEY } from '@/constants/storageKey';
 import type { CountProps, GoalProps } from '@/hooks/reactQuery/goal/useGetGoalFeeds';
 import { formatDotYYYYMM } from '@/utils/date';
 
 interface FeedCardBodyProps {
   goal: GoalProps;
   count: CountProps;
+  username: string;
   footer?: ReactNode;
 }
 
-export const FeedCardBody = ({ goal, count, footer }: FeedCardBodyProps) => {
+export const FeedCardBody = ({ goal, count, username, footer }: FeedCardBodyProps) => {
   const pathname = usePathname();
+
+  const handleClickFeedCard = () => {
+    localStorage.setItem(CURRENT_LIFEMAP_USERNAME_KEY, username);
+  };
 
   return (
     <div className="ml-lg flex flex-col gap-4xs">
-      <Link href={{ pathname: `/goal/detail/${goal.id}`, query: { previous: pathname } }}>
+      <Link onClick={handleClickFeedCard} href={{ pathname: `/goal/detail/${goal.id}`, query: { previous: pathname } }}>
         <div className="p-3xs flex flex-col gap-5xs bg-gray-10 rounded-lg">
           <div className="flex gap-5xs items-center">
             <Image
