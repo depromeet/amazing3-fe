@@ -20,7 +20,7 @@ export const useCreateEmojiForFeed = () => {
     mutationFn: ({ goalId, emojiId }: EmojiRequestParams) => api.post(`/goal/${goalId}/emoji/${emojiId}`),
     onSuccess: (_, { goalId, emojiId }) => {
       queryClient.invalidateQueries({ queryKey: ['emoji', goalId] });
-      queryClient.invalidateQueries({ queryKey: ['goalFeeds', goalId] });
+      queryClient.invalidateQueries({ queryKey: ['goalFeeds'] });
       // NOTE: + 버튼을 눌러서 이모지를 추가하는 경우에 낙관적 업데이트 불가능해서 논의 필요
       queryClient.invalidateQueries({ queryKey: timelineQueryKey });
       queryClient.setQueryData(timelineQueryKey, updateTimelineEmojiCount(goalId, emojiId));
