@@ -11,9 +11,14 @@ export const useGetPublicTimeline = (username: string) => {
     queryKey: ['publicTimeline', username],
     queryFn: ({ pageParam }) =>
       api.get<TimelineResponse>(`/open/life-map/timeline/${username}`, {
-        params: { cursor: pageParam, size: PAGE_SIZE },
+        params: { page: pageParam, size: PAGE_SIZE },
       }),
     initialPageParam: null,
-    getNextPageParam: ({ isLast, nextCursor }) => (isLast ? null : nextCursor),
+    getNextPageParam: ({ total, page: currentPage }) => {
+      const isLast = (currentPage + 1) * PAGE_SIZE >= total;
+      const nextPage = currentPage + 1;
+
+      return isLast ? null : nextPage;
+    },
   });
 };

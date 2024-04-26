@@ -30,8 +30,8 @@ export type TimelineProps = {
 
 export type TimelineResponse = {
   contents: Array<TimelineProps>;
-  isLast: boolean;
-  nextCursor: number;
+  total: number;
+  page: number;
 };
 
 export const useGetTimeline = () => {
@@ -39,10 +39,15 @@ export const useGetTimeline = () => {
     queryKey: ['timeline'],
     queryFn: ({ pageParam }) =>
       api.get<TimelineResponse>(`/life-map/timeline`, {
-        params: { cursor: pageParam, size: PAGE_SIZE },
+        params: { page: pageParam, size: PAGE_SIZE },
       }),
     initialPageParam: null,
-    getNextPageParam: ({ isLast, nextCursor }) => (isLast ? null : nextCursor),
+    getNextPageParam: ({ total, page: currentPage }) => {
+      const isLast = (currentPage + 1) * PAGE_SIZE >= total;
+      const nextPage = currentPage + 1;
+
+      return isLast ? null : nextPage;
+    },
     staleTime: 0,
   });
 };
