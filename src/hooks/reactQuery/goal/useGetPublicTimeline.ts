@@ -14,6 +14,11 @@ export const useGetPublicTimeline = (username: string) => {
         params: { cursor: pageParam, size: PAGE_SIZE },
       }),
     initialPageParam: null,
-    getNextPageParam: ({ isLast, nextCursor }) => (isLast ? null : nextCursor),
+    getNextPageParam: ({ total, page: currentPage }) => {
+      const isLast = (currentPage + 1) * PAGE_SIZE >= total;
+      const nextPage = currentPage + 1;
+
+      return isLast ? null : nextPage;
+    },
   });
 };
