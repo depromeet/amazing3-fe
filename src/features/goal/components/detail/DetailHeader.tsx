@@ -39,8 +39,8 @@ export const DetailHeader = ({ goalId }: DetailHeaderProps) => {
 
   return (
     <>
-      <button>
-        <CloseIcon onClick={() => router.back()} />
+      <button onClick={() => router.back()} type="button">
+        <CloseIcon />
       </button>
       {isMyMap && goalId && (
         <div className="flex space-x-4">
