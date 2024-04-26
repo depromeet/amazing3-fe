@@ -13,7 +13,7 @@ interface ContentWrapperProps {
 export const ContentWrapper = forwardRef<HTMLElement, PropsWithChildren<ContentWrapperProps>>(
   ({ title, description, sectionStyles = '', children }, ref) => {
     return (
-      <section className={sectionStyles} ref={ref}>
+      <section className={`${sectionStyles} px-xs`} ref={ref}>
         <Typography type="heading2" className="text-blue-50">
           {title}
         </Typography>
