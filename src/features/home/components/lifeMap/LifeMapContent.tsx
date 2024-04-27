@@ -78,7 +78,7 @@ export const LifeMapContent = ({ goalsData, memberData, isPublic = false }: Life
         >
           <div className="flex h-[24px] items-center mt-5xs">
             <LifeMapInfo goalsData={goalsData} />
-            <div className="absolute right-0">
+            <div className="absolute mr-xs right-0">
               <HomeTab tabList={TAB_LIST} onChangeActiveTab={setTab} />
             </div>
           </div>
