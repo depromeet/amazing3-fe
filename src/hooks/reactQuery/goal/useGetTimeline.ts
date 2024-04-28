@@ -41,7 +41,7 @@ export const useGetTimeline = () => {
       api.get<TimelineResponse>(`/life-map/timeline`, {
         params: { page: pageParam, size: PAGE_SIZE },
       }),
-    initialPageParam: null,
+    initialPageParam: 0,
     getNextPageParam: ({ total, page: currentPage }) => {
       const isLast = (currentPage + 1) * PAGE_SIZE >= total;
       const nextPage = currentPage + 1;
