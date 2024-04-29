@@ -38,3 +38,18 @@ export const SizeSpecificationWithImage: Story = {
     size: 50,
   },
 };
+
+export const WithLongImage: Story = {
+  args: {
+    profileImage:
+      'https://mblogthumb-phinf.pstatic.net/MjAyMjEyMjZfMTgg/MDAxNjcyMDM3NzQ3ODM2.Sbq1QfmZo0iF88TxMv-pTcvxWQ-9Bygpl_xc7-y8jDIg.juEk5qCAI9YLs6koopdMyPoXnWdTsXdDA7ptSqMhZyUg.JPEG.planet-keepers/5269_20221226134032608.jpg?type=w800',
+    size: 40,
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    profileImage: 'asdf',
+    size: 40,
+  },
+};
