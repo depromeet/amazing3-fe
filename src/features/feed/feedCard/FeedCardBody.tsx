@@ -42,7 +42,7 @@ export const FeedCardBody = ({ goal, count, username, footer }: FeedCardBodyProp
           </div>
           <div className="flex items-center gap-5xs">
             <Typography type="title5" className="text-gray-40">
-              <Span type="gray50">{formatDotYYYYMM(goal.deadline)}</Span>까지 이룰거에요
+              <Span type="gray50">{formatDotYYYYMM(goal.deadline)}</Span>까지
             </Typography>
             <VerticalBarIcon width="2" height="16" />
             <Typography type="title5" className="text-gray-50">
