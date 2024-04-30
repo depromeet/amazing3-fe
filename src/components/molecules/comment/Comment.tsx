@@ -22,7 +22,7 @@ interface CommentProps {
 export const Comment = ({ commenter, content, writtenAt, isDeletable, onDelete }: CommentProps) => {
   return (
     <m.div className="flex gap-4xs" {...animate}>
-      <Avatar profileImage={commenter.image} size={50} href={`/home/${commenter.username}`} />
+      <Avatar profileImage={commenter.image} size={50} />
       <div className="w-full flex flex-col justify-between">
         <div className="w-full flex justify-between">
           <div className="flex gap-6xs items-center">
