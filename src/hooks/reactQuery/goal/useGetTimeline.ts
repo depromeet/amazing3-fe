@@ -39,7 +39,7 @@ export const useGetTimeline = () => {
     queryKey: ['timeline'],
     queryFn: ({ pageParam }) =>
       api.get<TimelineResponse>(`/life-map/timeline`, {
-        params: { page: pageParam, size: PAGE_SIZE },
+        params: { page: pageParam || 0, size: PAGE_SIZE },
       }),
     initialPageParam: 0,
     getNextPageParam: ({ total, page: currentPage }) => {
