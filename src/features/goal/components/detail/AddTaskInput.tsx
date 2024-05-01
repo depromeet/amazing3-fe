@@ -4,6 +4,7 @@ import { useAtomValue } from 'jotai';
 import { Input } from '@/components';
 import { useFocusInput, useInput, useOutsideClick } from '@/hooks';
 import { useCreateTask } from '@/hooks/reactQuery/task';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 import { goalIdAtom } from '../../atoms';
 
@@ -42,6 +43,7 @@ export const AddTaskInput = ({ isOpen, onOpen }: AddTaskInputProps) => {
           mutate({ goalId, description: newDescription });
           handleAfterSubmit();
         }}
+        disabled={isOnlyWhitespace(newDescription)}
       />
     </div>
   );
