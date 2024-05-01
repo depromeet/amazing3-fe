@@ -4,7 +4,6 @@ import { forwardRef } from 'react';
 import { Input, type InputProps } from '@/components/atoms/input/Input';
 import { useInput } from '@/hooks';
 import { useCreateComment } from '@/hooks/reactQuery/comment';
-import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 interface AddCommentInputProps extends InputProps {
   goalId: number;
@@ -35,7 +34,6 @@ export const AddCommentInput = forwardRef<HTMLInputElement, AddCommentInputProps
         includeSubmitButton
         onSubmit={handleSubmit}
         tabIndex={-1}
-        disabled={isOnlyWhitespace(comment)}
         {...props}
       />
     );

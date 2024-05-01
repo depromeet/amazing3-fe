@@ -6,6 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { colors } from '@/../styles/theme';
 import SubmitIcon from '@/assets/icons/submit.svg';
 import { composeEventHandlers } from '@/utils/composeEventHandlers';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 const inputContainerVariants = cva(
   'p-3xs flex gap-6xs items-center w-full h-[56px] rounded-md bg-white border shadow-thumb',
@@ -32,11 +33,16 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>,
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, includeSubmitButton = false, onSubmit = () => {}, onFocus, onBlur, disabled, ...props }, ref) => {
+  (
+    { className, value, includeSubmitButton = false, onSubmit = () => {}, onFocus, onBlur, disabled, ...props },
+    ref,
+  ) => {
     const [isFocused, setIsFocused] = useState(false);
 
     const handleFocus = useCallback(() => setIsFocused(true), []);
     const handleBlur = useCallback(() => setIsFocused(false), []);
+
+    const isDefaultInvalid = !value || isOnlyWhitespace(`${value}`);
 
     return (
       <div className={inputContainerVariants({ isFocused })}>
@@ -55,12 +61,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <div className="w-[32px] h-[32px]">
             <button
               onClick={onSubmit}
-              disabled={disabled || !props.value}
-              className={`${(!props.value || disabled) && 'cursor-not-allowed'}`}
+              disabled={disabled || isDefaultInvalid}
+              className={`${(isDefaultInvalid || disabled) && 'cursor-not-allowed'}`}
             >
               <SubmitIcon
                 className="transition-colors duration-300"
-                fill={disabled || !props.value ? colors.gray[20] : colors.gray[40]}
+                fill={disabled || isDefaultInvalid ? colors.gray[20] : colors.gray[40]}
               />
             </button>
           </div>
