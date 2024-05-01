@@ -10,7 +10,7 @@ import { Button, LimitedLengthInput } from '@/components';
 import { MAX_NICKNAME_LENGTH } from '@/constants';
 import { useGetMemberData } from '@/hooks/reactQuery/auth/useGetMemberData';
 import { useIsMounted } from '@/hooks/useIsMounted';
-import { hasWhitespace } from '@/utils/hasWhitespace';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 import type { NewMemberFormValues } from '../../types';
 
@@ -37,7 +37,7 @@ export const NicknameInputForm = () => {
     }
   }, [memberData, router]);
 
-  const isInvalidInput = !value || hasWhitespace(value);
+  const isInvalidInput = !value || isOnlyWhitespace(value);
 
   return (
     isReady && (

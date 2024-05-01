@@ -6,7 +6,7 @@ import { DevTool } from '@hookform/devtools';
 import { useGetMemberData, useUpdateMemberData } from '@/hooks/reactQuery/auth';
 import { useIsMounted } from '@/hooks/useIsMounted';
 import { useToast } from '@/hooks/useToast';
-import { hasWhitespace } from '@/utils/hasWhitespace';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 import type { UpdateMemberDataFormValues } from '../types';
 
@@ -42,8 +42,8 @@ const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
       }
     }
 
-    if (hasWhitespace(nickname)) {
-      toast.warning('닉네임은 공백을 포함할 수 없습니다.');
+    if (isOnlyWhitespace(nickname)) {
+      toast.warning('닉네임을 올바르게 입력해주세요.');
       return;
     }
 
