@@ -64,7 +64,7 @@ export const GoalUpdateForm = ({ goalId, goal }: GoalUpdateFormProps) => {
       }
 
       if (isOnlyWhitespace(data.title) || isOnlyWhitespace(data.description)) {
-        toast.warning('한줄 목표 혹은 메모에 공백 문자만이 존재하는 지 확인해주세요.');
+        toast.warning('한줄 목표 혹은 메모에 공백 문자만이 존재하는지 확인해주세요.');
         return;
       }
 
