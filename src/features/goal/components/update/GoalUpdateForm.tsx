@@ -17,6 +17,8 @@ import { useIsMounted } from '@/hooks/useIsMounted';
 import { useToast } from '@/hooks/useToast';
 import { FormLayout } from '@/layout/FormLayout';
 import { isValidDate } from '@/utils/date';
+import { hasWhitespace } from '@/utils/hasWhitespace';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 import GoalUpdateHeader from './GoalUpdateHeader';
 
@@ -61,9 +63,19 @@ export const GoalUpdateForm = ({ goalId, goal }: GoalUpdateFormProps) => {
         return;
       }
 
-      // validate deadline
+      if (isOnlyWhitespace(data.title) || isOnlyWhitespace(data.description)) {
+        toast.warning('한줄 목표 혹은 메모에 공백 문자만이 존재하는지 확인해주세요.');
+        return;
+      }
+
       if (!isValidDate(data.year, data.month)) {
+        // validate deadline
         toast.warning('유효한 날짜를 입력해 주세요.');
+        return;
+      }
+
+      if (hasWhitespace(`${data.year}${data.month}`)) {
+        toast.warning('날짜에는 공백을 포함할 수 없습니다.');
         return;
       }
 

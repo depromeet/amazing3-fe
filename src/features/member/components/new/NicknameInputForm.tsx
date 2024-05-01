@@ -10,6 +10,7 @@ import { Button, LimitedLengthInput } from '@/components';
 import { MAX_NICKNAME_LENGTH } from '@/constants';
 import { useGetMemberData } from '@/hooks/reactQuery/auth/useGetMemberData';
 import { useIsMounted } from '@/hooks/useIsMounted';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 import type { NewMemberFormValues } from '../../types';
 
@@ -36,7 +37,7 @@ export const NicknameInputForm = () => {
     }
   }, [memberData, router]);
 
-  const isInvalidInput = () => (value ? value.length === 0 : true);
+  const isInvalidInput = !value || isOnlyWhitespace(value);
 
   return (
     isReady && (
@@ -51,7 +52,7 @@ export const NicknameInputForm = () => {
               <LimitedLengthInput maxLength={MAX_NICKNAME_LENGTH} placeholder="닉네임" onChange={onChange} />
             </div>
             <Link href="/member/new/birth">
-              <Button disabled={!isMounted || isInvalidInput()}>다음</Button>
+              <Button disabled={!isMounted || isInvalidInput}>다음</Button>
             </Link>
           </div>
         </div>

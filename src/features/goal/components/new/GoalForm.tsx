@@ -6,6 +6,7 @@ import { useOverlay } from '@toss/use-overlay';
 
 import { Button, Span, Typography } from '@/components/atoms';
 import type { GoalFormValues } from '@/features/goal/types';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 import { NEW_GOAL_FORM_ORDERS } from '../../constants';
 
@@ -19,6 +20,8 @@ export const GoalForm = () => {
   const { field } = useController({ name: 'title', control });
   const { onChange, value } = field;
   const overlay = useOverlay();
+
+  const isInvalid = !value || isOnlyWhitespace(value);
 
   return (
     <FormLayout
@@ -65,7 +68,7 @@ export const GoalForm = () => {
       }
       footer={
         <Link href="/goal/new/date">
-          <Button disabled={value ? value.length === 0 : true}>다음</Button>
+          <Button disabled={isInvalid}>다음</Button>
         </Link>
       }
     />

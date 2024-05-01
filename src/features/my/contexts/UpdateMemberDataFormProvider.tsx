@@ -6,6 +6,7 @@ import { DevTool } from '@hookform/devtools';
 import { useGetMemberData, useUpdateMemberData } from '@/hooks/reactQuery/auth';
 import { useIsMounted } from '@/hooks/useIsMounted';
 import { useToast } from '@/hooks/useToast';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 import type { UpdateMemberDataFormValues } from '../types';
 
@@ -39,6 +40,11 @@ const UpdateMemberDataFormProvider = ({ children }: PropsWithChildren) => {
         toast.warning('아이디는 영문, 숫자, 하이픈(-)만 사용할 수 있고, 하이픈(-)은 처음과 끝에 사용할 수 없습니다.');
         return;
       }
+    }
+
+    if (isOnlyWhitespace(nickname)) {
+      toast.warning('닉네임을 올바르게 입력해주세요.');
+      return;
     }
 
     // Convert birth from "YYYY.MM.DD" to "YYYY-MM-DD"
