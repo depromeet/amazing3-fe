@@ -9,6 +9,7 @@ import { Spinner } from '@/components/atoms/spinner';
 import { MAX_TEXTAREA_LENGTH } from '@/constants';
 import type { GoalFormValues } from '@/features/goal/types';
 import { useCreateGoal } from '@/hooks/reactQuery/goal';
+import { isOnlyWhitespace } from '@/utils/isOnlyWhitespace';
 
 import { NEW_GOAL_FORM_ORDERS } from '../../constants';
 
@@ -72,7 +73,7 @@ export const MoreForm = () => {
         </div>
       }
       footer={
-        <Button onClick={handleSubmit} disabled={isPending}>
+        <Button onClick={handleSubmit} disabled={isOnlyWhitespace(value ?? '') || isPending}>
           {isPending ? <Spinner /> : '완료'}
         </Button>
       }

@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import { Button, Span, Typography } from '@/components';
 import type { GoalFormValues } from '@/features/goal/types';
+import { hasWhitespace } from '@/utils/hasWhitespace';
 
 import { NEW_GOAL_FORM_ORDERS } from '../../constants';
 import { isValidDateFormat } from '../../utils/date';
@@ -18,6 +19,8 @@ export const DateForm = () => {
   const { field } = useController({ name: 'date', control });
   const { onChange, value } = field;
   const { title } = getValues();
+
+  const isInvalid = !isValidDateFormat(value, 'YYYY.MM') || hasWhitespace(value);
 
   return (
     <FormLayout
@@ -34,7 +37,7 @@ export const DateForm = () => {
       }
       footer={
         <Link href="/goal/new/tag">
-          <Button disabled={!isValidDateFormat(value, 'YYYY.MM')}>다음</Button>
+          <Button disabled={isInvalid}>다음</Button>
         </Link>
       }
     />
