@@ -23,7 +23,7 @@ export const DateInput = ({
   const { inputRefs, dateValues, handleInputChange, handleInputBlur } = useDateInput({ initialValue });
 
   useEffect(() => {
-    onChange && onChange(formatDate(requireDateType.map((type) => dateValues[type])));
+    onChange?.(formatDate(requireDateType.map((type) => dateValues[type])));
   }, [dateValues, onChange, requireDateType]);
 
   return (
