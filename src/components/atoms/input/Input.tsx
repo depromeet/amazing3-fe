@@ -49,6 +49,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           className={inputVariants({ className })}
           ref={ref}
+          value={value}
           {...props}
           onFocus={composeEventHandlers(onFocus, () => {
             handleFocus();
